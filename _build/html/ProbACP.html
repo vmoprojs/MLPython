@@ -1,0 +1,1950 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Modelos de Probabilidad &amp; ACP &#8212; Técnicas de Machine Learning con Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ProbACP';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Estadística Descriptiva" href="DescriptivaRegresion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Machine Learning con Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">Estadística Descriptiva</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelos de Probabilidad &amp; ACP</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FProbACP.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ProbACP.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modelos de Probabilidad & ACP</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelos de Probabilidad &amp; ACP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-lineal">Probabilidad lineal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">Logit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probit">Probit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-componentes-principales">Análisis de Componentes Principales</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento1">Planteamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion">Notación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-primer-componente">Cálculo del primer componente</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="modelos-de-probabilidad-acp">
+<h1>Modelos de Probabilidad &amp; ACP<a class="headerlink" href="#modelos-de-probabilidad-acp" title="Permalink to this headline">#</a></h1>
+<section id="probabilidad-lineal">
+<h2>Probabilidad lineal<a class="headerlink" href="#probabilidad-lineal" title="Permalink to this headline">#</a></h2>
+<p>En este caso la variable dependiente es una dummy</p>
+<a class="reference internal image-reference" href="_images/RL_Im7.png"><img alt="_images/RL_Im7.png" src="_images/RL_Im7.png" style="width: 700px; height: 300px;" /></a>
+<p>Se trata de modelos del tipo:</p>
+<p>\begin{eqnarray}
+D_{i} = \beta_{0}+\beta_{1}X_{1i}+u_{i} \nonumber
+\end{eqnarray}</p>
+<p>Veamos un ejemplo: Abrir la base <code class="docutils literal notranslate"><span class="pre">MROZ</span></code> de Wooldridge y ajuste el modelo:</p>
+<p>$$
+inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \beta_5kidslt6 + \beta_6kidsge6
+$$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># np.set_printoptions(precision=2)</span>
+
+<span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/mroz.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;inlf&quot;</span><span class="p">,</span><span class="s2">&quot;hours&quot;</span><span class="p">,</span>  <span class="s2">&quot;kidslt6&quot;</span><span class="p">,</span> <span class="s2">&quot;kidsge6&quot;</span><span class="p">,</span> 
+               <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;educ&quot;</span><span class="p">,</span>  <span class="s2">&quot;wage&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;repwage&quot;</span><span class="p">,</span><span class="s2">&quot;hushrs&quot;</span>  <span class="p">,</span>  <span class="s2">&quot;husage&quot;</span><span class="p">,</span> <span class="s2">&quot;huseduc&quot;</span> <span class="p">,</span>
+               <span class="s2">&quot;huswage&quot;</span>  <span class="p">,</span> <span class="s2">&quot;faminc&quot;</span><span class="p">,</span> <span class="s2">&quot;mtr&quot;</span><span class="p">,</span><span class="s2">&quot;motheduc&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;fatheduc&quot;</span> <span class="p">,</span> <span class="s2">&quot;unem&quot;</span><span class="p">,</span>  <span class="s2">&quot;city&quot;</span> <span class="p">,</span> <span class="s2">&quot;exper&quot;</span> <span class="p">,</span> 
+               <span class="s2">&quot;nwifeinc&quot;</span> <span class="p">,</span> <span class="s2">&quot;lwage&quot;</span> <span class="p">,</span><span class="s2">&quot;expersq&quot;</span><span class="p">]</span>
+
+
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">stm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.regressionplots</span> <span class="kn">import</span> <span class="n">abline_plot</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">reg1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ nwifeinc + educ + exper + expersq + age+kidslt6 + kidsge6&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   inlf   R-squared:                       0.264
+Model:                            OLS   Adj. R-squared:                  0.257
+Method:                 Least Squares   F-statistic:                     38.22
+Date:                Tue, 28 Mar 2023   Prob (F-statistic):           6.90e-46
+Time:                        04:06:13   Log-Likelihood:                -423.89
+No. Observations:                 753   AIC:                             863.8
+Df Residuals:                     745   BIC:                             900.8
+Df Model:                           7                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      0.5855      0.154      3.798      0.000       0.283       0.888
+nwifeinc      -0.0034      0.001     -2.351      0.019      -0.006      -0.001
+educ           0.0380      0.007      5.151      0.000       0.024       0.052
+exper          0.0395      0.006      6.962      0.000       0.028       0.051
+expersq       -0.0006      0.000     -3.227      0.001      -0.001      -0.000
+age           -0.0161      0.002     -6.476      0.000      -0.021      -0.011
+kidslt6       -0.2618      0.034     -7.814      0.000      -0.328      -0.196
+kidsge6        0.0130      0.013      0.986      0.324      -0.013       0.039
+==============================================================================
+Omnibus:                      169.137   Durbin-Watson:                   0.494
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               36.741
+Skew:                          -0.196   Prob(JB):                     1.05e-08
+Kurtosis:                       1.991   Cond. No.                     3.06e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.06e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué hemos ajustado?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aux</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ educ&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">educ</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">educ</span><span class="p">,</span><span class="n">aux</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;educ&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;inlf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4e369000e721042a8b9331fa497528a34b1a99ba7e17ccf0c6bb54c9a40bc8a.png" src="_images/d4e369000e721042a8b9331fa497528a34b1a99ba7e17ccf0c6bb54c9a40bc8a.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Excepto <em>kidsge6</em> los coeficientes son significativos.</p></li>
+<li><p>Se introdujo la experiencia cuadrática para capturar un efecto decreciente en el efecto deseado (<code class="docutils literal notranslate"><span class="pre">inlf</span></code>). ¿Cómo lo interpretamos?</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">.039</span> <span class="pre">-</span> <span class="pre">2(.0006)exper</span> <span class="pre">=</span> <span class="pre">0.39</span> <span class="pre">-</span> <span class="pre">.0012exper</span></code></p>
+<ul class="simple">
+<li><p>El punto en el que la experiencia ya no tiene efecto en <code class="docutils literal notranslate"><span class="pre">inlf</span></code> es $.039/.0012 = 32.5$. ¿Cuantos elementos de la muestra tienen más de 32 años de experiencia?</p></li>
+</ul>
+<p>Se añade exper al cuadrado porque queremos dar la posibilidad que los años adicionales de expericnecia contribuyan con un efecto decreciente.</p>
+<p>Trabajemos ahora con la predicción, y revisemos el resultado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_vals</span> <span class="o">=</span> <span class="n">reg1</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+<span class="n">aux</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="n">pred_vals</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aux</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+
+<span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">pred_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 0.6636123221355531), (1, 0.7009165727274161), (1, 0.6727286212890489), (1, 0.7257441305286613), (1, 0.5616358247349608)]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=753, minmax=(-0.34511026465740724, 1.1271505290421115), mean=0.5683930942895072, variance=0.06490433214015544, skewness=-0.4241251818053419, kurtosis=-0.07391834122184537)
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué podemos notar?</p>
+<ul class="simple">
+<li><p>Existen valores mayores a 1 e inferiores a 0.</p></li>
+<li><p>$R^{2}$ ya no es interpretable en estas regresiones.</p></li>
+<li><p>Usaremos una probabilidad de ocurrencia, digamos 0.5</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediccion_dum</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_vals</span><span class="o">&gt;=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
+
+<span class="n">tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="n">prediccion_dum</span><span class="p">)</span>
+<span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">datos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7343957503320053
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logit">
+<h2>Logit<a class="headerlink" href="#logit" title="Permalink to this headline">#</a></h2>
+<p>La regresión logística puede entenderse simplemente como encontrar los parámtros $\beta$ que mejor asjuten:</p>
+<p>$$
+y={\begin{cases}1&amp;\beta_{1}+\beta_{2}X_{1}+\cdots+\beta_{k}X_{k}+u &gt;0\0&amp;{\text{en otro caso}}\end{cases}}
+$$</p>
+<p>Donde se asume que el error tiene una <a class="reference external" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_log%C3%ADstica">distribución logística estándar</a></p>
+<p>$$
+{\displaystyle f(x;\mu ,s)={\frac {e^{-{\frac {x-\mu }{s}}}}{s\left(1+e^{-{\frac {x-\mu }{s}}}\right)^{2}}}={\frac {1}{s\left(e^{\frac {x-\mu }{2s}}+e^{-{\frac {x-\mu }{2s}}}\right)^{2}}}={\frac {1}{4s}}\operatorname {sech} ^{2}!\left({\frac {x-\mu }{2s}}\right).}
+$$
+Donde $s$ es el parámetro de escala y $\mu$ el de locación (<em>sech</em> es la función secante hiperbólico).</p>
+<p>Otra forma de entender la regresión logística es a través de la función logística:</p>
+<p>$$
+\sigma (t)={\frac {e^{t}}{e^{t}+1}}={\frac {1}{1+e^{-t}}}
+$$</p>
+<p>donde $t\in \mathbb{R}$ y $0\leq\sigma (t)\leq1$.</p>
+<p>Asumiento $t$ como una función lineal de una variable explicativa $x$, tenemos:</p>
+<p>$$
+t=\beta _{0}+\beta _{1}x
+$$</p>
+<p>Ahora la función logística se puede expresar:</p>
+<p>$$
+p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
+$$</p>
+<p>Ten en cuenta que $p (x)$ se interpreta como la probabilidad de que la variable dependiente iguale a <em>éxito</em>  en lugar de un <em>fracaso</em>. Está claro que las variables de respuesta $Y_ {i}$ no se distribuyen de forma idéntica: $ P (Y_ {i} = 1 \ mid X )$ difiere de un punto $X_ {i}$ a otro, aunque son independientes dado que la matriz de diseño $X$ y los parámetros compartidos $\beta$.</p>
+<p>Finalmente definimos la inversa de la función logística, $g$, el <strong>logit</strong> (log odds):</p>
+<p>$$
+{\displaystyle g(p(x))=\ln \left({\frac {p(x)}{1-p(x)}}\right)=\beta _{0}+\beta _{1}x,}
+$$</p>
+<p>lo que es equivalente a:</p>
+<p>$$
+{\frac {p(x)}{1-p(x)}}=e^{\beta _{0}+\beta _{1}x}
+$$</p>
+<p><strong>Interpretación</strong>:</p>
+<ul class="simple">
+<li><p>$g$ es la función logit. La ecuación para $g (p (x))$ ilustra que el logit (es decir, log-odds o logaritmo natural de las probabilidades) es equivalente a la expresión de regresión lineal.</p></li>
+<li><p>$ln$ denota el logaritmo natural.</p></li>
+<li><p>$p (x)$ es la probabilidad de que la variable dependiente sea igual a un caso, dada alguna combinación lineal de los predictores. La fórmula para $p (x)$ ilustra que la probabilidad de que la variable dependiente iguale un caso es igual al valor de la función logística de la expresión de regresión lineal. Esto es importante porque muestra que el valor de la expresión de regresión lineal puede variar de infinito negativo a positivo y, sin embargo, después de la transformación, la expresión resultante para la probabilidad $p (x)$ oscila entre $0$ y $1$.</p></li>
+<li><p>$\beta _ {0}$ es la intersección de la ecuación de regresión lineal (el valor del criterio cuando el predictor es igual a cero).</p></li>
+<li><p>$\beta _ {1} x$ es el coeficiente de regresión multiplicado por algún valor del predictor.</p></li>
+<li><p>la base $e$ denota la función exponencial.</p></li>
+</ul>
+<section id="ejemplo">
+<h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this headline">#</a></h3>
+<p>Abra la tabla 15.7</p>
+<ul class="simple">
+<li><p>Los datos son el efecto del Sistema de Enseñanza Personalizada (PSI) sobre las calificaciones.</p>
+<ul>
+<li><p>Calificación $Y = 1$ si la calificación final fue A</p></li>
+<li><p>$Y = 0$ si la calificación final fue B o C</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TUCE</span></code> = calificación en un examen presentado al comienzo del curso para evaluar los conocimientos previos de macroeconomía</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PSI</span></code> = 1 con el nuevo método de enseñanza, 0 en otro caso</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GPA</span></code> = promedio de puntos de calificación inicial</p></li>
+</ul>
+</li>
+<li><p>Ajuste el siguiente modelo:
+<code class="docutils literal notranslate"><span class="pre">ajuste1</span> <span class="pre">&lt;-</span> <span class="pre">glm(GRADE~GPA+TUCE+PSI,</span> <span class="pre">family=binomial(link=&quot;logit&quot;),x=T)</span></code></p></li>
+<li><p>Interprete el modelo</p></li>
+</ul>
+<p>En los modelos cuya variable regresada binaria, la bondad del ajuste tiene una importancia secundaria. Lo que interesa son los signos esperados de los coeficientes de la regresión y su importancia práctica y/o estadística.</p>
+<p>Importamos los datos y revisamos la variable dependiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/tabla15_7.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># import statsmodels.api as sm</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;GRADE&#39;</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="5" halign="left">len</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>GPA</th>
+      <th>LETTER</th>
+      <th>OBS</th>
+      <th>PSI</th>
+      <th>TUCE</th>
+    </tr>
+    <tr>
+      <th>GRADE</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Ajustamos el modelo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.402801
+         Iterations 7
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                  GRADE   No. Observations:                   32
+Model:                          Logit   Df Residuals:                       28
+Method:                           MLE   Df Model:                            3
+Date:                Tue, 28 Mar 2023   Pseudo R-squ.:                  0.3740
+Time:                        04:06:14   Log-Likelihood:                -12.890
+converged:                       True   LL-Null:                       -20.592
+Covariance Type:            nonrobust   LLR p-value:                  0.001502
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    -13.0213      4.931     -2.641      0.008     -22.687      -3.356
+GPA            2.8261      1.263      2.238      0.025       0.351       5.301
+TUCE           0.0952      0.142      0.672      0.501      -0.182       0.373
+PSI            2.3787      1.065      2.234      0.025       0.292       4.465
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Marginal Effects</caption>
+<tr>
+  <th>Dep. Variable:</th> <td>GRADE</td>
+</tr>
+<tr>
+  <th>Method:</th>        <td>dydx</td> 
+</tr>
+<tr>
+  <th>At:</th>            <td>mean</td> 
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+    <th></th>      <th>dy/dx</th>    <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>GPA</th>  <td>    0.5339</td> <td>    0.237</td> <td>    2.252</td> <td> 0.024</td> <td>    0.069</td> <td>    0.998</td>
+</tr>
+<tr>
+  <th>TUCE</th> <td>    0.0180</td> <td>    0.026</td> <td>    0.685</td> <td> 0.493</td> <td>   -0.033</td> <td>    0.069</td>
+</tr>
+<tr>
+  <th>PSI</th>  <td>    0.4493</td> <td>    0.197</td> <td>    2.284</td> <td> 0.022</td> <td>    0.064</td> <td>    0.835</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span> <span class="o">=</span> <span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">margeff</span>
+<span class="n">mm</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.07311607, 0.00246188, 0.06154047],
+       [0.15815168, 0.0053251 , 0.1331134 ],
+       [0.43011639, 0.01448239, 0.36202116],
+       [0.07130492, 0.0024009 , 0.06001605],
+       [0.69272252, 0.02332457, 0.58305197],
+       [0.09507939, 0.00320141, 0.08002659],
+       [0.0729182 , 0.00245522, 0.06137393],
+       [0.1381988 , 0.00465327, 0.11631942],
+       [0.2791564 , 0.00939944, 0.23496087],
+       [0.60069976, 0.02022608, 0.50559808]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Son, en conjunto, los coeficientes significativos?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hyp</span> <span class="o">=</span> <span class="s1">&#39;(Intercept = 0, GPA = 0,TUCE=0,PSI=0)&#39;</span>
+<span class="n">ajuste1</span><span class="o">.</span><span class="n">wald_test</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="n">scalar</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;statsmodels.stats.contrast.ContrastResults&#39;&gt;
+&lt;Wald test (chi2): statistic=8.873128862019582, p-value=0.06435007959304277, df_denom=4&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept     0.000002
+GPA          16.879715
+TUCE          1.099832
+PSI          10.790732
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esto indica que los estudiantes expuestos al nuevo método de enseñanza son 10 veces más propensos a obtener una A que quienes no están expuestos al nuevo método, en tanto no cambien los demás factores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.02657799, 0.05950125, 0.18725993, 0.02590164, 0.56989295,
+       0.03485827, 0.02650406, 0.051559  , 0.11112666, 0.69351131,
+       0.02447037, 0.18999744, 0.32223955, 0.19321116, 0.36098992,
+       0.03018375, 0.05362641, 0.03858834, 0.58987249, 0.66078584,
+       0.06137585, 0.90484727, 0.24177245, 0.85209089, 0.83829051,
+       0.48113304, 0.63542059, 0.30721866, 0.84170413, 0.94534025,
+       0.5291172 , 0.11103084])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="probit">
+<h2>Probit<a class="headerlink" href="#probit" title="Permalink to this headline">#</a></h2>
+<p>En los modelos logia se propuso la logística, en este caso se propone la Función de Distribución Acumulada Normal. Suponga que la variable de respuesta es binaria, 1 o 0. $Y$ podría representar la presencia/ausencia de una condición, éxito/fracaso, si/no. Se tiene también un vector de regresoras $X$, el modelo toma la forma:</p>
+<p>$$
+{\displaystyle \Pr(Y=1\mid X)=\Phi (X^{T}\beta ),}
+$$</p>
+<p>donde $Pr$ es la prbabilidad y $\Phi$ distribución acumulada de la normal estándar ${\displaystyle \Phi (x)={\frac {1}{\sqrt {2\pi }}}\int _{-\infty }^{x}e^{-t^{2}/2},dt}$. Los parámetros $\beta$ se estiman típicamente con el método de máxima verosimilitud.</p>
+<section id="id1">
+<h3>Ejemplo<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">probit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.400588
+         Iterations 6
+                          Probit Regression Results                           
+==============================================================================
+Dep. Variable:                  GRADE   No. Observations:                   32
+Model:                         Probit   Df Residuals:                       28
+Method:                           MLE   Df Model:                            3
+Date:                Tue, 28 Mar 2023   Pseudo R-squ.:                  0.3775
+Time:                        04:06:14   Log-Likelihood:                -12.819
+converged:                       True   LL-Null:                       -20.592
+Covariance Type:            nonrobust   LLR p-value:                  0.001405
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -7.4523      2.542     -2.931      0.003     -12.435      -2.469
+GPA            1.6258      0.694      2.343      0.019       0.266       2.986
+TUCE           0.0517      0.084      0.617      0.537      -0.113       0.216
+PSI            1.4263      0.595      2.397      0.017       0.260       2.593
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Probit Marginal Effects</caption>
+<tr>
+  <th>Dep. Variable:</th> <td>GRADE</td>
+</tr>
+<tr>
+  <th>Method:</th>        <td>dydx</td> 
+</tr>
+<tr>
+  <th>At:</th>            <td>mean</td> 
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+    <th></th>      <th>dy/dx</th>    <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>GPA</th>  <td>    0.5333</td> <td>    0.232</td> <td>    2.294</td> <td> 0.022</td> <td>    0.078</td> <td>    0.989</td>
+</tr>
+<tr>
+  <th>TUCE</th> <td>    0.0170</td> <td>    0.027</td> <td>    0.626</td> <td> 0.531</td> <td>   -0.036</td> <td>    0.070</td>
+</tr>
+<tr>
+  <th>PSI</th>  <td>    0.4679</td> <td>    0.188</td> <td>    2.494</td> <td> 0.013</td> <td>    0.100</td> <td>    0.836</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span> <span class="o">=</span> <span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">margeff</span>
+<span class="n">mm</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.07255307, 0.00230845, 0.06365122],
+       [0.17584323, 0.00559486, 0.15426826],
+       [0.44108314, 0.01403409, 0.38696473],
+       [0.07391114, 0.00235166, 0.06484266],
+       [0.64252589, 0.02044346, 0.5636916 ],
+       [0.10206861, 0.00324755, 0.08954537],
+       [0.07368267, 0.00234439, 0.06464222],
+       [0.15292232, 0.00486558, 0.13415961],
+       [0.3033272 , 0.00965106, 0.26611067],
+       [0.59359928, 0.01888675, 0.520768  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hyp</span> <span class="o">=</span> <span class="s1">&#39;(Intercept = 0, GPA = 0,TUCE=0,PSI=0)&#39;</span>
+<span class="n">ajuste1</span><span class="o">.</span><span class="n">wald_test</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="n">scalar</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;statsmodels.stats.contrast.ContrastResults&#39;&gt;
+&lt;Wald test (chi2): statistic=11.254100041118159, p-value=0.023851927209393938, df_denom=4&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.01817074, 0.05308048, 0.18992627, 0.01857067, 0.55457485,
+       0.02723306, 0.01850327, 0.04457139, 0.10880811, 0.66312068,
+       0.01610236, 0.19355656, 0.32332821, 0.19518259, 0.35634057,
+       0.02196542, 0.04569425, 0.03085127, 0.59340229, 0.65718629,
+       0.06192878, 0.90453884, 0.2731908 , 0.84745013, 0.83419472,
+       0.48872605, 0.64240727, 0.3286732 , 0.84001686, 0.95224465,
+       0.53995949, 0.123544  ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="analisis-de-componentes-principales">
+<h1>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this headline">#</a></h1>
+<section id="planteamiento1">
+<h2>Planteamiento<a class="footnote-reference brackets" href="#id4" id="id2">1</a><a class="headerlink" href="#planteamiento1" title="Permalink to this headline">#</a></h2>
+<p>Se aplica a tablas de datos donde las filas son considerados como individuos y las columnas como datos cuantitativos.</p>
+<p>Más formalmente, se dispone de los valores de $p$ variables y $n$ elementos dispuestos en una matriz $\mathbf{X}$ de dimensión $n\times p$.</p>
+<p>Siempre (casi) se usa la matriz centrada y/o estandarizada, los paquetes suelen hacer este trabajo por nosostros. Supongamos que  $\mathbf{X}$ ha sido centrada, su matriz de varianza covarianza viene dada por  $\frac{1}{n}\mathbf{X’X}$.</p>
+<p>¿Cómo encontrar un espacio de dimensión más reducida que represente adeucadamente los datos?</p>
+<section id="notacion">
+<h3>Notación<a class="headerlink" href="#notacion" title="Permalink to this headline">#</a></h3>
+<p>Se desea encontrar un subespacio de dimensión menor que $p$ tal que al proyectar sobre él los puntos conserven su estructura con la menor distorsión posible.</p>
+<p>Consideremos primero un subespacio de dimensión uno (una recta) obtenida por un conjunto de $p=2$ variables.</p>
+<p>La siguiente figura indica el diagrama de dispersión y una recta que, intuitivamente, proporciona un buen resumen de los datos, ya que las proyecciones de los puntos sobre ella indican aproximadamente la situación de los puntos en el plano.</p>
+<a class="reference internal image-reference" href="fig1.png"><img alt="fig1.png" src="fig1.png" style="width: 700px; height: 300px;" /></a>
+<p>Si consideramos un punto $\mathbf{x_i}$ y una dirección $\mathbf{a_1} = (a_{11}, \ldots, a_{1p})’$, definida por un vector $\mathbf{a_1}$ de norma unidad, la proyección del punto $\mathbf{x_i}$ sobre esta dirección es el escalar:</p>
+<p>$$
+z_i= a_{11}x_{i1}+\ldots+a_{1p}x_{ip} = \mathbf{a_1^{‘}x_i}
+$$</p>
+<p>y el vector que representa esta proyección será $z_i\mathbf{a_1}$. Llamando $r_i$ a la distancia entre el punto $x_i$, y su proyección sobre la dirección $\mathbf{a_1}$, este criterio implica:</p>
+<p>$$
+min\sum_{i = 1}^{n} r^2_i = \sum_{i = 1}^{n} |\mathbf{x_i}-z_i\mathbf{a_1}|^2
+$$</p>
+<p>donde $|\cdot|$ es la norma euclideana o módulo del vector.</p>
+<p>Notemos que al proyectar cada punto sobre la recta se forma un triángulo rectángulo donde la hipotenusa es la distancia al origen del punto al origen, $(\mathbf{x_i’x_i})^{1/2}$, y los catetos la proyeccion del punto sobre la recta $(z_i)$ y la distancia entre el punto y su proyección $(r_i)$. Por el teorema de Pitágoras, podemos escribir:</p>
+<p>$$
+(\mathbf{x_i’x_i}) = z_i^2+r_i^2
+$$</p>
+<p>y sumando esta expresión para todos los puntos, se obtiene:</p>
+<p>$$
+\sum_{i=1}^{n}(\mathbf{x_i’x_i}) = \sum_{i=1}^{n}z_i^2+\sum_{i=1}^{n}r_i^2
+$$</p>
+<p>Como el primer miembro es constante, minimizar $\sum_{i=1}^{n}r_i^2$, la suma de las distancias a la recta de todos los puntos, es equivalente a maximizar $\sum_{i=1}^{n}z_i^2$, la suma al cuadrado de los valores de las proyecciones. Como las proyecciones $z_i$ son variables de media cero, <strong>maximizar la suma de sus cuadrados equivale a mazimizar su varianza</strong>.</p>
+<p><em>¿Cómo es eso posible?</em></p>
+</section>
+<section id="calculo-del-primer-componente">
+<h3>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this headline">#</a></h3>
+<p>El primer componente principal será la combinación lineal de las variables originales que tenga varianza máxima. Los valores de este primer componente en los $n$ individuos se representarán por un vector $\mathbf{z_1}$, dado por</p>
+<p>$$
+\mathbf{z_1} = \mathbf{Xa_1}
+$$</p>
+<p>Como las variables originales tienen media cero también $\mathbf{z_1}$ tendrá media nula. Su varianza será:</p>
+<p>$$
+Var(\mathbf{z_1}) = \frac{1}{n}\mathbf{z_1^{‘}z_1} = \frac{1}{n}\mathbf{a_1^{‘}X’Xa_1} = \mathbf{a_1^{‘}Sa_1}
+$$</p>
+<p>donde $S$ es la matriz de varianzas y covarianzas de las observaciones. Para que la maximización de la ecuación anterior tenga solución debemos imponer una restricción al módulo del vector $\mathbf{a_1}$, y, sin pérdida de generalidad, impondremos que $\mathbf{a_1^{‘}a_1}=1$. Usamos para ello el multiplicador de Lagrange</p>
+<p>$$
+M = \mathbf{a_1^{‘}Sa_1}- \lambda(\mathbf{a_1^{‘}a_1}-1)
+$$</p>
+<p>Se maximiza derivando respecto a los componentes de $\mathbf{a_1}$ e igualando a cero. Entonces</p>
+<p>$$
+\frac{\partial M}{\partial\mathbf{a_1}} = 2\mathbf{Sa_1}-2\lambda\mathbf{a_1} = 0
+$$</p>
+<p>cuya solución es:</p>
+<p>$$
+\mathbf{Sa_1} = \lambda\mathbf{a_1}
+$$</p>
+<p>que implica que $\mathbf{a1}$ es un vector propio de la matriz $\mathbf{S}$, y $\lambda$ su correspondiente valor propio. Para determinar qué valor propio de $\mathbf{S}$ es la solución de la ecuación tendremos en cuenta que, multiplicando por la izquierda por $\mathbf{a’_{1}}$ esta ecuación,</p>
+<p>$$
+\mathbf{a_1^{‘}Sa_1} =  \lambda \mathbf{a_1^{‘}a_1} = \lambda
+$$</p>
+<p>y concluimos, que $\lambda$ es la varianza de $\mathbf{z_1}$. Como esta es la cantidad que queremos maximizar, $\lambda$ será el mayor valor propio de la matriz $\mathbf{S}$. Su vector asociado, $\mathbf{a1}$, define los coeficientes de cada variable en el primer componente principal.</p>
+<section id="id3">
+<h4>Ejemplo<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>El siguiente conjunto de datos corresponde a calificaciones de 20 estudiantes en 5 materias Ciencias Natuales (CNa), Matemáticas (Mat), Francés (Fra), Latín (Lat) y Literatura (Lit)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">CNa</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">Mat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">Fra</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">Lat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">Lit</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">Notas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;CNa&#39;</span><span class="p">:</span><span class="n">CNa</span><span class="p">,</span><span class="s1">&#39;Mat&#39;</span><span class="p">:</span><span class="n">Mat</span><span class="p">,</span><span class="s1">&#39;Fra&#39;</span><span class="p">:</span><span class="n">Fra</span><span class="p">,</span><span class="s1">&#39;Lat&#39;</span><span class="p">:</span><span class="n">Lat</span><span class="p">,</span><span class="s1">&#39;Lit&#39;</span><span class="p">:</span><span class="n">Lit</span><span class="p">})</span>
+<span class="n">Notas</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CNa</th>
+      <th>Mat</th>
+      <th>Fra</th>
+      <th>Lat</th>
+      <th>Lit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>7</td>
+      <td>5</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+      <td>7</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>8</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7</td>
+      <td>6</td>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>6</td>
+      <td>5</td>
+      <td>7</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>8</td>
+      <td>7</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>6</td>
+      <td>7</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>6</td>
+      <td>4</td>
+      <td>7</td>
+      <td>8</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>6</td>
+      <td>6</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>6</td>
+      <td>5</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Es pertiente empezar por un análisis explotario para tener una mejor perspectiva de los datos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Notas</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CNa</th>
+      <th>Mat</th>
+      <th>Fra</th>
+      <th>Lat</th>
+      <th>Lit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>20.000000</td>
+      <td>20.000000</td>
+      <td>20.000000</td>
+      <td>20.000000</td>
+      <td>20.00000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.800000</td>
+      <td>5.700000</td>
+      <td>5.600000</td>
+      <td>6.050000</td>
+      <td>5.65000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.005249</td>
+      <td>1.260743</td>
+      <td>1.095445</td>
+      <td>1.145931</td>
+      <td>1.03999</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.000000</td>
+      <td>3.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.00000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>5.00000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>6.000000</td>
+      <td>6.000000</td>
+      <td>5.500000</td>
+      <td>6.000000</td>
+      <td>6.00000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.000000</td>
+      <td>7.000000</td>
+      <td>6.000000</td>
+      <td>7.000000</td>
+      <td>6.00000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>8.000000</td>
+      <td>8.000000</td>
+      <td>8.000000</td>
+      <td>8.000000</td>
+      <td>8.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">Notas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f970e794520&gt;
+</pre></div>
+</div>
+<img alt="_images/5705d7f729f62a3cb0c481173c27ddadca5eab2b5e4e864a750dab207496b2b0.png" src="_images/5705d7f729f62a3cb0c481173c27ddadca5eab2b5e4e864a750dab207496b2b0.png" />
+</div>
+</div>
+<p>Como habíamos visto, los valores propios corresponden la varianzas explicadas de cada componente y los vectores propios son sus direcciones o pesos (<em>loadings</em>). Es decir:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">Notas</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.         0.6561498  0.49706742 0.42034118 0.58398469]
+ [0.6561498  1.         0.09908375 0.2295101  0.31711567]
+ [0.49706742 0.09908375 1.         0.81339038 0.84081035]
+ [0.42034118 0.2295101  0.81339038 1.         0.76622848]
+ [0.58398469 0.31711567 0.84081035 0.76622848 1.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fc</span> <span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+
+<span class="n">Notasc</span> <span class="o">=</span> <span class="n">Notas</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">LA</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">Notas</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="c1"># Matriz de covarianza</span>
+<span class="n">e_values</span><span class="p">,</span> <span class="n">e_vectors</span> <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="c1"># valores y vectores propios</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">e_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e_vectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.77855877 1.66135364 0.40960181 0.22023537 0.12498724]
+[[-0.39534516 -0.33102922 -0.66155123  0.47595392  0.26446114]
+ [-0.34882879 -0.79772358  0.37084614 -0.17998543 -0.2683914 ]
+ [-0.48225721  0.37154122 -0.21520882 -0.01712248 -0.76339838]
+ [-0.50400573  0.29871462  0.59983776  0.46491466  0.28424781]
+ [-0.48520809  0.16365646 -0.13675863 -0.72431643  0.44096764]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora podemos calcular los puntajes de los componetes por individuo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Notasc</span><span class="p">,</span><span class="n">e_vectors</span><span class="p">)</span> <span class="c1">#scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.279154</td>
+      <td>-1.913571</td>
+      <td>-0.860331</td>
+      <td>-0.394234</td>
+      <td>0.282362</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.708139</td>
+      <td>0.850534</td>
+      <td>0.242466</td>
+      <td>0.185938</td>
+      <td>-0.629896</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.337562</td>
+      <td>-0.020016</td>
+      <td>1.428359</td>
+      <td>0.487989</td>
+      <td>0.149359</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.736643</td>
+      <td>-2.081551</td>
+      <td>0.771904</td>
+      <td>-0.585259</td>
+      <td>0.033757</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.420594</td>
+      <td>-0.146877</td>
+      <td>-0.246711</td>
+      <td>0.698458</td>
+      <td>0.355851</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.463099</td>
+      <td>2.441658</td>
+      <td>0.996251</td>
+      <td>-0.369433</td>
+      <td>0.099250</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.209194</td>
+      <td>0.343935</td>
+      <td>-0.278921</td>
+      <td>-0.986171</td>
+      <td>0.290223</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.345573</td>
+      <td>-0.617445</td>
+      <td>0.228684</td>
+      <td>-0.441840</td>
+      <td>-0.419136</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-0.654672</td>
+      <td>1.054702</td>
+      <td>-0.771052</td>
+      <td>-0.079547</td>
+      <td>-0.687865</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-0.172414</td>
+      <td>0.683161</td>
+      <td>-0.555843</td>
+      <td>-0.062425</td>
+      <td>0.075533</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.097393</td>
+      <td>-1.447484</td>
+      <td>0.537816</td>
+      <td>0.319043</td>
+      <td>-0.138819</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2.661867</td>
+      <td>-0.354920</td>
+      <td>0.209805</td>
+      <td>0.479584</td>
+      <td>0.171686</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>-0.036035</td>
+      <td>-0.278219</td>
+      <td>-0.048239</td>
+      <td>0.481906</td>
+      <td>-0.633826</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>-4.603704</td>
+      <td>0.093480</td>
+      <td>-0.641513</td>
+      <td>-0.023536</td>
+      <td>-0.008693</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>-0.387815</td>
+      <td>-1.283827</td>
+      <td>0.401058</td>
+      <td>-0.405273</td>
+      <td>0.302149</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4.258876</td>
+      <td>1.272842</td>
+      <td>-0.470174</td>
+      <td>-0.101313</td>
+      <td>0.159760</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>-1.799062</td>
+      <td>2.613512</td>
+      <td>-0.078982</td>
+      <td>0.305951</td>
+      <td>0.589989</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>-1.992714</td>
+      <td>0.719350</td>
+      <td>0.062873</td>
+      <td>-0.518935</td>
+      <td>-0.231041</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2.770528</td>
+      <td>-0.984663</td>
+      <td>-1.051584</td>
+      <td>0.490624</td>
+      <td>0.151899</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>-1.769423</td>
+      <td>-0.944601</td>
+      <td>0.124135</td>
+      <td>0.518473</td>
+      <td>0.087459</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>El porcentaje de la varianza explicada por cada componente es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">e_values</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e_values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.60996276, 0.26818793, 0.06612094, 0.03555201, 0.02017636])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verifiquemos nuestros resultados usando <code class="docutils literal notranslate"><span class="pre">python</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pcaMod</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Notas</span><span class="p">)</span>
+
+
+<span class="n">pcaMod</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.60996276, 0.26818793, 0.06612094, 0.03555201, 0.02017636])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pcaMod</span><span class="o">.</span><span class="n">components_</span> <span class="c1"># Loadings</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.39534516,  0.34882879,  0.48225721,  0.50400573,  0.48520809],
+       [-0.33102922, -0.79772358,  0.37154122,  0.29871462,  0.16365646],
+       [-0.66155123,  0.37084614, -0.21520882,  0.59983776, -0.13675863],
+       [-0.47595392,  0.17998543,  0.01712248, -0.46491466,  0.72431643],
+       [-0.26446114,  0.2683914 ,  0.76339838, -0.28424781, -0.44096764]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">pcaMod</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Notas</span><span class="p">)</span> <span class="c1"># scores</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.27915411, -1.91357104, -0.86033137,  0.39423402, -0.28236204],
+       [-0.70813894,  0.85053394,  0.24246638, -0.18593762,  0.62989564],
+       [-0.33756163, -0.02001625,  1.42835911, -0.48798933, -0.14935915],
+       [ 0.73664347, -2.08155078,  0.77190377,  0.5852587 , -0.03375732],
+       [ 1.42059398, -0.146877  , -0.24671081, -0.69845826, -0.35585069],
+       [-0.46309908,  2.44165783,  0.9962506 ,  0.36943263, -0.09925008],
+       [-1.20919379,  0.34393456, -0.27892119,  0.98617099, -0.29022257],
+       [-1.34557309, -0.61744548,  0.22868359,  0.44183999,  0.41913648],
+       [ 0.65467152,  1.05470241, -0.77105231,  0.07954737,  0.68786524],
+       [ 0.17241431,  0.68316118, -0.55584349,  0.06242489, -0.07553314],
+       [-0.09739341, -1.44748367,  0.53781626, -0.31904316,  0.13881893],
+       [-2.66186718, -0.35491959,  0.2098049 , -0.47958435, -0.17168566],
+       [ 0.03603501, -0.27821886, -0.04823871, -0.48190611,  0.6338259 ],
+       [ 4.60370426,  0.09348019, -0.64151305,  0.02353642,  0.00869323],
+       [ 0.38781468, -1.2838272 ,  0.40105762,  0.40527327, -0.30214872],
+       [-4.25887565,  1.27284218, -0.47017392,  0.10131336, -0.15975951],
+       [ 1.79906227,  2.61351169, -0.07898156, -0.30595095, -0.58998944],
+       [ 1.99271412,  0.71934991,  0.06287296,  0.51893457,  0.23104118],
+       [-2.77052775, -0.98466343, -1.0515841 , -0.49062361, -0.15189898],
+       [ 1.76942278, -0.94460058,  0.12413533, -0.51847283, -0.08745929]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pca_summary</span><span class="p">(</span><span class="n">pca</span><span class="p">,</span> <span class="n">standardised_data</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PC&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">standardised_data</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">([(</span><span class="s2">&quot;sdev&quot;</span><span class="p">,</span> <span class="s2">&quot;Standard deviation&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;varprop&quot;</span><span class="p">,</span> <span class="s2">&quot;Proportion of Variance&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;cumprop&quot;</span><span class="p">,</span> <span class="s2">&quot;Cumulative Proportion&quot;</span><span class="p">)])</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Importance of components:&quot;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">summary</span>
+
+
+
+<span class="n">sumpca</span> <span class="o">=</span> <span class="n">pca_summary</span><span class="p">(</span><span class="n">pcaMod</span><span class="p">,</span> <span class="n">Notas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Importance of components:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>sdev</th>
+      <th>varprop</th>
+      <th>cumprop</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Standard deviation</th>
+      <th>Proportion of Variance</th>
+      <th>Cumulative Proportion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PC1</th>
+      <td>1.894632</td>
+      <td>0.609963</td>
+      <td>0.609963</td>
+    </tr>
+    <tr>
+      <th>PC2</th>
+      <td>1.256299</td>
+      <td>0.268188</td>
+      <td>0.878151</td>
+    </tr>
+    <tr>
+      <th>PC3</th>
+      <td>0.623796</td>
+      <td>0.066121</td>
+      <td>0.944272</td>
+    </tr>
+    <tr>
+      <th>PC4</th>
+      <td>0.457410</td>
+      <td>0.035552</td>
+      <td>0.979824</td>
+    </tr>
+    <tr>
+      <th>PC5</th>
+      <td>0.344584</td>
+      <td>0.020176</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">screeplot</span><span class="p">(</span><span class="n">pca</span><span class="p">,</span> <span class="n">standardised_values</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">standardised_values</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Comp.&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">screeplot</span><span class="p">(</span><span class="n">pcaMod</span><span class="p">,</span> <span class="n">Notas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/90cb8dfe79b3b1b988d402334e4b07f5c224227587c2f1f2c520f064aa7a074b.png" src="_images/90cb8dfe79b3b1b988d402334e4b07f5c224227587c2f1f2c520f064aa7a074b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">biplot</span><span class="p">(</span><span class="n">score</span><span class="p">,</span><span class="n">coeff</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">score</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">score</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">coeff</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">scalex</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">scaley</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span> <span class="o">*</span> <span class="n">scalex</span><span class="p">,</span><span class="n">ys</span> <span class="o">*</span> <span class="n">scaley</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">coeff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">coeff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">coeff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span> <span class="mf">1.15</span><span class="p">,</span> <span class="n">coeff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">,</span> <span class="s2">&quot;Var&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">coeff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span> <span class="mf">1.15</span><span class="p">,</span> <span class="n">coeff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+
+
+
+<span class="n">biplot</span><span class="p">(</span><span class="n">scores</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">pcaMod</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]),</span><span class="n">labels</span> <span class="o">=</span> <span class="n">Notas</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/99802944f62866f476a381ceb766154f0bd4b73f97e6422027ac2792322ac7bf.png" src="_images/99802944f62866f476a381ceb766154f0bd4b73f97e6422027ac2792322ac7bf.png" />
+</div>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Teoría  obtenida de Peña, D. <em>Análisis de datos multivariantes</em> (2002). Referencias de <code class="docutils literal notranslate"><span class="pre">FactoMineR</span></code> vienen de Husson, F. <em>Exploratory multivariate analysis by example using R</em> (2017)</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DescriptivaRegresion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estadística Descriptiva</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelos de Probabilidad &amp; ACP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-lineal">Probabilidad lineal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">Logit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probit">Probit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-componentes-principales">Análisis de Componentes Principales</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento1">Planteamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion">Notación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-primer-componente">Cálculo del primer componente</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ejemplo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Víctor Morales Oñate
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
