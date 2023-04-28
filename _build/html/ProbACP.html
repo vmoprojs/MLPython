@@ -60,9 +60,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ProbACP';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
     <link rel="prev" title="Estadística Descriptiva" href="DescriptivaRegresion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -174,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelos de Probabilidad &amp; ACP</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
 </ul>
 
     </div>
@@ -228,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/vmoprojs/MLPython" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -245,7 +249,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FProbACP.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/vmoprojs/MLPython/issues/new?title=Issue%20on%20page%20%2FProbACP.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,20 +406,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="modelos-de-probabilidad-acp">
+  <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-probabilidad-acp">
 <h1>Modelos de Probabilidad &amp; ACP<a class="headerlink" href="#modelos-de-probabilidad-acp" title="Permalink to this headline">#</a></h1>
 <section id="probabilidad-lineal">
 <h2>Probabilidad lineal<a class="headerlink" href="#probabilidad-lineal" title="Permalink to this headline">#</a></h2>
 <p>En este caso la variable dependiente es una dummy</p>
 <a class="reference internal image-reference" href="_images/RL_Im7.png"><img alt="_images/RL_Im7.png" src="_images/RL_Im7.png" style="width: 500px; height: 300px;" /></a>
 <p>Se trata de modelos del tipo:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 D_{i} = \beta_{0}+\beta_{1}X_{1i}+u_{i}
-$$</p>
+\]</div>
 <p>Veamos un ejemplo: Abrir la base <code class="docutils literal notranslate"><span class="pre">MROZ</span></code> de Wooldridge y ajuste el modelo:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \beta_5kidslt6 + \beta_6kidsge6
-$$</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -451,8 +457,8 @@ $$</p>
 Dep. Variable:                   inlf   R-squared:                       0.264
 Model:                            OLS   Adj. R-squared:                  0.257
 Method:                 Least Squares   F-statistic:                     38.22
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           6.90e-46
-Time:                        04:34:14   Log-Likelihood:                -423.89
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           6.90e-46
+Time:                        15:51:58   Log-Likelihood:                -423.89
 No. Observations:                 753   AIC:                             863.8
 Df Residuals:                     745   BIC:                             900.8
 Df Model:                           7                                         
@@ -506,7 +512,7 @@ strong multicollinearity or other numerical problems.
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">.039</span> <span class="pre">-</span> <span class="pre">2(.0006)exper</span> <span class="pre">=</span> <span class="pre">0.39</span> <span class="pre">-</span> <span class="pre">.0012exper</span></code></p>
 <ul class="simple">
-<li><p>El punto en el que la experiencia ya no tiene efecto en <code class="docutils literal notranslate"><span class="pre">inlf</span></code> es $.039/.0012 = 32.5$. ¿Cuantos elementos de la muestra tienen más de 32 años de experiencia?</p></li>
+<li><p>El punto en el que la experiencia ya no tiene efecto en <code class="docutils literal notranslate"><span class="pre">inlf</span></code> es <span class="math notranslate nohighlight">\(.039/.0012 = 32.5\)</span>. ¿Cuantos elementos de la muestra tienen más de 32 años de experiencia?</p></li>
 </ul>
 <p>Se añade exper al cuadrado porque queremos dar la posibilidad que los años adicionales de expericnecia contribuyan con un efecto decreciente.</p>
 <p>Trabajemos ahora con la predicción, y revisemos el resultado:</p>
@@ -533,7 +539,7 @@ strong multicollinearity or other numerical problems.
 <p>¿Qué podemos notar?</p>
 <ul class="simple">
 <li><p>Existen valores mayores a 1 e inferiores a 0.</p></li>
-<li><p>$R^{2}$ ya no es interpretable en estas regresiones.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^{2}\)</span> ya no es interpretable en estas regresiones.</p></li>
 <li><p>Usaremos una probabilidad de ocurrencia, digamos 0.5</p></li>
 </ul>
 <div class="cell docutils container">
@@ -554,45 +560,52 @@ strong multicollinearity or other numerical problems.
 </section>
 <section id="logit">
 <h2>Logit<a class="headerlink" href="#logit" title="Permalink to this headline">#</a></h2>
-<p>La regresión logística puede entenderse simplemente como encontrar los parámtros $\beta$ que mejor asjuten:</p>
-<p>$$
-y={\begin{cases}1&amp;\beta_{1}+\beta_{2}X_{1}+\cdots+\beta_{k}X_{k}+u &gt;0\0&amp;{\text{en otro caso}}\end{cases}}
-$$</p>
+<p>La regresión logística puede entenderse simplemente como encontrar los parámtros <span class="math notranslate nohighlight">\(\beta\)</span> que mejor asjuten:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y={\begin{cases}1&amp;\beta_{1}+\beta_{2}X_{1}+\cdots+\beta_{k}X_{k}+u &gt;0\\0&amp;{\text{en otro caso}}\end{cases}}
+\end{split}\]</div>
 <p>Donde se asume que el error tiene una <a class="reference external" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_log%C3%ADstica">distribución logística estándar</a></p>
-<p>$$
-{\displaystyle f(x;\mu ,s)={\frac {e^{-{\frac {x-\mu }{s}}}}{s\left(1+e^{-{\frac {x-\mu }{s}}}\right)^{2}}}={\frac {1}{s\left(e^{\frac {x-\mu }{2s}}+e^{-{\frac {x-\mu }{2s}}}\right)^{2}}}={\frac {1}{4s}}\operatorname {sech} ^{2}!\left({\frac {x-\mu }{2s}}\right).}
-$$</p>
-<p>Donde $s$ es el parámetro de escala y $\mu$ el de locación (<em>sech</em> es la función secante hiperbólico).</p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle f(x;\mu ,s)={\frac {e^{-{\frac {x-\mu }{s}}}}{s\left(1+e^{-{\frac {x-\mu }{s}}}\right)^{2}}}={\frac {1}{s\left(e^{\frac {x-\mu }{2s}}+e^{-{\frac {x-\mu }{2s}}}\right)^{2}}}={\frac {1}{4s}}\operatorname {sech} ^{2}\!\left({\frac {x-\mu }{2s}}\right).}
+\]</div>
+<p>Donde <span class="math notranslate nohighlight">\(s\)</span> es el parámetro de escala y <span class="math notranslate nohighlight">\(\mu\)</span> el de locación (<em>sech</em> es la función secante hiperbólico).</p>
 <p>Otra forma de entender la regresión logística es a través de la función logística:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \sigma (t)={\frac {e^{t}}{e^{t}+1}}={\frac {1}{1+e^{-t}}}
-$$</p>
-<p>donde $t\in \mathbb{R}$ y $0\leq\sigma (t)\leq1$.</p>
-<p>Asumiento $t$ como una función lineal de una variable explicativa $x$, tenemos:</p>
-<p>$$
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(0\leq\sigma (t)\leq1\)</span>.</p>
+<p>Asumiento <span class="math notranslate nohighlight">\(t\)</span> como una función lineal de una variable explicativa <span class="math notranslate nohighlight">\(x\)</span>, tenemos:</p>
+<div class="math notranslate nohighlight">
+\[
 t=\beta _{0}+\beta _{1}x
-$$</p>
+\]</div>
 <p>Ahora la función logística se puede expresar:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
-$$</p>
-<p>Ten en cuenta que $p (x)$ se interpreta como la probabilidad de que la variable dependiente iguale a <em>éxito</em>  en lugar de un <em>fracaso</em>. Está claro que las variables de respuesta $Y_ {i}$ no se distribuyen de forma idéntica: $ P (Y_ {i} = 1 \ mid X )$ difiere de un punto $X_ {i}$ a otro, aunque son independientes dado que la matriz de diseño $X$ y los parámetros compartidos $\beta$.</p>
-<p>Finalmente definimos la inversa de la función logística, $g$, el <strong>logit</strong> (log odds):</p>
-<p>$$
+\]</div>
+<p>Ten en cuenta que <span class="math notranslate nohighlight">\(p (x)\)</span> se interpreta como la probabilidad de que la variable dependiente iguale a <em>éxito</em>  en lugar de un <em>fracaso</em>. Está claro que las variables de respuesta <span class="math notranslate nohighlight">\(Y_ {i}\)</span> no se distribuyen de forma idéntica: <span class="math notranslate nohighlight">\( P (Y_ {i} = 1 \ mid X )\)</span> difiere de un punto <span class="math notranslate nohighlight">\(X_ {i}\)</span> a otro, aunque son independientes dado que la matriz de diseño <span class="math notranslate nohighlight">\(X\)</span> y los parámetros compartidos <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p>Finalmente definimos la inversa de la función logística, <span class="math notranslate nohighlight">\(g\)</span>, el <strong>logit</strong> (log odds):</p>
+<div class="math notranslate nohighlight">
+\[
 {\displaystyle g(p(x))=\ln \left({\frac {p(x)}{1-p(x)}}\right)=\beta _{0}+\beta _{1}x,}
-$$</p>
+\]</div>
 <p>lo que es equivalente a:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 {\frac {p(x)}{1-p(x)}}=e^{\beta _{0}+\beta _{1}x}
-$$</p>
+\]</div>
 <p><strong>Interpretación</strong>:</p>
 <ul class="simple">
-<li><p>$g$ es la función logit. La ecuación para $g (p (x))$ ilustra que el logit (es decir, log-odds o logaritmo natural de las probabilidades) es equivalente a la expresión de regresión lineal.</p></li>
-<li><p>$ln$ denota el logaritmo natural.</p></li>
-<li><p>$p (x)$ es la probabilidad de que la variable dependiente sea igual a un caso, dada alguna combinación lineal de los predictores. La fórmula para $p (x)$ ilustra que la probabilidad de que la variable dependiente iguale un caso es igual al valor de la función logística de la expresión de regresión lineal. Esto es importante porque muestra que el valor de la expresión de regresión lineal puede variar de infinito negativo a positivo y, sin embargo, después de la transformación, la expresión resultante para la probabilidad $p (x)$ oscila entre $0$ y $1$.</p></li>
-<li><p>$\beta _ {0}$ es la intersección de la ecuación de regresión lineal (el valor del criterio cuando el predictor es igual a cero).</p></li>
-<li><p>$\beta _ {1} x$ es el coeficiente de regresión multiplicado por algún valor del predictor.</p></li>
-<li><p>la base $e$ denota la función exponencial.</p></li>
+<li><p><span class="math notranslate nohighlight">\(g\)</span> es la función logit. La ecuación para <span class="math notranslate nohighlight">\(g (p (x))\)</span> ilustra que el logit (es decir, log-odds o logaritmo natural de las probabilidades) es equivalente a la expresión de regresión lineal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(ln\)</span> denota el logaritmo natural.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p (x)\)</span> es la probabilidad de que la variable dependiente sea igual a un caso, dada alguna combinación lineal de los predictores. La fórmula para <span class="math notranslate nohighlight">\(p (x)\)</span> ilustra que la probabilidad de que la variable dependiente iguale un caso es igual al valor de la función logística de la expresión de regresión lineal. Esto es importante porque muestra que el valor de la expresión de regresión lineal puede variar de infinito negativo a positivo y, sin embargo, después de la transformación, la expresión resultante para la probabilidad <span class="math notranslate nohighlight">\(p (x)\)</span> oscila entre <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta _ {0}\)</span> es la intersección de la ecuación de regresión lineal (el valor del criterio cuando el predictor es igual a cero).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta _ {1} x\)</span> es el coeficiente de regresión multiplicado por algún valor del predictor.</p></li>
+<li><p>la base <span class="math notranslate nohighlight">\(e\)</span> denota la función exponencial.</p></li>
 </ul>
 <section id="ejemplo">
 <h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this headline">#</a></h3>
@@ -600,8 +613,8 @@ $$</p>
 <ul class="simple">
 <li><p>Los datos son el efecto del Sistema de Enseñanza Personalizada (PSI) sobre las calificaciones.</p>
 <ul>
-<li><p>Calificación $Y = 1$ si la calificación final fue A</p></li>
-<li><p>$Y = 0$ si la calificación final fue B o C</p></li>
+<li><p>Calificación <span class="math notranslate nohighlight">\(Y = 1\)</span> si la calificación final fue A</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y = 0\)</span> si la calificación final fue B o C</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TUCE</span></code> = calificación en un examen presentado al comienzo del curso para evaluar los conocimientos previos de macroeconomía</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PSI</span></code> = 1 con el nuevo método de enseñanza, 0 en otro caso</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GPA</span></code> = promedio de puntos de calificación inicial</p></li>
@@ -705,8 +718,8 @@ $$</p>
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                          Logit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Tue, 28 Mar 2023   Pseudo R-squ.:                  0.3740
-Time:                        04:34:15   Log-Likelihood:                -12.890
+Date:                Sat, 08 Apr 2023   Pseudo R-squ.:                  0.3740
+Time:                        15:51:59   Log-Likelihood:                -12.890
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001502
 ==============================================================================
@@ -831,11 +844,12 @@ dtype: float64
 </section>
 <section id="probit">
 <h2>Probit<a class="headerlink" href="#probit" title="Permalink to this headline">#</a></h2>
-<p>En los modelos logia se propuso la logística, en este caso se propone la Función de Distribución Acumulada Normal. Suponga que la variable de respuesta es binaria, 1 o 0. $Y$ podría representar la presencia/ausencia de una condición, éxito/fracaso, si/no. Se tiene también un vector de regresoras $X$, el modelo toma la forma:</p>
-<p>$$
+<p>En los modelos logia se propuso la logística, en este caso se propone la Función de Distribución Acumulada Normal. Suponga que la variable de respuesta es binaria, 1 o 0. <span class="math notranslate nohighlight">\(Y\)</span> podría representar la presencia/ausencia de una condición, éxito/fracaso, si/no. Se tiene también un vector de regresoras <span class="math notranslate nohighlight">\(X\)</span>, el modelo toma la forma:</p>
+<div class="math notranslate nohighlight">
+\[
 {\displaystyle \Pr(Y=1\mid X)=\Phi (X^{T}\beta ),}
-$$</p>
-<p>donde $Pr$ es la prbabilidad y $\Phi$ distribución acumulada de la normal estándar ${\displaystyle \Phi (x)={\frac {1}{\sqrt {2\pi }}}\int _{-\infty }^{x}e^{-t^{2}/2},dt}$. Los parámetros $\beta$ se estiman típicamente con el método de máxima verosimilitud.</p>
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(Pr\)</span> es la prbabilidad y <span class="math notranslate nohighlight">\(\Phi\)</span> distribución acumulada de la normal estándar <span class="math notranslate nohighlight">\({\displaystyle \Phi (x)={\frac {1}{\sqrt {2\pi }}}\int _{-\infty }^{x}e^{-t^{2}/2}\,dt}\)</span>. Los parámetros <span class="math notranslate nohighlight">\(\beta\)</span> se estiman típicamente con el método de máxima verosimilitud.</p>
 <section id="id1">
 <h3>Ejemplo<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -855,8 +869,8 @@ $$</p>
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                         Probit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Tue, 28 Mar 2023   Pseudo R-squ.:                  0.3775
-Time:                        04:34:15   Log-Likelihood:                -12.819
+Date:                Sat, 08 Apr 2023   Pseudo R-squ.:                  0.3775
+Time:                        15:51:59   Log-Likelihood:                -12.819
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001405
 ==============================================================================
@@ -962,67 +976,77 @@ PSI            1.4263      0.595      2.397      0.017       0.260       2.593
 </section>
 </section>
 </section>
-<section id="analisis-de-componentes-principales">
+<section class="tex2jax_ignore mathjax_ignore" id="analisis-de-componentes-principales">
 <h1>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this headline">#</a></h1>
 <section id="planteamiento1">
 <h2>Planteamiento<a class="footnote-reference brackets" href="#id4" id="id2">1</a><a class="headerlink" href="#planteamiento1" title="Permalink to this headline">#</a></h2>
 <p>Se aplica a tablas de datos donde las filas son considerados como individuos y las columnas como datos cuantitativos.</p>
-<p>Más formalmente, se dispone de los valores de $p$ variables y $n$ elementos dispuestos en una matriz $\mathbf{X}$ de dimensión $n\times p$.</p>
-<p>Siempre (casi) se usa la matriz centrada y/o estandarizada, los paquetes suelen hacer este trabajo por nosostros. Supongamos que  $\mathbf{X}$ ha sido centrada, su matriz de varianza covarianza viene dada por  $\frac{1}{n}\mathbf{X’X}$.</p>
+<p>Más formalmente, se dispone de los valores de <span class="math notranslate nohighlight">\(p\)</span> variables y <span class="math notranslate nohighlight">\(n\)</span> elementos dispuestos en una matriz <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> de dimensión <span class="math notranslate nohighlight">\(n\times p\)</span>.</p>
+<p>Siempre (casi) se usa la matriz centrada y/o estandarizada, los paquetes suelen hacer este trabajo por nosostros. Supongamos que  <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> ha sido centrada, su matriz de varianza covarianza viene dada por  <span class="math notranslate nohighlight">\(\frac{1}{n}\mathbf{X'X}\)</span>.</p>
 <p>¿Cómo encontrar un espacio de dimensión más reducida que represente adeucadamente los datos?</p>
 <section id="notacion">
 <h3>Notación<a class="headerlink" href="#notacion" title="Permalink to this headline">#</a></h3>
-<p>Se desea encontrar un subespacio de dimensión menor que $p$ tal que al proyectar sobre él los puntos conserven su estructura con la menor distorsión posible.</p>
-<p>Consideremos primero un subespacio de dimensión uno (una recta) obtenida por un conjunto de $p=2$ variables.</p>
+<p>Se desea encontrar un subespacio de dimensión menor que <span class="math notranslate nohighlight">\(p\)</span> tal que al proyectar sobre él los puntos conserven su estructura con la menor distorsión posible.</p>
+<p>Consideremos primero un subespacio de dimensión uno (una recta) obtenida por un conjunto de <span class="math notranslate nohighlight">\(p=2\)</span> variables.</p>
 <p>La siguiente figura indica el diagrama de dispersión y una recta que, intuitivamente, proporciona un buen resumen de los datos, ya que las proyecciones de los puntos sobre ella indican aproximadamente la situación de los puntos en el plano.</p>
 <a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 700px; height: 300px;" /></a>
-<p>Si consideramos un punto $\mathbf{x_i}$ y una dirección $\mathbf{a_1} = (a_{11}, \ldots, a_{1p})’$, definida por un vector $\mathbf{a_1}$ de norma unidad, la proyección del punto $\mathbf{x_i}$ sobre esta dirección es el escalar:</p>
-<p>$$
-z_i= a_{11}x_{i1}+\ldots+a_{1p}x_{ip} = \mathbf{a_1^{‘}x_i}
-$$</p>
-<p>y el vector que representa esta proyección será $z_i\mathbf{a_1}$. Llamando $r_i$ a la distancia entre el punto $x_i$, y su proyección sobre la dirección $\mathbf{a_1}$, este criterio implica:</p>
-<p>$$
+<p>Si consideramos un punto <span class="math notranslate nohighlight">\(\mathbf{x_i}\)</span> y una dirección <span class="math notranslate nohighlight">\(\mathbf{a_1} = (a_{11}, \ldots, a_{1p})'\)</span>, definida por un vector <span class="math notranslate nohighlight">\(\mathbf{a_1}\)</span> de norma unidad, la proyección del punto <span class="math notranslate nohighlight">\(\mathbf{x_i}\)</span> sobre esta dirección es el escalar:</p>
+<div class="math notranslate nohighlight">
+\[
+z_i= a_{11}x_{i1}+\ldots+a_{1p}x_{ip} = \mathbf{a_1^{'}x_i}
+\]</div>
+<p>y el vector que representa esta proyección será <span class="math notranslate nohighlight">\(z_i\mathbf{a_1}\)</span>. Llamando <span class="math notranslate nohighlight">\(r_i\)</span> a la distancia entre el punto <span class="math notranslate nohighlight">\(x_i\)</span>, y su proyección sobre la dirección <span class="math notranslate nohighlight">\(\mathbf{a_1}\)</span>, este criterio implica:</p>
+<div class="math notranslate nohighlight">
+\[
 min\sum_{i = 1}^{n} r^2_i = \sum_{i = 1}^{n} |\mathbf{x_i}-z_i\mathbf{a_1}|^2
-$$</p>
-<p>donde $|\cdot|$ es la norma euclideana o módulo del vector.</p>
-<p>Notemos que al proyectar cada punto sobre la recta se forma un triángulo rectángulo donde la hipotenusa es la distancia al origen del punto al origen, $(\mathbf{x_i’x_i})^{1/2}$, y los catetos la proyeccion del punto sobre la recta $(z_i)$ y la distancia entre el punto y su proyección $(r_i)$. Por el teorema de Pitágoras, podemos escribir:</p>
-<p>$$
-(\mathbf{x_i’x_i}) = z_i^2+r_i^2
-$$</p>
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(|\cdot|\)</span> es la norma euclideana o módulo del vector.</p>
+<p>Notemos que al proyectar cada punto sobre la recta se forma un triángulo rectángulo donde la hipotenusa es la distancia al origen del punto al origen, <span class="math notranslate nohighlight">\((\mathbf{x_i'x_i})^{1/2}\)</span>, y los catetos la proyeccion del punto sobre la recta <span class="math notranslate nohighlight">\((z_i)\)</span> y la distancia entre el punto y su proyección <span class="math notranslate nohighlight">\((r_i)\)</span>. Por el teorema de Pitágoras, podemos escribir:</p>
+<div class="math notranslate nohighlight">
+\[
+(\mathbf{x_i'x_i}) = z_i^2+r_i^2
+\]</div>
 <p>y sumando esta expresión para todos los puntos, se obtiene:</p>
-<p>$$
-\sum_{i=1}^{n}(\mathbf{x_i’x_i}) = \sum_{i=1}^{n}z_i^2+\sum_{i=1}^{n}r_i^2
-$$</p>
-<p>Como el primer miembro es constante, minimizar $\sum_{i=1}^{n}r_i^2$, la suma de las distancias a la recta de todos los puntos, es equivalente a maximizar $\sum_{i=1}^{n}z_i^2$, la suma al cuadrado de los valores de las proyecciones. Como las proyecciones $z_i$ son variables de media cero, <strong>maximizar la suma de sus cuadrados equivale a mazimizar su varianza</strong>.</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^{n}(\mathbf{x_i'x_i}) = \sum_{i=1}^{n}z_i^2+\sum_{i=1}^{n}r_i^2
+\]</div>
+<p>Como el primer miembro es constante, minimizar <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}r_i^2\)</span>, la suma de las distancias a la recta de todos los puntos, es equivalente a maximizar <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}z_i^2\)</span>, la suma al cuadrado de los valores de las proyecciones. Como las proyecciones <span class="math notranslate nohighlight">\(z_i\)</span> son variables de media cero, <strong>maximizar la suma de sus cuadrados equivale a mazimizar su varianza</strong>.</p>
 <p><em>¿Cómo es eso posible?</em></p>
 </section>
 <section id="calculo-del-primer-componente">
 <h3>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this headline">#</a></h3>
-<p>El primer componente principal será la combinación lineal de las variables originales que tenga varianza máxima. Los valores de este primer componente en los $n$ individuos se representarán por un vector $\mathbf{z_1}$, dado por</p>
-<p>$$
+<p>El primer componente principal será la combinación lineal de las variables originales que tenga varianza máxima. Los valores de este primer componente en los <span class="math notranslate nohighlight">\(n\)</span> individuos se representarán por un vector <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span>, dado por</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf{z_1} = \mathbf{Xa_1}
-$$</p>
-<p>Como las variables originales tienen media cero también $\mathbf{z_1}$ tendrá media nula. Su varianza será:</p>
-<p>$$
-Var(\mathbf{z_1}) = \frac{1}{n}\mathbf{z_1^{‘}z_1} = \frac{1}{n}\mathbf{a_1^{‘}X’Xa_1} = \mathbf{a_1^{‘}Sa_1}
-$$</p>
-<p>donde $S$ es la matriz de varianzas y covarianzas de las observaciones. Para que la maximización de la ecuación anterior tenga solución debemos imponer una restricción al módulo del vector $\mathbf{a_1}$, y, sin pérdida de generalidad, impondremos que $\mathbf{a_1^{‘}a_1}=1$. Usamos para ello el multiplicador de Lagrange</p>
-<p>$$
-M = \mathbf{a_1^{‘}Sa_1}- \lambda(\mathbf{a_1^{‘}a_1}-1)
-$$</p>
-<p>Se maximiza derivando respecto a los componentes de $\mathbf{a_1}$ e igualando a cero. Entonces</p>
-<p>$$
+\]</div>
+<p>Como las variables originales tienen media cero también <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span> tendrá media nula. Su varianza será:</p>
+<div class="math notranslate nohighlight">
+\[
+Var(\mathbf{z_1}) = \frac{1}{n}\mathbf{z_1^{'}z_1} = \frac{1}{n}\mathbf{a_1^{'}X'Xa_1} = \mathbf{a_1^{'}Sa_1}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(S\)</span> es la matriz de varianzas y covarianzas de las observaciones. Para que la maximización de la ecuación anterior tenga solución debemos imponer una restricción al módulo del vector <span class="math notranslate nohighlight">\(\mathbf{a_1}\)</span>, y, sin pérdida de generalidad, impondremos que <span class="math notranslate nohighlight">\(\mathbf{a_1^{'}a_1}=1\)</span>. Usamos para ello el multiplicador de Lagrange</p>
+<div class="math notranslate nohighlight">
+\[
+M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
+\]</div>
+<p>Se maximiza derivando respecto a los componentes de <span class="math notranslate nohighlight">\(\mathbf{a_1}\)</span> e igualando a cero. Entonces</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\partial M}{\partial\mathbf{a_1}} = 2\mathbf{Sa_1}-2\lambda\mathbf{a_1} = 0
-$$</p>
+\]</div>
 <p>cuya solución es:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \mathbf{Sa_1} = \lambda\mathbf{a_1}
-$$</p>
-<p>que implica que $\mathbf{a1}$ es un vector propio de la matriz $\mathbf{S}$, y $\lambda$ su correspondiente valor propio. Para determinar qué valor propio de $\mathbf{S}$ es la solución de la ecuación tendremos en cuenta que, multiplicando por la izquierda por $\mathbf{a’_{1}}$ esta ecuación,</p>
-<p>$$
-\mathbf{a_1^{‘}Sa_1} =  \lambda \mathbf{a_1^{‘}a_1} = \lambda
-$$</p>
-<p>y concluimos, que $\lambda$ es la varianza de $\mathbf{z_1}$. Como esta es la cantidad que queremos maximizar, $\lambda$ será el mayor valor propio de la matriz $\mathbf{S}$. Su vector asociado, $\mathbf{a1}$, define los coeficientes de cada variable en el primer componente principal.</p>
+\]</div>
+<p>que implica que <span class="math notranslate nohighlight">\(\mathbf{a1}\)</span> es un vector propio de la matriz <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>, y <span class="math notranslate nohighlight">\(\lambda\)</span> su correspondiente valor propio. Para determinar qué valor propio de <span class="math notranslate nohighlight">\(\mathbf{S}\)</span> es la solución de la ecuación tendremos en cuenta que, multiplicando por la izquierda por <span class="math notranslate nohighlight">\(\mathbf{a'_{1}}\)</span> esta ecuación,</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathbf{a_1^{'}Sa_1} =  \lambda \mathbf{a_1^{'}a_1} = \lambda
+\]</div>
+<p>y concluimos, que <span class="math notranslate nohighlight">\(\lambda\)</span> es la varianza de <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span>. Como esta es la cantidad que queremos maximizar, <span class="math notranslate nohighlight">\(\lambda\)</span> será el mayor valor propio de la matriz <span class="math notranslate nohighlight">\(\mathbf{S}\)</span>. Su vector asociado, <span class="math notranslate nohighlight">\(\mathbf{a1}\)</span>, define los coeficientes de cada variable en el primer componente principal.</p>
 <section id="id3">
 <h4>Ejemplo<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
 <p>El siguiente conjunto de datos corresponde a calificaciones de 20 estudiantes en 5 materias Ciencias Natuales (CNa), Matemáticas (Mat), Francés (Fra), Latín (Lat) y Literatura (Lit)</p>
@@ -1339,7 +1363,7 @@ $$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fc26ae8c5b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa3e4ec26a0&gt;
 </pre></div>
 </div>
 <img alt="_images/5705d7f729f62a3cb0c481173c27ddadca5eab2b5e4e864a750dab207496b2b0.png" src="_images/5705d7f729f62a3cb0c481173c27ddadca5eab2b5e4e864a750dab207496b2b0.png" />
@@ -1854,6 +1878,15 @@ $$</p>
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Estadística Descriptiva</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="AprendizajeSupervisado.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aprendizaje Supervisado</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

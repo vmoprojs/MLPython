@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'DescriptivaRegresion';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -229,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/vmoprojs/MLPython" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -246,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDescriptivaRegresion.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/vmoprojs/MLPython/issues/new?title=Issue%20on%20page%20%2FDescriptivaRegresion.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -426,7 +428,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="estadistica-descriptiva">
+  <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva">
 <h1>Estadística Descriptiva<a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this headline">#</a></h1>
 <p>Es fácil calcular estadísticos de resumen en <code class="docutils literal notranslate"><span class="pre">python</span></code>. Aquí tienen cómo calcular la media, desviación estándar, varianza y mediana.</p>
 <section id="medidas-de-resumen">
@@ -450,7 +452,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1002728570157736
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0536954694273557
 </pre></div>
 </div>
 </div>
@@ -465,7 +467,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2106003598856532
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1102741422917355
 </pre></div>
 </div>
 </div>
@@ -501,7 +503,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0639962501011547
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.18842297530884036
 </pre></div>
 </div>
 </div>
@@ -513,7 +515,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1002728570157736
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0536954694273557
 </pre></div>
 </div>
 </div>
@@ -525,7 +527,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2106003598856532
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1102741422917355
 </pre></div>
 </div>
 </div>
@@ -537,7 +539,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05054744203438724
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.2204672060798153
 </pre></div>
 </div>
 </div>
@@ -588,7 +590,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.181215040985096
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.99654796239779
 </pre></div>
 </div>
 </div>
@@ -606,7 +608,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.65805638,  0.05054744,  0.91919169])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.8652114 , -0.22046721,  0.70030919])
 </pre></div>
 </div>
 </div>
@@ -618,9 +620,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.69564426, -1.44344129, -0.82658183, -0.48690128, -0.22736302,
-        0.05054744,  0.2219628 ,  0.6604428 ,  1.11351906,  1.49717892,
-        2.48557078])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.50618799, -1.7028156 , -1.06411603, -0.72534752, -0.43591587,
+       -0.22046721,  0.20852991,  0.47219872,  0.80193288,  1.07529311,
+        2.49035997])
 </pre></div>
 </div>
 </div>
@@ -632,7 +634,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-2.69564425751471, 2.4855707834703864), mean=0.0639962501011547, variance=1.2228286463491447, skewness=-0.10350072601777613, kurtosis=-0.3081410101298174)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-2.5061879912627765, 2.490359971135014), mean=-0.18842297530884036, variance=1.1214890326179148, skewness=-0.15383426252483065, kurtosis=-0.5096546535976421)
 </pre></div>
 </div>
 </div>
@@ -655,7 +657,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_frozen at 0x7f9cf2dcf9a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_frozen at 0x7fce764d0460&gt;
 </pre></div>
 </div>
 </div>
@@ -1635,7 +1637,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='faf6ce3a-f423-4c22-ade8-7e2ff14ad2b3'></div></div></div>
+</script><div class="output text_html"><div id='8752940a-bc76-4dd4-900f-330a69f3c0ba'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2599,7 +2601,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='786d2cc9-660f-4874-a9f5-6634fb6bf17c'></div></div></div>
+</script><div class="output text_html"><div id='b4559218-d372-462f-ae45-d9ae15c44348'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3564,7 +3566,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='b877d11f-7fb6-472f-9c6a-dd6a47bcae75'></div></div></div>
+</script><div class="output text_html"><div id='f9e1224b-3345-4ebc-bf30-d6ea411cc1df'></div></div></div>
 </div>
 <p>Distribución acumulada empírica</p>
 <div class="cell docutils container">
@@ -4541,7 +4543,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='38e3c16a-b3a4-4639-8f5c-72a7ff8f61b3'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
+</script><div class="output text_html"><div id='2f567746-1c65-4f3b-a938-33d9f0a7732f'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
 </div>
@@ -4561,7 +4563,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.92
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.917
 </pre></div>
 </div>
 </div>
@@ -5539,7 +5541,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='1952abe9-f142-400e-bcae-95a03cdb1c6a'></div></div></div>
+</script><div class="output text_html"><div id='11d75658-a812-46dc-bd17-d88255a88744'></div></div></div>
 </div>
 </section>
 <section id="test-sobre-una-y-dos-muestras">
@@ -5547,8 +5549,8 @@ if (IPython.notebook.kernel !== null) {
 <p>Se introducen dos funciones: <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> y <code class="docutils literal notranslate"><span class="pre">stats.wilcoxon</span></code> para el test t y el test de Wilcoxon respectivamente. Ambos pueden ser usados para una muestra o dos muestras así como para datos pareados. Note que el test de Wilcoxon para dos muestras es lo mismo que el test de Mann–Whitney.</p>
 <section id="el-test-t">
 <h3>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this headline">#</a></h3>
-<p>Este test se basa en el supuesto de normalidad de los datos. Es decir que los datos $x_1\ldots,x_n$ se asumen como realizaciones independientes de variables aleatorias con media $\mu$ y varianza $\sigma^2$, $N(\mu, \sigma^2)$. Se tiene que la hipótesis nula es que $\mu=\mu_0$.</p>
-<p>Se puede estimar los parámetros $\mu$ y $\sigma$ por la media $\bar{x}$ y la desviación estándar  $\sigma$, aunque recuerde que solo son estimaciones del valor real.</p>
+<p>Este test se basa en el supuesto de normalidad de los datos. Es decir que los datos <span class="math notranslate nohighlight">\(x_1\ldots,x_n\)</span> se asumen como realizaciones independientes de variables aleatorias con media <span class="math notranslate nohighlight">\(\mu\)</span> y varianza <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\(N(\mu, \sigma^2)\)</span>. Se tiene que la hipótesis nula es que <span class="math notranslate nohighlight">\(\mu=\mu_0\)</span>.</p>
+<p>Se puede estimar los parámetros <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> por la media <span class="math notranslate nohighlight">\(\bar{x}\)</span> y la desviación estándar  <span class="math notranslate nohighlight">\(\sigma\)</span>, aunque recuerde que solo son estimaciones del valor real.</p>
 <p>Veamos un ejemplo del consuo diario de calorías de 11 mujeres:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5571,7 +5573,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 </div>
-<p>Se podría querer saber si el consumo de energía de las mujeres se desvía de una valor recomendado de $7725$. Asumiendo que los datos vienen de una distribución normal, el objetivo es hacer una prueba para saber si la media de la distribución es $\mu = 7725$.</p>
+<p>Se podría querer saber si el consumo de energía de las mujeres se desvía de una valor recomendado de <span class="math notranslate nohighlight">\(7725\)</span>. Asumiendo que los datos vienen de una distribución normal, el objetivo es hacer una prueba para saber si la media de la distribución es <span class="math notranslate nohighlight">\(\mu = 7725\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">,</span><span class="mi">7725</span><span class="p">)</span>
@@ -5787,7 +5789,8 @@ if (IPython.notebook.kernel !== null) {
 <section id="correlacion-de-pearson">
 <h3>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this headline">#</a></h3>
 <p>El coeficiente de correlación empírico es:</p>
-<p>$$ r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2\sum (y_i-\bar{y})^2}} $$</p>
+<div class="math notranslate nohighlight">
+\[ r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2\sum (y_i-\bar{y})^2}} \]</div>
 <p>La función cor en <code class="docutils literal notranslate"><span class="pre">python</span></code> calcula la correlación entre dos o más vectores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6945,7 +6948,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='0428578a-5365-429f-8677-7ecbb2c8dae8'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;shampoo&#39;, ylabel=&#39;bathingsoap&#39;&gt;
+</script><div class="output text_html"><div id='786af517-df20-4e06-b46e-f7e4ee088a27'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;shampoo&#39;, ylabel=&#39;bathingsoap&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -7009,7 +7012,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 </section>
-<section id="regresion-lineal">
+<section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
 <h1>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this headline">#</a></h1>
 <p>Abordemos las primeras ideas de regresión lineal a través de un ejemplo práctico:</p>
 <ul class="simple">
@@ -8091,15 +8094,19 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='e12d4b00-eeb2-441d-b7bc-fbc425f42640'></div></div></div>
+</script><div class="output text_html"><div id='8b901bed-78c5-4f34-89f5-850b0bd0b5ed'></div></div></div>
 </div>
 <p>¿Qué hemos hecho?</p>
-<p>$$ E(Y|X_i) = f(X_i)$$</p>
-<p>$$E(Y|X_i) = \beta_1+\beta_2X_i$$</p>
-<p>$$ u_i = Y_i - E(Y|X_i) $$</p>
-<p>$$ Y_i = E(Y|X_i) + u_i$$</p>
+<div class="math notranslate nohighlight">
+\[ E(Y|X_i) = f(X_i)\]</div>
+<div class="math notranslate nohighlight">
+\[E(Y|X_i) = \beta_1+\beta_2X_i\]</div>
+<div class="math notranslate nohighlight">
+\[ u_i = Y_i - E(Y|X_i) \]</div>
+<div class="math notranslate nohighlight">
+\[ Y_i = E(Y|X_i) + u_i\]</div>
 <p>¿Qué significa que sea lineal?</p>
-<p>El término regresión lineal siempre significará una regresión lineal en los parámetros; los $\beta$ (es decir, los parámetros) se elevan sólo a la primera potencia. Puede o no ser lineal en las variables explicativas $X$.</p>
+<p>El término regresión lineal siempre significará una regresión lineal en los parámetros; los <span class="math notranslate nohighlight">\(\beta\)</span> (es decir, los parámetros) se elevan sólo a la primera potencia. Puede o no ser lineal en las variables explicativas <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Para evidenciar la factibilidad del uso de RL en este caso, vamos a obtener una muestra de la población:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8156,8 +8163,8 @@ if (IPython.notebook.kernel !== null) {
 Dep. Variable:        consumo_muestra   R-squared:                       0.909
 Model:                            OLS   Adj. R-squared:                  0.904
 Method:                 Least Squares   F-statistic:                     179.4
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           8.44e-11
-Time:                        04:33:57   Log-Likelihood:                -76.677
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           8.44e-11
+Time:                        15:45:46   Log-Likelihood:                -76.677
 No. Observations:                  20   AIC:                             157.4
 Df Residuals:                      18   BIC:                             159.3
 Df Model:                           1                                         
@@ -9145,7 +9152,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='0876cb63-f308-4482-b38f-c9b94164dfc7'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
+</script><div class="output text_html"><div id='39b561b2-01ee-4ece-9738-4c061d6b9a72'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
 </pre></div>
 </div>
 </div>
@@ -9153,43 +9160,54 @@ if (IPython.notebook.kernel !== null) {
 <section id="regresion-paso-a-paso">
 <h2>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this headline">#</a></h2>
 <p>La función poblacional sería:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 Y_i = \beta_1 + \beta_2X_i+u_i
-$$</p>
+\]</div>
 <p>Como no es observable, se usa la muestral</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 Y_i=\hat{\beta}_1+\hat{\beta}_2X_i+\hat{u}_i
-$$</p>
-<p>$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 Y_i=\hat{Y}_i+\hat{u}_i
-$$</p>
-<p>$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \hat{u}_i = Y_i-\hat{Y}_i
-$$</p>
-<p>$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \hat{u}_i = Y_i- \hat{\beta}_1-\hat{\beta}_2X_i
-$$</p>
+\]</div>
 <p>Es por esto que los residuos se obtienen a través de los betas:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \sum\hat{u}_i^2 =\sum (Y_i- \hat{\beta}_1-\hat{\beta}_2X_i)^2
-$$</p>
-<p>$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \sum\hat{u}_i^2 =f(\hat{\beta}_1,\hat{\beta}_2)
-$$</p>
+\]</div>
 <p>Diferenciando se obtiene:</p>
-<p>$$
-\hat{\beta}<em>2 = \frac{S</em>{xy}}{S_{xx}}
-$$</p>
-<p>$$
-\hat\beta_1 = \bar{Y} -  \hat\beta_2\bar{X}
-$$
-donde</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
+ \hat{\beta}_2 = \frac{S_{xy}}{S_{xx}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \hat\beta_1 = \bar{Y} -  \hat\beta_2\bar{X}
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
 S_{xx} = \sum_{i=1}^{n}x_i^2-n\bar{x}^2
-$$</p>
-<p>$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 S_{xy} = \sum_{i=1}^{n}x_i y_i-n\bar{x}\bar{y}
-$$</p>
+\]</div>
 <p>Abrimos la <code class="docutils literal notranslate"><span class="pre">tabla3.2</span></code>, vamos a obtener:</p>
 <ul class="simple">
 <li><p>salario promedio por hora (Y) y</p></li>
@@ -9295,8 +9313,8 @@ $$</p>
 Dep. Variable:                      Y   R-squared:                       0.962
 Model:                            OLS   Adj. R-squared:                  0.957
 Method:                 Least Squares   F-statistic:                     202.9
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           5.75e-07
-Time:                        04:33:58   Log-Likelihood:                -31.781
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           5.75e-07
+Time:                        15:45:47   Log-Likelihood:                -31.781
 No. Observations:                  10   AIC:                             67.56
 Df Residuals:                       8   BIC:                             68.17
 Df Model:                           1                                         
@@ -9567,8 +9585,8 @@ Notes:
 Dep. Variable:                      Y   R-squared:                       0.962
 Model:                            OLS   Adj. R-squared:                  0.957
 Method:                 Least Squares   F-statistic:                     202.9
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           5.75e-07
-Time:                        04:33:58   Log-Likelihood:                -31.781
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           5.75e-07
+Time:                        15:45:47   Log-Likelihood:                -31.781
 No. Observations:                  10   AIC:                             67.56
 Df Residuals:                       8   BIC:                             68.17
 Df Model:                           1                                         
@@ -9596,12 +9614,14 @@ Notes:
 </div>
 </div>
 <p>Otro ejemplo</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 H_0:\beta_2=0
-$$
-$$
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 H_1:\beta_2\neq 0
-$$</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/table2_8.csv&#39;</span>
@@ -9620,8 +9640,8 @@ $$</p>
 Dep. Variable:                FOODEXP   R-squared:                       0.370
 Model:                            OLS   Adj. R-squared:                  0.358
 Method:                 Least Squares   F-statistic:                     31.10
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           8.45e-07
-Time:                        04:33:58   Log-Likelihood:                -308.16
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           8.45e-07
+Time:                        15:45:48   Log-Likelihood:                -308.16
 No. Observations:                  55   AIC:                             620.3
 Df Residuals:                      53   BIC:                             624.3
 Df Model:                           1                                         
@@ -9682,7 +9702,7 @@ strong multicollinearity or other numerical problems.
 <p>Interpretación de los coeficientes</p>
 <ul class="simple">
 <li><p>El coeficiente de la variable dependiente mide la tasa de cambio (derivada=pendiente) del modelo</p></li>
-<li><p>La interpretación suele ser <em>En promedio, el aumento de una unidad en la variable independiente produce un aumento/disminución de $\beta_i$ cantidad en la variable dependiente</em></p></li>
+<li><p>La interpretación suele ser <em>En promedio, el aumento de una unidad en la variable independiente produce un aumento/disminución de <span class="math notranslate nohighlight">\(\beta_i\)</span> cantidad en la variable dependiente</em></p></li>
 <li><p>Interprete la regresión anterior.</p></li>
 </ul>
 <section id="practica-paridad-del-poder-de-compra">
@@ -9874,8 +9894,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                   EXCH   R-squared:                       0.987
 Model:                            OLS   Adj. R-squared:                  0.986
 Method:                 Least Squares   F-statistic:                     2066.
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           8.80e-28
-Time:                        04:33:58   Log-Likelihood:                -205.44
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           8.80e-28
+Time:                        15:45:48   Log-Likelihood:                -205.44
 No. Observations:                  30   AIC:                             414.9
 Df Residuals:                      28   BIC:                             417.7
 Df Model:                           1                                         
@@ -10862,7 +10882,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='8624b1ce-69a3-437d-a003-03eccdf9e535'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9cf6910ca0&gt;]
+</script><div class="output text_html"><div id='a5432f3c-f6d6-4276-bf0f-84f34ee12d44'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fce79827850&gt;]
 </pre></div>
 </div>
 </div>
@@ -10880,8 +10900,8 @@ if (IPython.notebook.kernel !== null) {
 Dep. Variable:           np.log(EXCH)   R-squared:                       0.983
 Model:                            OLS   Adj. R-squared:                  0.983
 Method:                 Least Squares   F-statistic:                     1655.
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           1.87e-26
-Time:                        04:33:59   Log-Likelihood:                -7.4056
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           1.87e-26
+Time:                        15:45:48   Log-Likelihood:                -7.4056
 No. Observations:                  30   AIC:                             18.81
 Df Residuals:                      28   BIC:                             21.61
 Df Model:                           1                                         
@@ -11883,7 +11903,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='f6ead1fe-cc30-42cb-9f01-568c1ab15755'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9cef6dbfa0&gt;
+</script><div class="output text_html"><div id='abf73766-c5a7-482a-b287-215833d9dd19'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fce79c11d90&gt;
 </pre></div>
 </div>
 </div>
@@ -11901,8 +11921,8 @@ if (IPython.notebook.kernel !== null) {
 Dep. Variable:                  sleep   R-squared:                       0.103
 Model:                            OLS   Adj. R-squared:                  0.102
 Method:                 Least Squares   F-statistic:                     81.09
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           1.99e-18
-Time:                        04:33:59   Log-Likelihood:                -5267.1
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           1.99e-18
+Time:                        15:45:49   Log-Likelihood:                -5267.1
 No. Observations:                 706   AIC:                         1.054e+04
 Df Residuals:                     704   BIC:                         1.055e+04
 Df Model:                           1                                         
@@ -11946,7 +11966,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Intervalo de confianza para $\beta_2$ y veamos los residuos</p>
+<p>Intervalo de confianza para <span class="math notranslate nohighlight">\(\beta_2\)</span> y veamos los residuos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">bse</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="o">*</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">bse</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -12921,7 +12941,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='595ca23d-50cf-4528-9d54-ade09f53e377'></div></div></div>
+</script><div class="output text_html"><div id='4e511896-74a6-4179-ba54-6ae7d94453d2'></div></div></div>
 </div>
 </section>
 </section>
@@ -12944,8 +12964,8 @@ if (IPython.notebook.kernel !== null) {
 Dep. Variable:              Cellphone   R-squared:                       0.626
 Model:                            OLS   Adj. R-squared:                  0.615
 Method:                 Least Squares   F-statistic:                     53.67
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           2.50e-08
-Time:                        04:34:00   Log-Likelihood:                -148.94
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           2.50e-08
+Time:                        15:45:50   Log-Likelihood:                -148.94
 No. Observations:                  34   AIC:                             301.9
 Df Residuals:                      32   BIC:                             304.9
 Df Model:                           1                                         
@@ -13935,7 +13955,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='109dba61-c26d-4abc-bf44-b7d096ac5436'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
+</script><div class="output text_html"><div id='de14a56e-cf45-424d-9c8f-932771dfeb40'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
 </pre></div>
 </div>
 </div>
@@ -15000,7 +15020,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='18b507c4-e90a-43d4-a85e-e203dd4e6eba'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;CM&#39;)
+</script><div class="output text_html"><div id='2819ddd2-2502-42cf-9b42-dcff3a418c24'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;CM&#39;)
 </pre></div>
 </div>
 </div>
@@ -15018,8 +15038,8 @@ if (IPython.notebook.kernel !== null) {
 Dep. Variable:                     CM   R-squared:                       0.166
 Model:                            OLS   Adj. R-squared:                  0.153
 Method:                 Least Squares   F-statistic:                     12.36
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           0.000826
-Time:                        04:34:00   Log-Likelihood:                -361.64
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           0.000826
+Time:                        15:45:50   Log-Likelihood:                -361.64
 No. Observations:                  64   AIC:                             727.3
 Df Residuals:                      62   BIC:                             731.6
 Df Model:                           1                                         
@@ -15059,8 +15079,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                     CM   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.450
 Method:                 Least Squares   F-statistic:                     52.61
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           7.82e-10
-Time:                        04:34:00   Log-Likelihood:                -347.79
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           7.82e-10
+Time:                        15:45:50   Log-Likelihood:                -347.79
 No. Observations:                  64   AIC:                             699.6
 Df Residuals:                      62   BIC:                             703.9
 Df Model:                           1                                         
@@ -15106,8 +15126,8 @@ Notes:
 Dep. Variable:                lsalary   R-squared:                       0.013
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     2.334
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):              0.128
-Time:                        04:34:01   Log-Likelihood:                -160.84
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):              0.128
+Time:                        15:45:51   Log-Likelihood:                -160.84
 No. Observations:                 177   AIC:                             325.7
 Df Residuals:                     175   BIC:                             332.0
 Df Model:                           1                                         
@@ -15151,8 +15171,8 @@ Notes:
 Dep. Variable:                      Y   R-squared (uncentered):                   0.502
 Model:                            OLS   Adj. R-squared (uncentered):              0.500
 Method:                 Least Squares   F-statistic:                              241.2
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):                    4.41e-38
-Time:                        04:34:01   Log-Likelihood:                         -751.30
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):                    4.41e-38
+Time:                        15:45:51   Log-Likelihood:                         -751.30
 No. Observations:                 240   AIC:                                      1505.
 Df Residuals:                     239   BIC:                                      1508.
 Df Model:                           1                                                  
@@ -15346,8 +15366,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.773
 Model:                            OLS   Adj. R-squared:                  0.762
 Method:                 Least Squares   F-statistic:                     70.58
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           6.45e-26
-Time:                        04:34:01   Log-Likelihood:                 45.750
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           6.45e-26
+Time:                        15:45:52   Log-Likelihood:                 45.750
 No. Observations:                  88   AIC:                            -81.50
 Df Residuals:                      83   BIC:                            -69.11
 Df Model:                           4                                         
@@ -15386,8 +15406,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.643
 Model:                            OLS   Adj. R-squared:                  0.630
 Method:                 Least Squares   F-statistic:                     50.42
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           9.74e-19
-Time:                        04:34:01   Log-Likelihood:                 25.861
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           9.74e-19
+Time:                        15:45:52   Log-Likelihood:                 25.861
 No. Observations:                  88   AIC:                            -43.72
 Df Residuals:                      84   BIC:                            -33.81
 Df Model:                           3                                         
@@ -15425,8 +15445,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.215
 Model:                            OLS   Adj. R-squared:                  0.206
 Method:                 Least Squares   F-statistic:                     23.53
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           5.43e-06
-Time:                        04:34:01   Log-Likelihood:                -8.8147
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           5.43e-06
+Time:                        15:45:52   Log-Likelihood:                -8.8147
 No. Observations:                  88   AIC:                             21.63
 Df Residuals:                      86   BIC:                             26.58
 Df Model:                           1                                         
@@ -16412,7 +16432,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='38a47396-295a-412b-bcda-accb9356b847'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9cf6a17520&gt;
+</script><div class="output text_html"><div id='b038cfb8-2489-44b2-b2b2-3344577b0a0b'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fce79953cd0&gt;
 </pre></div>
 </div>
 </div>
@@ -16573,8 +16593,8 @@ if (IPython.notebook.kernel !== null) {
 Dep. Variable:                 colGPA   R-squared:                       0.050
 Model:                            OLS   Adj. R-squared:                  0.043
 Method:                 Least Squares   F-statistic:                     7.314
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):            0.00770
-Time:                        04:34:03   Log-Likelihood:                -56.641
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):            0.00770
+Time:                        15:45:54   Log-Likelihood:                -56.641
 No. Observations:                 141   AIC:                             117.3
 Df Residuals:                     139   BIC:                             123.2
 Df Model:                           1                                         
@@ -16610,8 +16630,8 @@ Notes:
 Dep. Variable:                 colGPA   R-squared:                       0.219
 Model:                            OLS   Adj. R-squared:                  0.202
 Method:                 Least Squares   F-statistic:                     12.83
-Date:                Tue, 28 Mar 2023   Prob (F-statistic):           1.93e-07
-Time:                        04:34:03   Log-Likelihood:                -42.796
+Date:                Sat, 08 Apr 2023   Prob (F-statistic):           1.93e-07
+Time:                        15:45:54   Log-Likelihood:                -42.796
 No. Observations:                 141   AIC:                             93.59
 Df Residuals:                     137   BIC:                             105.4
 Df Model:                           3                                         
