@@ -12,3 +12,6 @@ chapters:
 - file: ACP
 - file: AprendizajeSupervisado
 - file: SVM
+- file: RedesNeuronales
+- file: Evaluacion
+- file: NoSupervizado
