@@ -8,5 +8,6 @@ chapters:
 - file: Pandas
 - file: Visualizacion
 - file: DescriptivaRegresion
-- file: ProbACP
+- file: ProbModels
+- file: ACP
 - file: AprendizajeSupervisado

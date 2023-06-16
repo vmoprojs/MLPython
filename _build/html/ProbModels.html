@@ -1,0 +1,1058 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Modelos de Probabilidad &#8212; Técnicas de Machine Learning con Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ProbModels';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Análisis de Componentes Principales" href="ACP.html" />
+    <link rel="prev" title="Estadística Descriptiva" href="DescriptivaRegresion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Machine Learning con Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">Estadística Descriptiva</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vmoprojs/MLPython" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vmoprojs/MLPython/issues/new?title=Issue%20on%20page%20%2FProbModels.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ProbModels.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modelos de Probabilidad</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-lineal">Probabilidad lineal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">Logit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probit">Probit</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-probabilidad">
+<h1>Modelos de Probabilidad<a class="headerlink" href="#modelos-de-probabilidad" title="Permalink to this headline">#</a></h1>
+<section id="probabilidad-lineal">
+<h2>Probabilidad lineal<a class="headerlink" href="#probabilidad-lineal" title="Permalink to this headline">#</a></h2>
+<p>En este caso la variable dependiente es una dummy</p>
+<a class="reference internal image-reference" href="_images/RL_Im7.png"><img alt="_images/RL_Im7.png" src="_images/RL_Im7.png" style="width: 500px; height: 300px;" /></a>
+<p>Se trata de modelos del tipo:</p>
+<div class="math notranslate nohighlight">
+\[
+D_{i} = \beta_{0}+\beta_{1}X_{1i}+u_{i}
+\]</div>
+<p>Veamos un ejemplo: Abrir la base <code class="docutils literal notranslate"><span class="pre">MROZ</span></code> de Wooldridge y ajuste el modelo:</p>
+<div class="math notranslate nohighlight">
+\[
+inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \beta_5kidslt6 + \beta_6kidsge6
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># np.set_printoptions(precision=2)</span>
+
+<span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/mroz.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;inlf&quot;</span><span class="p">,</span><span class="s2">&quot;hours&quot;</span><span class="p">,</span>  <span class="s2">&quot;kidslt6&quot;</span><span class="p">,</span> <span class="s2">&quot;kidsge6&quot;</span><span class="p">,</span> 
+               <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;educ&quot;</span><span class="p">,</span>  <span class="s2">&quot;wage&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;repwage&quot;</span><span class="p">,</span><span class="s2">&quot;hushrs&quot;</span>  <span class="p">,</span>  <span class="s2">&quot;husage&quot;</span><span class="p">,</span> <span class="s2">&quot;huseduc&quot;</span> <span class="p">,</span>
+               <span class="s2">&quot;huswage&quot;</span>  <span class="p">,</span> <span class="s2">&quot;faminc&quot;</span><span class="p">,</span> <span class="s2">&quot;mtr&quot;</span><span class="p">,</span><span class="s2">&quot;motheduc&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;fatheduc&quot;</span> <span class="p">,</span> <span class="s2">&quot;unem&quot;</span><span class="p">,</span>  <span class="s2">&quot;city&quot;</span> <span class="p">,</span> <span class="s2">&quot;exper&quot;</span> <span class="p">,</span> 
+               <span class="s2">&quot;nwifeinc&quot;</span> <span class="p">,</span> <span class="s2">&quot;lwage&quot;</span> <span class="p">,</span><span class="s2">&quot;expersq&quot;</span><span class="p">]</span>
+
+
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">stm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.regressionplots</span> <span class="kn">import</span> <span class="n">abline_plot</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">reg1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ nwifeinc + educ + exper + expersq + age+kidslt6 + kidsge6&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   inlf   R-squared:                       0.264
+Model:                            OLS   Adj. R-squared:                  0.257
+Method:                 Least Squares   F-statistic:                     38.22
+Date:                Thu, 15 Jun 2023   Prob (F-statistic):           6.90e-46
+Time:                        21:14:39   Log-Likelihood:                -423.89
+No. Observations:                 753   AIC:                             863.8
+Df Residuals:                     745   BIC:                             900.8
+Df Model:                           7                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      0.5855      0.154      3.798      0.000       0.283       0.888
+nwifeinc      -0.0034      0.001     -2.351      0.019      -0.006      -0.001
+educ           0.0380      0.007      5.151      0.000       0.024       0.052
+exper          0.0395      0.006      6.962      0.000       0.028       0.051
+expersq       -0.0006      0.000     -3.227      0.001      -0.001      -0.000
+age           -0.0161      0.002     -6.476      0.000      -0.021      -0.011
+kidslt6       -0.2618      0.034     -7.814      0.000      -0.328      -0.196
+kidsge6        0.0130      0.013      0.986      0.324      -0.013       0.039
+==============================================================================
+Omnibus:                      169.137   Durbin-Watson:                   0.494
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               36.741
+Skew:                          -0.196   Prob(JB):                     1.05e-08
+Kurtosis:                       1.991   Cond. No.                     3.06e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.06e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué hemos ajustado?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aux</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ educ&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">educ</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">educ</span><span class="p">,</span><span class="n">aux</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;educ&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;inlf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4e369000e721042a8b9331fa497528a34b1a99ba7e17ccf0c6bb54c9a40bc8a.png" src="_images/d4e369000e721042a8b9331fa497528a34b1a99ba7e17ccf0c6bb54c9a40bc8a.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Excepto <em>kidsge6</em> los coeficientes son significativos.</p></li>
+<li><p>Se introdujo la experiencia cuadrática para capturar un efecto decreciente en el efecto deseado (<code class="docutils literal notranslate"><span class="pre">inlf</span></code>). ¿Cómo lo interpretamos?</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">.039</span> <span class="pre">-</span> <span class="pre">2(.0006)exper</span> <span class="pre">=</span> <span class="pre">0.39</span> <span class="pre">-</span> <span class="pre">.0012exper</span></code></p>
+<ul class="simple">
+<li><p>El punto en el que la experiencia ya no tiene efecto en <code class="docutils literal notranslate"><span class="pre">inlf</span></code> es <span class="math notranslate nohighlight">\(.039/.0012 = 32.5\)</span>. ¿Cuantos elementos de la muestra tienen más de 32 años de experiencia?</p></li>
+</ul>
+<p>Se añade exper al cuadrado porque queremos dar la posibilidad que los años adicionales de expericnecia contribuyan con un efecto decreciente.</p>
+<p>Trabajemos ahora con la predicción, y revisemos el resultado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_vals</span> <span class="o">=</span> <span class="n">reg1</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+<span class="n">aux</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="n">pred_vals</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aux</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+
+
+<span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">pred_vals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 0.6636123221355531), (1, 0.7009165727274161), (1, 0.6727286212890489), (1, 0.7257441305286613), (1, 0.5616358247349608)]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=753, minmax=(-0.34511026465740724, 1.1271505290421115), mean=0.5683930942895072, variance=0.06490433214015544, skewness=-0.4241251818053419, kurtosis=-0.07391834122184537)
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué podemos notar?</p>
+<ul class="simple">
+<li><p>Existen valores mayores a 1 e inferiores a 0.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^{2}\)</span> ya no es interpretable en estas regresiones.</p></li>
+<li><p>Usaremos una probabilidad de ocurrencia, digamos 0.5</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediccion_dum</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_vals</span><span class="o">&gt;=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
+
+<span class="n">tab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="n">prediccion_dum</span><span class="p">)</span>
+<span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">tab</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">datos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7343957503320053
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logit">
+<h2>Logit<a class="headerlink" href="#logit" title="Permalink to this headline">#</a></h2>
+<p>La regresión logística puede entenderse simplemente como encontrar los parámtros <span class="math notranslate nohighlight">\(\beta\)</span> que mejor asjuten:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y={\begin{cases}1&amp;\beta_{1}+\beta_{2}X_{1}+\cdots+\beta_{k}X_{k}+u &gt;0\\0&amp;{\text{en otro caso}}\end{cases}}
+\end{split}\]</div>
+<p>Donde se asume que el error tiene una <a class="reference external" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_log%C3%ADstica">distribución logística estándar</a></p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle f(x;\mu ,s)={\frac {e^{-{\frac {x-\mu }{s}}}}{s\left(1+e^{-{\frac {x-\mu }{s}}}\right)^{2}}}={\frac {1}{s\left(e^{\frac {x-\mu }{2s}}+e^{-{\frac {x-\mu }{2s}}}\right)^{2}}}={\frac {1}{4s}}\operatorname {sech} ^{2}\!\left({\frac {x-\mu }{2s}}\right).}
+\]</div>
+<p>Donde <span class="math notranslate nohighlight">\(s\)</span> es el parámetro de escala y <span class="math notranslate nohighlight">\(\mu\)</span> el de locación (<em>sech</em> es la función secante hiperbólico).</p>
+<p>Otra forma de entender la regresión logística es a través de la función logística:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma (t)={\frac {e^{t}}{e^{t}+1}}={\frac {1}{1+e^{-t}}}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(t\in \mathbb{R}\)</span> y <span class="math notranslate nohighlight">\(0\leq\sigma (t)\leq1\)</span>.</p>
+<p>Asumiento <span class="math notranslate nohighlight">\(t\)</span> como una función lineal de una variable explicativa <span class="math notranslate nohighlight">\(x\)</span>, tenemos:</p>
+<div class="math notranslate nohighlight">
+\[
+t=\beta _{0}+\beta _{1}x
+\]</div>
+<p>Ahora la función logística se puede expresar:</p>
+<div class="math notranslate nohighlight">
+\[
+p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
+\]</div>
+<p>Ten en cuenta que <span class="math notranslate nohighlight">\(p (x)\)</span> se interpreta como la probabilidad de que la variable dependiente iguale a <em>éxito</em>  en lugar de un <em>fracaso</em>. Está claro que las variables de respuesta <span class="math notranslate nohighlight">\(Y_ {i}\)</span> no se distribuyen de forma idéntica: <span class="math notranslate nohighlight">\( P (Y_ {i} = 1 \ mid X )\)</span> difiere de un punto <span class="math notranslate nohighlight">\(X_ {i}\)</span> a otro, aunque son independientes dado que la matriz de diseño <span class="math notranslate nohighlight">\(X\)</span> y los parámetros compartidos <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p>Finalmente definimos la inversa de la función logística, <span class="math notranslate nohighlight">\(g\)</span>, el <strong>logit</strong> (log odds):</p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle g(p(x))=\ln \left({\frac {p(x)}{1-p(x)}}\right)=\beta _{0}+\beta _{1}x,}
+\]</div>
+<p>lo que es equivalente a:</p>
+<div class="math notranslate nohighlight">
+\[
+{\frac {p(x)}{1-p(x)}}=e^{\beta _{0}+\beta _{1}x}
+\]</div>
+<p><strong>Interpretación</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g\)</span> es la función logit. La ecuación para <span class="math notranslate nohighlight">\(g (p (x))\)</span> ilustra que el logit (es decir, log-odds o logaritmo natural de las probabilidades) es equivalente a la expresión de regresión lineal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(ln\)</span> denota el logaritmo natural.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p (x)\)</span> es la probabilidad de que la variable dependiente sea igual a un caso, dada alguna combinación lineal de los predictores. La fórmula para <span class="math notranslate nohighlight">\(p (x)\)</span> ilustra que la probabilidad de que la variable dependiente iguale un caso es igual al valor de la función logística de la expresión de regresión lineal. Esto es importante porque muestra que el valor de la expresión de regresión lineal puede variar de infinito negativo a positivo y, sin embargo, después de la transformación, la expresión resultante para la probabilidad <span class="math notranslate nohighlight">\(p (x)\)</span> oscila entre <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta _ {0}\)</span> es la intersección de la ecuación de regresión lineal (el valor del criterio cuando el predictor es igual a cero).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta _ {1} x\)</span> es el coeficiente de regresión multiplicado por algún valor del predictor.</p></li>
+<li><p>la base <span class="math notranslate nohighlight">\(e\)</span> denota la función exponencial.</p></li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Abra la tabla 15.7</p>
+<ul class="simple">
+<li><p>Los datos son el efecto del Sistema de Enseñanza Personalizada (PSI) sobre las calificaciones.</p>
+<ul>
+<li><p>Calificación <span class="math notranslate nohighlight">\(Y = 1\)</span> si la calificación final fue A</p></li>
+<li><p><span class="math notranslate nohighlight">\(Y = 0\)</span> si la calificación final fue B o C</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TUCE</span></code> = calificación en un examen presentado al comienzo del curso para evaluar los conocimientos previos de macroeconomía</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PSI</span></code> = 1 con el nuevo método de enseñanza, 0 en otro caso</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GPA</span></code> = promedio de puntos de calificación inicial</p></li>
+</ul>
+</li>
+<li><p>Ajuste el siguiente modelo:
+<code class="docutils literal notranslate"><span class="pre">ajuste1</span> <span class="pre">&lt;-</span> <span class="pre">glm(GRADE~GPA+TUCE+PSI,</span> <span class="pre">family=binomial(link=&quot;logit&quot;),x=T)</span></code></p></li>
+<li><p>Interprete el modelo</p></li>
+</ul>
+<p>En los modelos cuya variable regresada binaria, la bondad del ajuste tiene una importancia secundaria. Lo que interesa son los signos esperados de los coeficientes de la regresión y su importancia práctica y/o estadística.</p>
+<p>Importamos los datos y revisamos la variable dependiente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/tabla15_7.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># import statsmodels.api as sm</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;GRADE&#39;</span><span class="p">,</span> <span class="n">aggfunc</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="5" halign="left">len</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>GPA</th>
+      <th>LETTER</th>
+      <th>OBS</th>
+      <th>PSI</th>
+      <th>TUCE</th>
+    </tr>
+    <tr>
+      <th>GRADE</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Ajustamos el modelo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.402801
+         Iterations 7
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                  GRADE   No. Observations:                   32
+Model:                          Logit   Df Residuals:                       28
+Method:                           MLE   Df Model:                            3
+Date:                Thu, 15 Jun 2023   Pseudo R-squ.:                  0.3740
+Time:                        21:14:40   Log-Likelihood:                -12.890
+converged:                       True   LL-Null:                       -20.592
+Covariance Type:            nonrobust   LLR p-value:                  0.001502
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    -13.0213      4.931     -2.641      0.008     -22.687      -3.356
+GPA            2.8261      1.263      2.238      0.025       0.351       5.301
+TUCE           0.0952      0.142      0.672      0.501      -0.182       0.373
+PSI            2.3787      1.065      2.234      0.025       0.292       4.465
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Marginal Effects</caption>
+<tr>
+  <th>Dep. Variable:</th> <td>GRADE</td>
+</tr>
+<tr>
+  <th>Method:</th>        <td>dydx</td> 
+</tr>
+<tr>
+  <th>At:</th>            <td>mean</td> 
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+    <th></th>      <th>dy/dx</th>    <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>GPA</th>  <td>    0.5339</td> <td>    0.237</td> <td>    2.252</td> <td> 0.024</td> <td>    0.069</td> <td>    0.998</td>
+</tr>
+<tr>
+  <th>TUCE</th> <td>    0.0180</td> <td>    0.026</td> <td>    0.685</td> <td> 0.493</td> <td>   -0.033</td> <td>    0.069</td>
+</tr>
+<tr>
+  <th>PSI</th>  <td>    0.4493</td> <td>    0.197</td> <td>    2.284</td> <td> 0.022</td> <td>    0.064</td> <td>    0.835</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span> <span class="o">=</span> <span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">margeff</span>
+<span class="n">mm</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.07311607, 0.00246188, 0.06154047],
+       [0.15815168, 0.0053251 , 0.1331134 ],
+       [0.43011639, 0.01448239, 0.36202116],
+       [0.07130492, 0.0024009 , 0.06001605],
+       [0.69272252, 0.02332457, 0.58305197],
+       [0.09507939, 0.00320141, 0.08002659],
+       [0.0729182 , 0.00245522, 0.06137393],
+       [0.1381988 , 0.00465327, 0.11631942],
+       [0.2791564 , 0.00939944, 0.23496087],
+       [0.60069976, 0.02022608, 0.50559808]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Son, en conjunto, los coeficientes significativos?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hyp</span> <span class="o">=</span> <span class="s1">&#39;(Intercept = 0, GPA = 0,TUCE=0,PSI=0)&#39;</span>
+<span class="n">ajuste1</span><span class="o">.</span><span class="n">wald_test</span><span class="p">(</span><span class="n">hyp</span><span class="p">,</span><span class="n">scalar</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;statsmodels.stats.contrast.ContrastResults&#39;&gt;
+&lt;Wald test (chi2): statistic=8.873128862019582, p-value=0.06435007959304277, df_denom=4&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept     0.000002
+GPA          16.879715
+TUCE          1.099832
+PSI          10.790732
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esto indica que los estudiantes expuestos al nuevo método de enseñanza son 10 veces más propensos a obtener una A que quienes no están expuestos al nuevo método, en tanto no cambien los demás factores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.02657799, 0.05950125, 0.18725993, 0.02590164, 0.56989295,
+       0.03485827, 0.02650406, 0.051559  , 0.11112666, 0.69351131,
+       0.02447037, 0.18999744, 0.32223955, 0.19321116, 0.36098992,
+       0.03018375, 0.05362641, 0.03858834, 0.58987249, 0.66078584,
+       0.06137585, 0.90484727, 0.24177245, 0.85209089, 0.83829051,
+       0.48113304, 0.63542059, 0.30721866, 0.84170413, 0.94534025,
+       0.5291172 , 0.11103084])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="probit">
+<h2>Probit<a class="headerlink" href="#probit" title="Permalink to this headline">#</a></h2>
+<p>En los modelos logia se propuso la logística, en este caso se propone la Función de Distribución Acumulada Normal. Suponga que la variable de respuesta es binaria, 1 o 0. <span class="math notranslate nohighlight">\(Y\)</span> podría representar la presencia/ausencia de una condición, éxito/fracaso, si/no. Se tiene también un vector de regresoras <span class="math notranslate nohighlight">\(X\)</span>, el modelo toma la forma:</p>
+<div class="math notranslate nohighlight">
+\[
+{\displaystyle \Pr(Y=1\mid X)=\Phi (X^{T}\beta ),}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(Pr\)</span> es la prbabilidad y <span class="math notranslate nohighlight">\(\Phi\)</span> distribución acumulada de la normal estándar <span class="math notranslate nohighlight">\({\displaystyle \Phi (x)={\frac {1}{\sqrt {2\pi }}}\int _{-\infty }^{x}e^{-t^{2}/2}\,dt}\)</span>. Los parámetros <span class="math notranslate nohighlight">\(\beta\)</span> se estiman típicamente con el método de máxima verosimilitud.</p>
+<p><strong>Ejemplo</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">probit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.400588
+         Iterations 6
+                          Probit Regression Results                           
+==============================================================================
+Dep. Variable:                  GRADE   No. Observations:                   32
+Model:                         Probit   Df Residuals:                       28
+Method:                           MLE   Df Model:                            3
+Date:                Thu, 15 Jun 2023   Pseudo R-squ.:                  0.3775
+Time:                        21:14:40   Log-Likelihood:                -12.819
+converged:                       True   LL-Null:                       -20.592
+Covariance Type:            nonrobust   LLR p-value:                  0.001405
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -7.4523      2.542     -2.931      0.003     -12.435      -2.469
+GPA            1.6258      0.694      2.343      0.019       0.266       2.986
+TUCE           0.0517      0.084      0.617      0.537      -0.113       0.216
+PSI            1.4263      0.595      2.397      0.017       0.260       2.593
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Probit Marginal Effects</caption>
+<tr>
+  <th>Dep. Variable:</th> <td>GRADE</td>
+</tr>
+<tr>
+  <th>Method:</th>        <td>dydx</td> 
+</tr>
+<tr>
+  <th>At:</th>            <td>mean</td> 
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+    <th></th>      <th>dy/dx</th>    <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>GPA</th>  <td>    0.5333</td> <td>    0.232</td> <td>    2.294</td> <td> 0.022</td> <td>    0.078</td> <td>    0.989</td>
+</tr>
+<tr>
+  <th>TUCE</th> <td>    0.0170</td> <td>    0.027</td> <td>    0.626</td> <td> 0.531</td> <td>   -0.036</td> <td>    0.070</td>
+</tr>
+<tr>
+  <th>PSI</th>  <td>    0.4679</td> <td>    0.188</td> <td>    2.494</td> <td> 0.013</td> <td>    0.100</td> <td>    0.836</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span> <span class="o">=</span> <span class="n">ajuste1</span><span class="o">.</span><span class="n">get_margeff</span><span class="p">(</span><span class="n">at</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">margeff</span>
+<span class="n">mm</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.07255307, 0.00230845, 0.06365122],
+       [0.17584323, 0.00559486, 0.15426826],
+       [0.44108314, 0.01403409, 0.38696473],
+       [0.07391114, 0.00235166, 0.06484266],
+       [0.64252589, 0.02044346, 0.5636916 ],
+       [0.10206861, 0.00324755, 0.08954537],
+       [0.07368267, 0.00234439, 0.06464222],
+       [0.15292232, 0.00486558, 0.13415961],
+       [0.3033272 , 0.00965106, 0.26611067],
+       [0.59359928, 0.01888675, 0.520768  ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.01817074, 0.05308048, 0.18992627, 0.01857067, 0.55457485,
+       0.02723306, 0.01850327, 0.04457139, 0.10880811, 0.66312068,
+       0.01610236, 0.19355656, 0.32332821, 0.19518259, 0.35634057,
+       0.02196542, 0.04569425, 0.03085127, 0.59340229, 0.65718629,
+       0.06192878, 0.90453884, 0.2731908 , 0.84745013, 0.83419472,
+       0.48872605, 0.64240727, 0.3286732 , 0.84001686, 0.95224465,
+       0.53995949, 0.123544  ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DescriptivaRegresion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estadística Descriptiva</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ACP.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Análisis de Componentes Principales</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-lineal">Probabilidad lineal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">Logit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probit">Probit</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Víctor Morales Oñate
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
