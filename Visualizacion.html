@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Gráficos básicos: matplotlib &amp; seaborn &#8212; Técnicas de Machine Learning con Python</title>
+    <title>5. Gráficos básicos: matplotlib &amp; seaborn &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Visualizacion';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Estadística Descriptiva" href="DescriptivaRegresion.html" />
-    <link rel="prev" title="Pandas" href="Pandas.html" />
+    <link rel="next" title="16. Estadística Descriptiva" href="DescriptivaRegresion.html" />
+    <link rel="prev" title="3. Pandas" href="Pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -157,15 +157,13 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gráficos básicos: matplotlib &amp; seaborn</a></li>
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 
 
 
@@ -173,10 +171,27 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">Estadística Descriptiva</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="ProbACP.html">Modelos de Probabilidad &amp; ACP</a></li>
 
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">16. Estadística Descriptiva</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">18. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">19. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">20. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">21. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">22. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">23. Evaluación de Modelos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">24. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -370,26 +385,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Gráficos básicos: matplotlib &amp; seaborn</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">Scatterplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-linea">Gráficos de linea</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-barras">Gráficos de barras</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">Subplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">Heatmaps</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-pandas">Visualización con Pandas</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-plot">DataFrame.plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-tools-plotting">pandas.tools.plotting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">6. Scatterplots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-linea">7. Gráficos de linea</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-barras">8. Gráficos de barras</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">9. Subplots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">10. Histogramas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">11. Boxplots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">12. Heatmaps</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-pandas">13. Visualización con Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-plot">13.1. DataFrame.plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-tools-plotting">13.1.1. pandas.tools.plotting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">Seaborn</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creando-graficos">Creando gráficos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficando">Graficando</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personalizacion">Personalización</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">14. Seaborn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">15. Tips</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creando-graficos">15.1. Creando gráficos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficando">15.2. Graficando</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personalizacion">15.3. Personalización</a></li>
 </ul>
 </li>
 </ul>
@@ -405,7 +420,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="graficos-basicos-matplotlib-seaborn">
-<h1>Gráficos básicos: matplotlib &amp; seaborn<a class="headerlink" href="#graficos-basicos-matplotlib-seaborn" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5. </span>Gráficos básicos: matplotlib &amp; seaborn<a class="headerlink" href="#graficos-basicos-matplotlib-seaborn" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> notebook
@@ -3424,7 +3439,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="scatterplots">
-<h1>Scatterplots<a class="headerlink" href="#scatterplots" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>Scatterplots<a class="headerlink" href="#scatterplots" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -6467,7 +6482,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="graficos-de-linea">
-<h1>Gráficos de linea<a class="headerlink" href="#graficos-de-linea" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>Gráficos de linea<a class="headerlink" href="#graficos-de-linea" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -9480,7 +9495,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="graficos-de-barras">
-<h1>Gráficos de barras<a class="headerlink" href="#graficos-de-barras" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>Gráficos de barras<a class="headerlink" href="#graficos-de-barras" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -12425,7 +12440,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="subplots">
-<h1>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9. </span>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -16348,7 +16363,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="histogramas">
-<h1>Histogramas<a class="headerlink" href="#histogramas" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">10. </span>Histogramas<a class="headerlink" href="#histogramas" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creamos un grid 2x2 de subplots</span>
@@ -20259,7 +20274,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="boxplots">
-<h1>Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -24241,7 +24256,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="heatmaps">
-<h1>Heatmaps<a class="headerlink" href="#heatmaps" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">12. </span>Heatmaps<a class="headerlink" href="#heatmaps" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -26188,7 +26203,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="visualizacion-con-pandas">
-<h1>Visualización con Pandas<a class="headerlink" href="#visualizacion-con-pandas" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">13. </span>Visualización con Pandas<a class="headerlink" href="#visualizacion-con-pandas" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -26247,7 +26262,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <section id="dataframe-plot">
-<h2>DataFrame.plot<a class="headerlink" href="#dataframe-plot" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">13.1. </span>DataFrame.plot<a class="headerlink" href="#dataframe-plot" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -32117,7 +32132,7 @@ if (IPython.notebook.kernel !== null) {
 </script><div class="output text_html"><div id='1a9cc7dc-2bf1-4134-9af7-9f38ac096f8b'></div></div></div>
 </div>
 <section id="pandas-tools-plotting">
-<h3>pandas.tools.plotting<a class="headerlink" href="#pandas-tools-plotting" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">13.1.1. </span>pandas.tools.plotting<a class="headerlink" href="#pandas-tools-plotting" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import os as os</span>
@@ -34130,7 +34145,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="seaborn">
-<h1>Seaborn<a class="headerlink" href="#seaborn" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">14. </span>Seaborn<a class="headerlink" href="#seaborn" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -43878,9 +43893,9 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="tips">
-<h1>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">15. </span>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">#</a></h1>
 <section id="creando-graficos">
-<h2>Creando gráficos<a class="headerlink" href="#creando-graficos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">15.1. </span>Creando gráficos<a class="headerlink" href="#creando-graficos" title="Permalink to this headline">#</a></h2>
 <p><em>Figure</em></p>
 <table class="colwidths-auto table">
 <thead>
@@ -43918,7 +43933,7 @@ if (IPython.notebook.kernel !== null) {
 </table>
 </section>
 <section id="graficando">
-<h2>Graficando<a class="headerlink" href="#graficando" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">15.2. </span>Graficando<a class="headerlink" href="#graficando" title="Permalink to this headline">#</a></h2>
 <p><em>Datos 1D</em></p>
 <table class="colwidths-auto table">
 <thead>
@@ -43990,7 +44005,7 @@ if (IPython.notebook.kernel !== null) {
 </table>
 </section>
 <section id="personalizacion">
-<h2>Personalización<a class="headerlink" href="#personalizacion" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">15.3. </span>Personalización<a class="headerlink" href="#personalizacion" title="Permalink to this headline">#</a></h2>
 <p><em>Color</em></p>
 <table class="colwidths-auto table">
 <thead>
@@ -44188,7 +44203,7 @@ if (IPython.notebook.kernel !== null) {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Pandas</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Pandas</p>
       </div>
     </a>
     <a class="right-next"
@@ -44196,7 +44211,7 @@ if (IPython.notebook.kernel !== null) {
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Estadística Descriptiva</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Estadística Descriptiva</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -44215,26 +44230,26 @@ if (IPython.notebook.kernel !== null) {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Gráficos básicos: matplotlib &amp; seaborn</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">Scatterplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-linea">Gráficos de linea</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-barras">Gráficos de barras</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">Subplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">Heatmaps</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-pandas">Visualización con Pandas</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-plot">DataFrame.plot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-tools-plotting">pandas.tools.plotting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">6. Scatterplots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-linea">7. Gráficos de linea</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-barras">8. Gráficos de barras</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">9. Subplots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">10. Histogramas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">11. Boxplots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">12. Heatmaps</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-pandas">13. Visualización con Pandas</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-plot">13.1. DataFrame.plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-tools-plotting">13.1.1. pandas.tools.plotting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">Seaborn</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creando-graficos">Creando gráficos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficando">Graficando</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personalizacion">Personalización</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">14. Seaborn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">15. Tips</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creando-graficos">15.1. Creando gráficos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficando">15.2. Graficando</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personalizacion">15.3. Personalización</a></li>
 </ul>
 </li>
 </ul>

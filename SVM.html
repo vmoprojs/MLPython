@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Support Vector Machines &#8212; Técnicas de Machine Learning con Python</title>
+    <title>21. Support Vector Machines &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'SVM';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Redes Neuronales" href="RedesNeuronales.html" />
-    <link rel="prev" title="Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
+    <link rel="next" title="22. Redes Neuronales" href="RedesNeuronales.html" />
+    <link rel="prev" title="20. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -155,15 +155,13 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 
 
 
@@ -171,15 +169,27 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">Estadística Descriptiva</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">Evaluación de Modelos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">Aprendizaje no supervizado</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">16. Estadística Descriptiva</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">18. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">19. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">20. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">21. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">22. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">23. Evaluación de Modelos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">24. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -373,16 +383,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">SVM Lineal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">Clasificador SVM lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">Clasificador SVM lineal: parámetro C</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">Aplicación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">21.1. SVM Lineal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">21.1.1. Clasificador SVM lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">21.1.2. Clasificador SVM lineal: parámetro C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">21.1.3. Aplicación</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">SVM con Kernels</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">SVM: el parámetros gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">SVM: escenarios para C y gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">Aplicación (datos no normalizados)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">21.2. SVM con Kernels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">21.2.1. SVM: el parámetros gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">21.2.2. SVM: escenarios para C y gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">21.2.3. Aplicación (datos no normalizados)</a></li>
 </ul>
 </li>
 </ul>
@@ -397,9 +407,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="support-vector-machines">
-<h1>Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">21. </span>Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">#</a></h1>
 <section id="svm-lineal">
-<h2>SVM Lineal<a class="headerlink" href="#svm-lineal" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.1. </span>SVM Lineal<a class="headerlink" href="#svm-lineal" title="Permalink to this headline">#</a></h2>
 <p>Generamos los datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -426,7 +436,7 @@ document.write(`
 </div>
 </div>
 <section id="clasificador-svm-lineal">
-<h3>Clasificador SVM lineal<a class="headerlink" href="#clasificador-svm-lineal" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">21.1.1. </span>Clasificador SVM lineal<a class="headerlink" href="#clasificador-svm-lineal" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -449,7 +459,7 @@ document.write(`
 </div>
 </section>
 <section id="clasificador-svm-lineal-parametro-c">
-<h3>Clasificador SVM lineal: parámetro C<a class="headerlink" href="#clasificador-svm-lineal-parametro-c" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">21.1.2. </span>Clasificador SVM lineal: parámetro C<a class="headerlink" href="#clasificador-svm-lineal-parametro-c" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
@@ -477,7 +487,7 @@ document.write(`
 </div>
 </section>
 <section id="aplicacion">
-<h3>Aplicación<a class="headerlink" href="#aplicacion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">21.1.3. </span>Aplicación<a class="headerlink" href="#aplicacion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
@@ -513,7 +523,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </section>
 </section>
 <section id="svm-con-kernels">
-<h2>SVM con Kernels<a class="headerlink" href="#svm-con-kernels" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.2. </span>SVM con Kernels<a class="headerlink" href="#svm-con-kernels" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conjunto de datos no separable</span>
@@ -549,7 +559,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </div>
 </div>
 <section id="svm-el-parametros-gamma">
-<h3>SVM: el parámetros gamma<a class="headerlink" href="#svm-el-parametros-gamma" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">21.2.1. </span>SVM: el parámetros gamma<a class="headerlink" href="#svm-el-parametros-gamma" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_class_regions_for_classifier</span>
@@ -572,7 +582,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </div>
 </section>
 <section id="svm-escenarios-para-c-y-gamma">
-<h3>SVM: escenarios para C y gamma<a class="headerlink" href="#svm-escenarios-para-c-y-gamma" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">21.2.2. </span>SVM: escenarios para C y gamma<a class="headerlink" href="#svm-escenarios-para-c-y-gamma" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -659,7 +669,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </div>
 </section>
 <section id="aplicacion-datos-no-normalizados">
-<h3>Aplicación (datos no normalizados)<a class="headerlink" href="#aplicacion-datos-no-normalizados" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">21.2.3. </span>Aplicación (datos no normalizados)<a class="headerlink" href="#aplicacion-datos-no-normalizados" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -721,7 +731,7 @@ Precisión de SVM con kernel RBF en los datos de prueba: 0.94
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Aprendizaje Supervisado</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>Aprendizaje Supervisado</p>
       </div>
     </a>
     <a class="right-next"
@@ -729,7 +739,7 @@ Precisión de SVM con kernel RBF en los datos de prueba: 0.94
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Redes Neuronales</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>Redes Neuronales</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -748,16 +758,16 @@ Precisión de SVM con kernel RBF en los datos de prueba: 0.94
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">SVM Lineal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">Clasificador SVM lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">Clasificador SVM lineal: parámetro C</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">Aplicación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">21.1. SVM Lineal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">21.1.1. Clasificador SVM lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">21.1.2. Clasificador SVM lineal: parámetro C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">21.1.3. Aplicación</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">SVM con Kernels</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">SVM: el parámetros gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">SVM: escenarios para C y gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">Aplicación (datos no normalizados)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">21.2. SVM con Kernels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">21.2.1. SVM: el parámetros gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">21.2.2. SVM: escenarios para C y gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">21.2.3. Aplicación (datos no normalizados)</a></li>
 </ul>
 </li>
 </ul>
