@@ -11,3 +11,4 @@ chapters:
 - file: ProbModels
 - file: ACP
 - file: AprendizajeSupervisado
+- file: SVM
