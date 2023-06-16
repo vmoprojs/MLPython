@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Visualizacion';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -229,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/vmoprojs/MLPython" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -246,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FVisualizacion.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/vmoprojs/MLPython/issues/new?title=Issue%20on%20page%20%2FVisualizacion.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,7 +404,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="graficos-basicos-matplotlib-seaborn">
+  <section class="tex2jax_ignore mathjax_ignore" id="graficos-basicos-matplotlib-seaborn">
 <h1>Gráficos básicos: matplotlib &amp; seaborn<a class="headerlink" href="#graficos-basicos-matplotlib-seaborn" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -433,7 +435,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Dado que el estilo predeterminado es la línea ‘-’, no se mostrará nada si solo pasamos en un punto $(3,2)$</p>
+<p>Dado que el estilo predeterminado es la línea ‘-’, no se mostrará nada si solo pasamos en un punto <span class="math notranslate nohighlight">\((3,2)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -1395,12 +1397,12 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='bb74f1d4-3347-44b9-8c74-31d2d3af12fe'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bca8ccac0&gt;]
+</script><div class="output text_html"><div id='6b35f79c-caac-40be-94af-028d09e043be'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe4381b1b80&gt;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Podemos pasarle ‘.’ a <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> para indicar que queremos el punto $(3,2)$ tal que sea puesto como un <em>marker</em></p>
+<p>Podemos pasarle ‘.’ a <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> para indicar que queremos el punto <span class="math notranslate nohighlight">\((3,2)\)</span> tal que sea puesto como un <em>marker</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
@@ -1408,7 +1410,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bca8e2130&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe4381c61f0&gt;]
 </pre></div>
 </div>
 </div>
@@ -1438,7 +1440,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bca91d460&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe4382015b0&gt;]
 </pre></div>
 </div>
 </div>
@@ -2414,7 +2416,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='44e5aee1-8e9b-490c-ad63-4d80a5200494'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 6.0, 0.0, 10.0)
+</script><div class="output text_html"><div id='73d0d05f-47c7-4e26-ad0c-d816d3b81abb'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 6.0, 0.0, 10.0)
 </pre></div>
 </div>
 </div>
@@ -3388,7 +3390,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='41900167-097c-4ebc-86ba-47d3567d96e1'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bca9bec40&gt;]
+</script><div class="output text_html"><div id='1e749a26-6233-4bdf-b460-e60c08db7942'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe4382a0d60&gt;]
 </pre></div>
 </div>
 </div>
@@ -3403,25 +3405,25 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bca9be670&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f7bca9be970&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f7bca9bec40&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bca97a3a0&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bca97a4c0&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bca8fd400&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bca97a550&gt;,
- &lt;matplotlib.axis.XAxis at 0x7f7bca97a340&gt;,
- &lt;matplotlib.axis.YAxis at 0x7f7bca97aa60&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe4382a0850&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7fe4382a0af0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7fe4382a0d60&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe43825e490&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe43825e5b0&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe4381e13d0&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe43818d190&gt;,
+ &lt;matplotlib.axis.XAxis at 0x7fe43825e430&gt;,
+ &lt;matplotlib.axis.YAxis at 0x7fe43825eac0&gt;,
  Text(0.5, 1.0, &#39;&#39;),
  Text(0.0, 1.0, &#39;&#39;),
  Text(1.0, 1.0, &#39;&#39;),
- &lt;matplotlib.patches.Rectangle at 0x7f7bca9a7220&gt;]
+ &lt;matplotlib.patches.Rectangle at 0x7fe43828b280&gt;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="scatterplots">
+<section class="tex2jax_ignore mathjax_ignore" id="scatterplots">
 <h1>Scatterplots<a class="headerlink" href="#scatterplots" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4390,7 +4392,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='2d49250d-c063-49a6-bf2c-59f43bfe9d94'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f7bc5c316d0&gt;
+</script><div class="output text_html"><div id='d33db6f5-a124-484f-ba3a-3baeebae61a8'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe4383006a0&gt;
 </pre></div>
 </div>
 </div>
@@ -5369,7 +5371,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='2e052e6c-4432-4e0a-a9c4-ff9f7fb7fb39'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f7bc5c724c0&gt;
+</script><div class="output text_html"><div id='54aa8142-f338-4b2c-b8fc-97c1871937e6'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe438342490&gt;
 </pre></div>
 </div>
 </div>
@@ -6390,7 +6392,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='8b772321-59e0-42c0-9637-2ee1bc6df3d0'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f7bc5c45670&gt;
+</script><div class="output text_html"><div id='6431c31f-7982-42cb-92b1-f6a98b9b50d7'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe43263cf10&gt;
 </pre></div>
 </div>
 </div>
@@ -6420,7 +6422,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7bc5c7fa90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe43834dd00&gt;
 </pre></div>
 </div>
 </div>
@@ -6433,7 +6435,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7bca9cfc70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe4383135e0&gt;
 </pre></div>
 </div>
 </div>
@@ -6446,25 +6448,25 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.collections.PathCollection at 0x7f7bc747be80&gt;,
- &lt;matplotlib.collections.PathCollection at 0x7f7bc5c45670&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bc744d7c0&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bc744d8e0&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bc744da00&gt;,
- &lt;matplotlib.spines.Spine at 0x7f7bca8e2cd0&gt;,
- &lt;matplotlib.axis.XAxis at 0x7f7bc744d760&gt;,
- &lt;matplotlib.axis.YAxis at 0x7f7bc744df70&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.collections.PathCollection at 0x7fe43263cbe0&gt;,
+ &lt;matplotlib.collections.PathCollection at 0x7fe43263cf10&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe43260f790&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe43260f8b0&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe43260f9d0&gt;,
+ &lt;matplotlib.spines.Spine at 0x7fe438201df0&gt;,
+ &lt;matplotlib.axis.XAxis at 0x7fe43260f730&gt;,
+ &lt;matplotlib.axis.YAxis at 0x7fe43260ff40&gt;,
  Text(0.5, 1.0, &#39;Relación entre patear la pelota y notas&#39;),
  Text(0.0, 1.0, &#39;&#39;),
  Text(1.0, 1.0, &#39;&#39;),
- &lt;matplotlib.legend.Legend at 0x7f7bca9cfc70&gt;,
- &lt;matplotlib.patches.Rectangle at 0x7f7bc74676a0&gt;]
+ &lt;matplotlib.legend.Legend at 0x7fe4383135e0&gt;,
+ &lt;matplotlib.patches.Rectangle at 0x7fe432627700&gt;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="graficos-de-linea">
+<section class="tex2jax_ignore mathjax_ignore" id="graficos-de-linea">
 <h1>Gráficos de linea<a class="headerlink" href="#graficos-de-linea" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -7434,8 +7436,8 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='9ea98106-9785-42d2-a1c2-7454282a0f24'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bc7501f10&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f7bc7501e80&gt;]
+</script><div class="output text_html"><div id='bca9bb0d-cdc7-4978-a452-0659481e38bb'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe433d9fd30&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7fe433d9fca0&gt;]
 </pre></div>
 </div>
 </div>
@@ -7448,7 +7450,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bc74c04f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe433d9f8b0&gt;]
 </pre></div>
 </div>
 </div>
@@ -7464,7 +7466,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7bc74ba6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe433d688e0&gt;
 </pre></div>
 </div>
 </div>
@@ -7480,7 +7482,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7f7bc74ba970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7fe433d686d0&gt;
 </pre></div>
 </div>
 </div>
@@ -8451,8 +8453,8 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='670c222e-b7e6-4171-84f0-f9df8be70593'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bc7534f40&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f7bcaa015e0&gt;]
+</script><div class="output text_html"><div id='8042e50e-fcbd-4bdb-9366-589291a2b78a'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe433dd0fa0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7fe433e06580&gt;]
 </pre></div>
 </div>
 </div>
@@ -9423,8 +9425,8 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='06d786dc-77f1-4000-a5d8-80edf00529d3'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bcb638fa0&gt;,
- &lt;matplotlib.lines.Line2D at 0x7f7bcb6679a0&gt;]
+</script><div class="output text_html"><div id='a8a66dcb-899d-4078-8e7f-fdf232507ddb'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe43912adc0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x7fe43916b6a0&gt;]
 </pre></div>
 </div>
 </div>
@@ -9477,7 +9479,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 </section>
-<section id="graficos-de-barras">
+<section class="tex2jax_ignore mathjax_ignore" id="graficos-de-barras">
 <h1>Gráficos de barras<a class="headerlink" href="#graficos-de-barras" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -10442,7 +10444,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='af240497-c5c9-4ae7-ba1d-0a82893a33f8'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 8 artists&gt;
+</script><div class="output text_html"><div id='2e95b600-e48b-4ca0-a111-ed118043b328'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 8 artists&gt;
 </pre></div>
 </div>
 </div>
@@ -11446,7 +11448,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='559eeb8e-8ad9-4a39-872d-88077c94cbb2'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 8 artists&gt;
+</script><div class="output text_html"><div id='cb0a2fee-15ad-426c-9cad-54bd95262f58'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 8 artists&gt;
 </pre></div>
 </div>
 </div>
@@ -12416,13 +12418,13 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='6a798291-6f18-41a6-b58b-ca596b8e1e47'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 8 artists&gt;
+</script><div class="output text_html"><div id='d4ec7b09-1e10-4175-af59-5433a363a505'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 8 artists&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="subplots">
+<section class="tex2jax_ignore mathjax_ignore" id="subplots">
 <h1>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -13401,7 +13403,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='7ccbc03f-8ae5-4ca5-b7b1-950b1d0a4fe4'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bcc9ff5b0&gt;]
+</script><div class="output text_html"><div id='1373d29e-7fb1-402c-b90f-085ff6d354fb'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe43930b460&gt;]
 </pre></div>
 </div>
 </div>
@@ -13417,7 +13419,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bcca37f40&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe439340d30&gt;]
 </pre></div>
 </div>
 </div>
@@ -13431,7 +13433,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bcca442b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe43934f1f0&gt;]
 </pre></div>
 </div>
 </div>
@@ -14402,7 +14404,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='71d36965-d634-430d-8294-58be03bf982d'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bccace580&gt;]
+</script><div class="output text_html"><div id='4e94b738-3edf-457e-b98b-34cf25353129'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe4393d2130&gt;]
 </pre></div>
 </div>
 </div>
@@ -15370,7 +15372,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='7b921c36-1e34-4b47-8d18-bc0fa3a2b3db'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</script><div class="output text_html"><div id='ab1221d9-e411-4c32-afc0-fadfed37401d'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -16339,13 +16341,13 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='c491d8c2-9bb3-4fa2-b01e-c4adfd9109b3'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bccd17490&gt;]
+</script><div class="output text_html"><div id='f43a7fc2-b3b3-4a50-bbf9-90dc7fb5b2f9'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe439615460&gt;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="histogramas">
+<section class="tex2jax_ignore mathjax_ignore" id="histogramas">
 <h1>Histogramas<a class="headerlink" href="#histogramas" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -17318,7 +17320,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='e08348eb-f204-4fd7-9501-ac73d44b6eca'></div></div></div>
+</script><div class="output text_html"><div id='19301d68-a272-487b-b30d-85663fa73a51'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -18289,7 +18291,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='077a47b0-0d30-4405-9158-75d64827375d'></div></div></div>
+</script><div class="output text_html"><div id='95f3f334-f34c-4e99-881f-105adcc7b723'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -19255,7 +19257,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='90440d25-7fa6-4beb-8881-b43a1015a78d'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f7bcd2c7730&gt;
+</script><div class="output text_html"><div id='ab0062d1-1173-460d-a45e-0e4d4e367dd2'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe439bd0760&gt;
 </pre></div>
 </div>
 </div>
@@ -20229,7 +20231,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='cb848312-5ffc-4b7f-8939-7285a0904f2e'></div></div></div>
+</script><div class="output text_html"><div id='e0c5249f-d570-4b97-a786-d3c2a9b9b5aa'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -20256,7 +20258,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 </section>
-<section id="boxplots">
+<section class="tex2jax_ignore mathjax_ignore" id="boxplots">
 <h1>Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -20311,45 +20313,45 @@ if (IPython.notebook.kernel !== null) {
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.002436</td>
-      <td>0.500225</td>
-      <td>2.018180</td>
+      <td>0.016236</td>
+      <td>0.497667</td>
+      <td>1.999759</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.006212</td>
-      <td>0.288506</td>
-      <td>1.431833</td>
+      <td>0.992815</td>
+      <td>0.287997</td>
+      <td>1.418247</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-4.196641</td>
-      <td>0.000223</td>
-      <td>0.007917</td>
+      <td>-3.928924</td>
+      <td>0.000041</td>
+      <td>0.001509</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-0.668037</td>
-      <td>0.248554</td>
-      <td>0.964409</td>
+      <td>-0.661520</td>
+      <td>0.253529</td>
+      <td>0.955562</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>0.005305</td>
-      <td>0.500896</td>
-      <td>1.690801</td>
+      <td>0.002779</td>
+      <td>0.495188</td>
+      <td>1.676295</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.697413</td>
-      <td>0.748425</td>
-      <td>2.718137</td>
+      <td>0.686905</td>
+      <td>0.748343</td>
+      <td>2.684695</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>3.878315</td>
-      <td>0.999966</td>
-      <td>12.031005</td>
+      <td>3.631691</td>
+      <td>0.999985</td>
+      <td>13.332923</td>
     </tr>
   </tbody>
 </table>
@@ -21318,7 +21320,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='d7a1888e-c374-449c-b951-4484a00940ff'></div></div></div>
+</script><div class="output text_html"><div id='2bf0af1b-8a05-4cd2-aeb9-3274688ba252'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -22292,7 +22294,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='2c68da05-f577-43a2-8c35-ea76df11f2c6'></div></div></div>
+</script><div class="output text_html"><div id='d34a4bfb-aa35-4309-a12b-964f4610c8c1'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -23262,7 +23264,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='bb8996db-5308-4455-a513-adecdf21a552'></div></div></div>
+</script><div class="output text_html"><div id='29d7b851-e261-4bd1-88fb-b996e1abc702'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -24235,10 +24237,10 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='98487bb7-c985-4c99-9183-33bf916bce8d'></div></div></div>
+</script><div class="output text_html"><div id='d9a891b5-aec3-4ad1-ac5b-f1fbf9eaccd9'></div></div></div>
 </div>
 </section>
-<section id="heatmaps">
+<section class="tex2jax_ignore mathjax_ignore" id="heatmaps">
 <h1>Heatmaps<a class="headerlink" href="#heatmaps" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -25205,7 +25207,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='14f1e52b-9eba-490a-bfad-3c1b21a56401'></div></div></div>
+</script><div class="output text_html"><div id='f2996869-606f-46e3-966f-aa7a86f1fdd1'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -26169,7 +26171,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='70f5b463-8ea0-4c2f-b002-c8912c316ee7'></div></div></div>
+</script><div class="output text_html"><div id='f5de7acb-c4cb-4e63-9ebc-d52af97424f9'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -26179,13 +26181,13 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f7bce4db550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fe43a530070&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="visualizacion-con-pandas">
+<section class="tex2jax_ignore mathjax_ignore" id="visualizacion-con-pandas">
 <h1>Visualización con Pandas<a class="headerlink" href="#visualizacion-con-pandas" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -27279,7 +27281,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='fb6b3f89-22f6-4eb0-81c1-5f4dbd4562bc'></div></div></div>
+</script><div class="output text_html"><div id='62884c06-f96b-4f15-9c7f-ea3068786c2f'></div></div></div>
 </div>
 <p>También puede elegir el tipo de figura utilizando los métodos <code class="docutils literal notranslate"><span class="pre">DataFrame.plot.kind</span></code> en lugar de proporcionar el argumento  <code class="docutils literal notranslate"><span class="pre">kind</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">kind</span></code> :</p>
@@ -28258,7 +28260,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='133d1992-6aac-4423-ae01-b343acb53fac'></div></div></div>
+</script><div class="output text_html"><div id='42588feb-1ecb-4d46-8d38-b54bfa479c0d'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -29222,7 +29224,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='47d12678-486c-4661-9edf-ac37ec02c05e'></div></div></div>
+</script><div class="output text_html"><div id='359c3998-de20-4603-ae7c-9fa9b53e82aa'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -30185,7 +30187,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='72364886-af15-4ec3-b19f-5e52fe0e4632'></div></div></div>
+</script><div class="output text_html"><div id='51f362fe-a2a4-4556-bd9a-f357bef44134'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -31148,7 +31150,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='7078ad52-f360-4b77-8ecc-cc216d9d0291'></div></div></div>
+</script><div class="output text_html"><div id='53b9f95d-024d-4a28-bc8a-a767e22e0a1c'></div></div></div>
 </div>
 <p>Los gráficos de estimación de densidad con kernel son útiles para derivar una función continua suave a partir de una muestra determinada.</p>
 <div class="cell docutils container">
@@ -32112,7 +32114,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='102b65e8-9c4f-4094-80c5-337d1459989c'></div></div></div>
+</script><div class="output text_html"><div id='1a9cc7dc-2bf1-4134-9af7-9f38ac096f8b'></div></div></div>
 </div>
 <section id="pandas-tools-plotting">
 <h3>pandas.tools.plotting<a class="headerlink" href="#pandas-tools-plotting" title="Permalink to this headline">#</a></h3>
@@ -33157,7 +33159,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='dbd17a43-21be-4f22-914d-d9a1308fa328'></div></div></div>
+</script><div class="output text_html"><div id='ae5dd788-03e0-4219-86d9-003f4b96a68f'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -34122,12 +34124,12 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='f5fa01ef-c8ef-4a97-9913-50e18b166c88'></div></div></div>
+</script><div class="output text_html"><div id='b4d89432-271b-49bf-8688-26ff7335039e'></div></div></div>
 </div>
 </section>
 </section>
 </section>
-<section id="seaborn">
+<section class="tex2jax_ignore mathjax_ignore" id="seaborn">
 <h1>Seaborn<a class="headerlink" href="#seaborn" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -35113,7 +35115,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='9f01e910-8617-4413-a1f8-abf2efb23de4'></div></div></div>
+</script><div class="output text_html"><div id='bfe61cd5-65d6-4be1-9510-2156a0d1272e'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -36081,7 +36083,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='7b74416a-5eac-4efc-990d-4fc7347c0d0f'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2000,)
+</script><div class="output text_html"><div id='7dae7d73-e611-4d13-8fb5-ec45976afc20'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2000,)
 </pre></div>
 </div>
 </div>
@@ -37050,7 +37052,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='1ff179a1-15ba-49d3-bb90-e42fc43b24ac'></div></div><script type="application/javascript">/* Put everything inside the global mpl namespace */
+</script><div class="output text_html"><div id='42946fdc-04f8-4200-a2b7-c8d2018d5a06'></div></div><script type="application/javascript">/* Put everything inside the global mpl namespace */
 /* global mpl */
 window.mpl = {};
 
@@ -38004,7 +38006,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='dc0ff686-30d3-41a9-ae4e-728dc836c222'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f7bd0e4ca30&gt;
+</script><div class="output text_html"><div id='9d7c91aa-30c7-4805-9fe8-8b5faa626997'></div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe43d92a460&gt;
 </pre></div>
 </div>
 </div>
@@ -38970,7 +38972,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='7bd12b48-7228-4c6f-ab58-ef3f7c3e43d1'></div></div></div>
+</script><div class="output text_html"><div id='6e5a0e26-43c3-4ffd-ba3c-907f8a8171b1'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -39934,7 +39936,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='d9457631-2d2e-406a-a49f-ee801b592a6c'></div></div></div>
+</script><div class="output text_html"><div id='21d778e5-810c-4e7c-a288-a16c20cf10a3'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -40897,7 +40899,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='8fa7f9be-b1c3-4059-8627-aeb92ccc1588'></div></div></div>
+</script><div class="output text_html"><div id='9f4522e4-3048-42fc-9fb2-13ed5dae65a5'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -41863,7 +41865,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='5114740d-4c65-42c6-b5f0-98b4f3f5594d'></div></div></div>
+</script><div class="output text_html"><div id='d8e9a273-dda5-435c-a983-be930be3d0c7'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -42904,7 +42906,7 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='9a18a977-f6ab-4495-80fb-37ca08582575'></div></div></div>
+</script><div class="output text_html"><div id='f3435d18-7719-4934-9e14-b1cc9b5327d8'></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -43872,10 +43874,10 @@ if (IPython.notebook.kernel !== null) {
         mpl.mpl_figure_comm
     );
 }
-</script><div class="output text_html"><div id='db32496c-0345-4d51-9497-9bb878d6a13e'></div></div></div>
+</script><div class="output text_html"><div id='e5adf246-c8ab-42ba-af23-8687d003c7c6'></div></div></div>
 </div>
 </section>
-<section id="tips">
+<section class="tex2jax_ignore mathjax_ignore" id="tips">
 <h1>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">#</a></h1>
 <section id="creando-graficos">
 <h2>Creando gráficos<a class="headerlink" href="#creando-graficos" title="Permalink to this headline">#</a></h2>
