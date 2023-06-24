@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>14. Aprendizaje no supervizado &#8212; Técnicas de Machine Learning con Python</title>
+    <title>13. Aprendizaje no supervizado &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'NoSupervizado';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="13. Evaluación de Modelos" href="Evaluacion.html" />
+    <link rel="prev" title="12. Evaluación de Modelos" href="Evaluacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -157,28 +157,27 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">4. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">6. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">7. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">9. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">5. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">10. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">9. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -372,9 +371,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">14.1. K-means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">14.2. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">14.3. DBSCAN clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a></li>
 </ul>
             </nav>
         </div>
@@ -387,7 +386,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-no-supervizado">
-<h1><span class="section-number">14. </span>Aprendizaje no supervizado<a class="headerlink" href="#aprendizaje-no-supervizado" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">13. </span>Aprendizaje no supervizado<a class="headerlink" href="#aprendizaje-no-supervizado" title="Permalink to this headline">#</a></h1>
 <p><strong>Preámbulo y datos</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -412,7 +411,7 @@ document.write(`
 </div>
 </div>
 <section id="k-means">
-<h2><span class="section-number">14.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">13.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -476,7 +475,7 @@ document.write(`
 </div>
 </section>
 <section id="aglomerativo">
-<h2><span class="section-number">14.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">13.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -538,7 +537,7 @@ document.write(`
 </div>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">14.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">13.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
@@ -911,7 +910,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Evaluación de Modelos</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Evaluación de Modelos</p>
       </div>
     </a>
 </div>
@@ -929,9 +928,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">14.1. K-means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">14.2. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">14.3. DBSCAN clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a></li>
 </ul>
   </nav></div>
 

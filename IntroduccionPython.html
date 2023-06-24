@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'IntroduccionPython';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. Pandas" href="Pandas.html" />
+    <link rel="next" title="2. Pandas" href="Pandas.html" />
     <link rel="prev" title="Machine Learning con Python" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -158,28 +158,27 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Python, una introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">4. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">6. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">7. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">9. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">5. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">10. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">9. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">14. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -373,7 +372,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Python, una introducción</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos">1.1. Tipos de datos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexacion-slicing">1.2. Indexación &amp; Slicing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-y-arrays">1.3. Vectores y Arrays</a></li>
@@ -384,18 +382,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for">1.5. FOR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programas-en-python">1.6. Programas en python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-modulos-y-paquetes">1.6.1. Funciones, módulos y paquetes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda">1.6.2. Lambda</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programas-en-python">2. Programas en python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-modulos-y-paquetes">2.1. Funciones, módulos y paquetes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda">2.1.1. Lambda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-de-python">1.7. Tips de python</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-de-python">2.2. Tips de python</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -731,8 +724,8 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.41980969,  1.10872855, -0.31662227, -0.18392565, -0.78868521,
-       -0.28585732, -1.48341769,  0.59681338, -1.1877199 ,  0.43161444])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.15306739, -0.25180103,  2.76551408,  0.19234173,  0.28255984,
+       -1.29452272,  1.45495309,  0.1627986 , -0.49245594, -1.05339504])
 </pre></div>
 </div>
 </div>
@@ -1260,11 +1253,10 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="programas-en-python">
-<h1><span class="section-number">2. </span>Programas en python<a class="headerlink" href="#programas-en-python" title="Permalink to this headline">#</a></h1>
+<section id="programas-en-python">
+<h2><span class="section-number">1.6. </span>Programas en python<a class="headerlink" href="#programas-en-python" title="Permalink to this headline">#</a></h2>
 <section id="funciones-modulos-y-paquetes">
-<h2><span class="section-number">2.1. </span>Funciones, módulos y paquetes<a class="headerlink" href="#funciones-modulos-y-paquetes" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">1.6.1. </span>Funciones, módulos y paquetes<a class="headerlink" href="#funciones-modulos-y-paquetes" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>Función</strong> Una función se define por la palabra clave <code class="docutils literal notranslate"><span class="pre">def</span></code>. Devuelve un objeto con la sentencia <code class="docutils literal notranslate"><span class="pre">return</span></code> que generalmente va al final.</p></li>
 <li><p><strong>Módulos</strong> Es un archivo con la extensión <code class="docutils literal notranslate"><span class="pre">.py</span></code>. Los módulos pueden contener funciones y definiciones de variables.</p></li>
@@ -1308,8 +1300,9 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
 <p><code class="docutils literal notranslate"><span class="pre">x1</span></code> y <code class="docutils literal notranslate"><span class="pre">x2</span></code> son parámetros usuales, también llamados <em>parámetros posicionales</em>, pero <code class="docutils literal notranslate"><span class="pre">x3</span></code> es una tupla de longitud arbitraria que contiene parámetros adicionales. Si llamamos a la función</p>
 <p><code class="docutils literal notranslate"><span class="pre">func(a,b,c,d,e)</span></code></p>
 <p>entonces a corresponde <code class="docutils literal notranslate"><span class="pre">a</span></code> <code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> a <code class="docutils literal notranslate"><span class="pre">x2</span></code> pero <code class="docutils literal notranslate"><span class="pre">c,d,e</span></code> corresponde a <code class="docutils literal notranslate"><span class="pre">x3</span></code>.</p>
+</section>
 <section id="lambda">
-<h3><span class="section-number">2.1.1. </span>Lambda<a class="headerlink" href="#lambda" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.6.2. </span>Lambda<a class="headerlink" href="#lambda" title="Permalink to this headline">#</a></h3>
 <p>Si la función tiene la forma de una expresión, se puede definir con la sentencia <code class="docutils literal notranslate"><span class="pre">lambda</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">func_name</span> <span class="pre">=</span> <span class="pre">lambda</span> <span class="pre">param1,</span> <span class="pre">param2,</span> <span class="pre">...:</span> <span class="pre">expresión</span></code></p>
 <p>No se permiten varias expresiones. Un ejemplo:</p>
@@ -1329,7 +1322,7 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
 </section>
 </section>
 <section id="tips-de-python">
-<h2><span class="section-number">2.2. </span>Tips de python<a class="headerlink" href="#tips-de-python" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.7. </span>Tips de python<a class="headerlink" href="#tips-de-python" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>Convenciones estándar</p>
 <ul class="simple">
@@ -1395,7 +1388,7 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Pandas</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Pandas</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1414,7 +1407,6 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Python, una introducción</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos">1.1. Tipos de datos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexacion-slicing">1.2. Indexación &amp; Slicing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-y-arrays">1.3. Vectores y Arrays</a></li>
@@ -1425,18 +1417,13 @@ Los índices también pueden ser negativos (ini o fin) que indica que se cuenta 
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for">1.5. FOR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programas-en-python">1.6. Programas en python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-modulos-y-paquetes">1.6.1. Funciones, módulos y paquetes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda">1.6.2. Lambda</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programas-en-python">2. Programas en python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-modulos-y-paquetes">2.1. Funciones, módulos y paquetes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda">2.1.1. Lambda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-de-python">1.7. Tips de python</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-de-python">2.2. Tips de python</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
