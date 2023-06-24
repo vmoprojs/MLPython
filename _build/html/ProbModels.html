@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Análisis de Componentes Principales" href="ACP.html" />
-    <link rel="prev" title="Estadística Descriptiva" href="DescriptivaRegresion.html" />
+    <link rel="prev" title="Regresión lineal" href="Regresion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -157,27 +157,31 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
-
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">Estadística Descriptiva</a></li>
-
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">Regresión lineal</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelos de Probabilidad</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ACP.html">Análisis de Componentes Principales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">Evaluación de Modelos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -436,8 +440,8 @@ inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \
 Dep. Variable:                   inlf   R-squared:                       0.264
 Model:                            OLS   Adj. R-squared:                  0.257
 Method:                 Least Squares   F-statistic:                     38.22
-Date:                Thu, 15 Jun 2023   Prob (F-statistic):           6.90e-46
-Time:                        21:14:39   Log-Likelihood:                -423.89
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           6.90e-46
+Time:                        20:56:22   Log-Likelihood:                -423.89
 No. Observations:                 753   AIC:                             863.8
 Df Residuals:                     745   BIC:                             900.8
 Df Model:                           7                                         
@@ -696,8 +700,8 @@ p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                          Logit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Thu, 15 Jun 2023   Pseudo R-squ.:                  0.3740
-Time:                        21:14:40   Log-Likelihood:                -12.890
+Date:                Fri, 23 Jun 2023   Pseudo R-squ.:                  0.3740
+Time:                        20:56:23   Log-Likelihood:                -12.890
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001502
 ==============================================================================
@@ -845,8 +849,8 @@ dtype: float64
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                         Probit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Thu, 15 Jun 2023   Pseudo R-squ.:                  0.3775
-Time:                        21:14:40   Log-Likelihood:                -12.819
+Date:                Fri, 23 Jun 2023   Pseudo R-squ.:                  0.3775
+Time:                        20:56:23   Log-Likelihood:                -12.819
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001405
 ==============================================================================
@@ -857,6 +861,9 @@ GPA            1.6258      0.694      2.343      0.019       0.266       2.986
 TUCE           0.0517      0.084      0.617      0.537      -0.113       0.216
 PSI            1.4263      0.595      2.397      0.017       0.260       2.593
 ==============================================================================
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -967,12 +974,12 @@ PSI            1.4263      0.595      2.397      0.017       0.260       2.593
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="DescriptivaRegresion.html"
+       href="Regresion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Estadística Descriptiva</p>
+        <p class="prev-next-title">Regresión lineal</p>
       </div>
     </a>
     <a class="right-next"

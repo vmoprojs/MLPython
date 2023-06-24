@@ -3,15 +3,28 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: IntroduccionPython
-- file: Pandas
-- file: Visualizacion
-- file: DescriptivaRegresion
-- file: ProbModels
-- file: ACP
-- file: AprendizajeSupervisado
-- file: SVM
-- file: RedesNeuronales
-- file: Evaluacion
-- file: NoSupervizado
+parts:
+- caption: Parte 1
+  numbered: false
+  chapters:
+  - file: IntroduccionPython
+  - file: Pandas
+  - file: Visualizacion
+- caption: Parte 2
+  numbered: false
+  chapters:
+  - file: Descriptiva
+  - file: Regresion
+- caption: Parte 3
+  numbered: false
+  chapters:
+  - file: ProbModels
+  - file: ACP
+  - file: AprendizajeSupervisado
+  - file: SVM
+  - file: RedesNeuronales
+  - file: Evaluacion
+- caption: Parte 4
+  numbered: false
+  chapters:
+  - file: NoSupervizado

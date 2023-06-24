@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estadística Descriptiva &#8212; Técnicas de Machine Learning con Python</title>
+    <title>16. Estadística Descriptiva &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'DescriptivaRegresion';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Modelos de Probabilidad &amp; ACP" href="ProbACP.html" />
-    <link rel="prev" title="Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
+    <link rel="next" title="18. Modelos de Probabilidad" href="ProbModels.html" />
+    <link rel="prev" title="5. Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -157,15 +157,13 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 
 
 
@@ -173,10 +171,27 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Estadística Descriptiva</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="ProbACP.html">Modelos de Probabilidad &amp; ACP</a></li>
 
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Estadística Descriptiva</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">18. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">19. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">20. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">21. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">22. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">23. Evaluación de Modelos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">24. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -370,48 +385,48 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Estadística Descriptiva</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">Medidas de resumen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">Desviación estándar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">Varianza</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">Promedio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">La moda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">Rango</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">16. Estadística Descriptiva</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">16.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">16.1.1. Desviación estándar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">16.1.2. Varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">16.1.3. Promedio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">16.1.4. La moda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">16.1.5. Rango</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">16.1.6. Percentiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">Distribuciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">16.2. Distribuciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">16.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">16.3.1. El test t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">16.3.2. Wilcoxon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">16.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">16.4.1. Comparación de varianzas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">16.4.2. Test de Wilcoxon para dos muestras</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">Correlación de Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">16.5. Correlación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">16.5.1. Correlación de Pearson</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">Regresión lineal</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">Práctica: Paridad del poder de compra</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">Práctica: Sueño</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">17. Regresión lineal</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">17.1. Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">17.1.1. Práctica: Paridad del poder de compra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">17.1.2. Práctica: Sueño</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">Transformaciones lineales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">Modelo reciproco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">Modelo log-lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">Regresión a través del origen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">17.2. Transformaciones lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">17.2.1. Modelo reciproco</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">17.2.2. Modelo log-lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">17.2.3. Regresión a través del origen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">Predicción</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">RLM: Educación con insumos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">17.3. Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">17.3.1. Predicción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">17.3.2. RLM: Educación con insumos</a></li>
 </ul>
 </li>
 </ul>
@@ -429,10 +444,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva">
-<h1>Estadística Descriptiva<a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">16. </span>Estadística Descriptiva<a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this headline">#</a></h1>
 <p>Es fácil calcular estadísticos de resumen en <code class="docutils literal notranslate"><span class="pre">python</span></code>. Aquí tienen cómo calcular la media, desviación estándar, varianza y mediana.</p>
 <section id="medidas-de-resumen">
-<h2>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.1. </span>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Permalink to this headline">#</a></h2>
 <p>Creamos 100 números aleatorios con distribución normal:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -444,7 +459,7 @@ document.write(`
 </div>
 </div>
 <section id="desviacion-estandar">
-<h3>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.1. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -459,7 +474,7 @@ document.write(`
 </div>
 </section>
 <section id="varianza">
-<h3>Varianza<a class="headerlink" href="#varianza" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.2. </span>Varianza<a class="headerlink" href="#varianza" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -482,7 +497,7 @@ document.write(`
 </div>
 </section>
 <section id="promedio">
-<h3>Promedio<a class="headerlink" href="#promedio" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.3. </span>Promedio<a class="headerlink" href="#promedio" title="Permalink to this headline">#</a></h3>
 <p>Toma en cuenta lo que pasa con valores <code class="docutils literal notranslate"><span class="pre">nan</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -546,7 +561,7 @@ document.write(`
 </div>
 </section>
 <section id="la-moda">
-<h3>La moda<a class="headerlink" href="#la-moda" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.4. </span>La moda<a class="headerlink" href="#la-moda" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -575,7 +590,7 @@ document.write(`
 </div>
 </section>
 <section id="rango">
-<h3>Rango<a class="headerlink" href="#rango" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.5. </span>Rango<a class="headerlink" href="#rango" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># ptp: peak to peak</span>
@@ -597,7 +612,7 @@ document.write(`
 </div>
 </section>
 <section id="percentiles">
-<h3>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.6. </span>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -642,7 +657,7 @@ document.write(`
 </section>
 </section>
 <section id="distribuciones">
-<h2>Distribuciones<a class="headerlink" href="#distribuciones" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.2. </span>Distribuciones<a class="headerlink" href="#distribuciones" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miFD</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -5545,10 +5560,10 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="test-sobre-una-y-dos-muestras">
-<h2>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.3. </span>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Permalink to this headline">#</a></h2>
 <p>Se introducen dos funciones: <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> y <code class="docutils literal notranslate"><span class="pre">stats.wilcoxon</span></code> para el test t y el test de Wilcoxon respectivamente. Ambos pueden ser usados para una muestra o dos muestras así como para datos pareados. Note que el test de Wilcoxon para dos muestras es lo mismo que el test de Mann–Whitney.</p>
 <section id="el-test-t">
-<h3>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.3.1. </span>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this headline">#</a></h3>
 <p>Este test se basa en el supuesto de normalidad de los datos. Es decir que los datos <span class="math notranslate nohighlight">\(x_1\ldots,x_n\)</span> se asumen como realizaciones independientes de variables aleatorias con media <span class="math notranslate nohighlight">\(\mu\)</span> y varianza <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\(N(\mu, \sigma^2)\)</span>. Se tiene que la hipótesis nula es que <span class="math notranslate nohighlight">\(\mu=\mu_0\)</span>.</p>
 <p>Se puede estimar los parámetros <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> por la media <span class="math notranslate nohighlight">\(\bar{x}\)</span> y la desviación estándar  <span class="math notranslate nohighlight">\(\sigma\)</span>, aunque recuerde que solo son estimaciones del valor real.</p>
 <p>Veamos un ejemplo del consuo diario de calorías de 11 mujeres:</p>
@@ -5619,7 +5634,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="wilcoxon">
-<h3>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.3.2. </span>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">pVal</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">)</span><span class="o">-</span><span class="mi">7725</span><span class="p">))</span>
@@ -5643,7 +5658,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section id="test-t-para-dos-muestras">
-<h2>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.4. </span>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Permalink to this headline">#</a></h2>
 <p>Se usa esta prueba con la hipótesis nula de que dos muestras provengan de distribuciones normales con la misma media.</p>
 <p>Se puede tener dos enfoques, que las muestras tengan la misma varianza (enfoque clásico) o difieran en varianza.</p>
 <div class="cell docutils container">
@@ -5739,7 +5754,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <section id="comparacion-de-varianzas">
-<h3>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.4.1. </span>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Permalink to this headline">#</a></h3>
 <p>Aún cuando en <code class="docutils literal notranslate"><span class="pre">python</span></code> se puede hacer la prueba sobre dos muestras sin el supuesto de igualdad en las varianzas, podrías estar interesado en hacer una prueba exclusiva de este supuesto.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5761,7 +5776,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="test-de-wilcoxon-para-dos-muestras">
-<h3>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.4.2. </span>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_statistic</span><span class="p">,</span> <span class="n">pVal</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span>
@@ -5784,10 +5799,10 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section id="correlacion">
-<h2>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.5. </span>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this headline">#</a></h2>
 <p>Se aborda a continuación medidas de correlación paramétricas y no paramétricas. El coeficiente de correlación es una medida de asociación que varía entre -1 y 1.</p>
 <section id="correlacion-de-pearson">
-<h3>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.5.1. </span>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this headline">#</a></h3>
 <p>El coeficiente de correlación empírico es:</p>
 <div class="math notranslate nohighlight">
 \[ r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2\sum (y_i-\bar{y})^2}} \]</div>
@@ -7013,7 +7028,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
-<h1>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">17. </span>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this headline">#</a></h1>
 <p>Abordemos las primeras ideas de regresión lineal a través de un ejemplo práctico:</p>
 <ul class="simple">
 <li><p>Creamos dos variables, Ingreso y Consumo Esperado</p></li>
@@ -9158,7 +9173,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <section id="regresion-paso-a-paso">
-<h2>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">17.1. </span>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this headline">#</a></h2>
 <p>La función poblacional sería:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -9706,7 +9721,7 @@ strong multicollinearity or other numerical problems.
 <li><p>Interprete la regresión anterior.</p></li>
 </ul>
 <section id="practica-paridad-del-poder-de-compra">
-<h3>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.1.1. </span>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Tabla5_9.csv&quot;</span>
@@ -10927,7 +10942,7 @@ Notes:
 <p>La PPA sostiene que con una unidad de moneda debe ser posible comprar la misma canasta de bienes en todos los países.</p>
 </section>
 <section id="practica-sueno">
-<h3>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.1.2. </span>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/sleep75.csv&quot;</span>
@@ -12946,7 +12961,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section id="transformaciones-lineales">
-<h2>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">17.2. </span>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%2031_3.csv&quot;</span>
@@ -13961,7 +13976,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <section id="modelo-reciproco">
-<h3>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.2.1. </span>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/tabla_6_4.csv&quot;</span>
@@ -15105,7 +15120,7 @@ Notes:
 </div>
 </section>
 <section id="modelo-log-lineal">
-<h3>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.2.2. </span>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/ceosal2.csv&quot;</span>
@@ -15152,7 +15167,7 @@ Notes:
 </div>
 </section>
 <section id="regresion-a-traves-del-origen">
-<h3>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.2.3. </span>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%206_1.csv&quot;</span>
@@ -15198,7 +15213,7 @@ Notes:
 </section>
 </section>
 <section id="regresion-lineal-multiple">
-<h2>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">17.3. </span>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/hprice1.csv&quot;</span>
@@ -16438,7 +16453,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <section id="prediccion">
-<h3>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.3.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos_nuevos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;llotsize&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2100</span><span class="p">),</span><span class="s1">&#39;lsqrft&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8000</span><span class="p">),</span><span class="s1">&#39;bdrms&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -16575,7 +16590,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="rlm-educacion-con-insumos">
-<h3>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">17.3.2. </span>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/gpa1.csv&quot;</span>
@@ -16694,15 +16709,15 @@ Notes:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Gráficos básicos: matplotlib &amp; seaborn</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Gráficos básicos: matplotlib &amp; seaborn</p>
       </div>
     </a>
     <a class="right-next"
-       href="ProbACP.html"
+       href="ProbModels.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modelos de Probabilidad &amp; ACP</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Modelos de Probabilidad</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -16721,48 +16736,48 @@ Notes:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Estadística Descriptiva</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">Medidas de resumen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">Desviación estándar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">Varianza</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">Promedio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">La moda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">Rango</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">Percentiles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">16. Estadística Descriptiva</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">16.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">16.1.1. Desviación estándar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">16.1.2. Varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">16.1.3. Promedio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">16.1.4. La moda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">16.1.5. Rango</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">16.1.6. Percentiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">Distribuciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">16.2. Distribuciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">16.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">16.3.1. El test t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">16.3.2. Wilcoxon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">16.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">16.4.1. Comparación de varianzas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">16.4.2. Test de Wilcoxon para dos muestras</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">Correlación de Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">16.5. Correlación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">16.5.1. Correlación de Pearson</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">Regresión lineal</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">Práctica: Paridad del poder de compra</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">Práctica: Sueño</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">17. Regresión lineal</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">17.1. Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">17.1.1. Práctica: Paridad del poder de compra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">17.1.2. Práctica: Sueño</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">Transformaciones lineales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">Modelo reciproco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">Modelo log-lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">Regresión a través del origen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">17.2. Transformaciones lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">17.2.1. Modelo reciproco</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">17.2.2. Modelo log-lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">17.2.3. Regresión a través del origen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">Predicción</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">RLM: Educación con insumos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">17.3. Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">17.3.1. Predicción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">17.3.2. RLM: Educación con insumos</a></li>
 </ul>
 </li>
 </ul>
