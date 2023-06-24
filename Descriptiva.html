@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5. Estadística Descriptiva &amp; Pruebas de hipótesis &#8212; Técnicas de Machine Learning con Python</title>
+    <title>4. Estadística Descriptiva &amp; Pruebas de hipótesis &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Descriptiva';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. Regresión lineal" href="Regresion.html" />
-    <link rel="prev" title="4. Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
+    <link rel="next" title="5. Regresión lineal" href="Regresion.html" />
+    <link rel="prev" title="3. Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -161,26 +161,25 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">4. Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">3. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">5. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">6. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">7. Análisis de Componentes Principales</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">9. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">8. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">9. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">10. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">11. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">12. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -374,28 +373,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">5.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">5.1.1. Desviación estándar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">5.1.2. Varianza</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">5.1.3. Promedio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">5.1.4. La moda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">5.1.5. Rango</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">5.1.6. Percentiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">4.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.1. Desviación estándar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2. Varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.3. Promedio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.4. La moda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.5. Rango</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">4.1.6. Percentiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">5.2. Distribuciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">5.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">5.3.1. El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">5.3.2. Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">4.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">4.3.1. El test t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">4.3.2. Wilcoxon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">5.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">5.4.1. Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">5.4.2. Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">4.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">4.4.1. Comparación de varianzas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">4.4.2. Test de Wilcoxon para dos muestras</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">5.5. Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">5.5.1. Correlación de Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">4.5. Correlación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">4.5.1. Correlación de Pearson</a></li>
 </ul>
 </li>
 </ul>
@@ -410,10 +409,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva-pruebas-de-hipotesis">
-<h1><span class="section-number">5. </span>Estadística Descriptiva &amp; Pruebas de hipótesis<a class="headerlink" href="#estadistica-descriptiva-pruebas-de-hipotesis" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4. </span>Estadística Descriptiva &amp; Pruebas de hipótesis<a class="headerlink" href="#estadistica-descriptiva-pruebas-de-hipotesis" title="Permalink to this headline">#</a></h1>
 <p>Es fácil calcular estadísticos de resumen en <code class="docutils literal notranslate"><span class="pre">python</span></code>. Aquí tienen cómo calcular la media, desviación estándar, varianza y mediana.</p>
 <section id="medidas-de-resumen">
-<h2><span class="section-number">5.1. </span>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1. </span>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Permalink to this headline">#</a></h2>
 <p>Creamos 100 números aleatorios con distribución normal:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -425,7 +424,7 @@ document.write(`
 </div>
 </div>
 <section id="desviacion-estandar">
-<h3><span class="section-number">5.1.1. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -440,7 +439,7 @@ document.write(`
 </div>
 </section>
 <section id="varianza">
-<h3><span class="section-number">5.1.2. </span>Varianza<a class="headerlink" href="#varianza" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.2. </span>Varianza<a class="headerlink" href="#varianza" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -463,7 +462,7 @@ document.write(`
 </div>
 </section>
 <section id="promedio">
-<h3><span class="section-number">5.1.3. </span>Promedio<a class="headerlink" href="#promedio" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.3. </span>Promedio<a class="headerlink" href="#promedio" title="Permalink to this headline">#</a></h3>
 <p>Toma en cuenta lo que pasa con valores <code class="docutils literal notranslate"><span class="pre">nan</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -527,7 +526,7 @@ document.write(`
 </div>
 </section>
 <section id="la-moda">
-<h3><span class="section-number">5.1.4. </span>La moda<a class="headerlink" href="#la-moda" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.4. </span>La moda<a class="headerlink" href="#la-moda" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -556,7 +555,7 @@ document.write(`
 </div>
 </section>
 <section id="rango">
-<h3><span class="section-number">5.1.5. </span>Rango<a class="headerlink" href="#rango" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.5. </span>Rango<a class="headerlink" href="#rango" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># ptp: peak to peak</span>
@@ -578,7 +577,7 @@ document.write(`
 </div>
 </section>
 <section id="percentiles">
-<h3><span class="section-number">5.1.6. </span>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.1.6. </span>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -623,7 +622,7 @@ document.write(`
 </section>
 </section>
 <section id="distribuciones">
-<h2><span class="section-number">5.2. </span>Distribuciones<a class="headerlink" href="#distribuciones" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2. </span>Distribuciones<a class="headerlink" href="#distribuciones" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miFD</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -5526,10 +5525,10 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="test-sobre-una-y-dos-muestras">
-<h2><span class="section-number">5.3. </span>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3. </span>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Permalink to this headline">#</a></h2>
 <p>Se introducen dos funciones: <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> y <code class="docutils literal notranslate"><span class="pre">stats.wilcoxon</span></code> para el test t y el test de Wilcoxon respectivamente. Ambos pueden ser usados para una muestra o dos muestras así como para datos pareados. Note que el test de Wilcoxon para dos muestras es lo mismo que el test de Mann–Whitney.</p>
 <section id="el-test-t">
-<h3><span class="section-number">5.3.1. </span>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this headline">#</a></h3>
 <p>Este test se basa en el supuesto de normalidad de los datos. Es decir que los datos <span class="math notranslate nohighlight">\(x_1\ldots,x_n\)</span> se asumen como realizaciones independientes de variables aleatorias con media <span class="math notranslate nohighlight">\(\mu\)</span> y varianza <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\(N(\mu, \sigma^2)\)</span>. Se tiene que la hipótesis nula es que <span class="math notranslate nohighlight">\(\mu=\mu_0\)</span>.</p>
 <p>Se puede estimar los parámetros <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> por la media <span class="math notranslate nohighlight">\(\bar{x}\)</span> y la desviación estándar  <span class="math notranslate nohighlight">\(\sigma\)</span>, aunque recuerde que solo son estimaciones del valor real.</p>
 <p>Veamos un ejemplo del consuo diario de calorías de 11 mujeres:</p>
@@ -5600,7 +5599,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="wilcoxon">
-<h3><span class="section-number">5.3.2. </span>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">pVal</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">)</span><span class="o">-</span><span class="mi">7725</span><span class="p">))</span>
@@ -5624,7 +5623,7 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section id="test-t-para-dos-muestras">
-<h2><span class="section-number">5.4. </span>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.4. </span>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Permalink to this headline">#</a></h2>
 <p>Se usa esta prueba con la hipótesis nula de que dos muestras provengan de distribuciones normales con la misma media.</p>
 <p>Se puede tener dos enfoques, que las muestras tengan la misma varianza (enfoque clásico) o difieran en varianza.</p>
 <div class="cell docutils container">
@@ -5720,7 +5719,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </div>
 <section id="comparacion-de-varianzas">
-<h3><span class="section-number">5.4.1. </span>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Permalink to this headline">#</a></h3>
 <p>Aún cuando en <code class="docutils literal notranslate"><span class="pre">python</span></code> se puede hacer la prueba sobre dos muestras sin el supuesto de igualdad en las varianzas, podrías estar interesado en hacer una prueba exclusiva de este supuesto.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5742,7 +5741,7 @@ if (IPython.notebook.kernel !== null) {
 </div>
 </section>
 <section id="test-de-wilcoxon-para-dos-muestras">
-<h3><span class="section-number">5.4.2. </span>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.4.2. </span>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_statistic</span><span class="p">,</span> <span class="n">pVal</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span>
@@ -5765,10 +5764,10 @@ if (IPython.notebook.kernel !== null) {
 </section>
 </section>
 <section id="correlacion">
-<h2><span class="section-number">5.5. </span>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.5. </span>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this headline">#</a></h2>
 <p>Se aborda a continuación medidas de correlación paramétricas y no paramétricas. El coeficiente de correlación es una medida de asociación que varía entre -1 y 1.</p>
 <section id="correlacion-de-pearson">
-<h3><span class="section-number">5.5.1. </span>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.5.1. </span>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this headline">#</a></h3>
 <p>El coeficiente de correlación empírico es:</p>
 <div class="math notranslate nohighlight">
 \[ r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2\sum (y_i-\bar{y})^2}} \]</div>
@@ -7028,7 +7027,7 @@ if (IPython.notebook.kernel !== null) {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Gráficos básicos: matplotlib &amp; seaborn</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Gráficos básicos: matplotlib &amp; seaborn</p>
       </div>
     </a>
     <a class="right-next"
@@ -7036,7 +7035,7 @@ if (IPython.notebook.kernel !== null) {
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Regresión lineal</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Regresión lineal</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -7055,28 +7054,28 @@ if (IPython.notebook.kernel !== null) {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">5.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">5.1.1. Desviación estándar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">5.1.2. Varianza</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">5.1.3. Promedio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">5.1.4. La moda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">5.1.5. Rango</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">5.1.6. Percentiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">4.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.1. Desviación estándar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2. Varianza</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.3. Promedio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.4. La moda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.5. Rango</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">4.1.6. Percentiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">5.2. Distribuciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">5.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">5.3.1. El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">5.3.2. Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">4.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">4.3.1. El test t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">4.3.2. Wilcoxon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">5.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">5.4.1. Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">5.4.2. Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">4.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">4.4.1. Comparación de varianzas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">4.4.2. Test de Wilcoxon para dos muestras</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">5.5. Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">5.5.1. Correlación de Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">4.5. Correlación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">4.5.1. Correlación de Pearson</a></li>
 </ul>
 </li>
 </ul>
