@@ -1,0 +1,2559 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Regresión lineal &#8212; Técnicas de Machine Learning con Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Regresion';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modelos de Probabilidad" href="ProbModels.html" />
+    <link rel="prev" title="Estadística Descriptiva &amp; Pruebas de hipótesis" href="Descriptiva.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Machine Learning con Python
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regresión lineal</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">Evaluación de Modelos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">Aprendizaje no supervizado</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/vmoprojs/MLPython" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/vmoprojs/MLPython/issues/new?title=Issue%20on%20page%20%2FRegresion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Regresion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Regresión lineal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">Práctica: Paridad del poder de compra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">Práctica: Sueño</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">Transformaciones lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">Modelo reciproco</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">Modelo log-lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">Regresión a través del origen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">Predicción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">RLM: Educación con insumos</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
+<h1>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this headline">#</a></h1>
+<p>Abordemos las primeras ideas de regresión lineal a través de un ejemplo práctico:</p>
+<ul class="simple">
+<li><p>Creamos dos variables, Ingreso y Consumo Esperado</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">stm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.regressionplots</span> <span class="kn">import</span> <span class="n">abline_plot</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+    <span class="s1">&#39;Col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+    <span class="p">})</span>
+
+
+<span class="n">familia</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Y&#39;</span><span class="p">:[</span><span class="mi">55</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span>
+                        <span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span>
+                        <span class="mi">79</span><span class="p">,</span><span class="mi">84</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">94</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span>
+                        <span class="mi">80</span><span class="p">,</span><span class="mi">93</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span>
+                        <span class="mi">102</span><span class="p">,</span><span class="mi">107</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span><span class="mi">116</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span>
+                        <span class="mi">110</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span>
+                        <span class="mi">120</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span>
+                        <span class="mi">135</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">162</span><span class="p">,</span>
+                        <span class="mi">137</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">155</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">175</span><span class="p">,</span><span class="mi">189</span><span class="p">,</span>
+                        <span class="mi">150</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">175</span><span class="p">,</span><span class="mi">178</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">185</span><span class="p">,</span><span class="mi">191</span>
+                        <span class="p">],</span><span class="s1">&#39;X&#39;</span><span class="p">:[</span><span class="mi">80</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span>
+                   <span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span>
+                   <span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span>
+                   <span class="mi">140</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span>
+                   <span class="mi">160</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span>
+                   <span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span>
+                   <span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span>
+                   <span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">,</span>
+                   <span class="mi">240</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span>
+                   <span class="mi">260</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="mi">260</span><span class="p">,</span><span class="mi">260</span>
+                   <span class="p">]})</span>
+<span class="n">familia</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Y</th>
+      <th>X</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>55</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>60</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>65</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>70</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>75</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ingresos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">261</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ingresos</span>
+<span class="n">consumoEsperado</span> <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">77</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">125</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">161</span><span class="p">,</span><span class="mi">173</span><span class="p">]</span>
+<span class="n">consumoEsperado</span>
+
+
+<span class="n">familia</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Y&#39;, &#39;X&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> <span class="c1"># llama al dispositivo grafico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ingresos</span><span class="p">,</span><span class="n">consumoEsperado</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">familia</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">familia</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b4dffbfddcf2d8b20c788858d792526b4b2a6ecd9e5c2ca68bb5cbc61ccc153a.png" src="_images/b4dffbfddcf2d8b20c788858d792526b4b2a6ecd9e5c2ca68bb5cbc61ccc153a.png" />
+</div>
+</div>
+<p>¿Qué hemos hecho?</p>
+<div class="math notranslate nohighlight">
+\[ E(Y|X_i) = f(X_i)\]</div>
+<div class="math notranslate nohighlight">
+\[E(Y|X_i) = \beta_1+\beta_2X_i\]</div>
+<div class="math notranslate nohighlight">
+\[ u_i = Y_i - E(Y|X_i) \]</div>
+<div class="math notranslate nohighlight">
+\[ Y_i = E(Y|X_i) + u_i\]</div>
+<p>¿Qué significa que sea lineal?</p>
+<p>El término regresión lineal siempre significará una regresión lineal en los parámetros; los <span class="math notranslate nohighlight">\(\beta\)</span> (es decir, los parámetros) se elevan sólo a la primera potencia. Puede o no ser lineal en las variables explicativas <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Para evidenciar la factibilidad del uso de RL en este caso, vamos a obtener una muestra de la población:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nS</span> <span class="o">=</span> <span class="n">familia</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">nS</span><span class="p">)</span>
+<span class="n">indice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nS</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">indice</span> <span class="c1"># Creamos una variable indicadora para obtener una muestra</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+       34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+       51, 52, 53, 54, 55, 56, 57, 58, 59])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">8519</span><span class="p">)</span>
+<span class="n">muestra</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">indice</span><span class="p">),</span><span class="n">k</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> <span class="c1"># cambio de array a lista</span>
+<span class="n">muestra</span> <span class="c1"># samos sample para obtener una muestra sin reemplazo del tamaño indicado</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54, 59, 33, 25, 32, 39, 47, 51, 18, 3, 34, 12, 29, 7, 26, 5, 56, 50, 44, 13]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ingreso_muestra</span> <span class="o">=</span> <span class="n">familia</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">muestra</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+<span class="n">consumo_muestra</span> <span class="o">=</span> <span class="n">familia</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">muestra</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">consumo_muestra</span><span class="p">,</span><span class="n">ingreso_muestra</span><span class="p">)),</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;consumo_muestra&#39;</span><span class="p">,</span><span class="s1">&#39;ingreso_muestra&#39;</span><span class="p">])</span>
+<span class="n">ajuste_1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;consumo_muestra~ingreso_muestra&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ajuste_1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:        consumo_muestra   R-squared:                       0.909
+Model:                            OLS   Adj. R-squared:                  0.904
+Method:                 Least Squares   F-statistic:                     179.4
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           8.44e-11
+Time:                        20:56:33   Log-Likelihood:                -76.677
+No. Observations:                  20   AIC:                             157.4
+Df Residuals:                      18   BIC:                             159.3
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+Intercept          13.2650      8.817      1.504      0.150      -5.259      31.789
+ingreso_muestra     0.6226      0.046     13.394      0.000       0.525       0.720
+==============================================================================
+Omnibus:                        3.437   Durbin-Watson:                   2.369
+Prob(Omnibus):                  0.179   Jarque-Bera (JB):                2.288
+Skew:                          -0.828   Prob(JB):                        0.319
+Kurtosis:                       2.997   Cond. No.                         634.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ingreso_muestra</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">consumo_muestra</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ingreso_muestra</span><span class="p">,</span><span class="n">ajuste_1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pcapincome&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cellphone&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
+</pre></div>
+</div>
+<img alt="_images/8ccb1f2c95d9232b9df4e78bce4281752fc50ac5d8ac3edee79b5be3ee4053f8.png" src="_images/8ccb1f2c95d9232b9df4e78bce4281752fc50ac5d8ac3edee79b5be3ee4053f8.png" />
+</div>
+</div>
+<section id="regresion-paso-a-paso">
+<h2>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this headline">#</a></h2>
+<p>La función poblacional sería:</p>
+<div class="math notranslate nohighlight">
+\[
+Y_i = \beta_1 + \beta_2X_i+u_i
+\]</div>
+<p>Como no es observable, se usa la muestral</p>
+<div class="math notranslate nohighlight">
+\[
+Y_i=\hat{\beta}_1+\hat{\beta}_2X_i+\hat{u}_i
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Y_i=\hat{Y}_i+\hat{u}_i
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\hat{u}_i = Y_i-\hat{Y}_i
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\hat{u}_i = Y_i- \hat{\beta}_1-\hat{\beta}_2X_i
+\]</div>
+<p>Es por esto que los residuos se obtienen a través de los betas:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum\hat{u}_i^2 =\sum (Y_i- \hat{\beta}_1-\hat{\beta}_2X_i)^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sum\hat{u}_i^2 =f(\hat{\beta}_1,\hat{\beta}_2)
+\]</div>
+<p>Diferenciando se obtiene:</p>
+<div class="math notranslate nohighlight">
+\[
+ \hat{\beta}_2 = \frac{S_{xy}}{S_{xx}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+ \hat\beta_1 = \bar{Y} -  \hat\beta_2\bar{X}
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+S_{xx} = \sum_{i=1}^{n}x_i^2-n\bar{x}^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_{xy} = \sum_{i=1}^{n}x_i y_i-n\bar{x}\bar{y}
+\]</div>
+<p>Abrimos la <code class="docutils literal notranslate"><span class="pre">tabla3.2</span></code>, vamos a obtener:</p>
+<ul class="simple">
+<li><p>salario promedio por hora (Y) y</p></li>
+<li><p>los años de escolaridad (X).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">consumo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Tabla3_2.csv&#39;</span><span class="p">,</span>
+                      <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span><span class="n">decimal</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+
+<span class="n">consumo</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Y</th>
+      <th>X</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>70</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>65</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>90</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>95</td>
+      <td>140</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>110</td>
+      <td>160</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">media_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span>
+<span class="n">media_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">])</span>
+
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">consumo</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">sumcuad_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span>
+<span class="n">sum_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">])</span>
+
+<span class="n">beta_som</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum_xy</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="n">media_x</span><span class="o">*</span><span class="n">media_y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sumcuad_x</span><span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">media_x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">alpha_som</span> <span class="o">=</span> <span class="n">media_y</span><span class="o">-</span><span class="n">beta_som</span><span class="o">*</span><span class="n">media_x</span>
+<span class="p">(</span><span class="n">alpha_som</span><span class="p">,</span><span class="n">beta_som</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(24.454545454545467, 0.509090909090909)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verificamos lo anterior mediante:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Y~X&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">consumo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg_1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      Y   R-squared:                       0.962
+Model:                            OLS   Adj. R-squared:                  0.957
+Method:                 Least Squares   F-statistic:                     202.9
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           5.75e-07
+Time:                        20:56:34   Log-Likelihood:                -31.781
+No. Observations:                  10   AIC:                             67.56
+Df Residuals:                       8   BIC:                             68.17
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     24.4545      6.414      3.813      0.005       9.664      39.245
+X              0.5091      0.036     14.243      0.000       0.427       0.592
+==============================================================================
+Omnibus:                        1.060   Durbin-Watson:                   2.680
+Prob(Omnibus):                  0.589   Jarque-Bera (JB):                0.777
+Skew:                          -0.398   Prob(JB):                        0.678
+Kurtosis:                       1.891   Cond. No.                         561.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/stats.py:1541: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
+  warnings.warn(&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Veamos cómo queda nuestra estimación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_ajustado</span> <span class="o">=</span> <span class="n">alpha_som</span><span class="o">+</span><span class="n">beta_som</span><span class="o">*</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+
+<span class="n">dfAux</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">y_ajustado</span><span class="p">)),</span>
+                     <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;y_ajustado&#39;</span><span class="p">])</span>
+<span class="n">dfAux</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>y_ajustado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>80</td>
+      <td>65.181818</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>100</td>
+      <td>75.363636</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>120</td>
+      <td>85.545455</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>140</td>
+      <td>95.727273</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>160</td>
+      <td>105.909091</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180</td>
+      <td>116.090909</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>200</td>
+      <td>126.272727</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>220</td>
+      <td>136.454545</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>240</td>
+      <td>146.636364</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>260</td>
+      <td>156.818182</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">y_ajustado</span>
+
+
+<span class="n">dfAux</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">y_ajustado</span><span class="p">,</span><span class="n">e</span><span class="p">)),</span>
+                     <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;y_ajustado&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">])</span>
+
+<span class="n">dfAux</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>y_ajustado</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>80</td>
+      <td>70</td>
+      <td>65.181818</td>
+      <td>4.818182</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>100</td>
+      <td>65</td>
+      <td>75.363636</td>
+      <td>-10.363636</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>120</td>
+      <td>90</td>
+      <td>85.545455</td>
+      <td>4.454545</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>140</td>
+      <td>95</td>
+      <td>95.727273</td>
+      <td>-0.727273</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>160</td>
+      <td>110</td>
+      <td>105.909091</td>
+      <td>4.090909</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180</td>
+      <td>115</td>
+      <td>116.090909</td>
+      <td>-1.090909</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>200</td>
+      <td>120</td>
+      <td>126.272727</td>
+      <td>-6.272727</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>220</td>
+      <td>140</td>
+      <td>136.454545</td>
+      <td>3.545455</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>240</td>
+      <td>155</td>
+      <td>146.636364</td>
+      <td>8.363636</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>260</td>
+      <td>150</td>
+      <td>156.818182</td>
+      <td>-6.818182</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.00000000e+00, 1.13838806e-15],
+       [1.13838806e-15, 1.00000000e+00]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SCT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">consumo</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">media_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">SCE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_ajustado</span><span class="o">-</span><span class="n">media_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">SCR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">R_2</span> <span class="o">=</span> <span class="n">SCE</span><span class="o">/</span><span class="n">SCT</span>
+<span class="n">R_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9620615604867568
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reg_1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      Y   R-squared:                       0.962
+Model:                            OLS   Adj. R-squared:                  0.957
+Method:                 Least Squares   F-statistic:                     202.9
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           5.75e-07
+Time:                        20:56:34   Log-Likelihood:                -31.781
+No. Observations:                  10   AIC:                             67.56
+Df Residuals:                       8   BIC:                             68.17
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     24.4545      6.414      3.813      0.005       9.664      39.245
+X              0.5091      0.036     14.243      0.000       0.427       0.592
+==============================================================================
+Omnibus:                        1.060   Durbin-Watson:                   2.680
+Prob(Omnibus):                  0.589   Jarque-Bera (JB):                0.777
+Skew:                          -0.398   Prob(JB):                        0.678
+Kurtosis:                       1.891   Cond. No.                         561.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/stats.py:1541: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
+  warnings.warn(&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Otro ejemplo</p>
+<div class="math notranslate nohighlight">
+\[
+H_0:\beta_2=0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_1:\beta_2\neq 0
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/table2_8.csv&#39;</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;FOODEXP~TOTALEXP&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                FOODEXP   R-squared:                       0.370
+Model:                            OLS   Adj. R-squared:                  0.358
+Method:                 Least Squares   F-statistic:                     31.10
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           8.45e-07
+Time:                        20:56:34   Log-Likelihood:                -308.16
+No. Observations:                  55   AIC:                             620.3
+Df Residuals:                      53   BIC:                             624.3
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     94.2088     50.856      1.852      0.070      -7.796     196.214
+TOTALEXP       0.4368      0.078      5.577      0.000       0.280       0.594
+==============================================================================
+Omnibus:                        0.763   Durbin-Watson:                   2.083
+Prob(Omnibus):                  0.683   Jarque-Bera (JB):                0.258
+Skew:                           0.120   Prob(JB):                        0.879
+Kurtosis:                       3.234   Cond. No.                     3.66e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.66e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Regresamos el gasto total en el gasto en alimentos</p>
+<p>¿Son los coeficientes diferentes de cero?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+
+
+<span class="n">t_ho</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.4368</span><span class="o">-</span><span class="n">t_ho</span><span class="p">)</span><span class="o">/</span> <span class="mf">0.078</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">st</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="mi">53</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.8888077047438685e-07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_ho</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.4368</span><span class="o">-</span><span class="n">t_ho</span><span class="p">)</span><span class="o">/</span> <span class="mf">0.078</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">st</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t1</span><span class="p">),</span><span class="n">df</span> <span class="o">=</span> <span class="mi">53</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04261898819196597
+</pre></div>
+</div>
+</div>
+</div>
+<p>Interpretación de los coeficientes</p>
+<ul class="simple">
+<li><p>El coeficiente de la variable dependiente mide la tasa de cambio (derivada=pendiente) del modelo</p></li>
+<li><p>La interpretación suele ser <em>En promedio, el aumento de una unidad en la variable independiente produce un aumento/disminución de <span class="math notranslate nohighlight">\(\beta_i\)</span> cantidad en la variable dependiente</em></p></li>
+<li><p>Interprete la regresión anterior.</p></li>
+</ul>
+<section id="practica-paridad-del-poder-de-compra">
+<h3>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Tabla5_9.csv&quot;</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>COUNTRY</th>
+      <th>BMACLC</th>
+      <th>BMAC$</th>
+      <th>EXCH</th>
+      <th>PPP</th>
+      <th>LOCALC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>United States</td>
+      <td>2.54</td>
+      <td>2.54</td>
+      <td>-99999.00</td>
+      <td>-99999.00</td>
+      <td>-99999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Argentina</td>
+      <td>2.50</td>
+      <td>2.50</td>
+      <td>1.00</td>
+      <td>0.98</td>
+      <td>-40</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Australia</td>
+      <td>3.00</td>
+      <td>1.52</td>
+      <td>1.98</td>
+      <td>1.18</td>
+      <td>-35</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Brazil</td>
+      <td>3.60</td>
+      <td>1.64</td>
+      <td>2.19</td>
+      <td>1.42</td>
+      <td>-31</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Britain</td>
+      <td>1.99</td>
+      <td>2.85</td>
+      <td>1.43</td>
+      <td>1.28</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;EXCH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">EXCH</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span> <span class="o">-</span><span class="mi">99999</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">datos</span><span class="p">[</span><span class="s1">&#39;PPP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">PPP</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">datos</span><span class="p">[</span><span class="s1">&#39;LOCALC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">LOCALC</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span> <span class="o">-</span><span class="mi">99999</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+<span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>COUNTRY</th>
+      <th>BMACLC</th>
+      <th>BMAC$</th>
+      <th>EXCH</th>
+      <th>PPP</th>
+      <th>LOCALC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>United States</td>
+      <td>2.54</td>
+      <td>2.54</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Argentina</td>
+      <td>2.50</td>
+      <td>2.50</td>
+      <td>1.00</td>
+      <td>0.98</td>
+      <td>-40.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Australia</td>
+      <td>3.00</td>
+      <td>1.52</td>
+      <td>1.98</td>
+      <td>1.18</td>
+      <td>-35.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Brazil</td>
+      <td>3.60</td>
+      <td>1.64</td>
+      <td>2.19</td>
+      <td>1.42</td>
+      <td>-31.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Britain</td>
+      <td>1.99</td>
+      <td>2.85</td>
+      <td>1.43</td>
+      <td>1.28</td>
+      <td>12.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Regresamos la paridad del poder de compra en la tasa de cambio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;EXCH~PPP&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   EXCH   R-squared:                       0.987
+Model:                            OLS   Adj. R-squared:                  0.986
+Method:                 Least Squares   F-statistic:                     2066.
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           8.80e-28
+Time:                        20:56:34   Log-Likelihood:                -205.44
+No. Observations:                  30   AIC:                             414.9
+Df Residuals:                      28   BIC:                             417.7
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    -61.3889     44.987     -1.365      0.183    -153.541      30.763
+PPP            1.8153      0.040     45.450      0.000       1.733       1.897
+==============================================================================
+Omnibus:                       35.744   Durbin-Watson:                   2.062
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               94.065
+Skew:                          -2.585   Prob(JB):                     3.75e-21
+Kurtosis:                       9.966   Cond. No.                     1.18e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.18e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span><span class="n">reg1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span><span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa42d4dd9d0&gt;]
+</pre></div>
+</div>
+<img alt="_images/a68cc0f3f04b34e5fcb6ffd0a0e35d109b4ab590388629ae5a0d584ffd947a91.png" src="_images/a68cc0f3f04b34e5fcb6ffd0a0e35d109b4ab590388629ae5a0d584ffd947a91.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg3</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;np.log(EXCH)~np.log(PPP)&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg3</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           np.log(EXCH)   R-squared:                       0.983
+Model:                            OLS   Adj. R-squared:                  0.983
+Method:                 Least Squares   F-statistic:                     1655.
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           1.87e-26
+Time:                        20:56:34   Log-Likelihood:                -7.4056
+No. Observations:                  30   AIC:                             18.81
+Df Residuals:                      28   BIC:                             21.61
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P&gt;|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept       0.3436      0.086      3.990      0.000       0.167       0.520
+np.log(PPP)     1.0023      0.025     40.688      0.000       0.952       1.053
+==============================================================================
+Omnibus:                        2.829   Durbin-Watson:                   1.629
+Prob(Omnibus):                  0.243   Jarque-Bera (JB):                1.449
+Skew:                          -0.179   Prob(JB):                        0.485
+Kurtosis:                       1.985   Cond. No.                         5.38
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>La PPA sostiene que con una unidad de moneda debe ser posible comprar la misma canasta de bienes en todos los países.</p>
+</section>
+<section id="practica-sueno">
+<h3>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/sleep75.csv&quot;</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="s2">&quot;case&quot;</span><span class="p">,</span><span class="s2">&quot;clerical&quot;</span><span class="p">,</span><span class="s2">&quot;construc&quot;</span><span class="p">,</span><span class="s2">&quot;educ&quot;</span><span class="p">,</span><span class="s2">&quot;earns74&quot;</span><span class="p">,</span><span class="s2">&quot;gdhlth&quot;</span><span class="p">,</span><span class="s2">&quot;inlf&quot;</span><span class="p">,</span> <span class="s2">&quot;leis1&quot;</span><span class="p">,</span> <span class="s2">&quot;leis2&quot;</span><span class="p">,</span> <span class="s2">&quot;leis3&quot;</span><span class="p">,</span> <span class="s2">&quot;smsa&quot;</span><span class="p">,</span> <span class="s2">&quot;lhrwage&quot;</span><span class="p">,</span> <span class="s2">&quot;lothinc&quot;</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;marr&quot;</span><span class="p">,</span> <span class="s2">&quot;prot&quot;</span><span class="p">,</span> <span class="s2">&quot;rlxall&quot;</span><span class="p">,</span> <span class="s2">&quot;selfe&quot;</span><span class="p">,</span> <span class="s2">&quot;sleep&quot;</span><span class="p">,</span> <span class="s2">&quot;slpnaps&quot;</span><span class="p">,</span> <span class="s2">&quot;south&quot;</span><span class="p">,</span> <span class="s2">&quot;spsepay&quot;</span><span class="p">,</span> <span class="s2">&quot;spwrk75&quot;</span><span class="p">,</span> <span class="s2">&quot;totwrk&quot;</span> <span class="p">,</span> <span class="s2">&quot;union&quot;</span> <span class="p">,</span> <span class="s2">&quot;worknrm&quot;</span> <span class="p">,</span> <span class="s2">&quot;workscnd&quot;</span><span class="p">,</span> <span class="s2">&quot;exper&quot;</span> <span class="p">,</span> <span class="s2">&quot;yngkid&quot;</span><span class="p">,</span><span class="s2">&quot;yrsmarr&quot;</span><span class="p">,</span> <span class="s2">&quot;hrwage&quot;</span><span class="p">,</span> <span class="s2">&quot;agesq&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#totwrk: minutos trabajados por semana</span>
+<span class="c1"># sleep: minutos dormidos por semana</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;totwrk&#39;</span><span class="p">],</span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;sleep&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa42d6b9be0&gt;
+</pre></div>
+</div>
+<img alt="_images/cbb05ef1889bb8a2ec87060c3c1b19c734b84b4f75ec3749847ef161e57df2eb.png" src="_images/cbb05ef1889bb8a2ec87060c3c1b19c734b84b4f75ec3749847ef161e57df2eb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dormir</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;sleep~totwrk&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  sleep   R-squared:                       0.103
+Model:                            OLS   Adj. R-squared:                  0.102
+Method:                 Least Squares   F-statistic:                     81.09
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           1.99e-18
+Time:                        20:56:34   Log-Likelihood:                -5267.1
+No. Observations:                 706   AIC:                         1.054e+04
+Df Residuals:                     704   BIC:                         1.055e+04
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept   3586.3770     38.912     92.165      0.000    3509.979    3662.775
+totwrk        -0.1507      0.017     -9.005      0.000      -0.184      -0.118
+==============================================================================
+Omnibus:                       68.651   Durbin-Watson:                   1.955
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              192.044
+Skew:                          -0.483   Prob(JB):                     1.99e-42
+Kurtosis:                       5.365   Cond. No.                     5.71e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 5.71e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para acceder a elementos de la estimación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">bse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    38.912427
+totwrk        0.016740
+dtype: float64
+Intercept    3586.376952
+totwrk         -0.150746
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Intervalo de confianza para <span class="math notranslate nohighlight">\(\beta_2\)</span> y veamos los residuos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">bse</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="o">*</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">bse</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.18422633, -0.11726532])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dormir</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span><span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e57b666a38dc592eff19412d02ddc5a33dcfeee868c82d9460f5b81660483b63.png" src="_images/e57b666a38dc592eff19412d02ddc5a33dcfeee868c82d9460f5b81660483b63.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="transformaciones-lineales">
+<h2>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%2031_3.csv&quot;</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+<span class="n">reg_1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Cellphone~Pcapincome&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg_1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              Cellphone   R-squared:                       0.626
+Model:                            OLS   Adj. R-squared:                  0.615
+Method:                 Least Squares   F-statistic:                     53.67
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           2.50e-08
+Time:                        20:56:35   Log-Likelihood:                -148.94
+No. Observations:                  34   AIC:                             301.9
+Df Residuals:                      32   BIC:                             304.9
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     12.4795      6.109      2.043      0.049       0.037      24.922
+Pcapincome     0.0023      0.000      7.326      0.000       0.002       0.003
+==============================================================================
+Omnibus:                        1.398   Durbin-Watson:                   2.381
+Prob(Omnibus):                  0.497   Jarque-Bera (JB):                0.531
+Skew:                           0.225   Prob(JB):                        0.767
+Kurtosis:                       3.414   Cond. No.                     3.46e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.46e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">Pcapincome</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">Cellphone</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">Pcapincome</span><span class="p">,</span><span class="n">reg_1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pcapincome&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cellphone&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
+</pre></div>
+</div>
+<img alt="_images/314452f452992c291b85aaf5f22eaf3946fcc9a6e2748fb0e423dff5a56f3ce8.png" src="_images/314452f452992c291b85aaf5f22eaf3946fcc9a6e2748fb0e423dff5a56f3ce8.png" />
+</div>
+</div>
+<section id="modelo-reciproco">
+<h3>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/tabla_6_4.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CM</th>
+      <th>FLR</th>
+      <th>PGNP</th>
+      <th>TFR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>64.000000</td>
+      <td>64.000000</td>
+      <td>64.000000</td>
+      <td>64.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>141.500000</td>
+      <td>51.187500</td>
+      <td>1401.250000</td>
+      <td>5.549687</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>75.978067</td>
+      <td>26.007859</td>
+      <td>2725.695775</td>
+      <td>1.508993</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>12.000000</td>
+      <td>9.000000</td>
+      <td>120.000000</td>
+      <td>1.690000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>82.000000</td>
+      <td>29.000000</td>
+      <td>300.000000</td>
+      <td>4.607500</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>138.500000</td>
+      <td>48.000000</td>
+      <td>620.000000</td>
+      <td>6.040000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>192.500000</td>
+      <td>77.250000</td>
+      <td>1317.500000</td>
+      <td>6.615000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>312.000000</td>
+      <td>95.000000</td>
+      <td>19830.000000</td>
+      <td>8.490000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">PGNP</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">CM</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PGNP&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;CM&#39;)
+</pre></div>
+</div>
+<img alt="_images/c1df86fff4fad312a8c2c600fee2243568d40e2aee200cbd020244a32d8a9e17.png" src="_images/c1df86fff4fad312a8c2c600fee2243568d40e2aee200cbd020244a32d8a9e17.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;CM~PGNP&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                     CM   R-squared:                       0.166
+Model:                            OLS   Adj. R-squared:                  0.153
+Method:                 Least Squares   F-statistic:                     12.36
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           0.000826
+Time:                        20:56:35   Log-Likelihood:                -361.64
+No. Observations:                  64   AIC:                             727.3
+Df Residuals:                      62   BIC:                             731.6
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    157.4244      9.846     15.989      0.000     137.743     177.105
+PGNP          -0.0114      0.003     -3.516      0.001      -0.018      -0.005
+==============================================================================
+Omnibus:                        3.321   Durbin-Watson:                   1.931
+Prob(Omnibus):                  0.190   Jarque-Bera (JB):                2.545
+Skew:                           0.345   Prob(JB):                        0.280
+Kurtosis:                       2.309   Cond. No.                     3.43e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.43e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span><span class="p">[</span><span class="s1">&#39;RepPGNP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">datos</span><span class="o">.</span><span class="n">PGNP</span>
+
+<span class="n">reg2</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;CM~RepPGNP&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                     CM   R-squared:                       0.459
+Model:                            OLS   Adj. R-squared:                  0.450
+Method:                 Least Squares   F-statistic:                     52.61
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           7.82e-10
+Time:                        20:56:35   Log-Likelihood:                -347.79
+No. Observations:                  64   AIC:                             699.6
+Df Residuals:                      62   BIC:                             703.9
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     81.7944     10.832      7.551      0.000      60.141     103.447
+RepPGNP     2.727e+04   3759.999      7.254      0.000    1.98e+04    3.48e+04
+==============================================================================
+Omnibus:                        0.147   Durbin-Watson:                   1.959
+Prob(Omnibus):                  0.929   Jarque-Bera (JB):                0.334
+Skew:                           0.065   Prob(JB):                        0.846
+Kurtosis:                       2.671   Cond. No.                         534.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-log-lineal">
+<h3>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/ceosal2.csv&quot;</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;salary&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;college&quot;</span><span class="p">,</span> <span class="s2">&quot;grad&quot;</span><span class="p">,</span> <span class="s2">&quot;comten&quot;</span><span class="p">,</span> <span class="s2">&quot;ceoten&quot;</span><span class="p">,</span> <span class="s2">&quot;sales&quot;</span><span class="p">,</span> <span class="s2">&quot;profits&quot;</span><span class="p">,</span><span class="s2">&quot;mktval&quot;</span><span class="p">,</span> <span class="s2">&quot;lsalary&quot;</span><span class="p">,</span> <span class="s2">&quot;lsales&quot;</span><span class="p">,</span> <span class="s2">&quot;lmktval&quot;</span><span class="p">,</span> <span class="s2">&quot;comtensq&quot;</span><span class="p">,</span> <span class="s2">&quot;ceotensq&quot;</span><span class="p">,</span> <span class="s2">&quot;profmarg&quot;</span><span class="p">]</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+
+<span class="n">reg1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;lsalary~ceoten&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                lsalary   R-squared:                       0.013
+Model:                            OLS   Adj. R-squared:                  0.008
+Method:                 Least Squares   F-statistic:                     2.334
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):              0.128
+Time:                        20:56:35   Log-Likelihood:                -160.84
+No. Observations:                 177   AIC:                             325.7
+Df Residuals:                     175   BIC:                             332.0
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      6.5055      0.068     95.682      0.000       6.371       6.640
+ceoten         0.0097      0.006      1.528      0.128      -0.003       0.022
+==============================================================================
+Omnibus:                        3.858   Durbin-Watson:                   2.084
+Prob(Omnibus):                  0.145   Jarque-Bera (JB):                3.907
+Skew:                          -0.189   Prob(JB):                        0.142
+Kurtosis:                       3.622   Cond. No.                         16.1
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="regresion-a-traves-del-origen">
+<h3>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%206_1.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+
+<span class="n">lmod1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Y~ -1+X&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lmod1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:                      Y   R-squared (uncentered):                   0.502
+Model:                            OLS   Adj. R-squared (uncentered):              0.500
+Method:                 Least Squares   F-statistic:                              241.2
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):                    4.41e-38
+Time:                        20:56:35   Log-Likelihood:                         -751.30
+No. Observations:                 240   AIC:                                      1505.
+Df Residuals:                     239   BIC:                                      1508.
+Df Model:                           1                                                  
+Covariance Type:            nonrobust                                                  
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+X              1.1555      0.074     15.532      0.000       1.009       1.302
+==============================================================================
+Omnibus:                        9.576   Durbin-Watson:                   1.973
+Prob(Omnibus):                  0.008   Jarque-Bera (JB):               13.569
+Skew:                          -0.268   Prob(JB):                      0.00113
+Kurtosis:                       4.034   Cond. No.                         1.00
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="regresion-lineal-multiple">
+<h2>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/hprice1.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;price&quot;</span>   <span class="p">,</span>  <span class="s2">&quot;assess&quot;</span>  <span class="p">,</span> 
+                 <span class="s2">&quot;bdrms&quot;</span>  <span class="p">,</span>   <span class="s2">&quot;lotsize&quot;</span>  <span class="p">,</span>
+                 <span class="s2">&quot;sqrft&quot;</span>   <span class="p">,</span>  <span class="s2">&quot;colonial&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;lprice&quot;</span>  <span class="p">,</span>  <span class="s2">&quot;lassess&quot;</span> <span class="p">,</span>
+                 <span class="s2">&quot;llotsize&quot;</span> <span class="p">,</span> <span class="s2">&quot;lsqrft&quot;</span><span class="p">]</span>
+
+<span class="n">datos</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+      <th>assess</th>
+      <th>bdrms</th>
+      <th>lotsize</th>
+      <th>sqrft</th>
+      <th>colonial</th>
+      <th>lprice</th>
+      <th>lassess</th>
+      <th>llotsize</th>
+      <th>lsqrft</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+      <td>88.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>293.546034</td>
+      <td>315.736364</td>
+      <td>3.568182</td>
+      <td>9019.863636</td>
+      <td>2013.693182</td>
+      <td>0.693182</td>
+      <td>5.633180</td>
+      <td>5.717994</td>
+      <td>8.905105</td>
+      <td>7.572610</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>102.713445</td>
+      <td>95.314437</td>
+      <td>0.841393</td>
+      <td>10174.150414</td>
+      <td>577.191583</td>
+      <td>0.463816</td>
+      <td>0.303573</td>
+      <td>0.262113</td>
+      <td>0.544060</td>
+      <td>0.258688</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>111.000000</td>
+      <td>198.700000</td>
+      <td>2.000000</td>
+      <td>1000.000000</td>
+      <td>1171.000000</td>
+      <td>0.000000</td>
+      <td>4.709530</td>
+      <td>5.291796</td>
+      <td>6.907755</td>
+      <td>7.065613</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>230.000000</td>
+      <td>253.900000</td>
+      <td>3.000000</td>
+      <td>5732.750000</td>
+      <td>1660.500000</td>
+      <td>0.000000</td>
+      <td>5.438079</td>
+      <td>5.536940</td>
+      <td>8.653908</td>
+      <td>7.414873</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>265.500000</td>
+      <td>290.200000</td>
+      <td>3.000000</td>
+      <td>6430.000000</td>
+      <td>1845.000000</td>
+      <td>1.000000</td>
+      <td>5.581613</td>
+      <td>5.670566</td>
+      <td>8.768719</td>
+      <td>7.520231</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>326.250000</td>
+      <td>352.125000</td>
+      <td>4.000000</td>
+      <td>8583.250000</td>
+      <td>2227.000000</td>
+      <td>1.000000</td>
+      <td>5.787642</td>
+      <td>5.863982</td>
+      <td>9.057567</td>
+      <td>7.708266</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>725.000000</td>
+      <td>708.600000</td>
+      <td>7.000000</td>
+      <td>92681.000000</td>
+      <td>3880.000000</td>
+      <td>1.000000</td>
+      <td>6.586172</td>
+      <td>6.563291</td>
+      <td>11.436920</td>
+      <td>8.263591</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;lprice~lassess+llotsize+lsqrft+bdrms&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modelo1</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 lprice   R-squared:                       0.773
+Model:                            OLS   Adj. R-squared:                  0.762
+Method:                 Least Squares   F-statistic:                     70.58
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           6.45e-26
+Time:                        20:56:35   Log-Likelihood:                 45.750
+No. Observations:                  88   AIC:                            -81.50
+Df Residuals:                      83   BIC:                            -69.11
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      0.2637      0.570      0.463      0.645      -0.869       1.397
+lassess        1.0431      0.151      6.887      0.000       0.742       1.344
+llotsize       0.0074      0.039      0.193      0.848      -0.069       0.084
+lsqrft        -0.1032      0.138     -0.746      0.458      -0.379       0.172
+bdrms          0.0338      0.022      1.531      0.129      -0.010       0.078
+==============================================================================
+Omnibus:                       14.527   Durbin-Watson:                   2.048
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):               56.436
+Skew:                           0.118   Prob(JB):                     5.56e-13
+Kurtosis:                       6.916   Cond. No.                         501.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo2</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;lprice~llotsize+lsqrft+bdrms&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modelo2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 lprice   R-squared:                       0.643
+Model:                            OLS   Adj. R-squared:                  0.630
+Method:                 Least Squares   F-statistic:                     50.42
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           9.74e-19
+Time:                        20:56:35   Log-Likelihood:                 25.861
+No. Observations:                  88   AIC:                            -43.72
+Df Residuals:                      84   BIC:                            -33.81
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -1.2970      0.651     -1.992      0.050      -2.592      -0.002
+llotsize       0.1680      0.038      4.388      0.000       0.092       0.244
+lsqrft         0.7002      0.093      7.540      0.000       0.516       0.885
+bdrms          0.0370      0.028      1.342      0.183      -0.018       0.092
+==============================================================================
+Omnibus:                       12.060   Durbin-Watson:                   2.089
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):               34.890
+Skew:                          -0.188   Prob(JB):                     2.65e-08
+Kurtosis:                       6.062   Cond. No.                         410.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo3</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;lprice~bdrms&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modelo3</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 lprice   R-squared:                       0.215
+Model:                            OLS   Adj. R-squared:                  0.206
+Method:                 Least Squares   F-statistic:                     23.53
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           5.43e-06
+Time:                        20:56:35   Log-Likelihood:                -8.8147
+No. Observations:                  88   AIC:                             21.63
+Df Residuals:                      86   BIC:                             26.58
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      5.0365      0.126     39.862      0.000       4.785       5.288
+bdrms          0.1672      0.034      4.851      0.000       0.099       0.236
+==============================================================================
+Omnibus:                        7.476   Durbin-Watson:                   2.056
+Prob(Omnibus):                  0.024   Jarque-Bera (JB):               13.085
+Skew:                          -0.182   Prob(JB):                      0.00144
+Kurtosis:                       4.854   Cond. No.                         17.2
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;lprice&#39;</span><span class="p">,</span><span class="s1">&#39;llotsize&#39;</span> <span class="p">,</span> <span class="s1">&#39;lsqrft&#39;</span> <span class="p">,</span> <span class="s1">&#39;bdrms&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fa42e141d60&gt;
+</pre></div>
+</div>
+<img alt="_images/5df020c9beff1a274d6fc47136b2f3e30f984708550b3522851e3c3b8e2f164f.png" src="_images/5df020c9beff1a274d6fc47136b2f3e30f984708550b3522851e3c3b8e2f164f.png" />
+</div>
+</div>
+<section id="prediccion">
+<h3>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos_nuevos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;llotsize&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2100</span><span class="p">),</span><span class="s1">&#39;lsqrft&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8000</span><span class="p">),</span><span class="s1">&#39;bdrms&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">pred_vals</span> <span class="o">=</span> <span class="n">modelo2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+<span class="n">modelo2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">()</span><span class="o">.</span><span class="n">summary_frame</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>mean_se</th>
+      <th>mean_ci_lower</th>
+      <th>mean_ci_upper</th>
+      <th>obs_ci_lower</th>
+      <th>obs_ci_upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.776577</td>
+      <td>0.029185</td>
+      <td>5.718541</td>
+      <td>5.834614</td>
+      <td>5.404916</td>
+      <td>6.148239</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.707740</td>
+      <td>0.029306</td>
+      <td>5.649463</td>
+      <td>5.766018</td>
+      <td>5.336041</td>
+      <td>6.079440</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.310543</td>
+      <td>0.033384</td>
+      <td>5.244156</td>
+      <td>5.376930</td>
+      <td>4.937486</td>
+      <td>5.683600</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.326681</td>
+      <td>0.031818</td>
+      <td>5.263407</td>
+      <td>5.389955</td>
+      <td>4.954165</td>
+      <td>5.699197</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.797220</td>
+      <td>0.031014</td>
+      <td>5.735544</td>
+      <td>5.858895</td>
+      <td>5.424972</td>
+      <td>6.169467</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_vals</span> <span class="o">=</span> <span class="n">modelo2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">datos_nuevos</span><span class="p">)</span>
+<span class="n">pred_vals</span><span class="o">.</span><span class="n">summary_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>mean_se</th>
+      <th>mean_ci_lower</th>
+      <th>mean_ci_upper</th>
+      <th>obs_ci_lower</th>
+      <th>obs_ci_upper</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.428811</td>
+      <td>0.147975</td>
+      <td>6.134546</td>
+      <td>6.723076</td>
+      <td>5.958326</td>
+      <td>6.899296</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="rlm-educacion-con-insumos">
+<h3>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/gpa1.csv&quot;</span>
+<span class="n">datosgpa</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">datosgpa</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span>  <span class="s2">&quot;soph&quot;</span><span class="p">,</span>  <span class="s2">&quot;junior&quot;</span><span class="p">,</span>    <span class="s2">&quot;senior&quot;</span><span class="p">,</span>    <span class="s2">&quot;senior5&quot;</span><span class="p">,</span>  <span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="s2">&quot;campus&quot;</span><span class="p">,</span>   <span class="s2">&quot;business&quot;</span><span class="p">,</span> <span class="s2">&quot;engineer&quot;</span><span class="p">,</span> <span class="s2">&quot;colGPA&quot;</span><span class="p">,</span>   <span class="s2">&quot;hsGPA&quot;</span><span class="p">,</span>    <span class="s2">&quot;ACT&quot;</span><span class="p">,</span>  <span class="s2">&quot;job19&quot;</span><span class="p">,</span>    <span class="s2">&quot;job20&quot;</span><span class="p">,</span>    <span class="s2">&quot;drive&quot;</span><span class="p">,</span>    <span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;walk&quot;</span><span class="p">,</span> <span class="s2">&quot;voluntr&quot;</span><span class="p">,</span>  <span class="s2">&quot;PC&quot;</span><span class="p">,</span>   <span class="s2">&quot;greek&quot;</span><span class="p">,</span>    <span class="s2">&quot;car&quot;</span><span class="p">,</span>  <span class="s2">&quot;siblings&quot;</span><span class="p">,</span> <span class="s2">&quot;bgfriend&quot;</span><span class="p">,</span> <span class="s2">&quot;clubs&quot;</span><span class="p">,</span>    <span class="s2">&quot;skipped&quot;</span><span class="p">,</span>  <span class="s2">&quot;alcohol&quot;</span><span class="p">,</span>  <span class="s2">&quot;gradMI&quot;</span><span class="p">,</span>   <span class="s2">&quot;fathcoll&quot;</span><span class="p">,</span> <span class="s2">&quot;mothcoll&quot;</span><span class="p">]</span>
+
+<span class="n">reg4</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;colGPA ~ PC&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">datosgpa</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg4</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 colGPA   R-squared:                       0.050
+Model:                            OLS   Adj. R-squared:                  0.043
+Method:                 Least Squares   F-statistic:                     7.314
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):            0.00770
+Time:                        20:56:38   Log-Likelihood:                -56.641
+No. Observations:                 141   AIC:                             117.3
+Df Residuals:                     139   BIC:                             123.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      2.9894      0.040     75.678      0.000       2.911       3.068
+PC             0.1695      0.063      2.704      0.008       0.046       0.293
+==============================================================================
+Omnibus:                        2.136   Durbin-Watson:                   1.941
+Prob(Omnibus):                  0.344   Jarque-Bera (JB):                1.852
+Skew:                           0.160   Prob(JB):                        0.396
+Kurtosis:                       2.539   Cond. No.                         2.45
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg5</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;colGPA ~ PC + hsGPA + ACT&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">datosgpa</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reg5</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 colGPA   R-squared:                       0.219
+Model:                            OLS   Adj. R-squared:                  0.202
+Method:                 Least Squares   F-statistic:                     12.83
+Date:                Fri, 23 Jun 2023   Prob (F-statistic):           1.93e-07
+Time:                        20:56:38   Log-Likelihood:                -42.796
+No. Observations:                 141   AIC:                             93.59
+Df Residuals:                     137   BIC:                             105.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.2635      0.333      3.793      0.000       0.605       1.922
+PC             0.1573      0.057      2.746      0.007       0.044       0.271
+hsGPA          0.4472      0.094      4.776      0.000       0.262       0.632
+ACT            0.0087      0.011      0.822      0.413      -0.012       0.029
+==============================================================================
+Omnibus:                        2.770   Durbin-Watson:                   1.870
+Prob(Omnibus):                  0.250   Jarque-Bera (JB):                1.863
+Skew:                           0.016   Prob(JB):                        0.394
+Kurtosis:                       2.438   Cond. No.                         298.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Descriptiva.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estadística Descriptiva &amp; Pruebas de hipótesis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ProbModels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modelos de Probabilidad</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">Práctica: Paridad del poder de compra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">Práctica: Sueño</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">Transformaciones lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">Modelo reciproco</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">Modelo log-lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">Regresión a través del origen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">Predicción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">RLM: Educación con insumos</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Víctor Morales Oñate
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

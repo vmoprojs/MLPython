@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>21. Support Vector Machines &#8212; Técnicas de Machine Learning con Python</title>
+    <title>Support Vector Machines &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'SVM';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="22. Redes Neuronales" href="RedesNeuronales.html" />
-    <link rel="prev" title="20. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
+    <link rel="next" title="Redes Neuronales" href="RedesNeuronales.html" />
+    <link rel="prev" title="Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -157,39 +157,29 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="DescriptivaRegresion.html">16. Estadística Descriptiva</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">Regresión lineal</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">18. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">19. Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">20. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">21. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">22. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">23. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">24. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -383,16 +373,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">21.1. SVM Lineal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">21.1.1. Clasificador SVM lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">21.1.2. Clasificador SVM lineal: parámetro C</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">21.1.3. Aplicación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">SVM Lineal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">Clasificador SVM lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">Clasificador SVM lineal: parámetro C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">Aplicación</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">21.2. SVM con Kernels</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">21.2.1. SVM: el parámetros gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">21.2.2. SVM: escenarios para C y gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">21.2.3. Aplicación (datos no normalizados)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">SVM con Kernels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">SVM: el parámetros gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">SVM: escenarios para C y gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">Aplicación (datos no normalizados)</a></li>
 </ul>
 </li>
 </ul>
@@ -407,9 +397,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="support-vector-machines">
-<h1><span class="section-number">21. </span>Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">#</a></h1>
+<h1>Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">#</a></h1>
 <section id="svm-lineal">
-<h2><span class="section-number">21.1. </span>SVM Lineal<a class="headerlink" href="#svm-lineal" title="Permalink to this headline">#</a></h2>
+<h2>SVM Lineal<a class="headerlink" href="#svm-lineal" title="Permalink to this headline">#</a></h2>
 <p>Generamos los datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -436,7 +426,7 @@ document.write(`
 </div>
 </div>
 <section id="clasificador-svm-lineal">
-<h3><span class="section-number">21.1.1. </span>Clasificador SVM lineal<a class="headerlink" href="#clasificador-svm-lineal" title="Permalink to this headline">#</a></h3>
+<h3>Clasificador SVM lineal<a class="headerlink" href="#clasificador-svm-lineal" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -459,7 +449,7 @@ document.write(`
 </div>
 </section>
 <section id="clasificador-svm-lineal-parametro-c">
-<h3><span class="section-number">21.1.2. </span>Clasificador SVM lineal: parámetro C<a class="headerlink" href="#clasificador-svm-lineal-parametro-c" title="Permalink to this headline">#</a></h3>
+<h3>Clasificador SVM lineal: parámetro C<a class="headerlink" href="#clasificador-svm-lineal-parametro-c" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
@@ -482,12 +472,12 @@ document.write(`
   warnings.warn(
 </pre></div>
 </div>
-<img alt="_images/10505bacd88a4cf2457c8610641b9579c382825e80c36aecb59b83d0371273bb.png" src="_images/10505bacd88a4cf2457c8610641b9579c382825e80c36aecb59b83d0371273bb.png" />
+<img alt="_images/a804581770c340c3f28c4f9ef29acc708da7373b6f3d6572bf47622958e2b9b6.png" src="_images/a804581770c340c3f28c4f9ef29acc708da7373b6f3d6572bf47622958e2b9b6.png" />
 </div>
 </div>
 </section>
 <section id="aplicacion">
-<h3><span class="section-number">21.1.3. </span>Aplicación<a class="headerlink" href="#aplicacion" title="Permalink to this headline">#</a></h3>
+<h3>Aplicación<a class="headerlink" href="#aplicacion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
@@ -509,13 +499,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datos de cáncer de mama
-Precisión de SVM lineal en el conjunto de entrenamiento: 0.91
-Precisión de SVM lineal en el conjunto de prueba: 0.95
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:1206: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
   warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datos de cáncer de mama
+Precisión de SVM lineal en el conjunto de entrenamiento: 0.66
+Precisión de SVM lineal en el conjunto de prueba: 0.70
 </pre></div>
 </div>
 </div>
@@ -523,7 +513,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </section>
 </section>
 <section id="svm-con-kernels">
-<h2><span class="section-number">21.2. </span>SVM con Kernels<a class="headerlink" href="#svm-con-kernels" title="Permalink to this headline">#</a></h2>
+<h2>SVM con Kernels<a class="headerlink" href="#svm-con-kernels" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conjunto de datos no separable</span>
@@ -559,7 +549,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </div>
 </div>
 <section id="svm-el-parametros-gamma">
-<h3><span class="section-number">21.2.1. </span>SVM: el parámetros gamma<a class="headerlink" href="#svm-el-parametros-gamma" title="Permalink to this headline">#</a></h3>
+<h3>SVM: el parámetros gamma<a class="headerlink" href="#svm-el-parametros-gamma" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_class_regions_for_classifier</span>
@@ -582,7 +572,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </div>
 </section>
 <section id="svm-escenarios-para-c-y-gamma">
-<h3><span class="section-number">21.2.2. </span>SVM: escenarios para C y gamma<a class="headerlink" href="#svm-escenarios-para-c-y-gamma" title="Permalink to this headline">#</a></h3>
+<h3>SVM: escenarios para C y gamma<a class="headerlink" href="#svm-escenarios-para-c-y-gamma" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -619,47 +609,51 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 <span class="g g-Whitespace">     </span><span class="mi">18</span>                                          <span class="n">subplot</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
-<span class="nn">File ~/Documents/Consultorias&amp;Cursos/CURSOS/Cooking/MLPython/pyML/shared_utilities.py:107,</span> in <span class="ni">plot_class_regions_for_classifier_subplot</span><span class="nt">(clf, X, y, X_test, y_test, title, subplot, target_names, plot_decision_regions)</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">x_max</span><span class="o">+</span><span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">y_max</span><span class="o">+</span><span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">107</span> <span class="n">P</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">y2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="nn">File ~/Documents/Consultorias&amp;Cursos/CURSOS/Cooking/MLPython/pyML/shared_utilities.py:111,</span> in <span class="ni">plot_class_regions_for_classifier_subplot</span><span class="nt">(clf, X, y, X_test, y_test, title, subplot, target_names, plot_decision_regions)</span>
 <span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">if</span> <span class="n">plot_decision_regions</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">111</span>     <span class="n">subplot</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_light</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="n">subplot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_bold</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">plot_symbol_size</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="n">subplot</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_min</span> <span class="o">-</span> <span class="n">x_plot_adjust</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">+</span> <span class="n">x_plot_adjust</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:791,</span> in <span class="ni">BaseSVC.predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">791</span>     <span class="n">y</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">))</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/__init__.py:1412,</span> in <span class="ni">_preprocess_data.&lt;locals&gt;.inner</span><span class="nt">(ax, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1409</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1410</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1411</span>     <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1412</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">sanitize_sequence</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1414</span>     <span class="n">bound</span> <span class="o">=</span> <span class="n">new_sig</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1415</span>     <span class="n">auto_label</span> <span class="o">=</span> <span class="p">(</span><span class="n">bound</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1416</span>                   <span class="ow">or</span> <span class="n">bound</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label_namer</span><span class="p">))</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:416,</span> in <span class="ni">BaseLibSVM.predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_for_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span> <span class="n">predict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sparse_predict</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sparse</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_predict</span>
-<span class="ne">--&gt; </span><span class="mi">416</span> <span class="k">return</span> <span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:6317,</span> in <span class="ni">Axes.contourf</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6308</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">6309</span><span class="sd"> Plot filled contours.</span>
+<span class="g g-Whitespace">   </span><span class="mi">6310</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6314</span><span class="sd"> %(contour_doc)s</span>
+<span class="g g-Whitespace">   </span><span class="mi">6315</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">6316</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;filled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">-&gt; </span><span class="mi">6317</span> <span class="n">contours</span> <span class="o">=</span> <span class="n">mcontour</span><span class="o">.</span><span class="n">QuadContourSet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6318</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request_autoscale_view</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">6319</span> <span class="k">return</span> <span class="n">contours</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:435,</span> in <span class="ni">BaseLibSVM._dense_predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">427</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">428</span>             <span class="s2">&quot;X.shape[1] = </span><span class="si">%d</span><span class="s2"> should be equal to </span><span class="si">%d</span><span class="s2">, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">429</span>             <span class="s2">&quot;the number of samples at training time&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">430</span>             <span class="o">%</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_fit_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="n">svm_type</span> <span class="o">=</span> <span class="n">LIBSVM_IMPL</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">435</span> <span class="k">return</span> <span class="n">libsvm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">437</span>     <span class="bp">self</span><span class="o">.</span><span class="n">support_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="bp">self</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_n_support</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">440</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_dual_coef_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_intercept_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">442</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_probA</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_probB</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span>     <span class="n">svm_type</span><span class="o">=</span><span class="n">svm_type</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span>     <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span>     <span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="n">coef0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coef0</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span>     <span class="n">gamma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span>     <span class="n">cache_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_size</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="p">)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/contour.py:866,</span> in <span class="ni">ContourSet.__init__</span><span class="nt">(self, ax, levels, filled, linewidths, linestyles, hatches, alpha, origin, extent, cmap, colors, norm, vmin, vmax, extend, antialiased, nchunk, locator, transform, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_colors</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;allsegs&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">866</span>     <span class="bp">self</span><span class="o">.</span><span class="n">allsegs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">allkinds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_allsegs_and_allkinds</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">allkinds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span>     <span class="c1"># allsegs specified in constructor may or may not have allkinds as</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># well.  Must ensure allkinds can be zipped below.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="bp">self</span><span class="o">.</span><span class="n">allkinds</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">allsegs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/contour.py:1052,</span> in <span class="ni">ContourSet._get_allsegs_and_allkinds</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span> <span class="n">lowers</span><span class="p">,</span> <span class="n">uppers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lowers_and_uppers</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">level_upper</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lowers</span><span class="p">,</span> <span class="n">uppers</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>     <span class="n">vertices</span><span class="p">,</span> <span class="n">kinds</span> <span class="o">=</span> \
+<span class="ne">-&gt; </span><span class="mi">1052</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_contour_generator</span><span class="o">.</span><span class="n">create_filled_contour</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>             <span class="n">level</span><span class="p">,</span> <span class="n">level_upper</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span>     <span class="n">allsegs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertices</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span>     <span class="n">allkinds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kinds</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -669,7 +663,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.95
 </div>
 </section>
 <section id="aplicacion-datos-no-normalizados">
-<h3><span class="section-number">21.2.3. </span>Aplicación (datos no normalizados)<a class="headerlink" href="#aplicacion-datos-no-normalizados" title="Permalink to this headline">#</a></h3>
+<h3>Aplicación (datos no normalizados)<a class="headerlink" href="#aplicacion-datos-no-normalizados" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -731,7 +725,7 @@ Precisión de SVM con kernel RBF en los datos de prueba: 0.94
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>Aprendizaje Supervisado</p>
+        <p class="prev-next-title">Aprendizaje Supervisado</p>
       </div>
     </a>
     <a class="right-next"
@@ -739,7 +733,7 @@ Precisión de SVM con kernel RBF en los datos de prueba: 0.94
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>Redes Neuronales</p>
+        <p class="prev-next-title">Redes Neuronales</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -758,16 +752,16 @@ Precisión de SVM con kernel RBF en los datos de prueba: 0.94
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">21.1. SVM Lineal</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">21.1.1. Clasificador SVM lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">21.1.2. Clasificador SVM lineal: parámetro C</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">21.1.3. Aplicación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-lineal">SVM Lineal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal">Clasificador SVM lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificador-svm-lineal-parametro-c">Clasificador SVM lineal: parámetro C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion">Aplicación</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">21.2. SVM con Kernels</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">21.2.1. SVM: el parámetros gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">21.2.2. SVM: escenarios para C y gamma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">21.2.3. Aplicación (datos no normalizados)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-con-kernels">SVM con Kernels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-el-parametros-gamma">SVM: el parámetros gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-escenarios-para-c-y-gamma">SVM: escenarios para C y gamma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-datos-no-normalizados">Aplicación (datos no normalizados)</a></li>
 </ul>
 </li>
 </ul>
