@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Análisis de Componentes Principales &#8212; Técnicas de Machine Learning con Python</title>
+    <title>9. Análisis de Componentes Principales &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ACP';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
-    <link rel="prev" title="Modelos de Probabilidad" href="ProbModels.html" />
+    <link rel="next" title="10. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
+    <link rel="prev" title="8. Modelos de Probabilidad" href="ProbModels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -159,29 +159,29 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">Regresión lineal</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">6. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">7. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Análisis de Componentes Principales</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">Modelos de Probabilidad</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">Evaluación de Modelos</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">10. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">14. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -375,9 +375,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento1">Planteamiento</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion">Notación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-primer-componente">Cálculo del primer componente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento1">9.1. Planteamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion">9.1.1. Notación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-primer-componente">9.1.2. Cálculo del primer componente</a></li>
 </ul>
 </li>
 </ul>
@@ -392,15 +392,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analisis-de-componentes-principales">
-<h1>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9. </span>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this headline">#</a></h1>
 <section id="planteamiento1">
-<h2>Planteamiento<a class="footnote-reference brackets" href="#id2" id="id1">1</a><a class="headerlink" href="#planteamiento1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.1. </span>Planteamiento<a class="footnote-reference brackets" href="#id2" id="id1">1</a><a class="headerlink" href="#planteamiento1" title="Permalink to this headline">#</a></h2>
 <p>Se aplica a tablas de datos donde las filas son considerados como individuos y las columnas como datos cuantitativos.</p>
 <p>Más formalmente, se dispone de los valores de <span class="math notranslate nohighlight">\(p\)</span> variables y <span class="math notranslate nohighlight">\(n\)</span> elementos dispuestos en una matriz <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> de dimensión <span class="math notranslate nohighlight">\(n\times p\)</span>.</p>
 <p>Siempre (casi) se usa la matriz centrada y/o estandarizada, los paquetes suelen hacer este trabajo por nosostros. Supongamos que  <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> ha sido centrada, su matriz de varianza covarianza viene dada por  <span class="math notranslate nohighlight">\(\frac{1}{n}\mathbf{X'X}\)</span>.</p>
 <p>¿Cómo encontrar un espacio de dimensión más reducida que represente adeucadamente los datos?</p>
 <section id="notacion">
-<h3>Notación<a class="headerlink" href="#notacion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.1. </span>Notación<a class="headerlink" href="#notacion" title="Permalink to this headline">#</a></h3>
 <p>Se desea encontrar un subespacio de dimensión menor que <span class="math notranslate nohighlight">\(p\)</span> tal que al proyectar sobre él los puntos conserven su estructura con la menor distorsión posible.</p>
 <p>Consideremos primero un subespacio de dimensión uno (una recta) obtenida por un conjunto de <span class="math notranslate nohighlight">\(p=2\)</span> variables.</p>
 <p>La siguiente figura indica el diagrama de dispersión y una recta que, intuitivamente, proporciona un buen resumen de los datos, ya que las proyecciones de los puntos sobre ella indican aproximadamente la situación de los puntos en el plano.</p>
@@ -430,7 +430,7 @@ min\sum_{i = 1}^{n} r^2_i = \sum_{i = 1}^{n} |\mathbf{x_i}-z_i\mathbf{a_1}|^2
 <p><em>¿Cómo es eso posible?</em></p>
 </section>
 <section id="calculo-del-primer-componente">
-<h3>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">9.1.2. </span>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this headline">#</a></h3>
 <p>El primer componente principal será la combinación lineal de las variables originales que tenga varianza máxima. Los valores de este primer componente en los <span class="math notranslate nohighlight">\(n\)</span> individuos se representarán por un vector <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span>, dado por</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1294,7 +1294,7 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modelos de Probabilidad</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Modelos de Probabilidad</p>
       </div>
     </a>
     <a class="right-next"
@@ -1302,7 +1302,7 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Aprendizaje Supervisado</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Aprendizaje Supervisado</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1321,9 +1321,9 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento1">Planteamiento</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion">Notación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-primer-componente">Cálculo del primer componente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento1">9.1. Planteamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notacion">9.1.1. Notación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-del-primer-componente">9.1.2. Cálculo del primer componente</a></li>
 </ul>
 </li>
 </ul>

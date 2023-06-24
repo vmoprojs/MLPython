@@ -5,26 +5,26 @@ format: jb-book
 root: intro
 parts:
 - caption: Parte 1
-  numbered: false
+  numbered: true
   chapters:
   - file: IntroduccionPython
   - file: Pandas
   - file: Visualizacion
 - caption: Parte 2
-  numbered: false
+  numbered: true
   chapters:
   - file: Descriptiva
   - file: Regresion
-- caption: Parte 3
-  numbered: false
-  chapters:
   - file: ProbModels
   - file: ACP
+- caption: Parte 3
+  numbered: true
+  chapters:
   - file: AprendizajeSupervisado
   - file: SVM
   - file: RedesNeuronales
   - file: Evaluacion
 - caption: Parte 4
-  numbered: false
+  numbered: true
   chapters:
   - file: NoSupervizado

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Regresión lineal &#8212; Técnicas de Machine Learning con Python</title>
+    <title>7. Regresión lineal &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Regresion';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Modelos de Probabilidad" href="ProbModels.html" />
-    <link rel="prev" title="Estadística Descriptiva &amp; Pruebas de hipótesis" href="Descriptiva.html" />
+    <link rel="next" title="8. Modelos de Probabilidad" href="ProbModels.html" />
+    <link rel="prev" title="6. Estadística Descriptiva &amp; Pruebas de hipótesis" href="Descriptiva.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -159,29 +159,29 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">Python, una introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Pandas.html">Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pandas.html">3. Pandas</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">Gráficos básicos: matplotlib &amp; seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">5. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">6. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">9. Análisis de Componentes Principales</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">10. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">14. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -375,20 +375,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">Práctica: Paridad del poder de compra</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">Práctica: Sueño</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">7.1. Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">7.1.1. Práctica: Paridad del poder de compra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">7.1.2. Práctica: Sueño</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">Transformaciones lineales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">Modelo reciproco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">Modelo log-lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">Regresión a través del origen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">7.2. Transformaciones lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">7.2.1. Modelo reciproco</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">7.2.2. Modelo log-lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">7.2.3. Regresión a través del origen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">Predicción</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">RLM: Educación con insumos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">7.3. Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">7.3.1. Predicción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">7.3.2. RLM: Educación con insumos</a></li>
 </ul>
 </li>
 </ul>
@@ -403,7 +403,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
-<h1>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this headline">#</a></h1>
 <p>Abordemos las primeras ideas de regresión lineal a través de un ejemplo práctico:</p>
 <ul class="simple">
 <li><p>Creamos dos variables, Ingreso y Consumo Esperado</p></li>
@@ -642,7 +642,7 @@ Notes:
 </div>
 </div>
 <section id="regresion-paso-a-paso">
-<h2>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.1. </span>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this headline">#</a></h2>
 <p>La función poblacional sería:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1190,7 +1190,7 @@ strong multicollinearity or other numerical problems.
 <li><p>Interprete la regresión anterior.</p></li>
 </ul>
 <section id="practica-paridad-del-poder-de-compra">
-<h3>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.1.1. </span>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Tabla5_9.csv&quot;</span>
@@ -1458,7 +1458,7 @@ Notes:
 <p>La PPA sostiene que con una unidad de moneda debe ser posible comprar la misma canasta de bienes en todos los países.</p>
 </section>
 <section id="practica-sueno">
-<h3>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.1.2. </span>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/sleep75.csv&quot;</span>
@@ -1571,7 +1571,7 @@ dtype: float64
 </section>
 </section>
 <section id="transformaciones-lineales">
-<h2>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2. </span>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%2031_3.csv&quot;</span>
@@ -1633,7 +1633,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 <section id="modelo-reciproco">
-<h3>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.1. </span>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/tabla_6_4.csv&quot;</span>
@@ -1824,7 +1824,7 @@ Notes:
 </div>
 </section>
 <section id="modelo-log-lineal">
-<h3>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.2. </span>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/ceosal2.csv&quot;</span>
@@ -1871,7 +1871,7 @@ Notes:
 </div>
 </section>
 <section id="regresion-a-traves-del-origen">
-<h3>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.3. </span>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%206_1.csv&quot;</span>
@@ -1917,7 +1917,7 @@ Notes:
 </section>
 </section>
 <section id="regresion-lineal-multiple">
-<h2>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.3. </span>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/hprice1.csv&quot;</span>
@@ -2204,7 +2204,7 @@ Notes:
 </div>
 </div>
 <section id="prediccion">
-<h3>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos_nuevos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;llotsize&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2100</span><span class="p">),</span><span class="s1">&#39;lsqrft&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8000</span><span class="p">),</span><span class="s1">&#39;bdrms&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -2341,7 +2341,7 @@ Notes:
 </div>
 </section>
 <section id="rlm-educacion-con-insumos">
-<h3>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/gpa1.csv&quot;</span>
@@ -2460,7 +2460,7 @@ Notes:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Estadística Descriptiva &amp; Pruebas de hipótesis</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Estadística Descriptiva &amp; Pruebas de hipótesis</p>
       </div>
     </a>
     <a class="right-next"
@@ -2468,7 +2468,7 @@ Notes:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modelos de Probabilidad</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Modelos de Probabilidad</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2487,20 +2487,20 @@ Notes:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">Práctica: Paridad del poder de compra</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">Práctica: Sueño</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-paso-a-paso">7.1. Regresión: Paso a paso</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-paridad-del-poder-de-compra">7.1.1. Práctica: Paridad del poder de compra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practica-sueno">7.1.2. Práctica: Sueño</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">Transformaciones lineales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">Modelo reciproco</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">Modelo log-lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">Regresión a través del origen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-lineales">7.2. Transformaciones lineales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-reciproco">7.2.1. Modelo reciproco</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-log-lineal">7.2.2. Modelo log-lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-a-traves-del-origen">7.2.3. Regresión a través del origen</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">Predicción</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">RLM: Educación con insumos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-multiple">7.3. Regresión Lineal Múltiple</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">7.3.1. Predicción</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rlm-educacion-con-insumos">7.3.2. RLM: Educación con insumos</a></li>
 </ul>
 </li>
 </ul>
