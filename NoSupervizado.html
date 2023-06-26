@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>12. Aprendizaje no supervizado &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="11. Evaluación de Modelos" href="Evaluacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -385,7 +386,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-no-supervizado">
-<h1><span class="section-number">12. </span>Aprendizaje no supervizado<a class="headerlink" href="#aprendizaje-no-supervizado" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">12. </span>Aprendizaje no supervizado<a class="headerlink" href="#aprendizaje-no-supervizado" title="Permalink to this heading">#</a></h1>
 <p><strong>Preámbulo y datos</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -410,7 +411,7 @@ document.write(`
 </div>
 </div>
 <section id="k-means">
-<h2><span class="section-number">12.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -427,7 +428,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/86ed6da226e9c0a6625dda527fa9f2fd78cc97d28c3174e43cba2ee8d5f20244.png" src="_images/86ed6da226e9c0a6625dda527fa9f2fd78cc97d28c3174e43cba2ee8d5f20244.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="_images/0eb218a8fbb90dbb1a4e73db019ada32be81fdbc646b56640d1991cfae352361.png" src="_images/0eb218a8fbb90dbb1a4e73db019ada32be81fdbc646b56640d1991cfae352361.png" />
 </div>
 </div>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
@@ -453,7 +458,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/61ad4c4b70b3b3193269b51aa3db8d9c95a5c491ae0b0da3159dd85dd45f51f4.png" src="_images/61ad4c4b70b3b3193269b51aa3db8d9c95a5c491ae0b0da3159dd85dd45f51f4.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="_images/4ab5272a0bde5c8e19f2a5ceaf66dc2b0dd6496a6854c3f1e63b0fc9f0932f55.png" src="_images/4ab5272a0bde5c8e19f2a5ceaf66dc2b0dd6496a6854c3f1e63b0fc9f0932f55.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -469,12 +478,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1dbe2c9af235c91f895d5371c25afc13c54a3c214ff12e216eb3a5e097d3fbdd.png" src="_images/1dbe2c9af235c91f895d5371c25afc13c54a3c214ff12e216eb3a5e097d3fbdd.png" />
+<img alt="_images/bdc3cbed5477e343e9d71b2518e00ea1f3704471261b907f054ea74095b05454.png" src="_images/bdc3cbed5477e343e9d71b2518e00ea1f3704471261b907f054ea74095b05454.png" />
 </div>
 </div>
 </section>
 <section id="aglomerativo">
-<h2><span class="section-number">12.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -492,7 +501,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/769bde618100378ecd7a4c3787252c02116e426867e693616229cb42e915458f.png" src="_images/769bde618100378ecd7a4c3787252c02116e426867e693616229cb42e915458f.png" />
+<img alt="_images/0eb218a8fbb90dbb1a4e73db019ada32be81fdbc646b56640d1991cfae352361.png" src="_images/0eb218a8fbb90dbb1a4e73db019ada32be81fdbc646b56640d1991cfae352361.png" />
 </div>
 </div>
 <p><strong>Creamos el dendograma</strong></p>
@@ -506,7 +515,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b4fdd7bbab3b0b91274c74afce5ed48f7bb687d4af1c3d5f53d31fb698addd09.png" src="_images/b4fdd7bbab3b0b91274c74afce5ed48f7bb687d4af1c3d5f53d31fb698addd09.png" />
+<img alt="_images/fe36e67c881eaa3553fb0b46514a9488467901315088c34921da03c8be2c4bff.png" src="_images/fe36e67c881eaa3553fb0b46514a9488467901315088c34921da03c8be2c4bff.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  5.69192445  -9.47641249]
  [  1.70789903   6.00435173]
  [  0.23621041  -3.11909976]
@@ -531,12 +540,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/50bbe4a0044dbe26125b0b0e830b9de432ee05554702c753052eaa299c812765.png" src="_images/50bbe4a0044dbe26125b0b0e830b9de432ee05554702c753052eaa299c812765.png" />
+<img alt="_images/7b227372db4ee03e5c49f6cbc8303bb94c02fc1a4095335ccd893d5c97a9e377.png" src="_images/7b227372db4ee03e5c49f6cbc8303bb94c02fc1a4095335ccd893d5c97a9e377.png" />
 </div>
 </div>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">12.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">12.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
@@ -560,7 +569,7 @@ document.write(`
   1]
 </pre></div>
 </div>
-<img alt="_images/247c5e4f8a73ab4f56eb74110a1158c799b8a7c2590949f69cd7806f577e7bc4.png" src="_images/247c5e4f8a73ab4f56eb74110a1158c799b8a7c2590949f69cd7806f577e7bc4.png" />
+<img alt="_images/53b042b13d8bb7add76534ab118954604672e026d3f95724c16bba11f5145555.png" src="_images/53b042b13d8bb7add76534ab118954604672e026d3f95724c16bba11f5145555.png" />
 </div>
 </div>
 <p><strong>Otro ejemplo</strong></p>
@@ -652,7 +661,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/857d9760cee284ff8b39552214de38807dd1a50a9fcee9971451a2790a11fa7e.png" src="_images/857d9760cee284ff8b39552214de38807dd1a50a9fcee9971451a2790a11fa7e.png" />
+<img alt="_images/8ee5373d7622b2e83254e392e4056b35d0b4e38b104b93e2b8340b1b11b1e5d8.png" src="_images/8ee5373d7622b2e83254e392e4056b35d0b4e38b104b93e2b8340b1b11b1e5d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -669,7 +678,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3a40cb5897166a4992e698c77fae9cf250eee8d2d8d9c1c5848b09584558fe06.png" src="_images/3a40cb5897166a4992e698c77fae9cf250eee8d2d8d9c1c5848b09584558fe06.png" />
+<img alt="_images/7ffd176fdc881ebae497d18e91f11d30f0d676d92fde4873957c6347434e8030.png" src="_images/7ffd176fdc881ebae497d18e91f11d30f0d676d92fde4873957c6347434e8030.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -697,7 +706,7 @@ document.write(`
  -1 -1 -1 -1 -1 -1 -1 -1]
 </pre></div>
 </div>
-<img alt="_images/44a26b3a9023690510ebe54a5c8564e40869685a205060f0bb5fb03a50cd0849.png" src="_images/44a26b3a9023690510ebe54a5c8564e40869685a205060f0bb5fb03a50cd0849.png" />
+<img alt="_images/691693afb0895ffd54f51c05f717b262f9000b1cc960a1866e11c793b9609ffc.png" src="_images/691693afb0895ffd54f51c05f717b262f9000b1cc960a1866e11c793b9609ffc.png" />
 </div>
 </div>
 <p><strong>Un ejemplo combinado</strong></p>
@@ -851,7 +860,11 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>varianza explicada [0.58785136 0.17696026]
 </pre></div>
 </div>
-<img alt="_images/650ca01dcbd19b4ad93bb86d231ef8e3cfd70c92f1ffdf4534f2da11958cb83c.png" src="_images/650ca01dcbd19b4ad93bb86d231ef8e3cfd70c92f1ffdf4534f2da11958cb83c.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+</pre></div>
+</div>
+<img alt="_images/b7dcfa5ddd38e57ea1af9a3d26cebb8aa88c124e6f76da653a515e2dda80a0d3.png" src="_images/b7dcfa5ddd38e57ea1af9a3d26cebb8aa88c124e6f76da653a515e2dda80a0d3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -869,7 +882,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1  0  1  2]
 </pre></div>
 </div>
-<img alt="_images/52cd436f85014cd73a16ecf1f83baca7df59e6cbebc80bd1fa8e61fd40137496.png" src="_images/52cd436f85014cd73a16ecf1f83baca7df59e6cbebc80bd1fa8e61fd40137496.png" />
+<img alt="_images/7e0f5a9d684c87f49520fa8b229d938bdb129532d6d243446d14d1c21e3380e0.png" src="_images/7e0f5a9d684c87f49520fa8b229d938bdb129532d6d243446d14d1c21e3380e0.png" />
 </div>
 </div>
 </section>
