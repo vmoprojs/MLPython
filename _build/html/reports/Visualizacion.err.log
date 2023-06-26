@@ -23,19 +23,19 @@ plt.colorbar()
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mRuntimeError[0m                              Traceback (most recent call last)
-Input [0;32mIn [56][0m, in [0;36m<cell line: 2>[0;34m()[0m
+Cell [0;32mIn[56], line 2[0m
 [1;32m      1[0m [38;5;66;03m# añadimos la leyenda de colores[39;00m
 [0;32m----> 2[0m [43mplt[49m[38;5;241;43m.[39;49m[43mcolorbar[49m[43m([49m[43m)[49m
 
-File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/pyplot.py:2084[0m, in [0;36mcolorbar[0;34m(mappable, cax, ax, **kw)[0m
-[1;32m   2082[0m     mappable [38;5;241m=[39m gci()
-[1;32m   2083[0m     [38;5;28;01mif[39;00m mappable [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[0;32m-> 2084[0m         [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m'[39m[38;5;124mNo mappable was found to use for colorbar [39m[38;5;124m'[39m
-[1;32m   2085[0m                            [38;5;124m'[39m[38;5;124mcreation. First define a mappable such as [39m[38;5;124m'[39m
-[1;32m   2086[0m                            [38;5;124m'[39m[38;5;124man image (with imshow) or a contour set ([39m[38;5;124m'[39m
-[1;32m   2087[0m                            [38;5;124m'[39m[38;5;124mwith contourf).[39m[38;5;124m'[39m)
-[1;32m   2088[0m ret [38;5;241m=[39m gcf()[38;5;241m.[39mcolorbar(mappable, cax[38;5;241m=[39mcax, ax[38;5;241m=[39max, [38;5;241m*[39m[38;5;241m*[39mkw)
-[1;32m   2089[0m [38;5;28;01mreturn[39;00m ret
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/pyplot.py:2133[0m, in [0;36mcolorbar[0;34m(mappable, cax, ax, **kwargs)[0m
+[1;32m   2131[0m     mappable [38;5;241m=[39m gci()
+[1;32m   2132[0m     [38;5;28;01mif[39;00m mappable [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 2133[0m         [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m'[39m[38;5;124mNo mappable was found to use for colorbar [39m[38;5;124m'[39m
+[1;32m   2134[0m                            [38;5;124m'[39m[38;5;124mcreation. First define a mappable such as [39m[38;5;124m'[39m
+[1;32m   2135[0m                            [38;5;124m'[39m[38;5;124man image (with imshow) or a contour set ([39m[38;5;124m'[39m
+[1;32m   2136[0m                            [38;5;124m'[39m[38;5;124mwith contourf).[39m[38;5;124m'[39m)
+[1;32m   2137[0m ret [38;5;241m=[39m gcf()[38;5;241m.[39mcolorbar(mappable, cax[38;5;241m=[39mcax, ax[38;5;241m=[39max, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   2138[0m [38;5;28;01mreturn[39;00m ret
 
 [0;31mRuntimeError[0m: No mappable was found to use for colorbar creation. First define a mappable such as an image (with imshow) or a contour set (with contourf).
 RuntimeError: No mappable was found to use for colorbar creation. First define a mappable such as an image (with imshow) or a contour set (with contourf).

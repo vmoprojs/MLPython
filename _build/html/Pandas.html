@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>2. Pandas &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3. Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
     <link rel="prev" title="1. Python, una introducción" href="IntroduccionPython.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -393,9 +394,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
-<h1><span class="section-number">2. </span>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2. </span>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
 <section id="las-series">
-<h2><span class="section-number">2.1. </span>Las Series<a class="headerlink" href="#las-series" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1. </span>Las Series<a class="headerlink" href="#las-series" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -560,7 +561,7 @@ dtype: object
 </div>
 </section>
 <section id="haciendo-consultas-en-series">
-<h2><span class="section-number">2.2. </span>Haciendo consultas en Series<a class="headerlink" href="#haciendo-consultas-en-series" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.2. </span>Haciendo consultas en Series<a class="headerlink" href="#haciendo-consultas-en-series" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sports</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Futbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Ecuador&#39;</span><span class="p">,</span>
@@ -700,10 +701,10 @@ dtype: object
 </div>
 </section>
 <section id="pandas-estructuras-de-datos-para-estadistica">
-<h2><span class="section-number">2.3. </span>Pandas: estructuras de datos para estadística<a class="headerlink" href="#pandas-estructuras-de-datos-para-estadistica" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3. </span>Pandas: estructuras de datos para estadística<a class="headerlink" href="#pandas-estructuras-de-datos-para-estadistica" title="Permalink to this heading">#</a></h2>
 <p>Provee estructuras de datos adecuados para análisis estadístico, y añade funciones que  facilitan el ingreso de datos, su organización y su manipulación.</p>
 <section id="manipulacion-de-datos">
-<h3><span class="section-number">2.3.1. </span>Manipulación de datos<a class="headerlink" href="#manipulacion-de-datos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.1. </span>Manipulación de datos<a class="headerlink" href="#manipulacion-de-datos" title="Permalink to this heading">#</a></h3>
 <p><strong>Procedimientos comunes</strong></p>
 <p>Un <em>DataFrame</em> es una estructura de datos de dos dimensiones con etiquetas cuyas columnas pueden ser de diferentes tipos.</p>
 <p>Empecemos creando un DataFrame con tres columnas <em>Time</em>, <em>x</em> y <em>y</em></p>
@@ -1039,7 +1040,7 @@ Name: Time, Length: 100, dtype: float64
 <p>Extraer filas también funciona, por ejemplo <code class="docutils literal notranslate"><span class="pre">df[0:5]</span></code> para las primeras 5 filas. Lo que suele ser confuso es que para extraer una única fila se usa por ejmeplo <code class="docutils literal notranslate"><span class="pre">df[5:6]</span></code>. Si usas solo <code class="docutils literal notranslate"><span class="pre">df[5]</span></code> se devuelve un error.</p>
 </section>
 <section id="agrupaciones">
-<h3><span class="section-number">2.3.2. </span>Agrupaciones<a class="headerlink" href="#agrupaciones" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.2. </span>Agrupaciones<a class="headerlink" href="#agrupaciones" title="Permalink to this heading">#</a></h3>
 <p><em>pandas</em> ofrece funciones poderosas para manejar datos perdidos que suelen ser reemplazados por <em>nan</em> (<em>not a number</em>). También permite realizar manipilaciones más sofisticadas como <em>pivotaje</em>. Por ejemplo, se puede usar DataFrames para hacer grupos y su análisis estadístico de cada grupo.</p>
 <p>Veamos este ejemplo de datos del número de horas que la gente ve televisión agrupado por <em>m</em> y <em>f</em>.</p>
 <div class="cell docutils container">
@@ -1285,13 +1286,13 @@ Name: Time, Length: 100, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gender
-f    AxesSubplot(0.125,0.125;0.775x0.755)
-m    AxesSubplot(0.125,0.125;0.775x0.755)
+f    Axes(0.125,0.11;0.775x0.77)
+m    Axes(0.125,0.11;0.775x0.77)
 dtype: object
 </pre></div>
 </div>
-<img alt="_images/5d63cf1fc864cb9a957344d3328cbde00f188158437a9346b15f8f16ce918f8d.png" src="_images/5d63cf1fc864cb9a957344d3328cbde00f188158437a9346b15f8f16ce918f8d.png" />
-<img alt="_images/db68cba99785081f1e0a5522b14655083214ce04c77c7a3ebae0678df808c9ff.png" src="_images/db68cba99785081f1e0a5522b14655083214ce04c77c7a3ebae0678df808c9ff.png" />
+<img alt="_images/a9afdf90526aa508faa916f4800586d9fdc0e4e2bce9c4c579fa5d5623b49523.png" src="_images/a9afdf90526aa508faa916f4800586d9fdc0e4e2bce9c4c579fa5d5623b49523.png" />
+<img alt="_images/802c969ccb46db643106dd5fa0eade10e4d76f542b88d5d96783792b6b5406b2.png" src="_images/802c969ccb46db643106dd5fa0eade10e4d76f542b88d5d96783792b6b5406b2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1375,7 +1376,7 @@ dtype: object
 </div>
 </section>
 <section id="merge">
-<h3><span class="section-number">2.3.3. </span>Merge<a class="headerlink" href="#merge" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.3. </span>Merge<a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -2117,7 +2118,7 @@ Sally  Engineering
 </div>
 </section>
 <section id="datos-categoricos">
-<h3><span class="section-number">2.3.4. </span>Datos categóricos<a class="headerlink" href="#datos-categoricos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.4. </span>Datos categóricos<a class="headerlink" href="#datos-categoricos" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="s1">&#39;A+&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A-&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B-&#39;</span><span class="p">,</span> <span class="s1">&#39;C+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C-&#39;</span><span class="p">,</span> <span class="s1">&#39;D+&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">],</span>
@@ -2317,7 +2318,7 @@ Categories (10, interval[float64, right]): [(11706.087, 75333.413] &lt; (75333.4
 </div>
 </section>
 <section id="tablas-dinamicas">
-<h3><span class="section-number">2.3.5. </span>Tablas dinámicas<a class="headerlink" href="#tablas-dinamicas" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.3.5. </span>Tablas dinámicas<a class="headerlink" href="#tablas-dinamicas" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/cars.csv&#39;</span><span class="p">)</span>

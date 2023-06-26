@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>11. Evaluación de Modelos &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="12. Aprendizaje no supervizado" href="NoSupervizado.html" />
     <link rel="prev" title="10. Redes Neuronales" href="RedesNeuronales.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -398,9 +399,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="evaluacion-de-modelos">
-<h1><span class="section-number">11. </span>Evaluación de Modelos<a class="headerlink" href="#evaluacion-de-modelos" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Evaluación de Modelos<a class="headerlink" href="#evaluacion-de-modelos" title="Permalink to this heading">#</a></h1>
 <section id="preambulo">
-<h2><span class="section-number">11.1. </span>Preámbulo<a class="headerlink" href="#preambulo" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.1. </span>Preámbulo<a class="headerlink" href="#preambulo" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib notebook</span>
@@ -448,7 +449,7 @@ Clase negativa y positiva [1615  182]
 </div>
 </section>
 <section id="clasificador-dummy">
-<h2><span class="section-number">11.2. </span>Clasificador Dummy<a class="headerlink" href="#clasificador-dummy" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.2. </span>Clasificador Dummy<a class="headerlink" href="#clasificador-dummy" title="Permalink to this heading">#</a></h2>
 <p>Es un clasificador que hace predicciones usando reglas simples, que pueden ser útiles como base para la comparación con clasificadores reales, especialmente con clases desequilibradas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -480,7 +481,7 @@ Score de SVC 0.9777777777777777
 </div>
 </div>
 <section id="matriz-de-confusion">
-<h3><span class="section-number">11.2.1. </span>Matriz de confusion<a class="headerlink" href="#matriz-de-confusion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>Matriz de confusion<a class="headerlink" href="#matriz-de-confusion" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -511,8 +512,8 @@ Score de SVC 0.9777777777777777
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proporcional (dummy classifier)
- [[363  44]
- [ 39   4]]
+ [[375  32]
+ [ 40   3]]
 </pre></div>
 </div>
 </div>
@@ -553,7 +554,7 @@ Score de SVC 0.9777777777777777
  [  8  35]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:458: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -587,7 +588,7 @@ Please also refer to the documentation for alternative solver options:
 </div>
 </section>
 <section id="metricas-de-evaluacion">
-<h3><span class="section-number">11.2.2. </span>Metricas de Evaluacion<a class="headerlink" href="#metricas-de-evaluacion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>Metricas de Evaluacion<a class="headerlink" href="#metricas-de-evaluacion" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
@@ -647,12 +648,12 @@ weighted avg       0.94      0.95      0.94       450
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proporcional (dummy)
                precision    recall  f1-score   support
 
-       not 1       0.90      0.89      0.90       407
-           1       0.08      0.09      0.09        43
+       not 1       0.90      0.92      0.91       407
+           1       0.09      0.07      0.08        43
 
-    accuracy                           0.82       450
-   macro avg       0.49      0.49      0.49       450
-weighted avg       0.82      0.82      0.82       450
+    accuracy                           0.84       450
+   macro avg       0.49      0.50      0.49       450
+weighted avg       0.83      0.84      0.83       450
 
 SVM
                precision    recall  f1-score   support
@@ -689,7 +690,7 @@ weighted avg       0.94      0.95      0.94       450
 </div>
 </section>
 <section id="curvas-roc-area-under-curve-auc">
-<h3><span class="section-number">11.2.3. </span>Curvas ROC, Area-Under-Curve (AUC)<a class="headerlink" href="#curvas-roc-area-under-curve-auc" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.2.3. </span>Curvas ROC, Area-Under-Curve (AUC)<a class="headerlink" href="#curvas-roc-area-under-curve-auc" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
@@ -719,10 +720,10 @@ weighted avg       0.94      0.95      0.94       450
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-55.03863695407197, -19.559515342314505, 18.80824298336371)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-55.038215145033256, -19.559453136681913, 18.807953187796432)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:458: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -732,7 +733,7 @@ Please also refer to the documentation for alternative solver options:
   n_iter_i = _check_optimize_result(
 </pre></div>
 </div>
-<img alt="_images/f562f4fe1990d375a0501304d38e42688b5d359f853a4cba81b2541e6bb9516e.png" src="_images/f562f4fe1990d375a0501304d38e42688b5d359f853a4cba81b2541e6bb9516e.png" />
+<img alt="_images/39bd9a82f2ec1e9485758e6b11119558e51dd58be406b466b53560773cf60b7c.png" src="_images/39bd9a82f2ec1e9485758e6b11119558e51dd58be406b466b53560773cf60b7c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -779,15 +780,15 @@ Please also refer to the documentation for alternative solver options:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gamma = 1.00  accuracy = 0.90   AUC = 0.50
 </pre></div>
 </div>
-<img alt="_images/c379c00b1ebc54d310e35a69bc23435c10a9a575f1f1bb0abb9492d38be54b32.png" src="_images/c379c00b1ebc54d310e35a69bc23435c10a9a575f1f1bb0abb9492d38be54b32.png" />
+<img alt="_images/38292293c0b480180693140b9991f9b0d218e7e3f960e2d3f67dcc591fa1cc88.png" src="_images/38292293c0b480180693140b9991f9b0d218e7e3f960e2d3f67dcc591fa1cc88.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="seleccion-de-modelos">
-<h2><span class="section-number">11.3. </span>Seleccion de modelos<a class="headerlink" href="#seleccion-de-modelos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">11.3. </span>Seleccion de modelos<a class="headerlink" href="#seleccion-de-modelos" title="Permalink to this heading">#</a></h2>
 <section id="cross-validation-validacion-cruzada">
-<h3><span class="section-number">11.3.1. </span>Cross Validation (validacion cruzada)<a class="headerlink" href="#cross-validation-validacion-cruzada" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>Cross Validation (validacion cruzada)<a class="headerlink" href="#cross-validation-validacion-cruzada" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -820,7 +821,7 @@ Cross-validation (AUC) [0.9641871  0.9976571  0.99372205 0.99699002 0.98675611]
 </div>
 </section>
 <section id="grid-search">
-<h3><span class="section-number">11.3.2. </span>Grid search<a class="headerlink" href="#grid-search" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">11.3.2. </span>Grid search<a class="headerlink" href="#grid-search" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -866,7 +867,7 @@ Grid best score (AUC):  1.0
 </div>
 </div>
 <section id="metricas-de-evaluacion-disponibles">
-<h4><span class="section-number">11.3.2.1. </span>Metricas de evaluacion disponibles<a class="headerlink" href="#metricas-de-evaluacion-disponibles" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">11.3.2.1. </span>Metricas de evaluacion disponibles<a class="headerlink" href="#metricas-de-evaluacion-disponibles" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">SCORERS</span>
@@ -876,7 +877,7 @@ Grid best score (AUC):  1.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;accuracy&#39;, &#39;adjusted_mutual_info_score&#39;, &#39;adjusted_rand_score&#39;, &#39;average_precision&#39;, &#39;balanced_accuracy&#39;, &#39;completeness_score&#39;, &#39;explained_variance&#39;, &#39;f1&#39;, &#39;f1_macro&#39;, &#39;f1_micro&#39;, &#39;f1_samples&#39;, &#39;f1_weighted&#39;, &#39;fowlkes_mallows_score&#39;, &#39;homogeneity_score&#39;, &#39;jaccard&#39;, &#39;jaccard_macro&#39;, &#39;jaccard_micro&#39;, &#39;jaccard_samples&#39;, &#39;jaccard_weighted&#39;, &#39;max_error&#39;, &#39;mutual_info_score&#39;, &#39;neg_brier_score&#39;, &#39;neg_log_loss&#39;, &#39;neg_mean_absolute_error&#39;, &#39;neg_mean_absolute_percentage_error&#39;, &#39;neg_mean_gamma_deviance&#39;, &#39;neg_mean_poisson_deviance&#39;, &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, &#39;neg_median_absolute_error&#39;, &#39;neg_root_mean_squared_error&#39;, &#39;normalized_mutual_info_score&#39;, &#39;precision&#39;, &#39;precision_macro&#39;, &#39;precision_micro&#39;, &#39;precision_samples&#39;, &#39;precision_weighted&#39;, &#39;r2&#39;, &#39;rand_score&#39;, &#39;recall&#39;, &#39;recall_macro&#39;, &#39;recall_micro&#39;, &#39;recall_samples&#39;, &#39;recall_weighted&#39;, &#39;roc_auc&#39;, &#39;roc_auc_ovo&#39;, &#39;roc_auc_ovo_weighted&#39;, &#39;roc_auc_ovr&#39;, &#39;roc_auc_ovr_weighted&#39;, &#39;top_k_accuracy&#39;, &#39;v_measure_score&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;accuracy&#39;, &#39;adjusted_mutual_info_score&#39;, &#39;adjusted_rand_score&#39;, &#39;average_precision&#39;, &#39;balanced_accuracy&#39;, &#39;completeness_score&#39;, &#39;explained_variance&#39;, &#39;f1&#39;, &#39;f1_macro&#39;, &#39;f1_micro&#39;, &#39;f1_samples&#39;, &#39;f1_weighted&#39;, &#39;fowlkes_mallows_score&#39;, &#39;homogeneity_score&#39;, &#39;jaccard&#39;, &#39;jaccard_macro&#39;, &#39;jaccard_micro&#39;, &#39;jaccard_samples&#39;, &#39;jaccard_weighted&#39;, &#39;matthews_corrcoef&#39;, &#39;max_error&#39;, &#39;mutual_info_score&#39;, &#39;neg_brier_score&#39;, &#39;neg_log_loss&#39;, &#39;neg_mean_absolute_error&#39;, &#39;neg_mean_absolute_percentage_error&#39;, &#39;neg_mean_gamma_deviance&#39;, &#39;neg_mean_poisson_deviance&#39;, &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, &#39;neg_median_absolute_error&#39;, &#39;neg_negative_likelihood_ratio&#39;, &#39;neg_root_mean_squared_error&#39;, &#39;normalized_mutual_info_score&#39;, &#39;positive_likelihood_ratio&#39;, &#39;precision&#39;, &#39;precision_macro&#39;, &#39;precision_micro&#39;, &#39;precision_samples&#39;, &#39;precision_weighted&#39;, &#39;r2&#39;, &#39;rand_score&#39;, &#39;recall&#39;, &#39;recall_macro&#39;, &#39;recall_micro&#39;, &#39;recall_samples&#39;, &#39;recall_weighted&#39;, &#39;roc_auc&#39;, &#39;roc_auc_ovo&#39;, &#39;roc_auc_ovo_weighted&#39;, &#39;roc_auc_ovr&#39;, &#39;roc_auc_ovr_weighted&#39;, &#39;top_k_accuracy&#39;, &#39;v_measure_score&#39;]
 </pre></div>
 </div>
 </div>
@@ -924,23 +925,23 @@ Grid best score (AUC):  1.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. precision): {&#39;class_weight&#39;: {1: 2}}
-Grid best score (precision): 0.5396929824561403
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. precision): {&#39;class_weight&#39;: {1: 3}}
+Grid best score (precision): 0.5147419450645258
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. recall): {&#39;class_weight&#39;: {1: 50}}
-Grid best score (recall): 0.9214285714285714
+Grid best score (recall): 0.9285714285714285
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. f1): {&#39;class_weight&#39;: {1: 3}}
-Grid best score (f1): 0.5443357202716789
+Grid best score (f1): 0.5412911006131345
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. roc_auc): {&#39;class_weight&#39;: {1: 4}}
-Grid best score (roc_auc): 0.8954467525572769
+Grid best score (roc_auc): 0.8914201017558241
 </pre></div>
 </div>
-<img alt="_images/8f4c75121b0f8d2171f3bed0309f8e21df21ac745fe7196694722da5187ac1bc.png" src="_images/8f4c75121b0f8d2171f3bed0309f8e21df21ac745fe7196694722da5187ac1bc.png" />
+<img alt="_images/af045f81b0e136ffe586629770a172788c30df31c6d70379f05246667a439120.png" src="_images/af045f81b0e136ffe586629770a172788c30df31c6d70379f05246667a439120.png" />
 </div>
 </div>
 </section>

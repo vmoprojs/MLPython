@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>7. Análisis de Componentes Principales &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="8. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
     <link rel="prev" title="6. Modelos de Probabilidad" href="ProbModels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -390,15 +391,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analisis-de-componentes-principales">
-<h1><span class="section-number">7. </span>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this heading">#</a></h1>
 <section id="planteamiento1">
-<h2><span class="section-number">7.1. </span>Planteamiento<a class="footnote-reference brackets" href="#id2" id="id1">1</a><a class="headerlink" href="#planteamiento1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.1. </span>Planteamiento<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#planteamiento1" title="Permalink to this heading">#</a></h2>
 <p>Se aplica a tablas de datos donde las filas son considerados como individuos y las columnas como datos cuantitativos.</p>
 <p>Más formalmente, se dispone de los valores de <span class="math notranslate nohighlight">\(p\)</span> variables y <span class="math notranslate nohighlight">\(n\)</span> elementos dispuestos en una matriz <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> de dimensión <span class="math notranslate nohighlight">\(n\times p\)</span>.</p>
 <p>Siempre (casi) se usa la matriz centrada y/o estandarizada, los paquetes suelen hacer este trabajo por nosostros. Supongamos que  <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> ha sido centrada, su matriz de varianza covarianza viene dada por  <span class="math notranslate nohighlight">\(\frac{1}{n}\mathbf{X'X}\)</span>.</p>
 <p>¿Cómo encontrar un espacio de dimensión más reducida que represente adeucadamente los datos?</p>
 <section id="notacion">
-<h3><span class="section-number">7.1.1. </span>Notación<a class="headerlink" href="#notacion" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.1.1. </span>Notación<a class="headerlink" href="#notacion" title="Permalink to this heading">#</a></h3>
 <p>Se desea encontrar un subespacio de dimensión menor que <span class="math notranslate nohighlight">\(p\)</span> tal que al proyectar sobre él los puntos conserven su estructura con la menor distorsión posible.</p>
 <p>Consideremos primero un subespacio de dimensión uno (una recta) obtenida por un conjunto de <span class="math notranslate nohighlight">\(p=2\)</span> variables.</p>
 <p>La siguiente figura indica el diagrama de dispersión y una recta que, intuitivamente, proporciona un buen resumen de los datos, ya que las proyecciones de los puntos sobre ella indican aproximadamente la situación de los puntos en el plano.</p>
@@ -428,7 +429,7 @@ min\sum_{i = 1}^{n} r^2_i = \sum_{i = 1}^{n} |\mathbf{x_i}-z_i\mathbf{a_1}|^2
 <p><em>¿Cómo es eso posible?</em></p>
 </section>
 <section id="calculo-del-primer-componente">
-<h3><span class="section-number">7.1.2. </span>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.1.2. </span>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this heading">#</a></h3>
 <p>El primer componente principal será la combinación lineal de las variables originales que tenga varianza máxima. Los valores de este primer componente en los <span class="math notranslate nohighlight">\(n\)</span> individuos se representarán por un vector <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span>, dado por</p>
 <div class="math notranslate nohighlight">
 \[
@@ -780,10 +781,10 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fc0c9f8a2b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f84917aeb80&gt;
 </pre></div>
 </div>
-<img alt="_images/5705d7f729f62a3cb0c481173c27ddadca5eab2b5e4e864a750dab207496b2b0.png" src="_images/5705d7f729f62a3cb0c481173c27ddadca5eab2b5e4e864a750dab207496b2b0.png" />
+<img alt="_images/24e4a93a119b672cbb3a7705416b1df884e869c7caf81cdf0c2186ccd31c77d0.png" src="_images/24e4a93a119b672cbb3a7705416b1df884e869c7caf81cdf0c2186ccd31c77d0.png" />
 </div>
 </div>
 <p>Como habíamos visto, los valores propios corresponden la varianzas explicadas de cada componente y los vectores propios son sus direcciones o pesos (<em>loadings</em>). Es decir:</p>
@@ -1213,7 +1214,7 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/90cb8dfe79b3b1b988d402334e4b07f5c224227587c2f1f2c520f064aa7a074b.png" src="_images/90cb8dfe79b3b1b988d402334e4b07f5c224227587c2f1f2c520f064aa7a074b.png" />
+<img alt="_images/69b3fb4230f2b29cebedd1978b737ba08b097a53b96d7cbff00c76451c6d51bc.png" src="_images/69b3fb4230f2b29cebedd1978b737ba08b097a53b96d7cbff00c76451c6d51bc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1245,15 +1246,14 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99802944f62866f476a381ceb766154f0bd4b73f97e6422027ac2792322ac7bf.png" src="_images/99802944f62866f476a381ceb766154f0bd4b73f97e6422027ac2792322ac7bf.png" />
+<img alt="_images/7344ade9cedc27da91b1f834fa5f1f73b2a4cead49685ebf6548aa4bb0216bc3.png" src="_images/7344ade9cedc27da91b1f834fa5f1f73b2a4cead49685ebf6548aa4bb0216bc3.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Teoría  obtenida de Peña, D. <em>Análisis de datos multivariantes</em> (2002). Referencias de <code class="docutils literal notranslate"><span class="pre">FactoMineR</span></code> vienen de Husson, F. <em>Exploratory multivariate analysis by example using R</em> (2017)</p>
-</dd>
-</dl>
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Teoría  obtenida de Peña, D. <em>Análisis de datos multivariantes</em> (2002). Referencias de <code class="docutils literal notranslate"><span class="pre">FactoMineR</span></code> vienen de Husson, F. <em>Exploratory multivariate analysis by example using R</em> (2017)</p>
+</aside>
 </section>
 </section>
 </section>
