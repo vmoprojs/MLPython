@@ -471,7 +471,7 @@ document.write(`
   warnings.warn(
 </pre></div>
 </div>
-<img alt="_images/b2d4467a6f97fbd34e2a1b9176732acce64c47af440268bcc875169ea235b1e5.png" src="_images/b2d4467a6f97fbd34e2a1b9176732acce64c47af440268bcc875169ea235b1e5.png" />
+<img alt="_images/c8de6dccf73017a43e6d095a4a5cd671178b3a88650271a85b8465a64e844339.png" src="_images/c8de6dccf73017a43e6d095a4a5cd671178b3a88650271a85b8465a64e844339.png" />
 </div>
 </div>
 </section>
@@ -499,8 +499,8 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datos de cáncer de mama
-Precisión de SVM lineal en el conjunto de entrenamiento: 0.91
-Precisión de SVM lineal en el conjunto de prueba: 0.87
+Precisión de SVM lineal en el conjunto de entrenamiento: 0.80
+Precisión de SVM lineal en el conjunto de prueba: 0.82
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:1244: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
@@ -597,62 +597,7 @@ Precisión de SVM lineal en el conjunto de prueba: 0.87
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;gamma = </span><span class="si">{:.2f}</span><span class="s1">, C = </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">this_gamma</span><span class="p">,</span> <span class="n">this_C</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="n">this_gamma</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>          <span class="n">C</span> <span class="o">=</span> <span class="n">this_C</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">plot_class_regions_for_classifier_subplot</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>                                          <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>                                          <span class="n">subplot</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-
-<span class="nn">File ~/Documents/Consultorias&amp;Cursos/CURSOS/Cooking/MLPython/pyML/shared_utilities.py:107,</span> in <span class="ni">plot_class_regions_for_classifier_subplot</span><span class="nt">(clf, X, y, X_test, y_test, title, subplot, target_names, plot_decision_regions)</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">x_max</span><span class="o">+</span><span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">y_max</span><span class="o">+</span><span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">107</span> <span class="n">P</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">y2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="n">P</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">if</span> <span class="n">plot_decision_regions</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:820,</span> in <span class="ni">BaseSVC.predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">818</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">819</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">820</span>     <span class="n">y</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">821</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">))</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:435,</span> in <span class="ni">BaseLibSVM.predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span> <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_for_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">434</span> <span class="n">predict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sparse_predict</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sparse</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_predict</span>
-<span class="ne">--&gt; </span><span class="mi">435</span> <span class="k">return</span> <span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:454,</span> in <span class="ni">BaseLibSVM._dense_predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span>             <span class="s2">&quot;X.shape[1] = </span><span class="si">%d</span><span class="s2"> should be equal to </span><span class="si">%d</span><span class="s2">, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span>             <span class="s2">&quot;the number of samples at training time&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span>             <span class="o">%</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_fit_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span> <span class="n">svm_type</span> <span class="o">=</span> <span class="n">LIBSVM_IMPL</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">454</span> <span class="k">return</span> <span class="n">libsvm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">455</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="bp">self</span><span class="o">.</span><span class="n">support_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="bp">self</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_n_support</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">459</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_dual_coef_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_intercept_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_probA</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_probB</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">463</span>     <span class="n">svm_type</span><span class="o">=</span><span class="n">svm_type</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">464</span>     <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">465</span>     <span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">466</span>     <span class="n">coef0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coef0</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">467</span>     <span class="n">gamma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span>     <span class="n">cache_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_size</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span> <span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
+<img alt="_images/f6a9081a9d2fe6cf3fbcb367baa65400b6d797861710eca42a17b4c6671eb772.png" src="_images/f6a9081a9d2fe6cf3fbcb367baa65400b6d797861710eca42a17b4c6671eb772.png" />
 </div>
 </div>
 </section>
