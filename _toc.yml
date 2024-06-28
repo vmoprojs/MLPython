@@ -21,6 +21,7 @@ parts:
   numbered: true
   chapters:
   - file: AprendizajeSupervisado
+  - file: Arboles
   - file: SVM
   - file: RedesNeuronales
   - file: Evaluacion
