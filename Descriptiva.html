@@ -174,13 +174,14 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">8. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">9. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">10. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">11. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arboles.html">9. Árboles de decisión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">12. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -433,7 +434,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9515424844548511
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9609704902074345
 </pre></div>
 </div>
 </div>
@@ -448,7 +449,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9054330997225106
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9234642830495171
 </pre></div>
 </div>
 </div>
@@ -484,7 +485,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.1569634914496169
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10551460904911199
 </pre></div>
 </div>
 </div>
@@ -496,7 +497,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9515424844548511
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9609704902074345
 </pre></div>
 </div>
 </div>
@@ -508,7 +509,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9054330997225106
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9234642830495171
 </pre></div>
 </div>
 </div>
@@ -520,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.10539831760139795
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10970625102579665
 </pre></div>
 </div>
 </div>
@@ -549,11 +550,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0p/n_r_hl095sv7nktfp_8n9n_80000gn/T/ipykernel_2421/3267261142.py:1: FutureWarning: Unlike other reduction functions (e.g. `skew`, `kurtosis`), the default behavior of `mode` typically preserves the axis it acts along. In SciPy 1.11.0, this behavior will change: the default value of `keepdims` will become False, the `axis` over which the statistic is taken will be eliminated, and the value None will no longer be accepted. Set `keepdims` to True or False to avoid this warning.
-  stats.mode(data)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ModeResult(mode=array([4]), count=array([3]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ModeResult(mode=4, count=3)
 </pre></div>
 </div>
 </div>
@@ -575,7 +572,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.749503951661374
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.885872261181873
 </pre></div>
 </div>
 </div>
@@ -593,7 +590,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.88842854, -0.10539832,  0.51391402])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.55759264,  0.10970625,  0.73950096])
 </pre></div>
 </div>
 </div>
@@ -605,9 +602,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.44113638, -1.40511303, -0.99329293, -0.75657902, -0.45346505,
-       -0.10539832,  0.10546888,  0.334085  ,  0.70802007,  1.02949136,
-        2.30836757])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.4665315 , -1.12811935, -0.66319059, -0.41484143, -0.20968424,
+        0.10970625,  0.34446949,  0.67592795,  0.81551224,  1.32834199,
+        2.41934076])
 </pre></div>
 </div>
 </div>
@@ -619,7 +616,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-2.4411363792054175, 2.308367572455957), mean=-0.1569634914496169, variance=0.9145788886085966, skewness=0.0765470317502851, kurtosis=-0.3900242639845475)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-2.466531503754265, 2.4193407574276073), mean=0.10551460904911199, variance=0.9327922051005224, skewness=0.01672782819092624, kurtosis=-0.1552157053343297)
 </pre></div>
 </div>
 </div>
@@ -642,7 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7fc4c8b01910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7fd77ced5c10&gt;
 </pre></div>
 </div>
 </div>
@@ -668,7 +665,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f6d9c37feb1c30961f0bc99a747ed65e2cf1005db2b051eb5158809e659be3df.png" src="_images/f6d9c37feb1c30961f0bc99a747ed65e2cf1005db2b051eb5158809e659be3df.png" />
+<img alt="_images/b5d66ff1d487276617c82b03eac77c1b20e8643786dda73b2d6eaacb66afa7e2.png" src="_images/b5d66ff1d487276617c82b03eac77c1b20e8643786dda73b2d6eaacb66afa7e2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -679,7 +676,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7befafc18e7bc01638418d81f3d72ef9f7a484c5416e25eff0268a211c918219.png" src="_images/7befafc18e7bc01638418d81f3d72ef9f7a484c5416e25eff0268a211c918219.png" />
+<img alt="_images/127f96b19ede7ee96cd6d957415a9e990812ed36bf379ea3c80e75b08a1d340d.png" src="_images/127f96b19ede7ee96cd6d957415a9e990812ed36bf379ea3c80e75b08a1d340d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -691,7 +688,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4b1a036464eb92f63828dcd2bc8b88a98a54b1174b95b20454405f6c90a6505e.png" src="_images/4b1a036464eb92f63828dcd2bc8b88a98a54b1174b95b20454405f6c90a6505e.png" />
+<img alt="_images/f84ee0cbaa0b30fa6f4b082a1262c991d8dd2f41f735bbe5596b7ea6f1886bd4.png" src="_images/f84ee0cbaa0b30fa6f4b082a1262c991d8dd2f41f735bbe5596b7ea6f1886bd4.png" />
 </div>
 </div>
 <p>Distribución acumulada empírica</p>
@@ -718,7 +715,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="_images/44f24de64e111133b2cf3109665346b611064573d63ff3d2c6cbd5217d23ddfe.png" src="_images/44f24de64e111133b2cf3109665346b611064573d63ff3d2c6cbd5217d23ddfe.png" />
+<img alt="_images/5a9341160c11f882d93ef3ccc7591144d6ede0b96b0b00e955dd5bc874726d86.png" src="_images/5a9341160c11f882d93ef3ccc7591144d6ede0b96b0b00e955dd5bc874726d86.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -736,7 +733,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.931
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.933
 </pre></div>
 </div>
 </div>
@@ -760,7 +757,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/28bd3d620d29b3af18ca48c67ea5268acbe11a5d8e50a08a5d0b2432c8b6494d.png" src="_images/28bd3d620d29b3af18ca48c67ea5268acbe11a5d8e50a08a5d0b2432c8b6494d.png" />
+<img alt="_images/f365d7ac5969435d3888452cf02b4c19a97948c9c916019adfe8df5ccdbd5d60.png" src="_images/f365d7ac5969435d3888452cf02b4c19a97948c9c916019adfe8df5ccdbd5d60.png" />
 </div>
 </div>
 </section>
@@ -941,7 +938,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-3.855503558973697, pvalue=0.0014106918447179043)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-3.855503558973697, pvalue=0.0014106918447179043, df=15.91873619676766)
 </pre></div>
 </div>
 </div>
@@ -953,7 +950,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ttest_indResult(statistic=-3.9455649161549835, pvalue=0.0007989982111700593)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-3.9455649161549835, pvalue=0.0007989982111700593, df=20.0)
 </pre></div>
 </div>
 </div>
@@ -1217,7 +1214,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;shampoo&#39;, ylabel=&#39;bathingsoap&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/446b0df8b97adfab2151601408feca86b905a8f30cc5450e61293e5c01cb0205.png" src="_images/446b0df8b97adfab2151601408feca86b905a8f30cc5450e61293e5c01cb0205.png" />
+<img alt="_images/cacaaf31e2d67d5936900fcdb04cbdaf6d173c6b7356eb60296915db044ae6b5.png" src="_images/cacaaf31e2d67d5936900fcdb04cbdaf6d173c6b7356eb60296915db044ae6b5.png" />
 </div>
 </div>
 <div class="cell docutils container">
