@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'NoSupervizado';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -373,8 +375,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">13.2. <strong>Algoritmo</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.2.1. Ejemplo: clasificación de frutas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.3. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.4. <strong>Algoritmo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.5. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.5.1. Ejemplo: clasificación de clientes</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -396,23 +406,17 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sn</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
-
-
+<span class="c1">#from sklearn.datasets import load_breast_cancer</span>
 <span class="c1"># Breast cancer dataset</span>
-<span class="n">cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
-<span class="p">(</span><span class="n">X_cancer</span><span class="p">,</span> <span class="n">y_cancer</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">return_X_y</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># fruits dataset</span>
-<span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Data/fruit_data_with_colors.txt&#39;</span><span class="p">)</span>
-<span class="n">X_fruits</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[[</span><span class="s1">&#39;mass&#39;</span><span class="p">,</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;color_score&#39;</span><span class="p">]]</span>
-<span class="n">y_fruits</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[[</span><span class="s1">&#39;fruit_label&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="c1">#cancer = load_breast_cancer()</span>
+<span class="c1">#(X_cancer, y_cancer) = load_breast_cancer(return_X_y = True)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="k-means">
 <h2><span class="section-number">13.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
+<p>Veamos un ejemplo de k-means mediante la generación de clústers aleatorios (<code class="docutils literal notranslate"><span class="pre">make_blobs</span></code>) y <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -429,13 +433,34 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="_images/ee9f43985dadf385d9761d837de0a64a8b4df7347f6ad4868fac19c7562972a3.png" src="_images/ee9f43985dadf385d9761d837de0a64a8b4df7347f6ad4868fac19c7562972a3.png" />
+<img alt="_images/60851fae2146b10481fe9a2233158b2d593a6ee0dcd3eb03ac6a54ac572724dd.png" src="_images/60851fae2146b10481fe9a2233158b2d593a6ee0dcd3eb03ac6a54ac572724dd.png" />
 </div>
 </div>
+</section>
+<hr class="docutils" />
+<section id="algoritmo">
+<h2><span class="section-number">13.2. </span><strong>Algoritmo</strong><a class="headerlink" href="#algoritmo" title="Permalink to this heading">#</a></h2>
+<p><strong>Entradas:</strong></p>
+<ul class="simple">
+<li><p>conjunto de patrones en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> número de grupos a formar.</p></li>
+</ul>
+<p><strong>Salidas:</strong></p>
+<ul class="simple">
+<li><p>una partición del espacio de patrones, tal que, optimiza la varianza global.</p></li>
+</ul>
+<p><strong>Inicio:</strong></p>
+<p>Asignar aleatoreamente un número, del 1 a <span class="math notranslate nohighlight">\(K\)</span> a cada observación. Estos funcionan como asignaciones iniciales para las observaciones.</p>
+<p><strong>Repetición</strong></p>
+<ol class="arabic simple">
+<li><p>Para cada uno de los K conglomerados, calcular el centroide del conglomerado. El k-ésimo centroide del grupo es el vector de las <span class="math notranslate nohighlight">\(p\)</span> medias de características para las observaciones en el k-ésimo grupo.</p></li>
+<li><p>Asignar cada observación al conglomerado cuyo centroide es el más cercano (donde más cercano se define utilizando la distancia euclidiana).</p></li>
+</ol>
+<p><strong>Hasta</strong> La última partición obtenida, (idéntica a la de la iteración
+anterior ) es la respuesta final del algoritmo.</p>
+<hr class="docutils" />
+<section id="ejemplo-clasificacion-de-frutas">
+<h3><span class="section-number">13.2.1. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -459,11 +484,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="_images/4ab5272a0bde5c8e19f2a5ceaf66dc2b0dd6496a6854c3f1e63b0fc9f0932f55.png" src="_images/4ab5272a0bde5c8e19f2a5ceaf66dc2b0dd6496a6854c3f1e63b0fc9f0932f55.png" />
+<img alt="_images/5d1b83d4936b35f74ed7ce2aaa8c76b4f97aedb800e85f2356e9dc4b85bbc7f4.png" src="_images/5d1b83d4936b35f74ed7ce2aaa8c76b4f97aedb800e85f2356e9dc4b85bbc7f4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -479,12 +500,38 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bdc3cbed5477e343e9d71b2518e00ea1f3704471261b907f054ea74095b05454.png" src="_images/bdc3cbed5477e343e9d71b2518e00ea1f3704471261b907f054ea74095b05454.png" />
+<img alt="_images/b512385e1c3f377c3d9fff4c4b6b2201a135bae64fad050687f082986b3cbbd7.png" src="_images/b512385e1c3f377c3d9fff4c4b6b2201a135bae64fad050687f082986b3cbbd7.png" />
 </div>
 </div>
 </section>
+</section>
 <section id="aglomerativo">
-<h2><span class="section-number">13.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2><span class="section-number">13.4. </span><strong>Algoritmo</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><strong>Entradas:</strong></p>
+<ul class="simple">
+<li><p>Conjunto de patrones en cualquier espacio.</p></li>
+</ul>
+<p><strong>Salidas:</strong></p>
+<ul class="simple">
+<li><p>Dendograma de agrupamiento</p></li>
+</ul>
+<p><strong>Inicio:</strong></p>
+<ul class="simple">
+<li><p>Seleccionar una función de comparación entre patrones.</p></li>
+<li><p>Calcular la Matriz Global de Semejanza/Diferencia entre grupos.</p></li>
+</ul>
+<p><strong>Repetición</strong></p>
+<ol class="arabic simple">
+<li><p>Identificar la menor diferencia entre grupos y fusionar dichos grupos en un nuevo grupo con etiqueta única.</p></li>
+<li><p>Actualizar la matriz de sem/dif, eliminando el renglón y columna de los grupos fusionados y agregando un nuevo renglón y columna para el nuevo grupo</p></li>
+<li><p>Registrar la fusión realizada en el dendrograma</p></li>
+</ol>
+<p><strong>Hasta</strong> Terminar cuando todos los patrones se encuentren agrupados en un solo grupo.</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -502,7 +549,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0eb218a8fbb90dbb1a4e73db019ada32be81fdbc646b56640d1991cfae352361.png" src="_images/0eb218a8fbb90dbb1a4e73db019ada32be81fdbc646b56640d1991cfae352361.png" />
+<img alt="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" src="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" />
 </div>
 </div>
 <p><strong>Creamos el dendograma</strong></p>
@@ -516,7 +563,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fe36e67c881eaa3553fb0b46514a9488467901315088c34921da03c8be2c4bff.png" src="_images/fe36e67c881eaa3553fb0b46514a9488467901315088c34921da03c8be2c4bff.png" />
+<img alt="_images/a01ad60831aaa2e7909a1fa73eda4569764b7cf9a18bd5ffc81ee1c05b5ad530.png" src="_images/a01ad60831aaa2e7909a1fa73eda4569764b7cf9a18bd5ffc81ee1c05b5ad530.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  5.69192445  -9.47641249]
  [  1.70789903   6.00435173]
  [  0.23621041  -3.11909976]
@@ -541,12 +588,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b227372db4ee03e5c49f6cbc8303bb94c02fc1a4095335ccd893d5c97a9e377.png" src="_images/7b227372db4ee03e5c49f6cbc8303bb94c02fc1a4095335ccd893d5c97a9e377.png" />
+<img alt="_images/ea7b0a5041dff7e987e15b506508dda981b7311b5e6ac0e9e2674b775f87528d.png" src="_images/ea7b0a5041dff7e987e15b506508dda981b7311b5e6ac0e9e2674b775f87528d.png" />
 </div>
 </div>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">13.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.5. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
+<p>Es un algoritmo no supervisado que tienen por objetivo descubrir grupos a partir de formas arbitrarias de cualquier conjunto de datos y al mismo tiempo puede distinguir <em>noise points</em> que no forman parte de ningún grupo.</p>
+<p><strong>Parámetros</strong></p>
+<ul class="simple">
+<li><p>Epsilon (<span class="math notranslate nohighlight">\(\epsilon\)</span>): define el radio de una <em>bola</em>.</p></li>
+<li><p>MinPts: Número mínimo de puntos requeridos dentro de la bola de radio <span class="math notranslate nohighlight">\(\epsilon\)</span></p></li>
+</ul>
+<p><strong>Definiciones</strong>:</p>
+<ul class="simple">
+<li><p>Bola Cerrada: <span class="math notranslate nohighlight">\(B_{\epsilon}(p)=B(p;\epsilon)=\{x\in X\mid d(x,p)\leq \epsilon\}\)</span>, donde <span class="math notranslate nohighlight">\(p\)</span> es el centro y <span class="math notranslate nohighlight">\(\epsilon\)</span> es el radio</p></li>
+<li><p><em>Core point</em>: Si, dentro de la bola, contiene un número de puntos mayor o igual a <em>MinPts</em></p></li>
+<li><p><em>Border point</em>: Si, dentro de la bola, contiene al menos un <em>core point</em></p></li>
+<li><p><em>Noise point</em>: Si, dentro de la bola, no contiene ningún <em>core point</em></p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/dbscan.jpg"><img alt="_images/dbscan.jpg" src="_images/dbscan.jpg" style="width: 500px; height: 500px;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
@@ -570,10 +631,11 @@ document.write(`
   1]
 </pre></div>
 </div>
-<img alt="_images/53b042b13d8bb7add76534ab118954604672e026d3f95724c16bba11f5145555.png" src="_images/53b042b13d8bb7add76534ab118954604672e026d3f95724c16bba11f5145555.png" />
+<img alt="_images/06b2654b033d579fd8b7ae461df44cc9c1132ad62a7ba1600f2cb4fc38871673.png" src="_images/06b2654b033d579fd8b7ae461df44cc9c1132ad62a7ba1600f2cb4fc38871673.png" />
 </div>
 </div>
-<p><strong>Otro ejemplo</strong></p>
+<section id="ejemplo-clasificacion-de-clientes">
+<h3><span class="section-number">13.5.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mall_Customers.csv&quot;</span>
@@ -662,7 +724,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ee5373d7622b2e83254e392e4056b35d0b4e38b104b93e2b8340b1b11b1e5d8.png" src="_images/8ee5373d7622b2e83254e392e4056b35d0b4e38b104b93e2b8340b1b11b1e5d8.png" />
+<img alt="_images/f965bb5dcf99c9ed5c5177fffd58e3cebc84e619cbfff07872a4ad4d489ab8ef.png" src="_images/f965bb5dcf99c9ed5c5177fffd58e3cebc84e619cbfff07872a4ad4d489ab8ef.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -679,7 +741,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ffd176fdc881ebae497d18e91f11d30f0d676d92fde4873957c6347434e8030.png" src="_images/7ffd176fdc881ebae497d18e91f11d30f0d676d92fde4873957c6347434e8030.png" />
+<img alt="_images/c6329e683059f7300503c1d34cc2102057e00b3ad47f80d4e11821fe215242b3.png" src="_images/c6329e683059f7300503c1d34cc2102057e00b3ad47f80d4e11821fe215242b3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -707,7 +769,7 @@ document.write(`
  -1 -1 -1 -1 -1 -1 -1 -1]
 </pre></div>
 </div>
-<img alt="_images/691693afb0895ffd54f51c05f717b262f9000b1cc960a1866e11c793b9609ffc.png" src="_images/691693afb0895ffd54f51c05f717b262f9000b1cc960a1866e11c793b9609ffc.png" />
+<img alt="_images/9fffda6f3dc94c0aa5eaec2781cead3f33d766319b7de997ee9b044cb63b7538.png" src="_images/9fffda6f3dc94c0aa5eaec2781cead3f33d766319b7de997ee9b044cb63b7538.png" />
 </div>
 </div>
 <p><strong>Un ejemplo combinado</strong></p>
@@ -861,11 +923,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>varianza explicada [0.58785136 0.17696026]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="_images/037262a02a52821b28feb25c65a1ed8df149131d2a2172e3813077949e695366.png" src="_images/037262a02a52821b28feb25c65a1ed8df149131d2a2172e3813077949e695366.png" />
+<img alt="_images/04cf6ef8ae1b3b3d633c463f9d17e7bc7f1c29416fd3ea92a39dab9b51e0638c.png" src="_images/04cf6ef8ae1b3b3d633c463f9d17e7bc7f1c29416fd3ea92a39dab9b51e0638c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -883,9 +941,10 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1  0  1  2]
 </pre></div>
 </div>
-<img alt="_images/7e0f5a9d684c87f49520fa8b229d938bdb129532d6d243446d14d1c21e3380e0.png" src="_images/7e0f5a9d684c87f49520fa8b229d938bdb129532d6d243446d14d1c21e3380e0.png" />
+<img alt="_images/ff04ecb349601be063f263bc43d0157e8cf2a4c8cfe380f74ffd0f3467141320.png" src="_images/ff04ecb349601be063f263bc43d0157e8cf2a4c8cfe380f74ffd0f3467141320.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -942,8 +1001,16 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">13.2. <strong>Algoritmo</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.2.1. Ejemplo: clasificación de frutas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.3. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.4. <strong>Algoritmo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.5. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.5.1. Ejemplo: clasificación de clientes</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
