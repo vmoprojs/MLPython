@@ -442,7 +442,7 @@ document.write(`
 0    178
 2    177
 8    174
-dtype: int64
+Name: count, dtype: int64
 Clase negativa y positiva [1615  182]
 </pre></div>
 </div>
@@ -513,8 +513,8 @@ Score de SVC 0.9777777777777777
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proporcional (dummy classifier)
- [[370  37]
- [ 36   7]]
+ [[360  47]
+ [ 40   3]]
 </pre></div>
 </div>
 </div>
@@ -555,7 +555,7 @@ Score de SVC 0.9777777777777777
  [  8  35]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:458: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:469: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -649,12 +649,12 @@ weighted avg       0.94      0.95      0.94       450
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proporcional (dummy)
                precision    recall  f1-score   support
 
-       not 1       0.91      0.91      0.91       407
-           1       0.16      0.16      0.16        43
+       not 1       0.90      0.88      0.89       407
+           1       0.06      0.07      0.06        43
 
-    accuracy                           0.84       450
-   macro avg       0.54      0.54      0.54       450
-weighted avg       0.84      0.84      0.84       450
+    accuracy                           0.81       450
+   macro avg       0.48      0.48      0.48       450
+weighted avg       0.82      0.81      0.81       450
 
 SVM
                precision    recall  f1-score   support
@@ -675,8 +675,9 @@ Regresion Logistica
     accuracy                           0.97       450
    macro avg       0.92      0.90      0.91       450
 weighted avg       0.97      0.97      0.97       450
-
-Arbol de decision
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arbol de decision
                precision    recall  f1-score   support
 
        not 1       0.96      0.98      0.97       407
@@ -715,16 +716,16 @@ weighted avg       0.94      0.95      0.94       450
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Curva ROC (1-of-10 clasificador)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="c1">#plt.axes().set_aspect(&#39;equal&#39;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-55.038215145033256, -19.559453136681913, 18.807953187796432)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-55.03829426896272, -19.559464894367295, 18.808007620858163)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:458: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:469: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -734,7 +735,7 @@ Please also refer to the documentation for alternative solver options:
   n_iter_i = _check_optimize_result(
 </pre></div>
 </div>
-<img alt="_images/39bd9a82f2ec1e9485758e6b11119558e51dd58be406b466b53560773cf60b7c.png" src="_images/39bd9a82f2ec1e9485758e6b11119558e51dd58be406b466b53560773cf60b7c.png" />
+<img alt="_images/ab12ef4f805968beec428a6ff5a31951fc4b942a90ed4060cfcc561634267c3a.png" src="_images/ab12ef4f805968beec428a6ff5a31951fc4b942a90ed4060cfcc561634267c3a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -762,7 +763,7 @@ Please also refer to the documentation for alternative solver options:
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ROC curve: (1-of-10 digits classifier)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="c1">#plt.axes().set_aspect(&#39;equal&#39;)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -781,7 +782,7 @@ Please also refer to the documentation for alternative solver options:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gamma = 1.00  accuracy = 0.90   AUC = 0.50
 </pre></div>
 </div>
-<img alt="_images/38292293c0b480180693140b9991f9b0d218e7e3f960e2d3f67dcc591fa1cc88.png" src="_images/38292293c0b480180693140b9991f9b0d218e7e3f960e2d3f67dcc591fa1cc88.png" />
+<img alt="_images/ae8eb4499480b13ccc3d6166aa3c4195fc67c5c43a7cc5cf570050c6f14857c4.png" src="_images/ae8eb4499480b13ccc3d6166aa3c4195fc67c5c43a7cc5cf570050c6f14857c4.png" />
 </div>
 </div>
 </section>
@@ -878,7 +879,13 @@ Grid best score (AUC):  1.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;accuracy&#39;, &#39;adjusted_mutual_info_score&#39;, &#39;adjusted_rand_score&#39;, &#39;average_precision&#39;, &#39;balanced_accuracy&#39;, &#39;completeness_score&#39;, &#39;explained_variance&#39;, &#39;f1&#39;, &#39;f1_macro&#39;, &#39;f1_micro&#39;, &#39;f1_samples&#39;, &#39;f1_weighted&#39;, &#39;fowlkes_mallows_score&#39;, &#39;homogeneity_score&#39;, &#39;jaccard&#39;, &#39;jaccard_macro&#39;, &#39;jaccard_micro&#39;, &#39;jaccard_samples&#39;, &#39;jaccard_weighted&#39;, &#39;matthews_corrcoef&#39;, &#39;max_error&#39;, &#39;mutual_info_score&#39;, &#39;neg_brier_score&#39;, &#39;neg_log_loss&#39;, &#39;neg_mean_absolute_error&#39;, &#39;neg_mean_absolute_percentage_error&#39;, &#39;neg_mean_gamma_deviance&#39;, &#39;neg_mean_poisson_deviance&#39;, &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;, &#39;neg_median_absolute_error&#39;, &#39;neg_negative_likelihood_ratio&#39;, &#39;neg_root_mean_squared_error&#39;, &#39;normalized_mutual_info_score&#39;, &#39;positive_likelihood_ratio&#39;, &#39;precision&#39;, &#39;precision_macro&#39;, &#39;precision_micro&#39;, &#39;precision_samples&#39;, &#39;precision_weighted&#39;, &#39;r2&#39;, &#39;rand_score&#39;, &#39;recall&#39;, &#39;recall_macro&#39;, &#39;recall_micro&#39;, &#39;recall_samples&#39;, &#39;recall_weighted&#39;, &#39;roc_auc&#39;, &#39;roc_auc_ovo&#39;, &#39;roc_auc_ovo_weighted&#39;, &#39;roc_auc_ovr&#39;, &#39;roc_auc_ovr_weighted&#39;, &#39;top_k_accuracy&#39;, &#39;v_measure_score&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">SCORERS</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">SCORERS</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;SCORERS&#39; from &#39;sklearn.metrics&#39; (/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/__init__.py)
 </pre></div>
 </div>
 </div>
@@ -924,25 +931,6 @@ Grid best score (AUC):  1.0
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. precision): {&#39;class_weight&#39;: {1: 2}}
-Grid best score (precision): 0.5325000000000001
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. recall): {&#39;class_weight&#39;: {1: 50}}
-Grid best score (recall): 0.9214285714285714
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. f1): {&#39;class_weight&#39;: {1: 3}}
-Grid best score (f1): 0.5460755165058192
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grid best parameter (max. roc_auc): {&#39;class_weight&#39;: {1: 4}}
-Grid best score (roc_auc): 0.8930068816998278
-</pre></div>
-</div>
-<img alt="_images/3354554dcb438552994cf34fba4edeaf800b4710a7bad7c3c16c412be6862993.png" src="_images/3354554dcb438552994cf34fba4edeaf800b4710a7bad7c3c16c412be6862993.png" />
 </div>
 </div>
 </section>

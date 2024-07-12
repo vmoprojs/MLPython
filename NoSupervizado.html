@@ -374,15 +374,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">13.2. <strong>Algoritmo</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.2.1. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.1.1. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.3. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.4. <strong>Algoritmo</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.5. DBSCAN clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.5.1. Ejemplo: clasificación de clientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.3.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
 </li>
 </ul>
@@ -433,13 +431,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60851fae2146b10481fe9a2233158b2d593a6ee0dcd3eb03ac6a54ac572724dd.png" src="_images/60851fae2146b10481fe9a2233158b2d593a6ee0dcd3eb03ac6a54ac572724dd.png" />
+<img alt="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" src="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" />
 </div>
 </div>
-</section>
-<hr class="docutils" />
-<section id="algoritmo">
-<h2><span class="section-number">13.2. </span><strong>Algoritmo</strong><a class="headerlink" href="#algoritmo" title="Permalink to this heading">#</a></h2>
+<p><strong>Algoritmo</strong></p>
 <p><strong>Entradas:</strong></p>
 <ul class="simple">
 <li><p>conjunto de patrones en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
@@ -458,9 +453,8 @@ document.write(`
 </ol>
 <p><strong>Hasta</strong> La última partición obtenida, (idéntica a la de la iteración
 anterior ) es la respuesta final del algoritmo.</p>
-<hr class="docutils" />
 <section id="ejemplo-clasificacion-de-frutas">
-<h3><span class="section-number">13.2.1. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.1.1. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -506,11 +500,8 @@ anterior ) es la respuesta final del algoritmo.</p>
 </section>
 </section>
 <section id="aglomerativo">
-<h2><span class="section-number">13.3. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
-</section>
-<hr class="docutils" />
-<section id="id1">
-<h2><span class="section-number">13.4. </span><strong>Algoritmo</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
+<p><strong>Algoritmo</strong></p>
 <p><strong>Entradas:</strong></p>
 <ul class="simple">
 <li><p>Conjunto de patrones en cualquier espacio.</p></li>
@@ -531,7 +522,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p>Registrar la fusión realizada en el dendrograma</p></li>
 </ol>
 <p><strong>Hasta</strong> Terminar cuando todos los patrones se encuentren agrupados en un solo grupo.</p>
-<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -593,7 +583,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">13.5. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
 <p>Es un algoritmo no supervisado que tienen por objetivo descubrir grupos a partir de formas arbitrarias de cualquier conjunto de datos y al mismo tiempo puede distinguir <em>noise points</em> que no forman parte de ningún grupo.</p>
 <p><strong>Parámetros</strong></p>
 <ul class="simple">
@@ -607,7 +597,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p><em>Border point</em>: Si, dentro de la bola, contiene al menos un <em>core point</em></p></li>
 <li><p><em>Noise point</em>: Si, dentro de la bola, no contiene ningún <em>core point</em></p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/dbscan.jpg"><img alt="_images/dbscan.jpg" src="_images/dbscan.jpg" style="width: 500px; height: 500px;" /></a>
+<a class="reference internal image-reference" href="_images/dbscan.jpg"><img alt="_images/dbscan.jpg" src="_images/dbscan.jpg" style="width: 500px; height: 300px;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
@@ -635,7 +625,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </div>
 <section id="ejemplo-clasificacion-de-clientes">
-<h3><span class="section-number">13.5.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.3.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mall_Customers.csv&quot;</span>
@@ -923,7 +913,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>varianza explicada [0.58785136 0.17696026]
 </pre></div>
 </div>
-<img alt="_images/04cf6ef8ae1b3b3d633c463f9d17e7bc7f1c29416fd3ea92a39dab9b51e0638c.png" src="_images/04cf6ef8ae1b3b3d633c463f9d17e7bc7f1c29416fd3ea92a39dab9b51e0638c.png" />
+<img alt="_images/8f0063923be96ed0a4e0de343825fdadb8a444e3b6c342f5119a67abd27442d8.png" src="_images/8f0063923be96ed0a4e0de343825fdadb8a444e3b6c342f5119a67abd27442d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1000,15 +990,13 @@ anterior ) es la respuesta final del algoritmo.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">13.2. <strong>Algoritmo</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.2.1. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.1.1. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.3. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.4. <strong>Algoritmo</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.5. DBSCAN clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.5.1. Ejemplo: clasificación de clientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.3.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
 </li>
 </ul>
