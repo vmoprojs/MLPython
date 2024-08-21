@@ -46,7 +46,7 @@ sphinx:
     - sphinxcontrib.bibtex  # Ensure this is included
 
   config:
-    bibtex_bibfiles: ['references.bib']  # Path to your BibTeX file
+    bibtex_bibfiles: references.bib  # Path to your BibTeX file
     bibtex_reference_style: author_year  # or 'plain', depending on your preference
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
