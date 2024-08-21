@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>8. Aprendizaje Supervisado &#8212; Técnicas de Machine Learning con Python</title>
+    <title>5. Aprendizaje Supervisado &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'AprendizajeSupervisado';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Support Vector Machines" href="SVM.html" />
-    <link rel="prev" title="7. Análisis de Componentes Principales" href="ACP.html" />
+    <link rel="next" title="6. Regresión lineal" href="Regresion.html" />
+    <link rel="prev" title="4. Estadística Descriptiva &amp; Pruebas de hipótesis" href="Descriptiva.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,29 +156,30 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">3. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">5. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">6. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">7. Análisis de Componentes Principales</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">9. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">10. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">11. Evaluación de Modelos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arboles.html">9. Árboles de decisión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">12. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -372,38 +373,38 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecinos-mas-cercanos">8.1. Vecinos más cercanos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisando-los-datos">8.1.1. Revisando los datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba">8.1.2. Creamos los conjuntos de entrenamiento y prueba</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-el-objeto-clasificador">8.1.3. Creamos el objeto clasificador</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento">8.1.4. Entrenamos el clasificador (ajustamos el modelo) en los datos de entrenamiento</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba">8.1.5. Estimamos la precisión del clasificador usando los datos de prueba</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usar-el-clasificador-para-predecir-datos-no-observados">8.1.6. Usar el clasificador para predecir datos no observados</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graficamos-las-fronteras-de-decision-de-knn">8.1.7. Graficamos las fronteras de decisión de KNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k">8.1.8. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de K?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion">8.1.9. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecinos-mas-cercanos">5.1. Vecinos más cercanos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisando-los-datos">5.1.1. Revisando los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba">5.1.2. Creamos los conjuntos de entrenamiento y prueba</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-el-objeto-clasificador">5.1.3. Creamos el objeto clasificador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento">5.1.4. Entrenamos el clasificador (ajustamos el modelo) en los datos de entrenamiento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba">5.1.5. Estimamos la precisión del clasificador usando los datos de prueba</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usar-el-clasificador-para-predecir-datos-no-observados">5.1.6. Usar el clasificador para predecir datos no observados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graficamos-las-fronteras-de-decision-de-knn">5.1.7. Graficamos las fronteras de decisión de KNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k">5.1.8. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de K?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion">5.1.9. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales-para-regresion">8.2. Modelos lineales para regresión</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">8.2.1. Regresión lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-un-grafico">8.2.2. Regresion lineal: un gráfico</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">8.2.3. Regresión Ridge</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-variables-normalizadas">8.2.3.1. Regresión Ridge con variables normalizadas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-parametro-de-regularizacion-alpha">8.2.3.2. Regresión Ridge con parámetro de regularización alpha</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales-para-regresion">5.2. Modelos lineales para regresión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">5.2.1. Regresión lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-un-grafico">5.2.2. Regresion lineal: un gráfico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">5.2.3. Regresión Ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-variables-normalizadas">5.2.3.1. Regresión Ridge con variables normalizadas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-parametro-de-regularizacion-alpha">5.2.3.2. Regresión Ridge con parámetro de regularización alpha</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">8.2.4. Regresión Lasso</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso-con-parametro-de-regularizacion-alpha">8.2.4.1. Regresión Lasso con parámetro de regularización alpha</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">5.2.4. Regresión Lasso</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso-con-parametro-de-regularizacion-alpha">5.2.4.1. Regresión Lasso con parámetro de regularización alpha</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arboles-de-decision">8.3. Árboles de decisión</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste">8.3.1. Establecer la profundidad máxima del árbol de decisión para ayudar a evitar el sobreajuste</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-arboles-de-decision">8.3.2. Visualizando árboles de decisión</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-pre-pruned-max-depth-3">8.3.3. Versión Pre-pruned (max_depth = 3)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">8.3.3.1. Feature importance</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">8.3.3.2. Ejemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arboles-de-decision">5.3. Árboles de decisión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste">5.3.1. Establecer la profundidad máxima del árbol de decisión para ayudar a evitar el sobreajuste</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-arboles-de-decision">5.3.2. Visualizando árboles de decisión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-pre-pruned-max-depth-3">5.3.3. Versión Pre-pruned (max_depth = 3)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">5.3.3.1. Feature importance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">5.3.3.2. Ejemplo</a></li>
 </ul>
 </li>
 </ul>
@@ -420,7 +421,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-supervisado">
-<h1><span class="section-number">8. </span>Aprendizaje Supervisado<a class="headerlink" href="#aprendizaje-supervisado" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Aprendizaje Supervisado<a class="headerlink" href="#aprendizaje-supervisado" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Vecinos mas cercanos.</p></li>
 <li><p>Regularizacion: Lasso, Ridge.</p></li>
@@ -429,7 +430,7 @@ document.write(`
 <li><p>Redes Neuronales</p></li>
 </ul>
 <section id="vecinos-mas-cercanos">
-<h2><span class="section-number">8.1. </span>Vecinos más cercanos<a class="headerlink" href="#vecinos-mas-cercanos" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Vecinos más cercanos<a class="headerlink" href="#vecinos-mas-cercanos" title="Permalink to this heading">#</a></h2>
 <p>Importamos las librerías necesarias y los datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -550,7 +551,7 @@ document.write(`
 </div>
 <p>El archivo contiene la masa, la altura y el ancho de una selección de naranjas, limones y manzanas. Las alturas se midieron a lo largo del corazón de la fruta.</p>
 <section id="revisando-los-datos">
-<h3><span class="section-number">8.1.1. </span>Revisando los datos<a class="headerlink" href="#revisando-los-datos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.1. </span>Revisando los datos<a class="headerlink" href="#revisando-los-datos" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># grafico de una matriz scatter</span>
@@ -565,7 +566,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/98bd357fb105fd43e1ee37fc0e2a025c4b94776dabedca237257bd3be301c79b.png" src="_images/98bd357fb105fd43e1ee37fc0e2a025c4b94776dabedca237257bd3be301c79b.png" />
+<img alt="_images/704dce53739d5381c612ad2c4513ec4e0b89f1aca86c2f50f7b54be1f1b3dea6.png" src="_images/704dce53739d5381c612ad2c4513ec4e0b89f1aca86c2f50f7b54be1f1b3dea6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -584,12 +585,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7607eac79df3b09f70fc2e01631f2fa8daaaf357c3df034a7f5e6a3958f3c52.png" src="_images/d7607eac79df3b09f70fc2e01631f2fa8daaaf357c3df034a7f5e6a3958f3c52.png" />
+<img alt="_images/57b6ee3ce1c2d2fbbaa5653a8562ea3fe5ee0c958a13b5e255242922103e25bc.png" src="_images/57b6ee3ce1c2d2fbbaa5653a8562ea3fe5ee0c958a13b5e255242922103e25bc.png" />
 </div>
 </div>
 </section>
 <section id="creamos-los-conjuntos-de-entrenamiento-y-prueba">
-<h3><span class="section-number">8.1.2. </span>Creamos los conjuntos de entrenamiento y prueba<a class="headerlink" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>Creamos los conjuntos de entrenamiento y prueba<a class="headerlink" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Para este ejemplo, usamos las características de masa, ancho y alto de cada instancia de fruta.</span>
@@ -604,7 +605,7 @@ document.write(`
 </div>
 </section>
 <section id="creamos-el-objeto-clasificador">
-<h3><span class="section-number">8.1.3. </span>Creamos el objeto clasificador<a class="headerlink" href="#creamos-el-objeto-clasificador" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.3. </span>Creamos el objeto clasificador<a class="headerlink" href="#creamos-el-objeto-clasificador" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
@@ -616,7 +617,7 @@ document.write(`
 </div>
 </section>
 <section id="entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento">
-<h3><span class="section-number">8.1.4. </span>Entrenamos el clasificador (ajustamos el modelo) en los datos de entrenamiento<a class="headerlink" href="#entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.4. </span>Entrenamos el clasificador (ajustamos el modelo) en los datos de entrenamiento<a class="headerlink" href="#entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -624,11 +625,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div></div></div>
 </div>
 </section>
 <section id="estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba">
-<h3><span class="section-number">8.1.5. </span>Estimamos la precisión del clasificador usando los datos de prueba<a class="headerlink" href="#estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.5. </span>Estimamos la precisión del clasificador usando los datos de prueba<a class="headerlink" href="#estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
@@ -643,7 +644,7 @@ document.write(`
 </div>
 </section>
 <section id="usar-el-clasificador-para-predecir-datos-no-observados">
-<h3><span class="section-number">8.1.6. </span>Usar el clasificador para predecir datos no observados<a class="headerlink" href="#usar-el-clasificador-para-predecir-datos-no-observados" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.6. </span>Usar el clasificador para predecir datos no observados<a class="headerlink" href="#usar-el-clasificador-para-predecir-datos-no-observados" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># primer ejemplo: una fruta pequeña con una masa de 20 g, ancho 4,3 cm, altura 5,5 cm</span>
@@ -657,7 +658,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:439: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:464: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
   warnings.warn(
 </pre></div>
 </div>
@@ -668,7 +669,7 @@ document.write(`
 </div>
 </section>
 <section id="graficamos-las-fronteras-de-decision-de-knn">
-<h3><span class="section-number">8.1.7. </span>Graficamos las fronteras de decisión de KNN<a class="headerlink" href="#graficamos-las-fronteras-de-decision-de-knn" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.7. </span>Graficamos las fronteras de decisión de KNN<a class="headerlink" href="#graficamos-las-fronteras-de-decision-de-knn" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_fruit_knn</span>
@@ -678,12 +679,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e8a09b8488bfbe0122199b738f55c3aeb6f45bc83642639d81b36d3a0ecca7b5.png" src="_images/e8a09b8488bfbe0122199b738f55c3aeb6f45bc83642639d81b36d3a0ecca7b5.png" />
+<img alt="_images/d66e79567f635c0e27ca3a585362bcaac1199c58df7009468dedbc5dc3298b62.png" src="_images/d66e79567f635c0e27ca3a585362bcaac1199c58df7009468dedbc5dc3298b62.png" />
 </div>
 </div>
 </section>
 <section id="cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k">
-<h3><span class="section-number">8.1.8. </span>¿Cuán sensible es la precisión de la clasificación K-NN a la elección de K?<a class="headerlink" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.8. </span>¿Cuán sensible es la precisión de la clasificación K-NN a la elección de K?<a class="headerlink" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
@@ -703,12 +704,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0948c1dae60fff915c6505826dc62572a4ffaef966a0ceec9bcc63f0e1096dbd.png" src="_images/0948c1dae60fff915c6505826dc62572a4ffaef966a0ceec9bcc63f0e1096dbd.png" />
+<img alt="_images/2c761fe65c265fe1abb82af2c6afc179ac0195bd55980f8ea5b88eb2af27c378.png" src="_images/2c761fe65c265fe1abb82af2c6afc179ac0195bd55980f8ea5b88eb2af27c378.png" />
 </div>
 </div>
 </section>
 <section id="cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion">
-<h3><span class="section-number">8.1.9. </span>¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?<a class="headerlink" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.9. </span>¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?<a class="headerlink" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
@@ -732,15 +733,86 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7cdfcb8e9c5ca716d2f6280ca0284ddfcfe6b0bf2e78d05810ac8e7accd6940b.png" src="_images/7cdfcb8e9c5ca716d2f6280ca0284ddfcfe6b0bf2e78d05810ac8e7accd6940b.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>         <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Training set proportion (%)&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:705,</span> in <span class="ni">ClassifierMixin.score</span><span class="nt">(self, X, y, sample_weight)</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span><span class="sd"> Return the mean accuracy on the given test data and labels.</span>
+<span class="g g-Whitespace">    </span><span class="mi">682</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="sd">     Mean accuracy of ``self.predict(X)`` w.r.t. `y`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="kn">from</span> <span class="nn">.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="ne">--&gt; </span><span class="mi">705</span> <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/neighbors/_classification.py:246,</span> in <span class="ni">KNeighborsClassifier.predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span> <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_fit_method&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">==</span> <span class="s2">&quot;uniform&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">246</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span> <span class="ow">and</span> <span class="n">ArgKminClassMode</span><span class="o">.</span><span class="n">is_usable_for</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span>         <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="n">probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:471,</span> in <span class="ni">ArgKminClassMode.is_usable_for</span><span class="nt">(cls, X, Y, metric)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span> <span class="nd">@classmethod</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">def</span> <span class="nf">is_usable_for</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return True if the dispatcher can be used for the given parameters.</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">452</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span><span class="sd">     True if the PairwiseDistancesReduction can be used, else False.</span>
+<span class="g g-Whitespace">    </span><span class="mi">469</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span>     <span class="k">return</span> <span class="p">(</span>
+<span class="ne">--&gt; </span><span class="mi">471</span>         <span class="n">ArgKmin</span><span class="o">.</span><span class="n">is_usable_for</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">472</span>         <span class="c1"># TODO: Support CSR matrices.</span>
+<span class="g g-Whitespace">    </span><span class="mi">473</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">474</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">issparse</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span>         <span class="c1"># TODO: implement Euclidean specialization with GEMM.</span>
+<span class="nn">    476         and metric not</span> in <span class="nt">(&quot;euclidean&quot;, &quot;sqeuclidean&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:115,</span> in <span class="ni">BaseDistancesReductionDispatcher.is_usable_for</span><span class="nt">(cls, X, Y, metric)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">def</span> <span class="nf">is_valid_sparse_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="k">return</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>         <span class="n">isspmatrix_csr</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>         <span class="ow">and</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">X</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">X</span><span class="o">.</span><span class="n">indptr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="n">is_usable</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enable_cython_pairwise_dist&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">115</span>     <span class="ow">and</span> <span class="p">(</span><span class="n">is_numpy_c_ordered</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_valid_sparse_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="ow">and</span> <span class="p">(</span><span class="n">is_numpy_c_ordered</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_valid_sparse_matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="ow">and</span> <span class="n">X</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">Y</span><span class="o">.</span><span class="n">dtype</span>
+<span class="nn">    118     and X.dtype</span> in <span class="nt">(np.float32, np.float64)</span>
+<span class="nn">    119     and metric</span> in <span class="ni">cls.valid_metrics</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="k">return</span> <span class="n">is_usable</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:99,</span> in <span class="ni">BaseDistancesReductionDispatcher.is_usable_for.&lt;locals&gt;.is_numpy_c_ordered</span><span class="nt">(X)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="k">def</span> <span class="nf">is_numpy_c_ordered</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">99</span>     <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;flags&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">X</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">c_contiguous</span>
+
+<span class="ne">AttributeError</span>: &#39;Flags&#39; object has no attribute &#39;c_contiguous&#39;
+</pre></div>
+</div>
+<img alt="_images/ba0b8cb00d98e23b423e2f5748622188e58dd28f1105608da709c211facbb87f.png" src="_images/ba0b8cb00d98e23b423e2f5748622188e58dd28f1105608da709c211facbb87f.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="modelos-lineales-para-regresion">
-<h2><span class="section-number">8.2. </span>Modelos lineales para regresión<a class="headerlink" href="#modelos-lineales-para-regresion" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>Modelos lineales para regresión<a class="headerlink" href="#modelos-lineales-para-regresion" title="Permalink to this heading">#</a></h2>
 <section id="regresion-lineal">
-<h3><span class="section-number">8.2.1. </span>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.2.1. </span>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creamos un conjunto de datos para regresion</span>
@@ -789,7 +861,7 @@ R-squared score (test): 0.492
 </div>
 </section>
 <section id="regresion-lineal-un-grafico">
-<h3><span class="section-number">8.2.2. </span>Regresion lineal: un gráfico<a class="headerlink" href="#regresion-lineal-un-grafico" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.2.2. </span>Regresion lineal: un gráfico<a class="headerlink" href="#regresion-lineal-un-grafico" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -863,7 +935,7 @@ R-squared score (test): 0.496
 </div>
 </section>
 <section id="regresion-ridge">
-<h3><span class="section-number">8.2.3. </span>Regresión Ridge<a class="headerlink" href="#regresion-ridge" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.2.3. </span>Regresión Ridge<a class="headerlink" href="#regresion-ridge" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
@@ -920,7 +992,7 @@ Number of non-zero features: 88
 </div>
 </div>
 <section id="regresion-ridge-con-variables-normalizadas">
-<h4><span class="section-number">8.2.3.1. </span>Regresión Ridge con variables normalizadas<a class="headerlink" href="#regresion-ridge-con-variables-normalizadas" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.2.3.1. </span>Regresión Ridge con variables normalizadas<a class="headerlink" href="#regresion-ridge-con-variables-normalizadas" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
@@ -980,7 +1052,7 @@ Number of non-zero features: 88
 </div>
 </section>
 <section id="regresion-ridge-con-parametro-de-regularizacion-alpha">
-<h4><span class="section-number">8.2.3.2. </span>Regresión Ridge con parámetro de regularización alpha<a class="headerlink" href="#regresion-ridge-con-parametro-de-regularizacion-alpha" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.2.3.2. </span>Regresión Ridge con parámetro de regularización alpha<a class="headerlink" href="#regresion-ridge-con-parametro-de-regularizacion-alpha" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ridge regression: effect of alpha regularization parameter</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1025,7 +1097,7 @@ num abs(coeff) &gt; 1.0: 84, r-squared training: 0.31, r-squared test: 0.30
 </section>
 </section>
 <section id="regresion-lasso">
-<h3><span class="section-number">8.2.4. </span>Regresión Lasso<a class="headerlink" href="#regresion-lasso" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.2.4. </span>Regresión Lasso<a class="headerlink" href="#regresion-lasso" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
@@ -1116,7 +1188,7 @@ Features with non-zero weight (sorted by absolute magnitude):
 </div>
 </div>
 <section id="regresion-lasso-con-parametro-de-regularizacion-alpha">
-<h4><span class="section-number">8.2.4.1. </span>Regresión Lasso con parámetro de regularización alpha<a class="headerlink" href="#regresion-lasso-con-parametro-de-regularizacion-alpha" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.2.4.1. </span>Regresión Lasso con parámetro de regularización alpha<a class="headerlink" href="#regresion-lasso-con-parametro-de-regularizacion-alpha" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lasso regression: effect of alpha regularization</span><span class="se">\n\</span>
@@ -1168,7 +1240,7 @@ Features kept: 1, r-squared training: 0.31, r-squared test: 0.30
 </section>
 </section>
 <section id="arboles-de-decision">
-<h2><span class="section-number">8.3. </span>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
@@ -1191,13 +1263,13 @@ Features kept: 1, r-squared training: 0.31, r-squared test: 0.30
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of Decision Tree classifier on training set: 1.00
-Accuracy of Decision Tree classifier on test set: 0.95
+Accuracy of Decision Tree classifier on test set: 0.97
 </pre></div>
 </div>
 </div>
 </div>
 <section id="establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste">
-<h3><span class="section-number">8.3.1. </span>Establecer la profundidad máxima del árbol de decisión para ayudar a evitar el sobreajuste<a class="headerlink" href="#establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.3.1. </span>Establecer la profundidad máxima del árbol de decisión para ayudar a evitar el sobreajuste<a class="headerlink" href="#establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf2</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1218,7 +1290,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </section>
 <section id="visualizando-arboles-de-decision">
-<h3><span class="section-number">8.3.2. </span>Visualizando árboles de decisión<a class="headerlink" href="#visualizando-arboles-de-decision" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.3.2. </span>Visualizando árboles de decisión<a class="headerlink" href="#visualizando-arboles-de-decision" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_decision_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
@@ -1226,11 +1298,11 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0ced9621095136b7aee5a62d606a835950d22f476b84fcf5007d52d3a43e94d2.svg" src="_images/0ced9621095136b7aee5a62d606a835950d22f476b84fcf5007d52d3a43e94d2.svg" /></div>
+<img alt="_images/368fa3569f70f38d15676fa82dd679ddf8bdacb38fc5581e7a11a71d5365f600.svg" src="_images/368fa3569f70f38d15676fa82dd679ddf8bdacb38fc5581e7a11a71d5365f600.svg" /></div>
 </div>
 </section>
 <section id="version-pre-pruned-max-depth-3">
-<h3><span class="section-number">8.3.3. </span>Versión Pre-pruned (max_depth = 3)<a class="headerlink" href="#version-pre-pruned-max-depth-3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.3.3. </span>Versión Pre-pruned (max_depth = 3)<a class="headerlink" href="#version-pre-pruned-max-depth-3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_decision_tree</span><span class="p">(</span><span class="n">clf2</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
@@ -1238,10 +1310,10 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/14eb08034e0d060d07157059bc21f673bf5e0b296bad4fe4e4ae4486a1566ba4.svg" src="_images/14eb08034e0d060d07157059bc21f673bf5e0b296bad4fe4e4ae4486a1566ba4.svg" /></div>
+<img alt="_images/045116028200e2bfa28850be0bd95fae649f1cd832fd3f32a6619a041fad2a7f.svg" src="_images/045116028200e2bfa28850be0bd95fae649f1cd832fd3f32a6619a041fad2a7f.svg" /></div>
 </div>
 <section id="feature-importance">
-<h4><span class="section-number">8.3.3.1. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.3.3.1. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_feature_importances</span>
@@ -1255,8 +1327,8 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9120b3413fa406cdc62b04e5230a6b8de2fa16a5ed7e5f15f3f0f4e45f53effc.png" src="_images/9120b3413fa406cdc62b04e5230a6b8de2fa16a5ed7e5f15f3f0f4e45f53effc.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature importances: [0.         0.0379858  0.54643762 0.41557658]
+<img alt="_images/b781062055abcedf0b1d58c6943ebde7378240890a4ed0e50de5db6e72bc1c98.png" src="_images/b781062055abcedf0b1d58c6943ebde7378240890a4ed0e50de5db6e72bc1c98.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature importances: [0.         0.03128242 0.06251049 0.90620709]
 </pre></div>
 </div>
 </div>
@@ -1291,12 +1363,12 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/48c8832153e89d776487ab0a8f8b122df919a7930d34e390b497a5bf1bc7cf49.png" src="_images/48c8832153e89d776487ab0a8f8b122df919a7930d34e390b497a5bf1bc7cf49.png" />
+<img alt="_images/2994d515e927365bf0932fc01ec1fbe44fd5f69511403536a1631078dd48126d.png" src="_images/2994d515e927365bf0932fc01ec1fbe44fd5f69511403536a1631078dd48126d.png" />
 </div>
 </div>
 </section>
 <section id="ejemplo">
-<h4><span class="section-number">8.3.3.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.3.3.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
@@ -1379,20 +1451,20 @@ Accuracy of DT classifier on test set: 0.94
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ACP.html"
+       href="Descriptiva.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Análisis de Componentes Principales</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Estadística Descriptiva &amp; Pruebas de hipótesis</p>
       </div>
     </a>
     <a class="right-next"
-       href="SVM.html"
+       href="Regresion.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Support Vector Machines</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Regresión lineal</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1411,38 +1483,38 @@ Accuracy of DT classifier on test set: 0.94
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecinos-mas-cercanos">8.1. Vecinos más cercanos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisando-los-datos">8.1.1. Revisando los datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba">8.1.2. Creamos los conjuntos de entrenamiento y prueba</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-el-objeto-clasificador">8.1.3. Creamos el objeto clasificador</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento">8.1.4. Entrenamos el clasificador (ajustamos el modelo) en los datos de entrenamiento</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba">8.1.5. Estimamos la precisión del clasificador usando los datos de prueba</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usar-el-clasificador-para-predecir-datos-no-observados">8.1.6. Usar el clasificador para predecir datos no observados</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graficamos-las-fronteras-de-decision-de-knn">8.1.7. Graficamos las fronteras de decisión de KNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k">8.1.8. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de K?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion">8.1.9. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecinos-mas-cercanos">5.1. Vecinos más cercanos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisando-los-datos">5.1.1. Revisando los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba">5.1.2. Creamos los conjuntos de entrenamiento y prueba</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-el-objeto-clasificador">5.1.3. Creamos el objeto clasificador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamos-el-clasificador-ajustamos-el-modelo-en-los-datos-de-entrenamiento">5.1.4. Entrenamos el clasificador (ajustamos el modelo) en los datos de entrenamiento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimamos-la-precision-del-clasificador-usando-los-datos-de-prueba">5.1.5. Estimamos la precisión del clasificador usando los datos de prueba</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usar-el-clasificador-para-predecir-datos-no-observados">5.1.6. Usar el clasificador para predecir datos no observados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graficamos-las-fronteras-de-decision-de-knn">5.1.7. Graficamos las fronteras de decisión de KNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-k">5.1.8. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de K?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion">5.1.9. ¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales-para-regresion">8.2. Modelos lineales para regresión</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">8.2.1. Regresión lineal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-un-grafico">8.2.2. Regresion lineal: un gráfico</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">8.2.3. Regresión Ridge</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-variables-normalizadas">8.2.3.1. Regresión Ridge con variables normalizadas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-parametro-de-regularizacion-alpha">8.2.3.2. Regresión Ridge con parámetro de regularización alpha</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales-para-regresion">5.2. Modelos lineales para regresión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">5.2.1. Regresión lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-un-grafico">5.2.2. Regresion lineal: un gráfico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">5.2.3. Regresión Ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-variables-normalizadas">5.2.3.1. Regresión Ridge con variables normalizadas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge-con-parametro-de-regularizacion-alpha">5.2.3.2. Regresión Ridge con parámetro de regularización alpha</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">8.2.4. Regresión Lasso</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso-con-parametro-de-regularizacion-alpha">8.2.4.1. Regresión Lasso con parámetro de regularización alpha</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">5.2.4. Regresión Lasso</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso-con-parametro-de-regularizacion-alpha">5.2.4.1. Regresión Lasso con parámetro de regularización alpha</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arboles-de-decision">8.3. Árboles de decisión</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste">8.3.1. Establecer la profundidad máxima del árbol de decisión para ayudar a evitar el sobreajuste</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-arboles-de-decision">8.3.2. Visualizando árboles de decisión</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-pre-pruned-max-depth-3">8.3.3. Versión Pre-pruned (max_depth = 3)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">8.3.3.1. Feature importance</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">8.3.3.2. Ejemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arboles-de-decision">5.3. Árboles de decisión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establecer-la-profundidad-maxima-del-arbol-de-decision-para-ayudar-a-evitar-el-sobreajuste">5.3.1. Establecer la profundidad máxima del árbol de decisión para ayudar a evitar el sobreajuste</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-arboles-de-decision">5.3.2. Visualizando árboles de decisión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-pre-pruned-max-depth-3">5.3.3. Versión Pre-pruned (max_depth = 3)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">5.3.3.1. Feature importance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">5.3.3.2. Ejemplo</a></li>
 </ul>
 </li>
 </ul>

@@ -4,28 +4,28 @@
 format: jb-book
 root: intro
 parts:
-- caption: Parte 1
+- caption: Introducción a Python
   numbered: true
   chapters:
   - file: IntroduccionPython
   - file: Pandas
   - file: Visualizacion
-- caption: Parte 2
+- caption: Análisis Exploratorio de Datos
   numbered: true
   chapters:
   - file: Descriptiva
-  - file: Regresion
-  - file: ProbModels
-  - file: ACP
-- caption: Parte 3
+- caption: Aprendizaje Supervizado
   numbered: true
   chapters:
   - file: AprendizajeSupervisado
+  - file: Regresion
+  - file: ProbModels
+  - file: ACP
   - file: Arboles
   - file: SVM
   - file: RedesNeuronales
   - file: Evaluacion
-- caption: Parte 4
+- caption: Aprendizaje no Supervisado
   numbered: true
   chapters:
   - file: NoSupervizado

@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="10. Support Vector Machines" href="SVM.html" />
-    <link rel="prev" title="8. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
+    <link rel="prev" title="8. Análisis de Componentes Principales" href="ACP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -158,28 +158,28 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">3. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">5. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">6. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">7. Análisis de Componentes Principales</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">8. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">5. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Árboles de decisión</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
 </ul>
@@ -741,7 +741,7 @@ Name: proportion, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:242: UserWarning: Found unknown categories in columns [1, 4] during transform. These unknown categories will be encoded as all zeros
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:227: UserWarning: Found unknown categories in columns [1, 4] during transform. These unknown categories will be encoded as all zeros
   warnings.warn(
 </pre></div>
 </div>
@@ -758,411 +758,7 @@ Name: proportion, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: black;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-1 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-1 pre {
-  padding: 0;
-}
-
-#sk-container-id-1 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-1 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-1 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-1 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-1 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-1 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-1 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-1 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-1 label.sk-toggleable__label {
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-1 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label label.sk-toggleable__label,
-#sk-container-id-1 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-1 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-1 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-1 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-1 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 1ex;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-1 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-1 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, random_state=12345)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;DecisionTreeClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.tree.DecisionTreeClassifier.html">?<span>Documentation for DecisionTreeClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, random_state=12345)</pre></div> </div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, random_state=12345)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, random_state=12345)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1174,7 +770,293 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ee0242cf7d8d410e213ce3269fafc0be37e204e6da9954b0d357f16dd588b59c.png" src="_images/ee0242cf7d8d410e213ce3269fafc0be37e204e6da9954b0d357f16dd588b59c.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">InvalidParameterError</span><span class="g g-Whitespace">                     </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Imprimir el modelo (el árbol de decisión)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">plot_tree</span><span class="p">(</span><span class="n">credit_model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">features</span><span class="p">),</span> <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">],</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:201,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="n">to_ignore</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;self&quot;</span><span class="p">,</span> <span class="s2">&quot;cls&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">to_ignore</span><span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">201</span> <span class="n">validate_parameter_constraints</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="n">parameter_constraints</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">caller_name</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="vm">__qualname__</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>             <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>     <span class="p">):</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:95,</span> in <span class="ni">validate_parameter_constraints</span><span class="nt">(parameter_constraints, params, caller_name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">constraints_str</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">constraints</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span><span class="si">}</span><span class="s2"> or&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>         <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">constraints</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">95</span> <span class="k">raise</span> <span class="n">InvalidParameterError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">param_name</span><span class="si">!r}</span><span class="s2"> parameter of </span><span class="si">{</span><span class="n">caller_name</span><span class="si">}</span><span class="s2"> must be&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">constraints_str</span><span class="si">}</span><span class="s2">. Got </span><span class="si">{</span><span class="n">param_val</span><span class="si">!r}</span><span class="s2"> instead.&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="p">)</span>
+
+<span class="ne">InvalidParameterError</span>: The &#39;feature_names&#39; parameter of plot_tree must be an instance of &#39;list&#39; or None. Got array([&#39;checking_balance_&lt; 0 DM&#39;, &#39;checking_balance_&gt; 200 DM&#39;,
+       <span class="s1">&#39;checking_balance_unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_5&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_6&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_7&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_8&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_9&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_10&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_11&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_12&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_13&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_14&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_15&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_16&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_18&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_20&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_21&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_22&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_24&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_26&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_27&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_28&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_30&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_33&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_36&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_39&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_40&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_42&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_45&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_48&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_54&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;months_loan_duration_60&#39;</span><span class="p">,</span> <span class="s1">&#39;months_loan_duration_72&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;credit_history_good&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_history_perfect&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;credit_history_poor&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_history_very good&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose_car&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;purpose_car0&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose_education&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;purpose_furniture/appliances&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose_renovations&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_338&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_339&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_343&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_362&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_368&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_385&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_392&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_409&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_426&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_428&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_433&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_448&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_454&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_458&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_484&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_518&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_522&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_571&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_585&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_590&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_601&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_609&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_618&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_625&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_626&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_629&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_639&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_640&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_652&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_654&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_660&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_662&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_666&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_672&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_674&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_682&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_683&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_684&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_685&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_697&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_700&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_701&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_707&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_708&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_709&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_717&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_719&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_727&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_730&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_731&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_741&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_745&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_750&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_753&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_754&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_759&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_760&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_763&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_766&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_776&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_781&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_783&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_790&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_795&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_797&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_802&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_804&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_806&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_836&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_841&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_846&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_866&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_874&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_882&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_884&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_886&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_888&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_894&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_900&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_902&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_907&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_909&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_915&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_918&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_926&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_929&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_930&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_931&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_932&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_936&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_937&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_939&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_947&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_950&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_951&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_958&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_959&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_960&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_976&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_983&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_996&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_999&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1007&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1024&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1028&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1037&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1038&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1042&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1047&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1048&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1049&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1050&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1053&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1055&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1056&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1068&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1076&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1082&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1092&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1098&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1101&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1103&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1107&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1108&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1123&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1126&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1136&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1149&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1154&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1155&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1158&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1163&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1168&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1169&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1175&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1185&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1190&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1193&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1198&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1199&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1200&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1201&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1203&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1204&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1206&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1207&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1216&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1217&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1221&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1224&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1225&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1231&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1236&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1237&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1238&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1239&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1240&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1244&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1245&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1246&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1249&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1255&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1258&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1262&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1264&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1271&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1275&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1278&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1282&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1285&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1287&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1288&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1289&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1291&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1295&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1297&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1299&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1300&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1301&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1308&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1309&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1311&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1313&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1316&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1318&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1322&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1323&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1330&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1331&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1333&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1337&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1338&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1343&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1344&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1345&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1346&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1347&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1352&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1355&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1361&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1364&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1366&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1372&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1374&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1376&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1377&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1381&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1382&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1386&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1388&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1391&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1393&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1402&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1403&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1409&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1410&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1412&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1413&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1414&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1418&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1422&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1424&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1433&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1437&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1442&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1444&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1445&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1449&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1453&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1455&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1459&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1469&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1471&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1473&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1478&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1480&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1484&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1493&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1494&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1495&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1501&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1503&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1505&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1512&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1514&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1516&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1520&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1521&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1525&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1526&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1530&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1532&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1533&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1534&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1537&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1538&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1542&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1543&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1544&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1546&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1549&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1552&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1553&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1554&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1555&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1567&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1568&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1569&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1574&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1577&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1582&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1585&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1591&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1592&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1595&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1597&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1602&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1647&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1657&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1659&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1670&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1680&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1715&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1721&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1736&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1740&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1743&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1747&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1750&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1766&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1768&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1778&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1795&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1797&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1800&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1808&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1817&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1819&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1820&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1823&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1835&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1837&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1842&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1845&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1851&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1858&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1860&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1864&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1867&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1872&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1880&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1881&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1882&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1884&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1887&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1893&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1898&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1905&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1908&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1913&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1919&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1922&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1924&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1925&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1927&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1928&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1934&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1935&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1936&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1938&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1940&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1941&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1943&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1950&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1953&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1957&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1963&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1965&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1977&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1979&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_1980&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1984&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1987&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_1995&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2002&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2012&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2028&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2030&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2039&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2051&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2058&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2063&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2064&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2069&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2073&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2080&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2096&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2100&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2101&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2108&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2116&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2118&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2121&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2122&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2124&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2132&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2133&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2134&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2136&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2141&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2142&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2145&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2146&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2149&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2150&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2169&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2171&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2186&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2197&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2210&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2212&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2214&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2221&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2223&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2225&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2235&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2238&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2241&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2246&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2247&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2249&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2251&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2255&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2273&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2278&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2279&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2284&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2288&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2292&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2299&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2301&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2302&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2303&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2315&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2319&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2320&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2323&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2325&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2326&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2327&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2329&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2331&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2333&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2337&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2348&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2353&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2359&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2360&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2366&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2375&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2384&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2389&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2390&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2394&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2397&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2404&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2406&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2415&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2424&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2427&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2439&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2442&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2445&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2473&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2476&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2483&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2503&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2511&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2515&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2520&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2522&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2528&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2538&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2569&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2570&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2576&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2577&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2578&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2579&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2580&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2600&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2603&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2606&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2611&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2613&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2622&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2625&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2629&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2631&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2647&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2659&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2662&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2670&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2671&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2675&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2679&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2684&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2697&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2708&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2712&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2718&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2728&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2743&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2745&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2751&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2753&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2759&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2760&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2762&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2764&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2767&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2775&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2782&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2788&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2812&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2820&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2825&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2828&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2831&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2835&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2848&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2859&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2862&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2864&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2872&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2892&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2896&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2899&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2901&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2910&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2923&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2924&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2957&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2964&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2969&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2978&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2991&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_2993&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_2996&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3016&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3017&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3021&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3029&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3031&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3049&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3051&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3059&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3060&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3062&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3069&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3074&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3077&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3079&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3092&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3104&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3105&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3108&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3114&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3123&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3124&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3148&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3149&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3160&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3161&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3181&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3190&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3195&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3213&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3229&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3234&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3235&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3244&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3249&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3275&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3331&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3342&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3343&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3345&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3349&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3357&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3368&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3378&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3380&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3384&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3386&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3394&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3398&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3399&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3414&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3416&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3422&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3430&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3441&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3446&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3447&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3448&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3485&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3488&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3496&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3509&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3512&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3518&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3527&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3535&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3552&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3556&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3565&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3566&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3568&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3573&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3578&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3590&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3594&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3595&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3599&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3609&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3612&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3617&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3620&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3632&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3643&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3650&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3651&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3652&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3656&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3660&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3676&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3711&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3749&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3757&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3758&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3763&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3777&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3780&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3804&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3812&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3832&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3835&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3844&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3850&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3857&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3863&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3868&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3872&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3878&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3905&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3913&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3914&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3915&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3939&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3959&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3966&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3972&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3973&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_3976&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3979&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_3990&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4006&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4020&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4042&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4057&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4110&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4139&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4151&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4153&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4165&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4169&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4210&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4221&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4241&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4249&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4272&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4280&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4297&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4308&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4351&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4370&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4380&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4439&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4455&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4473&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4526&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4530&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4576&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4583&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4591&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4594&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4605&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4611&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4623&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4657&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4675&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4679&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4686&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4712&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4716&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4736&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4746&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4788&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4795&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4796&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4811&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4817&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4843&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4844&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_4870&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_4933&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5003&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5084&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5096&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5117&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5129&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5150&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5152&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5179&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5190&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5234&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5248&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5293&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5302&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5324&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5371&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5381&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5433&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5493&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5507&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5511&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5595&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5711&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5742&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5743&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5771&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5800&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5801&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5804&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5842&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5848&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5866&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5943&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5951&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5954&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_5965&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_5998&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6143&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6148&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6204&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6224&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6260&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6288&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6289&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6304&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6313&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6314&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6350&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6361&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6416&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6419&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6458&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6468&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6527&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6560&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6579&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6614&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6615&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6681&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6742&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6758&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6761&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6842&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6850&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6872&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6887&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6948&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_6967&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_6999&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7057&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7119&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7127&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7166&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7174&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7228&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7238&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7253&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7297&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7308&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7393&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7408&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7409&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7418&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7432&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7472&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7485&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7511&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7596&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7678&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7685&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7758&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7763&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7814&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7824&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7855&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_7882&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_7966&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8065&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8072&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8086&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_8133&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8229&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8318&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8335&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_8358&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8386&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8471&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8487&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_8588&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8613&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8648&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8858&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_8947&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_8978&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9034&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9157&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_9271&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9277&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9283&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9398&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_9436&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9566&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9572&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_9629&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_9960&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10127&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10144&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10222&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_10297&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10366&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10477&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10623&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_10875&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_10974&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_11054&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_11328&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_11560&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_11590&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_11760&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_11816&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_11998&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_12169&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_12204&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_12389&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_12579&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_12612&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_12749&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_12976&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_13756&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_14027&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_14179&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_14318&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_14555&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_14896&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_15653&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_15672&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;amount_15857&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_15945&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_18424&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;savings_balance_500 - 1000 DM&#39;</span><span class="p">,</span> <span class="s1">&#39;savings_balance_&lt; 100 DM&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;savings_balance_&gt; 1000 DM&#39;</span><span class="p">,</span> <span class="s1">&#39;savings_balance_unknown&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;employment_duration_4 - 7 years&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_duration_&lt; 1 year&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;employment_duration_&gt; 7 years&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_duration_unemployed&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;percent_of_income_2&#39;</span><span class="p">,</span> <span class="s1">&#39;percent_of_income_3&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;percent_of_income_4&#39;</span><span class="p">,</span> <span class="s1">&#39;years_at_residence_2&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;years_at_residence_3&#39;</span><span class="p">,</span> <span class="s1">&#39;years_at_residence_4&#39;</span><span class="p">,</span> <span class="s1">&#39;age_20&#39;</span><span class="p">,</span> <span class="s1">&#39;age_21&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_22&#39;</span><span class="p">,</span> <span class="s1">&#39;age_23&#39;</span><span class="p">,</span> <span class="s1">&#39;age_24&#39;</span><span class="p">,</span> <span class="s1">&#39;age_25&#39;</span><span class="p">,</span> <span class="s1">&#39;age_26&#39;</span><span class="p">,</span> <span class="s1">&#39;age_27&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_28&#39;</span><span class="p">,</span> <span class="s1">&#39;age_29&#39;</span><span class="p">,</span> <span class="s1">&#39;age_30&#39;</span><span class="p">,</span> <span class="s1">&#39;age_31&#39;</span><span class="p">,</span> <span class="s1">&#39;age_32&#39;</span><span class="p">,</span> <span class="s1">&#39;age_33&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_34&#39;</span><span class="p">,</span> <span class="s1">&#39;age_35&#39;</span><span class="p">,</span> <span class="s1">&#39;age_36&#39;</span><span class="p">,</span> <span class="s1">&#39;age_37&#39;</span><span class="p">,</span> <span class="s1">&#39;age_38&#39;</span><span class="p">,</span> <span class="s1">&#39;age_39&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_40&#39;</span><span class="p">,</span> <span class="s1">&#39;age_41&#39;</span><span class="p">,</span> <span class="s1">&#39;age_42&#39;</span><span class="p">,</span> <span class="s1">&#39;age_43&#39;</span><span class="p">,</span> <span class="s1">&#39;age_44&#39;</span><span class="p">,</span> <span class="s1">&#39;age_45&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_46&#39;</span><span class="p">,</span> <span class="s1">&#39;age_47&#39;</span><span class="p">,</span> <span class="s1">&#39;age_48&#39;</span><span class="p">,</span> <span class="s1">&#39;age_49&#39;</span><span class="p">,</span> <span class="s1">&#39;age_50&#39;</span><span class="p">,</span> <span class="s1">&#39;age_51&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_52&#39;</span><span class="p">,</span> <span class="s1">&#39;age_53&#39;</span><span class="p">,</span> <span class="s1">&#39;age_54&#39;</span><span class="p">,</span> <span class="s1">&#39;age_55&#39;</span><span class="p">,</span> <span class="s1">&#39;age_56&#39;</span><span class="p">,</span> <span class="s1">&#39;age_57&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_58&#39;</span><span class="p">,</span> <span class="s1">&#39;age_59&#39;</span><span class="p">,</span> <span class="s1">&#39;age_60&#39;</span><span class="p">,</span> <span class="s1">&#39;age_61&#39;</span><span class="p">,</span> <span class="s1">&#39;age_62&#39;</span><span class="p">,</span> <span class="s1">&#39;age_63&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_64&#39;</span><span class="p">,</span> <span class="s1">&#39;age_65&#39;</span><span class="p">,</span> <span class="s1">&#39;age_66&#39;</span><span class="p">,</span> <span class="s1">&#39;age_67&#39;</span><span class="p">,</span> <span class="s1">&#39;age_68&#39;</span><span class="p">,</span> <span class="s1">&#39;age_70&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;age_74&#39;</span><span class="p">,</span> <span class="s1">&#39;age_75&#39;</span><span class="p">,</span> <span class="s1">&#39;other_credit_none&#39;</span><span class="p">,</span> <span class="s1">&#39;other_credit_store&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;housing_own&#39;</span><span class="p">,</span> <span class="s1">&#39;housing_rent&#39;</span><span class="p">,</span> <span class="s1">&#39;existing_loans_count_2&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;existing_loans_count_3&#39;</span><span class="p">,</span> <span class="s1">&#39;existing_loans_count_4&#39;</span><span class="p">,</span> <span class="s1">&#39;job_skilled&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;job_unemployed&#39;</span><span class="p">,</span> <span class="s1">&#39;job_unskilled&#39;</span><span class="p">,</span> <span class="s1">&#39;dependents_2&#39;</span><span class="p">,</span> <span class="s1">&#39;phone_yes&#39;</span><span class="p">],</span>
+      <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="n">instead</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2000x1000 with 0 Axes&gt;
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1420,12 +1302,12 @@ weighted avg       0.68      0.65      0.55       100
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="AprendizajeSupervisado.html"
+       href="ACP.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Aprendizaje Supervisado</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Análisis de Componentes Principales</p>
       </div>
     </a>
     <a class="right-next"

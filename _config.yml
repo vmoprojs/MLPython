@@ -17,8 +17,8 @@ latex:
     targetname: book.tex
 
 # Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
+#bibtex_bibfiles:
+#  - references.bib
 
 # Information about where the book exists on the web
 repository:
@@ -42,7 +42,11 @@ parse:
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
 sphinx:
+  extra_extensions:
+    - sphinxcontrib.bibtex  # Ensure this is included
+
   config:
+    bibtex_bibfiles: ['references.bib']  # Path to your BibTeX file
+    bibtex_reference_style: author_year  # or 'plain', depending on your preference
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    bibtex_reference_style: author_year
-    bibtex_bibfiles: "references.bib"
+

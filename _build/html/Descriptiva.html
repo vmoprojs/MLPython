@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Descriptiva';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Regresión lineal" href="Regresion.html" />
+    <link rel="next" title="5. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
     <link rel="prev" title="3. Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,28 +158,28 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">3. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">5. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">6. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">7. Análisis de Componentes Principales</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">8. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">5. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Arboles.html">9. Árboles de decisión</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
 </ul>
@@ -434,7 +434,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9609704902074345
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1534868989976856
 </pre></div>
 </div>
 </div>
@@ -449,7 +449,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9234642830495171
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.330532026159297
 </pre></div>
 </div>
 </div>
@@ -485,7 +485,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10551460904911199
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.1368257570785268
 </pre></div>
 </div>
 </div>
@@ -497,7 +497,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9609704902074345
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1534868989976856
 </pre></div>
 </div>
 </div>
@@ -509,7 +509,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9234642830495171
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.330532026159297
 </pre></div>
 </div>
 </div>
@@ -521,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10970625102579665
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03177907305619831
 </pre></div>
 </div>
 </div>
@@ -572,7 +572,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.885872261181873
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.32491963341952
 </pre></div>
 </div>
 </div>
@@ -590,7 +590,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.55759264,  0.10970625,  0.73950096])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.93369678, -0.03177907,  0.74795364])
 </pre></div>
 </div>
 </div>
@@ -602,9 +602,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.4665315 , -1.12811935, -0.66319059, -0.41484143, -0.20968424,
-        0.10970625,  0.34446949,  0.67592795,  0.81551224,  1.32834199,
-        2.41934076])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.24297803, -1.60721818, -1.10863642, -0.7569452 , -0.40121111,
+       -0.03177907,  0.25663374,  0.52899071,  0.86743034,  1.24646573,
+        3.08194161])
 </pre></div>
 </div>
 </div>
@@ -616,7 +616,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-2.466531503754265, 2.4193407574276073), mean=0.10551460904911199, variance=0.9327922051005224, skewness=0.01672782819092624, kurtosis=-0.1552157053343297)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-3.242978027905481, 3.081941605514039), mean=-0.1368257570785268, variance=1.3439717435952496, skewness=-0.17758535119934638, kurtosis=-0.0756528666269638)
 </pre></div>
 </div>
 </div>
@@ -639,7 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7fd77ced5c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7f8f98eda4f0&gt;
 </pre></div>
 </div>
 </div>
@@ -715,7 +715,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="_images/5a9341160c11f882d93ef3ccc7591144d6ede0b96b0b00e955dd5bc874726d86.png" src="_images/5a9341160c11f882d93ef3ccc7591144d6ede0b96b0b00e955dd5bc874726d86.png" />
+<img alt="_images/3eefcc62754e6cb1d7ad33b7aaca26b517b70ca2ae46fd8ff773ef51b91e1ba7.png" src="_images/3eefcc62754e6cb1d7ad33b7aaca26b517b70ca2ae46fd8ff773ef51b91e1ba7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1315,11 +1315,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="Regresion.html"
+       href="AprendizajeSupervisado.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Regresión lineal</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Aprendizaje Supervisado</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
