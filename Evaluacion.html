@@ -156,28 +156,28 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 1</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="IntroduccionPython.html">1. Python, una introducción</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pandas.html">2. Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Visualizacion.html">3. Gráficos básicos: matplotlib &amp; seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 2</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">5. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">6. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">7. Análisis de Componentes Principales</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 3</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">8. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">5. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Arboles.html">9. Árboles de decisión</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Evaluación de Modelos</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte 4</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
 </ul>
@@ -513,8 +513,8 @@ Score de SVC 0.9777777777777777
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proporcional (dummy classifier)
- [[360  47]
- [ 40   3]]
+ [[355  52]
+ [ 39   4]]
 </pre></div>
 </div>
 </div>
@@ -555,7 +555,7 @@ Score de SVC 0.9777777777777777
  [  8  35]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:469: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
@@ -649,12 +649,12 @@ weighted avg       0.94      0.95      0.94       450
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proporcional (dummy)
                precision    recall  f1-score   support
 
-       not 1       0.90      0.88      0.89       407
-           1       0.06      0.07      0.06        43
+       not 1       0.90      0.87      0.89       407
+           1       0.07      0.09      0.08        43
 
-    accuracy                           0.81       450
-   macro avg       0.48      0.48      0.48       450
-weighted avg       0.82      0.81      0.81       450
+    accuracy                           0.80       450
+   macro avg       0.49      0.48      0.48       450
+weighted avg       0.82      0.80      0.81       450
 
 SVM
                precision    recall  f1-score   support
@@ -675,9 +675,8 @@ Regresion Logistica
     accuracy                           0.97       450
    macro avg       0.92      0.90      0.91       450
 weighted avg       0.97      0.97      0.97       450
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arbol de decision
+
+Arbol de decision
                precision    recall  f1-score   support
 
        not 1       0.96      0.98      0.97       407
@@ -722,10 +721,10 @@ weighted avg       0.94      0.95      0.94       450
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-55.03829426896272, -19.559464894367295, 18.808007620858163)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-55.038215145033256, -19.559453136681913, 18.807953187796432)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:469: ConvergenceWarning: lbfgs failed to converge (status=1):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
 Increase the number of iterations (max_iter) or scale the data as shown in:
