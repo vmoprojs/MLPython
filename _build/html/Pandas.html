@@ -377,10 +377,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haciendo-consultas-en-series">2.2. Haciendo consultas en Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-estructuras-de-datos-para-estadistica">2.3. Pandas: estructuras de datos para estadística</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos">2.3.1. Manipulación de datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupaciones">2.3.2. Agrupaciones</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">2.3.3. Merge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-categoricos">2.3.4. Datos categóricos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas-dinamicas">2.3.5. Tablas dinámicas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cargando-nuestro-primer-conjunto-de-datos">2.3.2. Cargando nuestro primer conjunto de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#columnas-filas-y-celdas">2.3.3. Columnas, filas y celdas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-e-indexar-columnas-por-nombre">2.3.4. Seleccionar e indexar columnas por nombre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usando-notacion-para-acceder-a-valores-de-columna">2.3.5. Usando notación “.” para acceder a valores de columna</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subconjunto-de-filas">2.3.6. Subconjunto de filas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usando-iloc">2.3.7. Usando <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupaciones">2.3.8. Agrupaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">2.3.9. Merge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-categoricos">2.3.10. Datos categóricos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas-dinamicas">2.3.11. Tablas dinámicas</a></li>
 </ul>
 </li>
 </ul>
@@ -396,6 +402,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
 <h1><span class="section-number">2. </span>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<p><strong>Series</strong>: es una matriz etiquetada <strong>unidimensional</strong> capaz de contener cualquier tipo de datos (enteros, cadenas, números de punto flotante, objetos de Python, etc.). Las etiquetas de los <strong>ejes</strong> (axis) se denominan colectivamente índice (index). El método básico para crear una serie es llamar a <code class="docutils literal notranslate"><span class="pre">pd.Series([1,3,5,np.nan,6,8])</span></code>.</p>
+<p><strong>DataFrame</strong>: Es una estructura de datos etiquetada <strong>bidimensional</strong> con columnas de tipos potencialmente diferentes. Se puede considerar como una hoja de cálculo o una tabla SQL, o un diccionario de objetos Series. Proviene del objeto <code class="docutils literal notranslate"><span class="pre">data.frame()</span></code> de <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
 <section id="las-series">
 <h2><span class="section-number">2.1. </span>Las Series<a class="headerlink" href="#las-series" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -1040,8 +1048,460 @@ Name: Time, Length: 100, dtype: float64
 <p>Si un DataFrame tiene filas con etiquetas, puedes por ejemplo extraer la fila <em>rowlabel</em> con <code class="docutils literal notranslate"><span class="pre">df.loc['rowlabel']</span></code>. Si quieres acceder con el número de la fila, se hace con <code class="docutils literal notranslate"><span class="pre">df.iloc[15]</span></code>. También puedes usar <code class="docutils literal notranslate"><span class="pre">iloc</span></code> para acceder a datos en formato fila/columna <code class="docutils literal notranslate"><span class="pre">df.ioc[2:4,3]</span></code></p>
 <p>Extraer filas también funciona, por ejemplo <code class="docutils literal notranslate"><span class="pre">df[0:5]</span></code> para las primeras 5 filas. Lo que suele ser confuso es que para extraer una única fila se usa por ejmeplo <code class="docutils literal notranslate"><span class="pre">df[5:6]</span></code>. Si usas solo <code class="docutils literal notranslate"><span class="pre">df[5]</span></code> se devuelve un error.</p>
 </section>
+<section id="cargando-nuestro-primer-conjunto-de-datos">
+<h3><span class="section-number">2.3.2. </span>Cargando nuestro primer conjunto de datos<a class="headerlink" href="#cargando-nuestro-primer-conjunto-de-datos" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>El conjunto de datos <em>Gapminder</em> viene originalmente de www.gapminder.org. La versión que exploraremos fue preparada por Jenifer Bryan de la Universidad de Columbia. Su repositorio puede encontrarse en https://github.com/jennybc/gapminder</p>
+</div></blockquote>
+<p>Pandas tiene varias funciones de lectura de datos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">read_csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_excel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_spss</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_stata</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">...</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/gapminder.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Veamos algunos valores de la tabla:</p>
+<ul class="simple">
+<li><p>country: país</p></li>
+<li><p>continent: continente.</p></li>
+<li><p>year: año.</p></li>
+<li><p>lifeExp: esperanza de vida.</p></li>
+<li><p>pop: población.</p></li>
+<li><p>gdpPercap: producto interno bruto per cápita.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          country continent  year  lifeExp       pop   gdpPercap
+0     Afghanistan      Asia  1952   28.801   8425333  779.445314
+1     Afghanistan      Asia  1957   30.332   9240934  820.853030
+2     Afghanistan      Asia  1962   31.997  10267083  853.100710
+3     Afghanistan      Asia  1967   34.020  11537966  836.197138
+4     Afghanistan      Asia  1972   36.088  13079460  739.981106
+...           ...       ...   ...      ...       ...         ...
+1699     Zimbabwe    Africa  1987   62.351   9216418  706.157306
+1700     Zimbabwe    Africa  1992   60.377  10704340  693.420786
+1701     Zimbabwe    Africa  1997   46.809  11404948  792.449960
+1702     Zimbabwe    Africa  2002   39.989  11926563  672.038623
+1703     Zimbabwe    Africa  2007   43.487  12311143  469.709298
+
+[1704 rows x 6 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Todo <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> tiene un atributo <code class="docutils literal notranslate"><span class="pre">shape</span></code> que nos devuelve el número de filas y columnas del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> en forma de tupla.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1704, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nota que no se usa paréntesis luego de <code class="docutils literal notranslate"><span class="pre">shape</span></code>. Esto se debe a que <code class="docutils literal notranslate"><span class="pre">shape</span></code> es un <strong>atributo</strong> del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, no un <strong>método</strong> donde si se requiere usar paréntesis. Te devolvería un error si agregaras un paréntesis.</p>
+<p>Para ver el nombre de las columnas, usamos el atributo <code class="docutils literal notranslate"><span class="pre">columns</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;country&#39;, &#39;continent&#39;, &#39;year&#39;, &#39;lifeExp&#39;, &#39;pop&#39;, &#39;gdpPercap&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cada columna (Serie) tiene que ser  del mismo tipo, mientras que cada fila puede tener distintos tipos.</p>
+<p>Veamos los tipos de datos de las columnas de nuestros datos usando el atrbuto <code class="docutils literal notranslate"><span class="pre">dtypes</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>country       object
+continent     object
+year           int64
+lifeExp      float64
+pop            int64
+gdpPercap    float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>El tipo de dato <code class="docutils literal notranslate"><span class="pre">object</span></code> es el más flexible porque puede almacenar cualquier objeto de Python, incluidos cadenas de texto (<code class="docutils literal notranslate"><span class="pre">strings</span></code>), listas, diccionarios y objetos personalizados. El uso más común es para almacenar <code class="docutils literal notranslate"><span class="pre">strings</span></code>. Las operaciones con <code class="docutils literal notranslate"><span class="pre">object</span></code> podría ser más lento que con el tipo más específico, si se requiere hacer operaciones se recomienda cambiar el tipo de objecto al específico deseado (<code class="docutils literal notranslate"><span class="pre">string</span></code> ,<code class="docutils literal notranslate"><span class="pre">int</span></code> ,<code class="docutils literal notranslate"><span class="pre">float</span></code>,etc )</p>
+<p>Para más detalle, usamos el método <code class="docutils literal notranslate"><span class="pre">info</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1704 entries, 0 to 1703
+Data columns (total 6 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   country    1704 non-null   object 
+ 1   continent  1704 non-null   object 
+ 2   year       1704 non-null   int64  
+ 3   lifeExp    1704 non-null   float64
+ 4   pop        1704 non-null   int64  
+ 5   gdpPercap  1704 non-null   float64
+dtypes: float64(2), int64(2), object(2)
+memory usage: 80.0+ KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="columnas-filas-y-celdas">
+<h3><span class="section-number">2.3.3. </span>Columnas, filas y celdas<a class="headerlink" href="#columnas-filas-y-celdas" title="Permalink to this heading">#</a></h3>
+<p>Para inspeccionar los datos del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> podemos apalancarnos en métodos. Por ejemplo, <code class="docutils literal notranslate"><span class="pre">head</span></code> nos permite ver las primeras 5 filas de los datos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       country continent  year  lifeExp       pop   gdpPercap
+0  Afghanistan      Asia  1952   28.801   8425333  779.445314
+1  Afghanistan      Asia  1957   30.332   9240934  820.853030
+2  Afghanistan      Asia  1962   31.997  10267083  853.100710
+3  Afghanistan      Asia  1967   34.020  11537966  836.197138
+4  Afghanistan      Asia  1972   36.088  13079460  739.981106
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="seleccionar-e-indexar-columnas-por-nombre">
+<h3><span class="section-number">2.3.4. </span>Seleccionar e indexar columnas por nombre<a class="headerlink" href="#seleccionar-e-indexar-columnas-por-nombre" title="Permalink to this heading">#</a></h3>
+<p>Para acceder a columnas específicas de nuestros datos, podemos usar corchetes <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Afghanistan
+1    Afghanistan
+2    Afghanistan
+3    Afghanistan
+4    Afghanistan
+Name: country, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="c1"># muestra las últimas filas del df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1699    Zimbabwe
+1700    Zimbabwe
+1701    Zimbabwe
+1702    Zimbabwe
+1703    Zimbabwe
+Name: country, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para acceder a varias columnas, dentro del primer corchete, le pasamos una lista de nombres</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;continent&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          country continent  year
+0     Afghanistan      Asia  1952
+1     Afghanistan      Asia  1957
+2     Afghanistan      Asia  1962
+3     Afghanistan      Asia  1967
+4     Afghanistan      Asia  1972
+...           ...       ...   ...
+1699     Zimbabwe    Africa  1987
+1700     Zimbabwe    Africa  1992
+1701     Zimbabwe    Africa  1997
+1702     Zimbabwe    Africa  2002
+1703     Zimbabwe    Africa  2007
+
+[1704 rows x 3 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usando la notación con corchetes <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <strong>no se puede</strong> pasar un número que indique la posición. Para ello usamos <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lifeExp</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>38.438</td>
+      <td>1977</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>39.854</td>
+      <td>1982</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>40.822</td>
+      <td>1987</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>41.674</td>
+      <td>1992</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>41.763</td>
+      <td>1997</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<blockquote>
+<div><p>Indica la diferencia en los tipos de objectos que se obtienen si se tiene:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df['country']</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df[['country']]</span></code></p></li>
+</ul>
+</section>
+<section id="usando-notacion-para-acceder-a-valores-de-columna">
+<h3><span class="section-number">2.3.5. </span>Usando notación “.” para acceder a valores de columna<a class="headerlink" href="#usando-notacion-para-acceder-a-valores-de-columna" title="Permalink to this heading">#</a></h3>
+<p>Para acceder a valores del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> también puedes usar la notación “.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">country</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       Afghanistan
+1       Afghanistan
+2       Afghanistan
+3       Afghanistan
+4       Afghanistan
+           ...     
+1699       Zimbabwe
+1700       Zimbabwe
+1701       Zimbabwe
+1702       Zimbabwe
+1703       Zimbabwe
+Name: country, Length: 1704, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Advertencias</strong>: Ten cuidado con el nombre de las columnas cuando vas a usar la notación punto.</p>
+<ul class="simple">
+<li><p>Si el nombre de la columna coincide con el nombre de un atributo (<code class="docutils literal notranslate"><span class="pre">shape</span></code> por ejemplo), entonces el atributo tiene jerarquía y te devolverá el atributo y no la columna.</p></li>
+<li><p>Si el nombre de la columna tiene espacios o caracteres especiales, no puedes usar la notación punto y solo puedes usar el acceso con corchetes.</p></li>
+</ul>
+</section>
+<section id="subconjunto-de-filas">
+<h3><span class="section-number">2.3.6. </span>Subconjunto de filas<a class="headerlink" href="#subconjunto-de-filas" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Atributo</p></th>
+<th class="head text-center"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">loc</span></code></p></td>
+<td class="text-center"><p>Subconjunto basado en la etiqueta del índice</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">iloc</span></code></p></td>
+<td class="text-center"><p>Subconjunto basado en el número de la fila</p></td>
+</tr>
+</tbody>
+</table>
+<p>Accedamos a los datos con la etiqueta del índice en nuestros datos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># nota que &#39;0&#39; no representa un número en este caso, sino la etiqueta de la fila</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>country      Afghanistan
+continent           Asia
+year                1952
+lifeExp           28.801
+pop              8425333
+gdpPercap     779.445314
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Indica la diferencia entre</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subset_loc</span> <span class="pre">=</span> <span class="pre">df.loc[0]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subset_head</span> <span class="pre">=</span> <span class="pre">df.head(n=1)</span></code></p></li>
+</ul>
+<p>Podemos acceder a varias filas usando las etiquetas de fila:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">451</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         country continent  year  lifeExp       pop    gdpPercap
+0    Afghanistan      Asia  1952   28.801   8425333   779.445314
+30       Algeria    Africa  1982   61.368  20033753  5745.160213
+451      Ecuador  Americas  1987   67.231   9545158  6481.776993
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="usando-iloc">
+<h3><span class="section-number">2.3.7. </span>Usando <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#usando-iloc" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code> hace lo mismo que <code class="docutils literal notranslate"><span class="pre">.loc</span></code> pero usando números que representan las posiciones de la fila. Solo recuerda a las etiquetas de fila pueden o no ser números.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="c1"># accedo a la segunda fila porque inicia en 0.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>country      Afghanistan
+continent           Asia
+year                1957
+lifeExp           30.332
+pop              9240934
+gdpPercap      820.85303
+Name: 1, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con ‘.iloc’ podemos usar el índice <code class="docutils literal notranslate"><span class="pre">-1</span></code> para acceder a la última fila (esto no es posible con <code class="docutils literal notranslate"><span class="pre">.loc</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>country        Zimbabwe
+continent        Africa
+year               2007
+lifeExp          43.487
+pop            12311143
+gdpPercap    469.709298
+Name: 1703, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">451</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         country continent  year  lifeExp       pop    gdpPercap
+0    Afghanistan      Asia  1952   28.801   8425333   779.445314
+30       Algeria    Africa  1982   61.368  20033753  5745.160213
+451      Ecuador  Americas  1987   67.231   9545158  6481.776993
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="agrupaciones">
-<h3><span class="section-number">2.3.2. </span>Agrupaciones<a class="headerlink" href="#agrupaciones" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.8. </span>Agrupaciones<a class="headerlink" href="#agrupaciones" title="Permalink to this heading">#</a></h3>
 <p><em>pandas</em> ofrece funciones poderosas para manejar datos perdidos que suelen ser reemplazados por <em>nan</em> (<em>not a number</em>). También permite realizar manipilaciones más sofisticadas como <em>pivotaje</em>. Por ejemplo, se puede usar DataFrames para hacer grupos y su análisis estadístico de cada grupo.</p>
 <p>Veamos este ejemplo de datos del número de horas que la gente ve televisión agrupado por <em>m</em> y <em>f</em>.</p>
 <div class="cell docutils container">
@@ -1377,7 +1837,7 @@ dtype: object
 </div>
 </section>
 <section id="merge">
-<h3><span class="section-number">2.3.3. </span>Merge<a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.9. </span>Merge<a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -2119,7 +2579,7 @@ Sally  Engineering
 </div>
 </section>
 <section id="datos-categoricos">
-<h3><span class="section-number">2.3.4. </span>Datos categóricos<a class="headerlink" href="#datos-categoricos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.10. </span>Datos categóricos<a class="headerlink" href="#datos-categoricos" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="s1">&#39;A+&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A-&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B-&#39;</span><span class="p">,</span> <span class="s1">&#39;C+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C-&#39;</span><span class="p">,</span> <span class="s1">&#39;D+&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">],</span>
@@ -2319,7 +2779,7 @@ Categories (10, interval[float64, right]): [(11706.087, 75333.413] &lt; (75333.4
 </div>
 </section>
 <section id="tablas-dinamicas">
-<h3><span class="section-number">2.3.5. </span>Tablas dinámicas<a class="headerlink" href="#tablas-dinamicas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.11. </span>Tablas dinámicas<a class="headerlink" href="#tablas-dinamicas" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/cars.csv&#39;</span><span class="p">)</span>
@@ -2857,10 +3317,16 @@ Categories (10, interval[float64, right]): [(11706.087, 75333.413] &lt; (75333.4
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haciendo-consultas-en-series">2.2. Haciendo consultas en Series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-estructuras-de-datos-para-estadistica">2.3. Pandas: estructuras de datos para estadística</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos">2.3.1. Manipulación de datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupaciones">2.3.2. Agrupaciones</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">2.3.3. Merge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-categoricos">2.3.4. Datos categóricos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas-dinamicas">2.3.5. Tablas dinámicas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cargando-nuestro-primer-conjunto-de-datos">2.3.2. Cargando nuestro primer conjunto de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#columnas-filas-y-celdas">2.3.3. Columnas, filas y celdas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccionar-e-indexar-columnas-por-nombre">2.3.4. Seleccionar e indexar columnas por nombre</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usando-notacion-para-acceder-a-valores-de-columna">2.3.5. Usando notación “.” para acceder a valores de columna</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subconjunto-de-filas">2.3.6. Subconjunto de filas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usando-iloc">2.3.7. Usando <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupaciones">2.3.8. Agrupaciones</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge">2.3.9. Merge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-categoricos">2.3.10. Datos categóricos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tablas-dinamicas">2.3.11. Tablas dinámicas</a></li>
 </ul>
 </li>
 </ul>
