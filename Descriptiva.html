@@ -376,12 +376,19 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">4.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.1. Desviación estándar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2. Varianza</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.3. Promedio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.4. La moda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.5. Rango</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">4.1.6. Percentiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencial-central">4.1.1. Medidas de tendencial central</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.1.1. Promedio</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana">4.1.1.2. Mediana</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.1.3. La moda</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion">4.1.2. Medidas de Dispersión</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.2.1. Rango</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.2.2. Desviación estándar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2.3. Varianza</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantiles">4.1.2.4. Cuantiles</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a></li>
@@ -412,49 +419,74 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva-pruebas-de-hipotesis">
 <h1><span class="section-number">4. </span>Estadística Descriptiva &amp; Pruebas de hipótesis<a class="headerlink" href="#estadistica-descriptiva-pruebas-de-hipotesis" title="Permalink to this heading">#</a></h1>
-<p>Es fácil calcular estadísticos de resumen en <code class="docutils literal notranslate"><span class="pre">python</span></code>. Aquí tienen cómo calcular la media, desviación estándar, varianza y mediana.</p>
+<ul class="simple">
+<li><p>Librería básica: scipy.stats (importado como <code class="docutils literal notranslate"><span class="pre">stats</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SciPy</span></code> es una biblioteca de computación científica que utiliza <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> como base.</p></li>
+<li><p>SciPy significa <em>Scientific Python</em>.</p></li>
+<li><p>Proporciona más funciones de utilidad para optimización, álgebra lineal, funciones especiales, procesamiento de señales, entre otras.</p></li>
+<li><p>Al igual que <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, <code class="docutils literal notranslate"><span class="pre">SciPy</span></code> es de código abierto, por lo que podemos usarlo libremente.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SciPy</span></code> fue creado por el creador de <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, <a class="reference external" href="https://es.wikipedia.org/wiki/Travis_Oliphant">Travis Olliphant</a>.</p></li>
+</ul>
 <section id="medidas-de-resumen">
 <h2><span class="section-number">4.1. </span>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Permalink to this heading">#</a></h2>
+<section id="medidas-de-tendencial-central">
+<h3><span class="section-number">4.1.1. </span>Medidas de tendencial central<a class="headerlink" href="#medidas-de-tendencial-central" title="Permalink to this heading">#</a></h3>
 <p>Creamos 100 números aleatorios con distribución normal:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">85</span><span class="p">)</span> <span class="c1"># genera una semilla para los números aleatorios</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="desviacion-estandar">
-<h3><span class="section-number">4.1.1. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this heading">#</a></h3>
+<section id="promedio">
+<h4><span class="section-number">4.1.1.1. </span>Promedio<a class="headerlink" href="#promedio" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>Promedio o media: notado como <span class="math notranslate nohighlight">\(\bar{x}\)</span>, de un conjunto de <span class="math notranslate nohighlight">\(n\)</span> datos <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_n\)</span> es igual a la suma de valores dividido para <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \frac{x_1+x_2+\ldots+x_n}{n}=\frac{\sum_{i=1}^nx_i}{n}
+\]</div>
+<ul class="simple">
+<li><p>Si las observaciones están agrupadas en una tabla de frecuencia de datos individuales de <span class="math notranslate nohighlight">\(k\)</span> valores, el promedio se calcula</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} =\frac{\sum_{i=1}^kn_ix_i}{n}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(n = {\sum_{i=1}^kn_i}\)</span>.</p>
+<ul class="simple">
+<li><p>Si las observaciones están agrupadas en una tabla de frecuencias agrupadas por clases, se calcula el punto promedio de cada clase <span class="math notranslate nohighlight">\(x_i = \frac{l_i+s_i}{2}\)</span> (<span class="math notranslate nohighlight">\(i = 1,2,\ldots,k\)</span>), donde <span class="math notranslate nohighlight">\(l_i\)</span> y <span class="math notranslate nohighlight">\(s_i\)</span> son la cota inferior y superor de cada clase respectivamente. El promedio es</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} =\frac{\sum_{i=1}^kn_ix_i}{n}
+\]</div>
+<p>Ventajas y desventajas del promedio:</p>
+<ul class="simple">
+<li><p>Se expresan en las mismas unidades quela variable</p></li>
+<li><p>En su cálculo intervienen todos los valores de la distribución</p></li>
+<li><p>Es el centro de gravedad de toda la distribución</p></li>
+<li><p>Es único</p></li>
+<li><p>Su principal inconveniente es que se ve afectado por valores atípicos</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1534868989976856
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.07448679690601528
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="varianza">
-<h3><span class="section-number">4.1.2. </span>Varianza<a class="headerlink" href="#varianza" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.330532026159297
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">hstack</span></code> agrega valores al vector:</p>
+<p>Toma en cuenta lo que pasa con valores <code class="docutils literal notranslate"><span class="pre">nan</span></code>. <code class="docutils literal notranslate"><span class="pre">hstack</span></code> agrega valores al vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
@@ -462,10 +494,6 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="promedio">
-<h3><span class="section-number">4.1.3. </span>Promedio<a class="headerlink" href="#promedio" title="Permalink to this heading">#</a></h3>
-<p>Toma en cuenta lo que pasa con valores <code class="docutils literal notranslate"><span class="pre">nan</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
@@ -485,7 +513,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.1368257570785268
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.07448679690601528
 </pre></div>
 </div>
 </div>
@@ -497,7 +525,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1534868989976856
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0336795016636526
 </pre></div>
 </div>
 </div>
@@ -509,7 +537,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.330532026159297
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0684933121596172
 </pre></div>
 </div>
 </div>
@@ -521,14 +549,59 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03177907305619831
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.15334269473584197
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mediana">
+<h4><span class="section-number">4.1.1.2. </span>Mediana<a class="headerlink" href="#mediana" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>La mediana de un conjunto de datos <span class="math notranslate nohighlight">\(x_1+x_2+\ldots+x_n\)</span> es el valor que se encuentra en el punto medio, cuando se ordenan los valores de menor a mayor.</p>
+</div></blockquote>
+<p>Se nota como <span class="math notranslate nohighlight">\(Q_2\)</span> o <em>Med</em> y tiene la propiedad de que a cada lado se encuentra el 50% de los datos.</p>
+<p>Ventajas:</p>
+<ul class="simple">
+<li><p>No se ve afectada por valores extremos o atípicos</p></li>
+<li><p>Fácil de interpretar como el “valor medio” de un conjunto de datos. Divide los datos en dos mitades.</p></li>
+<li><p>En distribuciones asimétricas, la mediana proporciona una mejor representación del centro que la media, ya que no se ve arrastrada hacia la cola de la distribución.</p></li>
+</ul>
+<p>Desventajas:</p>
+<ul class="simple">
+<li><p>La mediana es menos sensible a los cambios en los valores de los datos individuales en comparación con la media.</p></li>
+<li><p>A diferencia de la media, la mediana no toma en cuenta todos los valores del conjunto de datos, sino solo el valor central.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.15334269473584197
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="la-moda">
-<h3><span class="section-number">4.1.4. </span>La moda<a class="headerlink" href="#la-moda" title="Permalink to this heading">#</a></h3>
+<h4><span class="section-number">4.1.1.3. </span>La moda<a class="headerlink" href="#la-moda" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>Es el valor que más se repite en un conjunto de datos.</p>
+</div></blockquote>
+<p>Ventajas:</p>
+<ul class="simple">
+<li><p>Fácil de entender y calcular, especialmente en conjuntos de datos pequeños o cuando se analizan datos categóricos.</p></li>
+<li><p>Única medida de tendencia central que puede aplicarse a datos cualitativos o categóricos, como colores, marcas o tipos</p></li>
+<li><p>La moda no se ve influenciada por valores atípicos o extremos.</p></li>
+</ul>
+<p>Desventajas:</p>
+<ul class="simple">
+<li><p>Puede haber más de una moda (multimodal), lo que complica la interpretación.</p></li>
+<li><p>La moda no siempre representa bien el centro de la distribución, especialmente en distribuciones con una moda que es significativamente diferente de la media o la mediana.</p></li>
+<li><p>Para datos continuos, la moda es menos útil, ya que cada valor puede ser único o tener una baja frecuencia, dificultando la identificación de una moda clara.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -538,7 +611,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -550,17 +623,48 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ModeResult(mode=4, count=3)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ModeResult(mode=7, count=3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cuando tenemos resultados en varios elementos como el anterior <code class="docutils literal notranslate"><span class="pre">(mode=7,</span> <span class="pre">count=3)</span></code>, podemos guardarlos de la siguiente manera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="p">(</span><span class="n">valor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7, 3)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
+<section id="medidas-de-dispersion">
+<h3><span class="section-number">4.1.2. </span>Medidas de Dispersión<a class="headerlink" href="#medidas-de-dispersion" title="Permalink to this heading">#</a></h3>
 <section id="rango">
-<h3><span class="section-number">4.1.5. </span>Rango<a class="headerlink" href="#rango" title="Permalink to this heading">#</a></h3>
+<h4><span class="section-number">4.1.2.1. </span>Rango<a class="headerlink" href="#rango" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>Diferencia entre el valor más alto y el valor más bajo</p>
+</div></blockquote>
+<p>Ventajas:</p>
+<ul class="simple">
+<li><p>Fácil de calcular y comprender.</p></li>
+<li><p>Proporciona una idea rápida de la amplitud de los datos, lo que puede ser útil para comparar la variabilidad entre diferentes conjuntos de datos.</p></li>
+</ul>
+<p>Desventajas:</p>
+<ul class="simple">
+<li><p>El rango se ve afectado por los valores atípicos, ya que depende únicamente de los valores máximo y mínimo. Un solo valor extremo puede distorsionar significativamente el rango.</p></li>
+<li><p>Dos conjuntos de datos con el mismo rango pueden tener distribuciones internas muy diferentes.</p></li>
+</ul>
+<p>En Python se usa la función <code class="docutils literal notranslate"><span class="pre">np.ptp</span></code> donde <code class="docutils literal notranslate"><span class="pre">ptp</span></code> significa <code class="docutils literal notranslate"><span class="pre">peak</span> <span class="pre">to</span> <span class="pre">peak</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># ptp: peak to peak</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -572,14 +676,69 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.32491963341952
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.142508144337905
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="percentiles">
-<h3><span class="section-number">4.1.6. </span>Percentiles<a class="headerlink" href="#percentiles" title="Permalink to this heading">#</a></h3>
+<section id="desviacion-estandar">
+<h4><span class="section-number">4.1.2.2. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this heading">#</a></h4>
+<p>Fue introducida por Karl Person en 1894 y se define:</p>
+<blockquote>
+<div><p>La desviación estándar (o desviación típica), notada por <span class="math notranslate nohighlight">\(s\)</span>, de un conjunto de <span class="math notranslate nohighlight">\(n\)</span> mediciones <span class="math notranslate nohighlight">\(x_1+x_2+\ldots+x_n\)</span> es la raíz cuadrada de las desviaciones de las mediciones, respecto al promedio <span class="math notranslate nohighlight">\(\bar{x}\)</span>, dividida entre <span class="math notranslate nohighlight">\(n-1\)</span>; es decir</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
+\]</div>
+<ul class="simple">
+<li><p>Se expresa en las mismas unidades que los datos originales</p></li>
+<li><p>En su cálculo intervienen todos los valores de la distribución</p></li>
+<li><p>Es única</p></li>
+<li><p>Se ve afectada por valores atípicos</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0336795016636526
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="varianza">
+<h4><span class="section-number">4.1.2.3. </span>Varianza<a class="headerlink" href="#varianza" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0684933121596172
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cuantiles">
+<h4><span class="section-number">4.1.2.4. </span>Cuantiles<a class="headerlink" href="#cuantiles" title="Permalink to this heading">#</a></h4>
+<blockquote>
+<div><p>Un cuantil divide la distribución de los datos en una proporción específica, el cuantil es el dato que corresponde a dicha división.</p>
+</div></blockquote>
+<p>El cuantil de orden <span class="math notranslate nohighlight">\(p\)</span> de una distribución (con <span class="math notranslate nohighlight">\(0 &lt; p &lt; 1\)</span>) es el valor de la variable  <span class="math notranslate nohighlight">\(x_{p}\)</span> que marca un corte de modo que una proporción <span class="math notranslate nohighlight">\(p\)</span> de valores de la población es menor o igual que <span class="math notranslate nohighlight">\(x_{p}\)</span>. Por ejemplo, el cuantil de orden <span class="math notranslate nohighlight">\(0.36\)</span> dejaría un 36% de valores por debajo y el cuantil de orden <span class="math notranslate nohighlight">\(0.50\)</span> se corresponde con la mediana de la distribución.</p>
+<p>Los cuantiles suelen usarse por grupos que dividen la distribución en partes iguales; entendidas estas como intervalos que comprenden la misma proporción de valores. Los más usados son:</p>
+<ul class="simple">
+<li><p>Los cuartiles, que dividen a la distribución en cuatro partes (corresponden a los cuantiles <span class="math notranslate nohighlight">\(0.25\)</span>; <span class="math notranslate nohighlight">\(0.50\)</span> y <span class="math notranslate nohighlight">\(0.75\)</span>);</p></li>
+<li><p>Los quintiles, que dividen a la distribución en cinco partes (corresponden a los cuantiles <span class="math notranslate nohighlight">\(0.20\)</span>; <span class="math notranslate nohighlight">\(0.40\)</span>; <span class="math notranslate nohighlight">\(0.60\)</span> y <span class="math notranslate nohighlight">\(0.80\)</span>);</p></li>
+<li><p>Los deciles, que dividen a la distribución en diez partes;</p></li>
+<li><p>Los percentiles, que dividen a la distribución en cien partes.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -590,7 +749,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.93369678, -0.03177907,  0.74795364])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.97667604, -0.15334269,  0.70789384])
 </pre></div>
 </div>
 </div>
@@ -602,9 +761,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.24297803, -1.60721818, -1.10863642, -0.7569452 , -0.40121111,
-       -0.03177907,  0.25663374,  0.52899071,  0.86743034,  1.24646573,
-        3.08194161])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.76475402, -1.38045444, -1.05285905, -0.76411302, -0.49263867,
+       -0.15334269,  0.16959572,  0.45482   ,  0.92681765,  1.44781882,
+        2.37775412])
 </pre></div>
 </div>
 </div>
@@ -616,11 +775,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-3.242978027905481, 3.081941605514039), mean=-0.1368257570785268, variance=1.3439717435952496, skewness=-0.17758535119934638, kurtosis=-0.0756528666269638)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=100, minmax=(-1.7647540193678475, 2.3777541249700573), mean=-0.07448679690601528, variance=1.0792861738986033, skewness=0.3655289306119107, kurtosis=-0.7791352022265521)
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="distribuciones">
@@ -639,7 +799,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7f8f98eda4f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7fd0735aaa00&gt;
 </pre></div>
 </div>
 </div>
@@ -715,7 +875,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="_images/3eefcc62754e6cb1d7ad33b7aaca26b517b70ca2ae46fd8ff773ef51b91e1ba7.png" src="_images/3eefcc62754e6cb1d7ad33b7aaca26b517b70ca2ae46fd8ff773ef51b91e1ba7.png" />
+<img alt="_images/5972140adbcacb32f26fc0314d89b169f60ca70ebb65b7943fcfe90779d11eef.png" src="_images/5972140adbcacb32f26fc0314d89b169f60ca70ebb65b7943fcfe90779d11eef.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -733,7 +893,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.933
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9440000000000001
 </pre></div>
 </div>
 </div>
@@ -1339,12 +1499,19 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">4.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.1. Desviación estándar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2. Varianza</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.3. Promedio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.4. La moda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.5. Rango</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles">4.1.6. Percentiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencial-central">4.1.1. Medidas de tendencial central</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.1.1. Promedio</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana">4.1.1.2. Mediana</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.1.3. La moda</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion">4.1.2. Medidas de Dispersión</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.2.1. Rango</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.2.2. Desviación estándar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2.3. Varianza</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantiles">4.1.2.4. Cuantiles</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a></li>
