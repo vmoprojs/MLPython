@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>4. Estadística Descriptiva &amp; Pruebas de hipótesis &#8212; Técnicas de Machine Learning con Python</title>
+    <title>4. Estadística Descriptiva &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Descriptiva';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Aprendizaje Supervisado" href="AprendizajeSupervisado.html" />
+    <link rel="next" title="5. Pruebas de hipótesis" href="PruebasHipotesis.html" />
     <link rel="prev" title="3. Gráficos básicos: matplotlib &amp; seaborn" href="Visualizacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -166,22 +166,23 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Estadística Descriptiva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PruebasHipotesis.html">5. Pruebas de hipótesis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">5. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Arboles.html">9. Árboles de decisión</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">6. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">7. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">9. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arboles.html">10. Árboles de decisión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">13. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">14. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -365,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Estadística Descriptiva & Pruebas de hipótesis</h1>
+    <h1>Estadística Descriptiva</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -391,19 +392,24 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">4.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">4.3.1. El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">4.3.2. Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-v-a">4.2.1. Variables aleatorias (v.a.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-v-a">4.2.2. Ejemplos de v.a.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-masa-de-probabilidad-p-x">4.2.3. Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">4.2.3.1. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">4.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">4.4.1. Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">4.4.2. Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-densidad">4.2.4. Función de densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.4.1. Ejemplo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2.4.2. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">4.5. Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">4.5.1. Correlación de Pearson</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-distribucion-acumulada">4.2.5. Función de distribución acumulada</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2.5.1. Ejemplo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-cuantil">4.2.6. Función Cuantil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-python">4.2.7. En Python</a></li>
 </ul>
 </li>
 </ul>
@@ -417,8 +423,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva-pruebas-de-hipotesis">
-<h1><span class="section-number">4. </span>Estadística Descriptiva &amp; Pruebas de hipótesis<a class="headerlink" href="#estadistica-descriptiva-pruebas-de-hipotesis" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva">
+<h1><span class="section-number">4. </span>Estadística Descriptiva<a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Librería básica: scipy.stats (importado como <code class="docutils literal notranslate"><span class="pre">stats</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SciPy</span></code> es una biblioteca de computación científica que utiliza <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> como base.</p></li>
@@ -785,6 +791,206 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </section>
 <section id="distribuciones">
 <h2><span class="section-number">4.2. </span>Distribuciones<a class="headerlink" href="#distribuciones" title="Permalink to this heading">#</a></h2>
+<section id="variables-aleatorias-v-a">
+<h3><span class="section-number">4.2.1. </span>Variables aleatorias (v.a.)<a class="headerlink" href="#variables-aleatorias-v-a" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Una <strong>variable aleatoria</strong> es un resultado numérico de un experimento.</p></li>
+<li><p>Las variables aleatorias que estudiamos tienen dos variantes: <strong>discretas</strong> or <strong>continuas</strong>.</p></li>
+<li><p>Las v.a discretas son las que tienen un número contable de posibilidades.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(X = k)\)</span></p></li>
+</ul>
+</li>
+<li><p>Las v.a. continuas toman valores en los reales o un subconjunto de los reales.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(X \in A)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ejemplos-de-v-a">
+<h3><span class="section-number">4.2.2. </span>Ejemplos de v.a.<a class="headerlink" href="#ejemplos-de-v-a" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Los resultados <span class="math notranslate nohighlight">\((0-1)\)</span> del lanzamiento de una moneda</p></li>
+<li><p>Los resultados del lanzamiento de un dado</p></li>
+<li><p>El índice de masa corpotal de una persona en una toma futura a la línea base</p></li>
+<li><p>El estado de hipertensión de una persona seleccionada al alzar de una población</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="funcion-de-masa-de-probabilidad-p-x">
+<h3><span class="section-number">4.2.3. </span>Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span><a class="headerlink" href="#funcion-de-masa-de-probabilidad-p-x" title="Permalink to this heading">#</a></h3>
+<p>Una función de masa de probabilidad evaluada en un valor corresponde a la probabilidad que una v.a. toma ese valor. Para se una función válida, se debe satisfacer:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(p(x) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{x} p(x) = 1\)</span></p></li>
+</ol>
+<p>La suma se toma sobre todos los valores de <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<hr class="docutils" />
+<section id="ejemplo">
+<h4><span class="section-number">4.2.3.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h4>
+<p>Sea <span class="math notranslate nohighlight">\(X\)</span> el resultado del lanzamiento de una moneda donde <span class="math notranslate nohighlight">\(X=0\)</span> representa
+sello y <span class="math notranslate nohighlight">\(X = 1\)</span> representa cara.
+$<span class="math notranslate nohighlight">\(
+p(x) = (1/2)^{x} (1/2)^{1-x} ~~\mbox{ for }~~x = 0,1
+\)</span><span class="math notranslate nohighlight">\(
+Suponga que no sabemos si la moneda es justa. Sea
+\)</span>\theta<span class="math notranslate nohighlight">\(  la probabilidad de que salga cara se expresa como una proporción
+(entre 0 y 1).
+\)</span><span class="math notranslate nohighlight">\(
+p(x) = \theta^{x} (1 - \theta)^{1-x} ~~\mbox{ for }~~x = 0,1
+\)</span>$</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="funcion-de-densidad">
+<h3><span class="section-number">4.2.4. </span>Función de densidad<a class="headerlink" href="#funcion-de-densidad" title="Permalink to this heading">#</a></h3>
+<p>Una función de densidad (pdf), es una función asociada con una v.a. continua</p>
+<p><em>Las areas debajo las pdfs corresponden a las probabilidades de esa v.a.</em></p>
+<p>La función <span class="math notranslate nohighlight">\(f\)</span> debe satisfacer</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) \geq 0\)</span> para todo <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p>El área debajo de <span class="math notranslate nohighlight">\(f(x)\)</span> es uno.</p></li>
+</ol>
+<hr class="docutils" />
+<section id="id1">
+<h4><span class="section-number">4.2.4.1. </span>Ejemplo<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>Supongamos que la proporción de llamadas de ayuda que se atienden en un día aleatorio en una línea de ayuda está dada por</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x) = \left\{\begin{array}{ll}
+    2 x &amp; \mbox{ para } 1 &gt; x &gt; 0 \\
+    0                 &amp; \mbox{ en otro caso} 
+\end{array} \right. 
+\end{split}\]</div>
+<p>¿Es esta una densidad válida?</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd0a961a5b0&gt;]
+</pre></div>
+</div>
+<img alt="_images/f3707aed04e4d7081f0e5ff1e11b5e2966e97252104986bdf1646a49cd7e5178.png" src="_images/f3707aed04e4d7081f0e5ff1e11b5e2966e97252104986bdf1646a49cd7e5178.png" />
+</div>
+</div>
+</section>
+<section id="id2">
+<h4><span class="section-number">4.2.4.2. </span>Ejemplo<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>¿Cuál es la probabilidad de que se atienda el 75% o menos de las llamadas?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Datos para la línea</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Crear la figura y los ejes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Dibujar la línea</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Dibujar el polígono</span>
+<span class="n">polygon_x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">polygon_y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">polygon_x</span><span class="p">,</span> <span class="n">polygon_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.patches.Polygon at 0x7fd0a9924340&gt;]
+</pre></div>
+</div>
+<img alt="_images/aa0ea099892854dd3968dfad2e5041562325333756a4d87efe92c106616755be.png" src="_images/aa0ea099892854dd3968dfad2e5041562325333756a4d87efe92c106616755be.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">beta</span>
+
+<span class="n">result_pbeta</span> <span class="o">=</span> <span class="n">beta</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="mf">.75</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result_pbeta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5625
+0.5625
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="funcion-de-distribucion-acumulada">
+<h3><span class="section-number">4.2.5. </span>Función de distribución acumulada<a class="headerlink" href="#funcion-de-distribucion-acumulada" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La  <strong>función de distribución acumulada</strong> (CDF) de una v.a. <span class="math notranslate nohighlight">\(X\)</span> se define como la función
+$<span class="math notranslate nohighlight">\(
+F(x) = P(X \leq x)
+\)</span>$</p></li>
+<li><p>Esta definición aplica indistintamente de si <span class="math notranslate nohighlight">\(X\)</span> es discreta o continua.</p></li>
+<li><p>La <strong>función de supervivencia</strong> de una v.a. <span class="math notranslate nohighlight">\(X\)</span> es definida como</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+S(x) = P(X &gt; x)
+\]</div>
+<ul class="simple">
+<li><p>Note que <span class="math notranslate nohighlight">\(S(x) = 1 - F(x)\)</span></p></li>
+<li><p>Para v.a. continuas, la función de densidad es la derivada de la acumulada</p></li>
+</ul>
+<hr class="docutils" />
+<section id="id3">
+<h4><span class="section-number">4.2.5.1. </span>Ejemplo<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p>¿Cuál es la función de supervivencia y CDF de la densidad considerada antes?</p>
+<p>Para <span class="math notranslate nohighlight">\(1 \geq x \geq 0\)</span>
+$<span class="math notranslate nohighlight">\(
+F(x) = P(X \leq x) = \frac{1}{2} Base \times Height = \frac{1}{2} (x) \times (2 x) = x^2
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+S(x) = 1 - x^2
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">beta</span><span class="o">.</span><span class="n">cdf</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.16 0.25 0.36]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="funcion-cuantil">
+<h3><span class="section-number">4.2.6. </span>Función Cuantil<a class="headerlink" href="#funcion-cuantil" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La  <strong>función cuantil</strong> (QF) de una v.a. <span class="math notranslate nohighlight">\(X\)</span> se define como la función
+$<span class="math notranslate nohighlight">\(
+Q(x) = F^{-1}(x)
+\)</span>$</p></li>
+</ul>
+<p>Es decir, la función cuantil es la inversa de la función de distribución acumulada.</p>
+</section>
+<section id="en-python">
+<h3><span class="section-number">4.2.7. </span>En Python<a class="headerlink" href="#en-python" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miFD</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -799,7 +1005,7 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7fd0735aaa00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7fd0a9973280&gt;
 </pre></div>
 </div>
 </div>
@@ -816,8 +1022,7 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib notebook</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
@@ -921,519 +1126,6 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </div>
 </div>
 </section>
-<section id="test-sobre-una-y-dos-muestras">
-<h2><span class="section-number">4.3. </span>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Permalink to this heading">#</a></h2>
-<p>Se introducen dos funciones: <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> y <code class="docutils literal notranslate"><span class="pre">stats.wilcoxon</span></code> para el test t y el test de Wilcoxon respectivamente. Ambos pueden ser usados para una muestra o dos muestras así como para datos pareados. Note que el test de Wilcoxon para dos muestras es lo mismo que el test de Mann–Whitney.</p>
-<section id="el-test-t">
-<h3><span class="section-number">4.3.1. </span>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this heading">#</a></h3>
-<p>Este test se basa en el supuesto de normalidad de los datos. Es decir que los datos <span class="math notranslate nohighlight">\(x_1\ldots,x_n\)</span> se asumen como realizaciones independientes de variables aleatorias con media <span class="math notranslate nohighlight">\(\mu\)</span> y varianza <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\(N(\mu, \sigma^2)\)</span>. Se tiene que la hipótesis nula es que <span class="math notranslate nohighlight">\(\mu=\mu_0\)</span>.</p>
-<p>Se puede estimar los parámetros <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> por la media <span class="math notranslate nohighlight">\(\bar{x}\)</span> y la desviación estándar  <span class="math notranslate nohighlight">\(\sigma\)</span>, aunque recuerde que solo son estimaciones del valor real.</p>
-<p>Veamos un ejemplo del consuo diario de calorías de 11 mujeres:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_intake</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5260</span><span class="p">,</span><span class="mi">5470</span><span class="p">,</span><span class="mi">5640</span><span class="p">,</span><span class="mi">6180</span><span class="p">,</span><span class="mi">6390</span><span class="p">,</span><span class="mi">6515</span><span class="p">,</span>
-                  <span class="mi">6805</span><span class="p">,</span><span class="mi">7515</span><span class="p">,</span><span class="mi">7515</span><span class="p">,</span><span class="mi">8230</span><span class="p">,</span><span class="mi">8770</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Veamos algunas estadísticas de resumen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=11, minmax=(5260, 8770), mean=6753.636363636364, variance=1304445.4545454548, skewness=0.3674679616524392, kurtosis=-0.9757942883536157)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Se podría querer saber si el consumo de energía de las mujeres se desvía de una valor recomendado de <span class="math notranslate nohighlight">\(7725\)</span>. Asumiendo que los datos vienen de una distribución normal, el objetivo es hacer una prueba para saber si la media de la distribución es <span class="math notranslate nohighlight">\(\mu = 7725\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">,</span><span class="mi">7725</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-2.8207540608310193, pvalue=0.018137235176105812, df=10)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">,</span> <span class="n">pval</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">,</span><span class="mi">7725</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.8207540608310193
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pval</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.018137235176105812
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="wilcoxon">
-<h3><span class="section-number">4.3.2. </span>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">pVal</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">)</span><span class="o">-</span><span class="mi">7725</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">pVal</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.0, 0.0244140625)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Para efectos prácticos, cuando se trata de una muestra, el test t y el de Wilcoxon suelen arrojar resultados muy similares.</p>
-</section>
-</section>
-<section id="test-t-para-dos-muestras">
-<h2><span class="section-number">4.4. </span>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Permalink to this heading">#</a></h2>
-<p>Se usa esta prueba con la hipótesis nula de que dos muestras provengan de distribuciones normales con la misma media.</p>
-<p>Se puede tener dos enfoques, que las muestras tengan la misma varianza (enfoque clásico) o difieran en varianza.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="c1">#os.chdir(&#39;C:/Users/VICTOR/Documents/AnalyticsPython/Data&#39;)</span>
-
-<span class="n">energy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/energy.csv&#39;</span><span class="p">)</span>
-<span class="n">energy</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>expend</th>
-      <th>stature</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>9.21</td>
-      <td>obese</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7.53</td>
-      <td>lean</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7.48</td>
-      <td>lean</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>8.08</td>
-      <td>lean</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>8.09</td>
-      <td>lean</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">energy</span><span class="p">[</span><span class="n">energy</span><span class="o">.</span><span class="n">stature</span><span class="o">==</span><span class="s1">&#39;obese&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">expend</span><span class="o">.</span><span class="n">values</span>
-<span class="n">g2</span> <span class="o">=</span> <span class="n">energy</span><span class="p">[</span><span class="n">energy</span><span class="o">.</span><span class="n">stature</span><span class="o">==</span><span class="s1">&#39;lean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">expend</span><span class="o">.</span><span class="n">values</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-3.855503558973697, pvalue=0.0014106918447179043, df=15.91873619676766)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-3.9455649161549835, pvalue=0.0007989982111700593, df=20.0)
-</pre></div>
-</div>
-</div>
-</div>
-<section id="comparacion-de-varianzas">
-<h3><span class="section-number">4.4.1. </span>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Permalink to this heading">#</a></h3>
-<p>Aún cuando en <code class="docutils literal notranslate"><span class="pre">python</span></code> se puede hacer la prueba sobre dos muestras sin el supuesto de igualdad en las varianzas, podrías estar interesado en hacer una prueba exclusiva de este supuesto.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statistics</span> 
-<span class="n">F</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span><span class="o">/</span><span class="n">statistics</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span> 
-<span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="p">)</span>
-<span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">p_value</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7844459792357035, 0.6797459853760682)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="test-de-wilcoxon-para-dos-muestras">
-<h3><span class="section-number">4.4.2. </span>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_statistic</span><span class="p">,</span> <span class="n">pVal</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">u_statistic</span><span class="p">,</span> <span class="n">pVal</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(105.0, 0.004243226771760098)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="correlacion">
-<h2><span class="section-number">4.5. </span>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this heading">#</a></h2>
-<p>Se aborda a continuación medidas de correlación paramétricas y no paramétricas. El coeficiente de correlación es una medida de asociación que varía entre -1 y 1.</p>
-<section id="correlacion-de-pearson">
-<h3><span class="section-number">4.5.1. </span>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this heading">#</a></h3>
-<p>El coeficiente de correlación empírico es:</p>
-<div class="math notranslate nohighlight">
-\[ r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2\sum (y_i-\bar{y})^2}} \]</div>
-<p>La función cor en <code class="docutils literal notranslate"><span class="pre">python</span></code> calcula la correlación entre dos o más vectores.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import os as os</span>
-<span class="c1">#os.chdir(&#39;C:/Users/VICTOR/Documents/AnalyticsPython/Data&#39;)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data/company_sales_data.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>month_number</th>
-      <th>facecream</th>
-      <th>facewash</th>
-      <th>toothpaste</th>
-      <th>bathingsoap</th>
-      <th>shampoo</th>
-      <th>moisturizer</th>
-      <th>total_units</th>
-      <th>total_profit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2500</td>
-      <td>1500</td>
-      <td>5200</td>
-      <td>9200</td>
-      <td>1200</td>
-      <td>1500</td>
-      <td>21100</td>
-      <td>211000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>2630</td>
-      <td>1200</td>
-      <td>5100</td>
-      <td>6100</td>
-      <td>2100</td>
-      <td>1200</td>
-      <td>18330</td>
-      <td>183300</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>2140</td>
-      <td>1340</td>
-      <td>4550</td>
-      <td>9550</td>
-      <td>3550</td>
-      <td>1340</td>
-      <td>22470</td>
-      <td>224700</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>3400</td>
-      <td>1130</td>
-      <td>5870</td>
-      <td>8870</td>
-      <td>1870</td>
-      <td>1130</td>
-      <td>22270</td>
-      <td>222700</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>3600</td>
-      <td>1740</td>
-      <td>4560</td>
-      <td>7760</td>
-      <td>1560</td>
-      <td>1740</td>
-      <td>20960</td>
-      <td>209600</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>2760</td>
-      <td>1555</td>
-      <td>4890</td>
-      <td>7490</td>
-      <td>1890</td>
-      <td>1555</td>
-      <td>20140</td>
-      <td>201400</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7</td>
-      <td>2980</td>
-      <td>1120</td>
-      <td>4780</td>
-      <td>8980</td>
-      <td>1780</td>
-      <td>1120</td>
-      <td>29550</td>
-      <td>295500</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-      <td>3700</td>
-      <td>1400</td>
-      <td>5860</td>
-      <td>9960</td>
-      <td>2860</td>
-      <td>1400</td>
-      <td>36140</td>
-      <td>361400</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>9</td>
-      <td>3540</td>
-      <td>1780</td>
-      <td>6100</td>
-      <td>8100</td>
-      <td>2100</td>
-      <td>1780</td>
-      <td>23400</td>
-      <td>234000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10</td>
-      <td>1990</td>
-      <td>1890</td>
-      <td>8300</td>
-      <td>10300</td>
-      <td>2300</td>
-      <td>1890</td>
-      <td>26670</td>
-      <td>266700</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>11</td>
-      <td>2340</td>
-      <td>2100</td>
-      <td>7300</td>
-      <td>13300</td>
-      <td>2400</td>
-      <td>2100</td>
-      <td>41280</td>
-      <td>412800</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>12</td>
-      <td>2900</td>
-      <td>1760</td>
-      <td>7400</td>
-      <td>14400</td>
-      <td>1800</td>
-      <td>1760</td>
-      <td>30020</td>
-      <td>300200</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;shampoo&#39;</span><span class="p">,</span><span class="s1">&#39;bathingsoap&#39;</span><span class="p">,</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;shampoo&#39;, ylabel=&#39;bathingsoap&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/cacaaf31e2d67d5936900fcdb04cbdaf6d173c6b7356eb60296915db044ae6b5.png" src="_images/cacaaf31e2d67d5936900fcdb04cbdaf6d173c6b7356eb60296915db044ae6b5.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">shampoo</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">bathingsoap</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.13756757],
-       [0.13756757, 1.        ]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">shampoo</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">bathingsoap</span><span class="p">)</span> <span class="c1"># devuelve la correlacion y el p-valor</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PearsonRResult(statistic=0.1375675688230804, pvalue=0.6698531673457456)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">shampoo</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">bathingsoap</span><span class="p">)</span>   <span class="c1"># Spearman&#39;s rho</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SignificanceResult(statistic=0.2907184843604137, pvalue=0.35929281767147814)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">shampoo</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">bathingsoap</span><span class="p">)</span>  <span class="c1"># Kendall&#39;s tau</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SignificanceResult(statistic=0.10687334289668038, pvalue=0.6304167324095717)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Interpretación de la correlación:</p>
-<ul class="simple">
-<li><p>La correlación esta siempre entre -1 y 1. Lo primero que se interpreta es el signo</p></li>
-<li><p>Directamente proporcional si es positivo, si es negativo pasa lo contrario</p></li>
-<li><p>En segundo lugar se interpreta es la fuerza de la relación. Si esta más cerca de 1, significa que si aumenta una variable, la otra también.</p></li>
-<li><p>Números intermedios, reducen la fuerza de la relación.</p></li>
-</ul>
-</section>
 </section>
 </section>
 
@@ -1475,11 +1167,11 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
       </div>
     </a>
     <a class="right-next"
-       href="AprendizajeSupervisado.html"
+       href="PruebasHipotesis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Aprendizaje Supervisado</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Pruebas de hipótesis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1514,19 +1206,24 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">4.3. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">4.3.1. El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">4.3.2. Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-v-a">4.2.1. Variables aleatorias (v.a.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-v-a">4.2.2. Ejemplos de v.a.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-masa-de-probabilidad-p-x">4.2.3. Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">4.2.3.1. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">4.4. Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">4.4.1. Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">4.4.2. Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-densidad">4.2.4. Función de densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.4.1. Ejemplo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2.4.2. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">4.5. Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">4.5.1. Correlación de Pearson</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-distribucion-acumulada">4.2.5. Función de distribución acumulada</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2.5.1. Ejemplo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-cuantil">4.2.6. Función Cuantil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-python">4.2.7. En Python</a></li>
 </ul>
 </li>
 </ul>

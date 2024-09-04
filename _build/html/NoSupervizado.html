@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>13. Aprendizaje no supervizado &#8212; Técnicas de Machine Learning con Python</title>
+    <title>14. Aprendizaje no supervizado &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'NoSupervizado';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="12. Evaluación de Modelos" href="Evaluacion.html" />
+    <link rel="prev" title="13. Evaluación de Modelos" href="Evaluacion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,22 +165,23 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">4. Estadística Descriptiva &amp; Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">4. Estadística Descriptiva</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PruebasHipotesis.html">5. Pruebas de hipótesis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">5. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">6. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">7. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">8. Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Arboles.html">9. Árboles de decisión</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">10. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">11. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">12. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">6. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">7. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">9. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Arboles.html">10. Árboles de decisión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -374,13 +375,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.1.1. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">14.1. K-means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">14.1.1. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.3.1. Ejemplo: clasificación de clientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">14.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">14.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">14.3.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
 </li>
 </ul>
@@ -395,7 +396,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-no-supervizado">
-<h1><span class="section-number">13. </span>Aprendizaje no supervizado<a class="headerlink" href="#aprendizaje-no-supervizado" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Aprendizaje no supervizado<a class="headerlink" href="#aprendizaje-no-supervizado" title="Permalink to this heading">#</a></h1>
 <p><strong>Preámbulo y datos</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -413,7 +414,7 @@ document.write(`
 </div>
 </div>
 <section id="k-means">
-<h2><span class="section-number">13.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
 <p>Veamos un ejemplo de k-means mediante la generación de clústers aleatorios (<code class="docutils literal notranslate"><span class="pre">make_blobs</span></code>) y <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -458,7 +459,7 @@ document.write(`
 <p><strong>Hasta</strong> La última partición obtenida, (idéntica a la de la iteración
 anterior ) es la respuesta final del algoritmo.</p>
 <section id="ejemplo-clasificacion-de-frutas">
-<h3><span class="section-number">13.1.1. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">14.1.1. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -508,7 +509,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </section>
 </section>
 <section id="aglomerativo">
-<h2><span class="section-number">13.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
 <p><strong>Algoritmo</strong></p>
 <p><strong>Entradas:</strong></p>
 <ul class="simple">
@@ -591,7 +592,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">13.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
 <p>Es un algoritmo no supervisado que tienen por objetivo descubrir grupos a partir de formas arbitrarias de cualquier conjunto de datos y al mismo tiempo puede distinguir <em>noise points</em> que no forman parte de ningún grupo.</p>
 <p><strong>Parámetros</strong></p>
 <ul class="simple">
@@ -633,7 +634,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </div>
 <section id="ejemplo-clasificacion-de-clientes">
-<h3><span class="section-number">13.3.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">14.3.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mall_Customers.csv&quot;</span>
@@ -984,7 +985,7 @@ anterior ) es la respuesta final del algoritmo.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Evaluación de Modelos</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Evaluación de Modelos</p>
       </div>
     </a>
 </div>
@@ -1002,13 +1003,13 @@ anterior ) es la respuesta final del algoritmo.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">13.1. K-means</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">13.1.1. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">14.1. K-means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">14.1.1. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">13.2. Aglomerativo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">13.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">13.3.1. Ejemplo: clasificación de clientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">14.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">14.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">14.3.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
 </li>
 </ul>
