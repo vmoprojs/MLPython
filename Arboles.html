@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Árboles de decisión &#8212; Técnicas de Machine Learning con Python</title>
+    <title>11. Árboles de decisión &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -66,8 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Arboles';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11. Support Vector Machines" href="SVM.html" />
-    <link rel="prev" title="9. Análisis de Componentes Principales" href="ACP.html" />
+    <link rel="next" title="12. Support Vector Machines" href="SVM.html" />
+    <link rel="prev" title="10. Análisis de Componentes Principales" href="ACP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,22 +167,23 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio de Datos</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Descriptiva.html">4. Estadística Descriptiva</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PruebasHipotesis.html">5. Pruebas de hipótesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PruebasHipotesis.html">5. Pruebas de Hipótesis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje Supervizado</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">6. Aprendizaje Supervisado</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion.html">7. Regresión lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">8. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">9. Análisis de Componentes Principales</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Árboles de decisión</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM.html">11. Support Vector Machines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">12. Redes Neuronales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">13. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IntroML.html">6. Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">7. Aprendizaje Supervisado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion.html">8. Regresión lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProbModels.html">9. Modelos de Probabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">10. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Árboles de decisión</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM.html">12. Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">13. Redes Neuronales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion.html">14. Evaluación de Modelos</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">14. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">15. Aprendizaje no supervizado</a></li>
 </ul>
 
     </div>
@@ -376,15 +377,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elegir-la-mejor-particion">10.1. Elegir la <em>mejor</em> partición</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-identificando-el-riesgo-de-un-prestamo">10.2. Ejemplo: Identificando el riesgo de un préstamo</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-recopilacion-de-datos">10.2.1. Paso 1: recopilación de datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-explorar-y-preparar-los-datos">10.2.2. Paso 2: Explorar y preparar los datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-entrenar-un-modelo-en-los-datos">10.2.3. Paso 3: entrenar un modelo en los datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-evaluar-el-rendimiento-del-modelo">10.2.4. Paso 4: evaluar el rendimiento del modelo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elegir-la-mejor-particion">11.1. Elegir la <em>mejor</em> partición</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-identificando-el-riesgo-de-un-prestamo">11.2. Ejemplo: Identificando el riesgo de un préstamo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-recopilacion-de-datos">11.2.1. Paso 1: recopilación de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-explorar-y-preparar-los-datos">11.2.2. Paso 2: Explorar y preparar los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-entrenar-un-modelo-en-los-datos">11.2.3. Paso 3: entrenar un modelo en los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-evaluar-el-rendimiento-del-modelo">11.2.4. Paso 4: evaluar el rendimiento del modelo</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejorando-la-estimacion">10.3. Mejorando la estimación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejorando-la-estimacion">11.3. Mejorando la estimación</a></li>
 </ul>
             </nav>
         </div>
@@ -397,7 +398,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="arboles-de-decision">
-<h1><span class="section-number">10. </span>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Permalink to this heading">#</a></h1>
 <p>Librerías:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -460,7 +461,7 @@ document.write(`
 </tbody>
 </table>
 <section id="elegir-la-mejor-particion">
-<h2><span class="section-number">10.1. </span>Elegir la <em>mejor</em> partición<a class="headerlink" href="#elegir-la-mejor-particion" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Elegir la <em>mejor</em> partición<a class="headerlink" href="#elegir-la-mejor-particion" title="Permalink to this heading">#</a></h2>
 <p><strong>Entropía</strong></p>
 <blockquote>
 <div><p>La entropía de una muestra de datos indica qué tan mezclados están los valores de clase; el valor mínimo de 0 indica que la muestra es completamente homogénea, mientras que 1 indica la cantidad máxima de desorden.</p>
@@ -534,9 +535,9 @@ InfoGain (F) = Entropy(S_1)-Entropy(S_2)
 </div></blockquote>
 </section>
 <section id="ejemplo-identificando-el-riesgo-de-un-prestamo">
-<h2><span class="section-number">10.2. </span>Ejemplo: Identificando el riesgo de un préstamo<a class="headerlink" href="#ejemplo-identificando-el-riesgo-de-un-prestamo" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Ejemplo: Identificando el riesgo de un préstamo<a class="headerlink" href="#ejemplo-identificando-el-riesgo-de-un-prestamo" title="Permalink to this heading">#</a></h2>
 <section id="paso-1-recopilacion-de-datos">
-<h3><span class="section-number">10.2.1. </span>Paso 1: recopilación de datos<a class="headerlink" href="#paso-1-recopilacion-de-datos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>Paso 1: recopilación de datos<a class="headerlink" href="#paso-1-recopilacion-de-datos" title="Permalink to this heading">#</a></h3>
 <p>Los datos representan los préstamos obtenidos de una agencia de crédito en Alemania.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -551,7 +552,7 @@ InfoGain (F) = Entropy(S_1)-Entropy(S_2)
 <p>Una variable indica si el préstamo <strong>entró en default</strong>. Veamos si podemos determinar un patrón que prediga este resultado.</p>
 </section>
 <section id="paso-2-explorar-y-preparar-los-datos">
-<h3><span class="section-number">10.2.2. </span>Paso 2: Explorar y preparar los datos<a class="headerlink" href="#paso-2-explorar-y-preparar-los-datos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>Paso 2: Explorar y preparar los datos<a class="headerlink" href="#paso-2-explorar-y-preparar-los-datos" title="Permalink to this heading">#</a></h3>
 <p>Veamos algunos de los resultados de <code class="docutils literal notranslate"><span class="pre">table()</span></code> para un par de características de préstamos que <strong>parecen predecir un incumplimiento</strong>. Las características <code class="docutils literal notranslate"><span class="pre">checking_balance</span></code> y <code class="docutils literal notranslate"><span class="pre">savings_balance</span></code> indican el saldo de la cuenta de cheques y de ahorros del solicitante, y se registran como variables categóricas:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -720,7 +721,7 @@ Name: proportion, dtype: float64
 </div>
 </section>
 <section id="paso-3-entrenar-un-modelo-en-los-datos">
-<h3><span class="section-number">10.2.3. </span>Paso 3: entrenar un modelo en los datos<a class="headerlink" href="#paso-3-entrenar-un-modelo-en-los-datos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.2.3. </span>Paso 3: entrenar un modelo en los datos<a class="headerlink" href="#paso-3-entrenar-un-modelo-en-los-datos" title="Permalink to this heading">#</a></h3>
 <p>La columna 17 en <code class="docutils literal notranslate"><span class="pre">credit_train</span></code> es la variable <code class="docutils literal notranslate"><span class="pre">default</span></code>, por lo que debemos excluirla del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> de entrenamiento como una variable independiente, pero suministrarla como dependiente para la clasificación.</p>
 <p>Debemos separar los datos y seleccionar las variables con las que vamos a trabajar</p>
 <div class="cell docutils container">
@@ -1062,7 +1063,7 @@ Name: proportion, dtype: float64
 </div>
 </section>
 <section id="paso-4-evaluar-el-rendimiento-del-modelo">
-<h3><span class="section-number">10.2.4. </span>Paso 4: evaluar el rendimiento del modelo<a class="headerlink" href="#paso-4-evaluar-el-rendimiento-del-modelo" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.2.4. </span>Paso 4: evaluar el rendimiento del modelo<a class="headerlink" href="#paso-4-evaluar-el-rendimiento-del-modelo" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predecir con el conjunto de prueba</span>
@@ -1130,7 +1131,7 @@ weighted avg       0.60      0.61      0.61       100
 </section>
 </section>
 <section id="mejorando-la-estimacion">
-<h2><span class="section-number">10.3. </span>Mejorando la estimación<a class="headerlink" href="#mejorando-la-estimacion" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Mejorando la estimación<a class="headerlink" href="#mejorando-la-estimacion" title="Permalink to this heading">#</a></h2>
 <p>La definición de la medida de complejidad-costo (cost-complexity measure):</p>
 <p>Para cualquier subárbol <span class="math notranslate nohighlight">\(T &lt; T_{max}\)</span>, definiremos su complejidad como <span class="math notranslate nohighlight">\(|\tilde{T}|\)</span>, el número de nodos terminales u hoja en <span class="math notranslate nohighlight">\(T\)</span> . Sea <span class="math notranslate nohighlight">\(\alpha ≥ 0\)</span> un número real llamado parámetro de complejidad y defina la medida de costo-complejidad <span class="math notranslate nohighlight">\(R_{\alpha}(T)\)</span> como:</p>
 <div class="math notranslate nohighlight">
@@ -1308,7 +1309,7 @@ weighted avg       0.68      0.65      0.55       100
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Análisis de Componentes Principales</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Análisis de Componentes Principales</p>
       </div>
     </a>
     <a class="right-next"
@@ -1316,7 +1317,7 @@ weighted avg       0.68      0.65      0.55       100
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Support Vector Machines</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Support Vector Machines</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1335,15 +1336,15 @@ weighted avg       0.68      0.65      0.55       100
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elegir-la-mejor-particion">10.1. Elegir la <em>mejor</em> partición</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-identificando-el-riesgo-de-un-prestamo">10.2. Ejemplo: Identificando el riesgo de un préstamo</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-recopilacion-de-datos">10.2.1. Paso 1: recopilación de datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-explorar-y-preparar-los-datos">10.2.2. Paso 2: Explorar y preparar los datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-entrenar-un-modelo-en-los-datos">10.2.3. Paso 3: entrenar un modelo en los datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-evaluar-el-rendimiento-del-modelo">10.2.4. Paso 4: evaluar el rendimiento del modelo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elegir-la-mejor-particion">11.1. Elegir la <em>mejor</em> partición</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-identificando-el-riesgo-de-un-prestamo">11.2. Ejemplo: Identificando el riesgo de un préstamo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-recopilacion-de-datos">11.2.1. Paso 1: recopilación de datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-explorar-y-preparar-los-datos">11.2.2. Paso 2: Explorar y preparar los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-entrenar-un-modelo-en-los-datos">11.2.3. Paso 3: entrenar un modelo en los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-evaluar-el-rendimiento-del-modelo">11.2.4. Paso 4: evaluar el rendimiento del modelo</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejorando-la-estimacion">10.3. Mejorando la estimación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejorando-la-estimacion">11.3. Mejorando la estimación</a></li>
 </ul>
   </nav></div>
 
