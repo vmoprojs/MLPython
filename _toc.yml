@@ -18,6 +18,7 @@ parts:
 - caption: Aprendizaje Supervizado
   numbered: true
   chapters:
+  - file: IntroML
   - file: AprendizajeSupervisado
   - file: Regresion
   - file: ProbModels
