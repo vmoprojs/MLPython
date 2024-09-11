@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'IntroML';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -380,6 +382,22 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminologia">6.2.1. Terminología</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizaje-supervisado">6.3. Aprendizaje Supervisado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimar-f">6.3.1. Estimar <span class="math notranslate nohighlight">\(f\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">6.3.1.1. Predicción</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-total">6.3.1.1.1. Error Total</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#error-reducible-e-irreducible">6.3.1.1.1.1. Error Reducible e Irreducible</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia">6.3.1.2. Inferencia</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-sesgo-varianza-del-error-reducible">6.3.2. Descomposición de Sesgo-Varianza (del Error Reducible)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">6.3.3. Resumen</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -422,6 +440,172 @@ document.write(`
 <li><p>La <strong>reducción de dimensionalidad</strong> es una técnica para transformar datos de alta dimensión en un espacio de baja dimensión, preservando al mismo tiempo las propiedades útiles de los datos.</p></li>
 <li><p>La agrupación en <strong>clústeres</strong> o conglomerados es una técnica que implica encontrar subgrupos, o clústeres, en un conjunto de datos de modo que las observaciones dentro del mismo grupo sean bastante <em>similares</em> entre sí, mientras que las observaciones en diferentes grupos sean bastante <em>diferentes</em> entre sí.</p></li>
 </ul>
+</section>
+</section>
+<section id="aprendizaje-supervisado">
+<h2><span class="section-number">6.3. </span>Aprendizaje Supervisado<a class="headerlink" href="#aprendizaje-supervisado" title="Permalink to this heading">#</a></h2>
+<p>Supongamos que observas una respuesta cuantitativa <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(p\)</span> predictores, <span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_p\)</span>. Deseamos estimar una relación entre <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(X=(X_1,X_2,\cdots,X_p)\)</span> que puede escribirse como:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = f(X)+\epsilon
+\]</div>
+<p><span class="math notranslate nohighlight">\(f\)</span> es una fija de <span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_p\)</span> que no conocemos, y <span class="math notranslate nohighlight">\(\epsilon\)</span> es un término de <strong>error aleatorio</strong> que es independiente de <span class="math notranslate nohighlight">\(X\)</span> y tiene media cero. En esta fórmula, <span class="math notranslate nohighlight">\(f\)</span> representa la información sistemática que <span class="math notranslate nohighlight">\(X\)</span> provee acerca de <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>En el siguiente ejemplo, simulamos una relación entre Edad (<span class="math notranslate nohighlight">\(X\)</span>) e Ingreso (<span class="math notranslate nohighlight">\(Y\)</span>) donde</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\in [18,65]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Y=f(X) = 1000log(X)+4000\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(\mu=0,\sigma=100)\)</span></p></li>
+</ul>
+<p>Luego truncamos los valores de Y entre 4000 y 30000 (nota que usamos <code class="docutils literal notranslate"><span class="pre">np.clip</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Generamos un rango de valores de X entre 18 y 65</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Definimos una función no lineal para Y (por ejemplo, una función cuadrática)</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">+</span> <span class="mi">4000</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">fx</span><span class="o">+</span><span class="n">epsilon</span>
+
+<span class="c1"># Limitamos los valores de Y entre 4000 y 30000</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">30000</span><span class="p">)</span>
+
+<span class="c1"># Graficamos la función</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Valores observados&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Función real de la relación entre Edad e Ingreso&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (Edad)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (Ingreso)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simulación de una función entre X y Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5b18ab8c67fa89492bcec7795a9f7c51e25530d066031e09b1c4ca7e8616bbab.png" src="_images/5b18ab8c67fa89492bcec7795a9f7c51e25530d066031e09b1c4ca7e8616bbab.png" />
+</div>
+</div>
+<p>En esencia, el aprendizaje supervisado es un conjunto de métodos que nos ayudan a estimar <span class="math notranslate nohighlight">\(f\)</span>. Al estimar <span class="math notranslate nohighlight">\(f\)</span> aparecen conceptos teóricos con los que debemos familiarizarnos y también debemos tener herramientas que nos evaluar la estimación que hemos obtenido: <span class="math notranslate nohighlight">\(\hat{f}\)</span>.</p>
+<section id="estimar-f">
+<h3><span class="section-number">6.3.1. </span>Estimar <span class="math notranslate nohighlight">\(f\)</span><a class="headerlink" href="#estimar-f" title="Permalink to this heading">#</a></h3>
+<p>Hay dos razones para estimar <span class="math notranslate nohighlight">\(f\)</span>: predicción e inferencia.</p>
+<section id="prediccion">
+<h4><span class="section-number">6.3.1.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this heading">#</a></h4>
+<p>En problemas reales tenemos disponible datos de entrada <span class="math notranslate nohighlight">\(X\)</span> y sus etiquetas <span class="math notranslate nohighlight">\(Y\)</span> y deseamos estimar la relación entre <span class="math notranslate nohighlight">\(X\)</span> y <span class="math notranslate nohighlight">\(Y\)</span>, para ello:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{Y} = \hat{f}(X)
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\hat{f}\)</span> representa nuestra estimación de <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(\hat{Y}\)</span> representa la predicción de <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>No necesariamente debemos saber la forma funcional exacta de <span class="math notranslate nohighlight">\(\hat{f}\)</span> siempre y cuando tengamos predicciones precisas de <span class="math notranslate nohighlight">\(Y\)</span>. Cuando esto sucede, se lo conoce como un problema de <em>caja negra</em>.</p>
+<section id="error-total">
+<h5><span class="section-number">6.3.1.1.1. </span>Error Total<a class="headerlink" href="#error-total" title="Permalink to this heading">#</a></h5>
+<p>En aprendizaje supervisado, el error total puede descomponerse en el <strong>error de predicción esperado (EPE)</strong>, que es la diferencia cuadrática esperada entre el resultado predicho <span class="math notranslate nohighlight">\(\hat{Y}\)</span> y el resultado verdadero <span class="math notranslate nohighlight">\(Y\)</span>, es decir, el error cuadrático medio (MSE):</p>
+<div class="math notranslate nohighlight">
+\[
+EPE(x) = \mathbb{E}[(Y - \hat{Y}(x))^2]
+\]</div>
+<p>Donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y\)</span> es el valor verdadero (la etiqueta).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{Y}(x)\)</span> es la predicción del modelo en la entrada <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> denota la esperanza.</p></li>
+</ul>
+<p>Ahora, queremos descomponer esto en componentes de <strong>error reducible</strong> y <strong>error irreducible</strong>.</p>
+<section id="error-reducible-e-irreducible">
+<h6><span class="section-number">6.3.1.1.1.1. </span>Error Reducible e Irreducible<a class="headerlink" href="#error-reducible-e-irreducible" title="Permalink to this heading">#</a></h6>
+<p>Dado que la etiqueta <span class="math notranslate nohighlight">\(Y\)</span> se puede descomponer en una parte determinista <span class="math notranslate nohighlight">\(f(X)\)</span> y un ruido <span class="math notranslate nohighlight">\(\epsilon\)</span>, es decir:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = f(X) + \epsilon
+\]</div>
+<p>Donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(X)\)</span> es la verdadera función subyacente (que intentamos aproximar con nuestro modelo).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon\)</span> es un ruido aleatorio con media cero <span class="math notranslate nohighlight">\((\mathbb{E}[\epsilon] = 0\)</span>) y varianza <span class="math notranslate nohighlight">\(\sigma^2\)</span> (<span class="math notranslate nohighlight">\(\text{Var}[\epsilon] = \sigma^2\)</span>).</p></li>
+</ul>
+<p>El <strong>error total</strong> ahora puede descomponerse en:</p>
+<div class="math notranslate nohighlight">
+\[
+EPE(X) = \mathbb{E}[(f(X) + \epsilon - \hat{f}(X))^2]
+\]</div>
+<p>Expandiendo esta expresión:</p>
+<div class="math notranslate nohighlight">
+\[
+EPE(X) = \mathbb{E}[(f(X) - \hat{f}(X))^2] + \mathbb{E}[\epsilon^2]
+\]</div>
+<p>Esto se puede interpretar como:</p>
+<ol class="arabic simple">
+<li><p><strong>Error Reducible</strong>: El error debido a la incapacidad del modelo para aprender perfectamente la verdadera función (f(x)). Esto está representado por <span class="math notranslate nohighlight">\(\mathbb{E}[(f(X) - \hat{f}(X))^2]\)</span>.</p></li>
+<li><p><strong>Error Irreducible</strong>: El error debido al ruido inherente en los datos, es decir, <span class="math notranslate nohighlight">\(\mathbb{E}[\epsilon^2] = \sigma^2\)</span>, que no se puede reducir, sin importar cuán bien el modelo aprenda la función verdadera.</p></li>
+</ol>
+<p>Así, el error total es:</p>
+<div class="math notranslate nohighlight">
+\[
+EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}} + \underbrace{\sigma^2}_{\text{Error Irreducible}}
+\]</div>
+</section>
+</section>
+</section>
+<section id="inferencia">
+<h4><span class="section-number">6.3.1.2. </span>Inferencia<a class="headerlink" href="#inferencia" title="Permalink to this heading">#</a></h4>
+<p>Cuando estamos interesados en entender la asociación entre <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_p\)</span>, la estimación de <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(\hat{f}\)</span> no puede ser tratado como una caja negra. Nuestro objetivo no es necesariamente hacer predicciones de <span class="math notranslate nohighlight">\(Y\)</span>, sino que necesitamos tener una forma exacta de <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Podemos estar interesados en responder a preguntas como:</p>
+<ul class="simple">
+<li><p>¿Qué predictores se asocian con la respuesta?</p></li>
+<li><p>¿Cuál es la relación entre la respuesta y cada predictor?</p></li>
+<li><p>¿Puede la relación entre <span class="math notranslate nohighlight">\(Y\)</span> y cada predictor ser lineal o es más sofisticada?</p></li>
+</ul>
+<p>Dependiendo de si nuestro objetivo final es predicción, inferencia o una combinación de ambas, pueden ser apropiados distintos métodos para estimar <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Por ejemplo, los modelos lineales permiten una inferencia relativamente simple e interpretable, pero pueden no producir predicciones tan precisas como algunos otros enfoques de modelos lineales. Por el contrario, algunos de los enfoques altamente no lineales pueden proporcionar predicciones bastante precisas para <span class="math notranslate nohighlight">\(Y\)</span> , pero esto se produce a expensas de un modelo menos interpretable para el cual la inferencia es más desafiante.</p>
+</section>
+</section>
+<section id="descomposicion-de-sesgo-varianza-del-error-reducible">
+<h3><span class="section-number">6.3.2. </span>Descomposición de Sesgo-Varianza (del Error Reducible)<a class="headerlink" href="#descomposicion-de-sesgo-varianza-del-error-reducible" title="Permalink to this heading">#</a></h3>
+<p>El error reducible se puede descomponer aún más en <strong>sesgo</strong> y <strong>varianza</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[(f(X) - \hat{f}(x))^2] = (\mathbb{E}[\hat{f}(X)] - f(x))^2 + \mathbb{E}[(\hat{f}(X) - \mathbb{E}[\hat{f}(X)])^2]
+\]</div>
+<p>Donde:</p>
+<ul class="simple">
+<li><p><strong>Sesgo</strong>: <span class="math notranslate nohighlight">\((\mathbb{E}[\hat{f}(X)] - f(X))^2\)</span> es el error debido a las suposiciones del modelo que le impiden capturar perfectamente la función verdadera.</p></li>
+<li><p><strong>Varianza</strong>: <span class="math notranslate nohighlight">\(\mathbb{E}[(\hat{f}(X) - \mathbb{E}[\hat{f}(X)])^2]\)</span> es el error debido a la sensibilidad del modelo a diferentes conjuntos de datos de entrenamiento (es decir, cuánto varían las predicciones del modelo).</p></li>
+</ul>
+<p>Así, el error total se puede escribir como:</p>
+<div class="math notranslate nohighlight">
+\[
+EPE(x) = \underbrace{\text{Sesgo}^2 + \text{Varianza}}_{\text{Error Reducible}} + \underbrace{\sigma^2}_{\text{Error Irreducible}}
+\]</div>
+</section>
+<section id="resumen">
+<h3><span class="section-number">6.3.3. </span>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><strong>Error Reducible</strong>: Esta es la parte del error que se puede reducir mejorando el modelo (por ejemplo, usando un modelo más complejo, mejor ajuste o más datos). Consiste en <strong>Sesgo</strong> y <strong>Varianza</strong>.</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{Error Reducible} = \text{Sesgo}^2 + \text{Varianza}
+  \]</div>
+</li>
+<li><p><strong>Error Irreducible</strong>: Este es el ruido en los datos, que no se puede eliminar con ningún modelo. Está representado por la varianza del ruido <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{Error Irreducible} = \sigma^2
+  \]</div>
+</li>
+</ul>
+<p>Por lo tanto, la fórmula general para el error de predicción esperado (error total) es:</p>
+<div class="math notranslate nohighlight">
+\[
+EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
+\]</div>
 </section>
 </section>
 </section>
@@ -490,6 +674,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-bosque-inteligencia-artificial">6.1. El bosque: Inteligencia Artificial</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.2. Machine Learning</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminologia">6.2.1. Terminología</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizaje-supervisado">6.3. Aprendizaje Supervisado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimar-f">6.3.1. Estimar <span class="math notranslate nohighlight">\(f\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">6.3.1.1. Predicción</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-total">6.3.1.1.1. Error Total</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#error-reducible-e-irreducible">6.3.1.1.1.1. Error Reducible e Irreducible</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia">6.3.1.2. Inferencia</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-sesgo-varianza-del-error-reducible">6.3.2. Descomposición de Sesgo-Varianza (del Error Reducible)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">6.3.3. Resumen</a></li>
 </ul>
 </li>
 </ul>
