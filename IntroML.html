@@ -395,9 +395,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-sesgo-varianza-del-error-reducible">6.3.2. Descomposición de Sesgo-Varianza (del Error Reducible)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">6.3.3. Resumen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-sintesis">6.3.3. En síntesis</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-remuestreo">6.4. Métodos de remuestreo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">6.4.1. Bootstrap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">6.5. Cross-validation</a></li>
 </ul>
             </nav>
         </div>
@@ -510,12 +515,12 @@ Y = f(X)+\epsilon
 <p>En aprendizaje supervisado, el error total puede descomponerse en el <strong>error de predicción esperado (EPE)</strong>, que es la diferencia cuadrática esperada entre el resultado predicho <span class="math notranslate nohighlight">\(\hat{Y}\)</span> y el resultado verdadero <span class="math notranslate nohighlight">\(Y\)</span>, es decir, el error cuadrático medio (MSE):</p>
 <div class="math notranslate nohighlight">
 \[
-EPE(x) = \mathbb{E}[(Y - \hat{Y}(x))^2]
+EPE(X) = \mathbb{E}[(Y - \hat{Y}(X))^2]
 \]</div>
 <p>Donde:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(Y\)</span> es el valor verdadero (la etiqueta).</p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{Y}(x)\)</span> es la predicción del modelo en la entrada <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{Y}(X)\)</span> es la predicción del modelo en la entrada <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> denota la esperanza.</p></li>
 </ul>
 <p>Ahora, queremos descomponer esto en componentes de <strong>error reducible</strong> y <strong>error irreducible</strong>.</p>
@@ -572,7 +577,7 @@ EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}}
 <p>El error reducible se puede descomponer aún más en <strong>sesgo</strong> y <strong>varianza</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{E}[(f(X) - \hat{f}(x))^2] = (\mathbb{E}[\hat{f}(X)] - f(x))^2 + \mathbb{E}[(\hat{f}(X) - \mathbb{E}[\hat{f}(X)])^2]
+\mathbb{E}[(f(X) - \hat{f}(X))^2] = (\mathbb{E}[\hat{f}(X)] - f(x))^2 + \mathbb{E}[(\hat{f}(X) - \mathbb{E}[\hat{f}(X)])^2]
 \]</div>
 <p>Donde:</p>
 <ul class="simple">
@@ -585,8 +590,8 @@ EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}}
 EPE(x) = \underbrace{\text{Sesgo}^2 + \text{Varianza}}_{\text{Error Reducible}} + \underbrace{\sigma^2}_{\text{Error Irreducible}}
 \]</div>
 </section>
-<section id="resumen">
-<h3><span class="section-number">6.3.3. </span>Resumen<a class="headerlink" href="#resumen" title="Permalink to this heading">#</a></h3>
+<section id="en-sintesis">
+<h3><span class="section-number">6.3.3. </span>En síntesis<a class="headerlink" href="#en-sintesis" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p><strong>Error Reducible</strong>: Esta es la parte del error que se puede reducir mejorando el modelo (por ejemplo, usando un modelo más complejo, mejor ajuste o más datos). Consiste en <strong>Sesgo</strong> y <strong>Varianza</strong>.</p>
 <div class="math notranslate nohighlight">
@@ -607,6 +612,94 @@ EPE(x) = \underbrace{\text{Sesgo}^2 + \text{Varianza}}_{\text{Error Reducible}} 
 EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 \]</div>
 </section>
+</section>
+<section id="metodos-de-remuestreo">
+<h2><span class="section-number">6.4. </span>Métodos de remuestreo<a class="headerlink" href="#metodos-de-remuestreo" title="Permalink to this heading">#</a></h2>
+<p>Los <strong>métodos de remuestreo</strong> son una herramienta indispensable en la estadística moderna. Implican extraer repetidamente muestras de un conjunto de <strong>entrenamiento</strong> y reajustar un modelo de interés en cada muestra para obtener información adicional sobre el modelo ajustado.</p>
+<p>Dos métodos más usados en el remuestreo son <em>bootstrap</em> y <em>cross-validation</em>.</p>
+<p><strong>Bootstrap</strong></p>
+<p>El bootstrap se utiliza en varios contextos, más comúnmente para proporcionar una <strong>medida de precisión</strong> de una estimación de un parámetro o de un método de aprendizaje estadístico dado.</p>
+<p><strong>Cross-validation</strong></p>
+<p>El proceso de evaluar el desempeño de un modelo se conoce como <strong>evaluación del modelo</strong>, mientras que el proceso de seleccionar el nivel adecuado de flexibilidad para un modelo se conoce como <strong>selección del modelo</strong>.</p>
+<section id="bootstrap">
+<h3><span class="section-number">6.4.1. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h3>
+<p>Supongamos que deseamos obtener el siguiente estimador</p>
+<div class="math notranslate nohighlight">
+\[
+\tau = \frac{\text{median}(x)}{(\text{max}(x)-\text{min}(x))}
+\]</div>
+<p>Nota que, si el problema fuese estimar el <a class="reference external" href="https://es.wikipedia.org/wiki/Intervalo_de_confianza">intervalo de confianza de la media</a>, tenemos un procedimiento paramétrico para hacerlo (pero también podemos usar bootstrap). Sin embargo, el estimador <span class="math notranslate nohighlight">\(\tau\)</span> no tiene un fórmula específica para estimar los intervalos de confianza, estos son los ejemplos donde bootstrap es más útil.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">edad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">48</span><span class="p">])</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">edad</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># tamaño de la población</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span>
+<span class="n">indice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># posiciones de la población (id)</span>
+<span class="n">nsam</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Tamaño de la muestra (generalmente es igual a n)</span>
+<span class="n">sam</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">nsam</span><span class="p">)</span> <span class="c1"># Tomamos una muestra con reemplazo</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span>
+<span class="n">tau</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.125
+</pre></div>
+</div>
+</div>
+</div>
+<p>A mano</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tau_f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="n">nboot</span> <span class="o">=</span> <span class="mi">9999</span>
+<span class="n">tau_sol</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nboot</span><span class="p">):</span>
+    <span class="n">sam</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">nsam</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">tau_f</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span>
+    <span class="n">tau_sol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
+    
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">tau_sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/3de6534ca707da05f3b170da868ae043b94d1ce4f4ad27a84bb2d401f198166b.png" src="_images/3de6534ca707da05f3b170da868ae043b94d1ce4f4ad27a84bb2d401f198166b.png" />
+</div>
+</div>
+<p>Usando <code class="docutils literal notranslate"><span class="pre">bootstrap</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">bootstrap</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">bootstrap</span><span class="p">((</span><span class="n">edad</span><span class="p">,),</span> <span class="n">tau_f</span><span class="p">,</span> <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="n">res</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">bootstrap_distribution</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/dde2d2e453c4e3f75ad195f785c6fefd60d6193784e40ca58c0ce83446db85d7.png" src="_images/dde2d2e453c4e3f75ad195f785c6fefd60d6193784e40ca58c0ce83446db85d7.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="cross-validation">
+<h2><span class="section-number">6.5. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -689,9 +782,14 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-sesgo-varianza-del-error-reducible">6.3.2. Descomposición de Sesgo-Varianza (del Error Reducible)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">6.3.3. Resumen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-sintesis">6.3.3. En síntesis</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-remuestreo">6.4. Métodos de remuestreo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">6.4.1. Bootstrap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">6.5. Cross-validation</a></li>
 </ul>
   </nav></div>
 
