@@ -693,13 +693,69 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/dde2d2e453c4e3f75ad195f785c6fefd60d6193784e40ca58c0ce83446db85d7.png" src="_images/dde2d2e453c4e3f75ad195f785c6fefd60d6193784e40ca58c0ce83446db85d7.png" />
+<img alt="_images/404f6233cd161476c9c6a1a66ed0bceeae46e44da687b09b777da4c748d80925.png" src="_images/404f6233cd161476c9c6a1a66ed0bceeae46e44da687b09b777da4c748d80925.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="cross-validation">
 <h2><span class="section-number">6.5. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mundo.csv&quot;</span>
+
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="p">)</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[[</span><span class="s2">&quot;PNB_PC&quot;</span><span class="p">,</span><span class="s2">&quot;calorias&quot;</span><span class="p">,</span><span class="s2">&quot;exp_vida&quot;</span><span class="p">]]</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[[</span><span class="s2">&quot;PNB_PC&quot;</span><span class="p">,</span><span class="s2">&quot;calorias&quot;</span><span class="p">]],</span><span class="n">datos</span><span class="o">.</span><span class="n">exp_vida</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+
+
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span> <span class="c1">#sol</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">scores</span>
+
+
+
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="c1"># https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter</span>
+<span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">]</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00166488, 0.00209403, 0.00158906, 0.00154686, 0.00168276]),
+ &#39;score_time&#39;: array([0.00177526, 0.00177097, 0.00165796, 0.00165105, 0.00166416]),
+ &#39;test_r2&#39;: array([-0.84695129,  0.28360126, -0.90154176,  0.6867929 , -5.11490281]),
+ &#39;test_neg_mean_absolute_error&#39;: array([-7.59750607, -7.74954156, -9.29418544, -4.25742205, -3.78002062])}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
