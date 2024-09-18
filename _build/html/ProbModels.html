@@ -427,11 +427,11 @@ inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \
                <span class="s2">&quot;nwifeinc&quot;</span> <span class="p">,</span> <span class="s2">&quot;lwage&quot;</span> <span class="p">,</span><span class="s2">&quot;expersq&quot;</span><span class="p">]</span>
 
 
-<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">stm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
 <span class="kn">from</span> <span class="nn">statsmodels.graphics.regressionplots</span> <span class="kn">import</span> <span class="n">abline_plot</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
-<span class="n">reg1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ nwifeinc + educ + exper + expersq + age+kidslt6 + kidsge6&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">reg1</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ nwifeinc + educ + exper + expersq + age+kidslt6 + kidsge6&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">reg1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -442,8 +442,8 @@ inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \
 Dep. Variable:                   inlf   R-squared:                       0.264
 Model:                            OLS   Adj. R-squared:                  0.257
 Method:                 Least Squares   F-statistic:                     38.22
-Date:                Wed, 21 Aug 2024   Prob (F-statistic):           6.90e-46
-Time:                        05:31:15   Log-Likelihood:                -423.89
+Date:                Wed, 18 Sep 2024   Prob (F-statistic):           6.90e-46
+Time:                        05:48:34   Log-Likelihood:                -423.89
 No. Observations:                 753   AIC:                             863.8
 Df Residuals:                     745   BIC:                             900.8
 Df Model:                           7                                         
@@ -477,7 +477,7 @@ strong multicollinearity or other numerical problems.
 <p>¿Qué hemos ajustado?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aux</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ educ&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aux</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;inlf ~ educ&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datos</span><span class="o">.</span><span class="n">educ</span><span class="p">,</span><span class="n">datos</span><span class="o">.</span><span class="n">inlf</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">);</span>
@@ -687,7 +687,7 @@ p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
 <p>Ajustamos el modelo:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
@@ -702,8 +702,8 @@ p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                          Logit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Wed, 21 Aug 2024   Pseudo R-squ.:                  0.3740
-Time:                        05:31:16   Log-Likelihood:                -12.890
+Date:                Wed, 18 Sep 2024   Pseudo R-squ.:                  0.3740
+Time:                        05:48:35   Log-Likelihood:                -12.890
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001502
 ==============================================================================
@@ -808,22 +808,18 @@ dtype: float64
 <p>Esto indica que los estudiantes expuestos al nuevo método de enseñanza son 10 veces más propensos a obtener una A que quienes no están expuestos al nuevo método, en tanto no cambien los demás factores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">which</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/statsmodels/discrete/discrete_model.py:530: FutureWarning: linear keyword is deprecated, use which=&quot;linear&quot;
-  warnings.warn(msg, FutureWarning)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.02657799, 0.05950125, 0.18725993, 0.02590164, 0.56989295,
-       0.03485827, 0.02650406, 0.051559  , 0.11112666, 0.69351131,
-       0.02447037, 0.18999744, 0.32223955, 0.19321116, 0.36098992,
-       0.03018375, 0.05362641, 0.03858834, 0.58987249, 0.66078584,
-       0.06137585, 0.90484727, 0.24177245, 0.85209089, 0.83829051,
-       0.48113304, 0.63542059, 0.30721866, 0.84170413, 0.94534025,
-       0.5291172 , 0.11103084])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.60073413, -2.76041291, -1.46791368, -3.62720615,  0.28141441,
+       -3.32098459, -3.60359585, -2.91209282, -2.07928416,  0.81658669,
+       -3.68551751, -1.45002683, -0.74349868, -1.42927827, -0.5710702 ,
+       -3.46980278, -2.87059569, -3.21545265,  0.3634383 ,  0.66679813,
+       -2.72739871,  2.25228291, -1.14298655,  1.7510952 ,  1.64556325,
+       -0.0755037 ,  0.55554274, -0.8131547 ,  1.67096266,  2.85041739,
+        0.11660073, -2.08025454])
 </pre></div>
 </div>
 </div>
@@ -840,7 +836,7 @@ dtype: float64
 <p><strong>Ejemplo</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">stm</span><span class="o">.</span><span class="n">probit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">probit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
@@ -855,8 +851,8 @@ dtype: float64
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                         Probit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Wed, 21 Aug 2024   Pseudo R-squ.:                  0.3775
-Time:                        05:31:16   Log-Likelihood:                -12.819
+Date:                Wed, 18 Sep 2024   Pseudo R-squ.:                  0.3775
+Time:                        05:48:35   Log-Likelihood:                -12.819
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001405
 ==============================================================================
@@ -929,22 +925,18 @@ PSI            1.4263      0.595      2.397      0.017       0.260       2.593
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajuste1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">which</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/statsmodels/discrete/discrete_model.py:530: FutureWarning: linear keyword is deprecated, use which=&quot;linear&quot;
-  warnings.warn(msg, FutureWarning)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.01817074, 0.05308048, 0.18992627, 0.01857067, 0.55457485,
-       0.02723306, 0.01850327, 0.04457139, 0.10880811, 0.66312068,
-       0.01610236, 0.19355656, 0.32332821, 0.19518259, 0.35634057,
-       0.02196542, 0.04569425, 0.03085127, 0.59340229, 0.65718629,
-       0.06192878, 0.90453884, 0.2731908 , 0.84745013, 0.83419472,
-       0.48872605, 0.64240727, 0.3286732 , 0.84001686, 0.95224465,
-       0.53995949, 0.123544  ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.09308603, -1.61569183, -0.87816803, -2.08420699,  0.13722837,
+       -1.92311086, -2.08569187, -1.69993698, -1.23289159,  0.42099513,
+       -2.14186033, -0.86486457, -0.45841206, -0.85895528, -0.36825763,
+       -2.01475018, -1.6881184 , -1.86842727,  0.23630576,  0.40479606,
+       -1.53878182,  1.30785551, -0.60319106,  1.02555852,  0.97087493,
+       -0.02826337,  0.3649008 , -0.44357981,  0.99452719,  1.6670186 ,
+        0.10033167, -1.15745135])
 </pre></div>
 </div>
 </div>
