@@ -378,7 +378,18 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-lineal">9.1. Probabilidad lineal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">9.2. Logit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">9.2. Logit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1">9.2.1. Ejemplo 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2">9.2.2. Ejemplo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-lectura-de-datos">9.2.2.1. Paso 1: lectura de datos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-separacion-de-datos-en-entrenamieto-y-prueba">9.2.2.2. Paso 2: Separación de datos en entrenamieto y prueba</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-exploracion-de-datos-y-seleccion-de-variables">9.2.2.3. Paso 3: Exploración de datos y selección de variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-seleccion-de-variables">9.2.2.4. Paso 4: Selección de variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-entrenar-un-modelo-con-variables-seleccionadas">9.2.2.5. Paso 5: Entrenar un modelo con variables seleccionadas</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probit">9.3. Probit</a></li>
 </ul>
             </nav>
@@ -442,8 +453,8 @@ inlf=\beta_0nwifeinc+\beta_1educ + \beta_2exper +\beta_3expersq + \beta_4age + \
 Dep. Variable:                   inlf   R-squared:                       0.264
 Model:                            OLS   Adj. R-squared:                  0.257
 Method:                 Least Squares   F-statistic:                     38.22
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           6.90e-46
-Time:                        05:48:34   Log-Likelihood:                -423.89
+Date:                Mon, 23 Sep 2024   Prob (F-statistic):           6.90e-46
+Time:                        05:42:18   Log-Likelihood:                -423.89
 No. Observations:                 753   AIC:                             863.8
 Df Residuals:                     745   BIC:                             900.8
 Df Model:                           7                                         
@@ -592,7 +603,8 @@ p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
 <li><p><span class="math notranslate nohighlight">\(\beta _ {1} x\)</span> es el coeficiente de regresión multiplicado por algún valor del predictor.</p></li>
 <li><p>la base <span class="math notranslate nohighlight">\(e\)</span> denota la función exponencial.</p></li>
 </ul>
-<p><strong>Ejemplo</strong></p>
+<section id="ejemplo-1">
+<h3><span class="section-number">9.2.1. </span>Ejemplo 1<a class="headerlink" href="#ejemplo-1" title="Permalink to this heading">#</a></h3>
 <p>Abra la tabla 15.7</p>
 <ul class="simple">
 <li><p>Los datos son el efecto del Sistema de Enseñanza Personalizada (PSI) sobre las calificaciones.</p>
@@ -605,7 +617,7 @@ p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
 </ul>
 </li>
 <li><p>Ajuste el siguiente modelo:
-<code class="docutils literal notranslate"><span class="pre">ajuste1</span> <span class="pre">&lt;-</span> <span class="pre">glm(GRADE~GPA+TUCE+PSI,</span> <span class="pre">family=binomial(link=&quot;logit&quot;),x=T)</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">smf.logit('GRADE</span> <span class="pre">~</span> <span class="pre">GPA</span> <span class="pre">+</span> <span class="pre">TUCE</span> <span class="pre">+</span> <span class="pre">PSI',data</span> <span class="pre">=</span> <span class="pre">datos).fit()</span></code></p></li>
 <li><p>Interprete el modelo</p></li>
 </ul>
 <p>En los modelos cuya variable regresada binaria, la bondad del ajuste tiene una importancia secundaria. Lo que interesa son los signos esperados de los coeficientes de la regresión y su importancia práctica y/o estadística.</p>
@@ -702,8 +714,8 @@ p(x)={\frac {1}{1+e^{-(\beta _{0}+\beta _{1}x)}}}
 Dep. Variable:                  GRADE   No. Observations:                   32
 Model:                          Logit   Df Residuals:                       28
 Method:                           MLE   Df Model:                            3
-Date:                Wed, 18 Sep 2024   Pseudo R-squ.:                  0.3740
-Time:                        05:48:35   Log-Likelihood:                -12.890
+Date:                Mon, 23 Sep 2024   Pseudo R-squ.:                  0.3740
+Time:                        05:42:18   Log-Likelihood:                -12.890
 converged:                       True   LL-Null:                       -20.592
 Covariance Type:            nonrobust   LLR p-value:                  0.001502
 ==============================================================================
@@ -825,6 +837,381 @@ dtype: float64
 </div>
 </div>
 </section>
+<section id="ejemplo-2">
+<h3><span class="section-number">9.2.2. </span>Ejemplo 2<a class="headerlink" href="#ejemplo-2" title="Permalink to this heading">#</a></h3>
+<p>Este ejemplo tiene por objetivo lograr la mejor predicción de actividades ilícitas (Uafe). Para ello cuentan con un conjunto de datos de entrenamiento:</p>
+<ul class="simple">
+<li><p>codigoCliente:	Identificación del cliente</p></li>
+<li><p>sumValTot:	Suma del valor transaccionado al mes</p></li>
+<li><p>Frecuencia:	Número de transacciones del mes</p></li>
+<li><p>edad:	Edad del cliente</p></li>
+<li><p>estadoCivil:	C: Casada, D: Divorciada, N &amp; missing: Sin info, S: Soltera, U: Unida, V: viuda</p></li>
+<li><p>nivelEducacion:	missing o N: Sin info, P o S: primaria o secundaria, Sup: Superior</p></li>
+<li><p>sexo:	F: Femenino, M: Masculino</p></li>
+<li><p>tipoVivienda:	P: Propia, NP: No propia</p></li>
+<li><p>nivelIngresos:	Ingresos del cliente</p></li>
+<li><p>Uafe	1: sospechosa, 0: no sospechosa</p></li>
+</ul>
+<section id="paso-1-lectura-de-datos">
+<h4><span class="section-number">9.2.2.1. </span>Paso 1: lectura de datos<a class="headerlink" href="#paso-1-lectura-de-datos" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/refs/heads/master/challengeTrainUafe.csv&quot;</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">datos</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>codigoCliente</th>
+      <th>sumValTot</th>
+      <th>Frecuencia</th>
+      <th>edad</th>
+      <th>nivelIngresos</th>
+      <th>Uafe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>53871.000000</td>
+      <td>53871.000000</td>
+      <td>53871.000000</td>
+      <td>53871.000000</td>
+      <td>53871.000000</td>
+      <td>53871.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>330632.616937</td>
+      <td>2607.336492</td>
+      <td>13.792040</td>
+      <td>43.990559</td>
+      <td>1080.108966</td>
+      <td>0.049192</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>214567.625599</td>
+      <td>7885.583015</td>
+      <td>12.211262</td>
+      <td>14.429626</td>
+      <td>4759.779271</td>
+      <td>0.216270</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>7.553425</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>40082.500000</td>
+      <td>251.045000</td>
+      <td>4.000000</td>
+      <td>32.531507</td>
+      <td>537.480000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>444937.000000</td>
+      <td>1528.440000</td>
+      <td>11.000000</td>
+      <td>40.238356</td>
+      <td>849.150000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>484662.000000</td>
+      <td>2430.470000</td>
+      <td>20.000000</td>
+      <td>51.857534</td>
+      <td>1186.490000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>570579.000000</td>
+      <td>342658.560000</td>
+      <td>148.000000</td>
+      <td>122.591781</td>
+      <td>849019.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="paso-2-separacion-de-datos-en-entrenamieto-y-prueba">
+<h4><span class="section-number">9.2.2.2. </span>Paso 2: Separación de datos en entrenamieto y prueba<a class="headerlink" href="#paso-2-separacion-de-datos-en-entrenamieto-y-prueba" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="c1">#X = datos[[&#39;sumValTot&#39;, &#39;Frecuencia&#39;, &#39;edad&#39;, &#39;nivelIngresos&#39;,&#39;estadoCivil&#39;, &#39;nivelEducacion&#39;, &#39;sexo&#39;, &#39;tipoVivienda&#39;]]</span>
+<span class="c1">#y = datos[&#39;Uafe&#39;]</span>
+<span class="c1">#X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)</span>
+
+<span class="n">train_df</span><span class="p">,</span> <span class="n">test_df</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-3-exploracion-de-datos-y-seleccion-de-variables">
+<h4><span class="section-number">9.2.2.3. </span>Paso 3: Exploración de datos y selección de variables<a class="headerlink" href="#paso-3-exploracion-de-datos-y-seleccion-de-variables" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install sweetviz</span>
+<span class="kn">import</span> <span class="nn">sweetviz</span> <span class="k">as</span> <span class="nn">sv</span>
+
+<span class="n">my_report</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+<span class="n">my_report</span><span class="o">.</span><span class="n">show_html</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b36fd6fc4bf84acbb22177f8b12e517e"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Report SWEETVIZ_REPORT.html was generated! NOTEBOOK/COLAB USERS: the web browser MAY not pop up, regardless, the report IS saved in your notebook/colab files.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-4-seleccion-de-variables">
+<h4><span class="section-number">9.2.2.4. </span>Paso 4: Selección de variables<a class="headerlink" href="#paso-4-seleccion-de-variables" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ks_2samp</span><span class="p">,</span> <span class="n">chi2_contingency</span>
+
+<span class="c1">#Prueba KS (variables continuas)</span>
+<span class="c1">#Diccionario</span>
+<span class="n">ks_results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1">#Bucle</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;sumValTot&#39;</span><span class="p">,</span> <span class="s1">&#39;Frecuencia&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;nivelIngresos&#39;</span><span class="p">]:</span>
+    <span class="c1">#Division para los dos grupos</span>
+    <span class="n">group0</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Uafe&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="n">column</span><span class="p">]</span>
+    <span class="n">group1</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Uafe&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][</span><span class="n">column</span><span class="p">]</span>
+    <span class="c1">#Prueba KS</span>
+    <span class="n">ks_stat</span><span class="p">,</span> <span class="n">ks_pvalue</span> <span class="o">=</span> <span class="n">ks_2samp</span><span class="p">(</span><span class="n">group0</span><span class="p">,</span> <span class="n">group1</span><span class="p">)</span>
+    <span class="n">ks_results</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ks_stat</span><span class="p">,</span> <span class="n">ks_pvalue</span><span class="p">)</span>
+<span class="n">ks_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sumValTot&#39;: (0.17290718018142842, 1.0048834804337842e-49),
+ &#39;Frecuencia&#39;: (0.11513715049095713, 3.254205628336455e-22),
+ &#39;edad&#39;: (0.1312846698783937, 8.96037182115701e-29),
+ &#39;nivelIngresos&#39;: (0.22921117173977315, 1.7264084511184317e-87)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Prueba de Chi-Cuadrado para variables categóricas</span>
+<span class="c1">#Diccionario</span>
+<span class="n">chi2_results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1">#Bucle</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;estadoCivil&#39;</span><span class="p">,</span> <span class="s1">&#39;nivelEducacion&#39;</span><span class="p">,</span> <span class="s1">&#39;sexo&#39;</span><span class="p">,</span> <span class="s1">&#39;tipoVivienda&#39;</span><span class="p">]:</span>
+    <span class="c1">#Tabla de contingencia para frecuencias</span>
+    <span class="n">contingency_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Uafe&#39;</span><span class="p">])</span>
+    <span class="c1">#Almacenar resultados</span>
+    <span class="n">chi2_stat</span><span class="p">,</span> <span class="n">chi2_pvalue</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">chi2_contingency</span><span class="p">(</span><span class="n">contingency_table</span><span class="p">)</span>
+    <span class="n">chi2_results</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">chi2_stat</span><span class="p">,</span> <span class="n">chi2_pvalue</span><span class="p">)</span>
+
+<span class="n">chi2_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;estadoCivil&#39;: (76.6598679377394, 1.7466999003822897e-14),
+ &#39;nivelEducacion&#39;: (65.9457747501759, 4.786928719287691e-15),
+ &#39;sexo&#39;: (0.0, 1.0),
+ &#39;tipoVivienda&#39;: (190.52545850499502, 2.44138130904844e-43)}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="paso-5-entrenar-un-modelo-con-variables-seleccionadas">
+<h4><span class="section-number">9.2.2.5. </span>Paso 5: Entrenar un modelo con variables seleccionadas<a class="headerlink" href="#paso-5-entrenar-un-modelo-con-variables-seleccionadas" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#Separar características y etiqueta</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[[</span><span class="s1">&#39;sumValTot&#39;</span><span class="p">,</span> <span class="s1">&#39;Frecuencia&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;nivelIngresos&#39;</span><span class="p">,</span> <span class="s1">&#39;estadoCivil&#39;</span><span class="p">,</span> <span class="s1">&#39;nivelEducacion&#39;</span><span class="p">,</span> <span class="s1">&#39;tipoVivienda&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Uafe&#39;</span><span class="p">]</span>
+
+<span class="c1">#Dividir datos en entrenamiento y validación</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1">#Definir las listas de categóricas y numéricas</span>
+<span class="n">numeric_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sumValTot&#39;</span><span class="p">,</span> <span class="s1">&#39;Frecuencia&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;nivelIngresos&#39;</span><span class="p">]</span>
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;estadoCivil&#39;</span><span class="p">,</span> <span class="s1">&#39;nivelEducacion&#39;</span><span class="p">,</span> <span class="s1">&#39;tipoVivienda&#39;</span><span class="p">]</span>
+
+<span class="c1">#Standscaler a caracteristicas numericas y Onehotencoder a las categoricas</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_features</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(),</span> <span class="n">categorical_features</span><span class="p">)</span>
+    <span class="p">])</span>
+
+<span class="c1">#Crear un pipeline con preprocesador y  modelo</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">))])</span>
+
+<span class="c1">#Entrenar a mi modelo</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Generar las predicciones y probabilidades de predicción</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+<span class="n">y_pred_prob</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pd.DataFrame(y_pred).describe()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_pred_prob</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">y_pred_prob</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                 0
+count  8081.000000
+mean      0.050019
+std       0.025515
+min       0.005388
+25%       0.034189
+50%       0.043318
+75%       0.061253
+max       0.999986
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/ffee51dcb5ab7f17f511a56fd9cbd1f4c1cbb99451b5b8c1cd0d0f745110e7df.png" src="_images/ffee51dcb5ab7f17f511a56fd9cbd1f4c1cbb99451b5b8c1cd0d0f745110e7df.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calcular la curva ROC y AUC</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred_prob</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred_prob</span><span class="p">)</span>
+
+<span class="c1"># Encontrar el mejor punto de corte</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">tpr</span> <span class="o">-</span> <span class="n">fpr</span>
+<span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+<span class="n">best_threshold</span> <span class="o">=</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+
+<span class="c1"># Graficar la curva AUC</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Curva AUC (área = </span><span class="si">%0.2f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">roc_auc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fpr</span><span class="p">[</span><span class="n">ix</span><span class="p">],</span> <span class="n">tpr</span><span class="p">[</span><span class="n">ix</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mejor Punto de Corte&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Falsos Positivos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Verdaderos Positivos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Curva ROC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor punto de corte:&#39;</span><span class="p">,</span> <span class="n">best_threshold</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c1811d69ec6f3e3eb767a5aadf6ca64f19ec7965af0c3dd27cd7e8bc1dc616b1.png" src="_images/c1811d69ec6f3e3eb767a5aadf6ca64f19ec7965af0c3dd27cd7e8bc1dc616b1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mejor punto de corte: 0.042205996006508914
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generar un reporte de clasificación y mi matriz de confusión</span>
+
+<span class="c1"># Predecir con el mejor punto de corte</span>
+<span class="n">predicciones_binarias</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred_prob</span> <span class="o">&gt;=</span> <span class="n">best_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">classification_rep</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">predicciones_binarias</span><span class="p">)</span>
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">predicciones_binarias</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Imprimir la linea devuelve el area bajo la curva ROC, reporte de clasificacion y la matriz de confusión</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC:&quot;</span><span class="p">,</span><span class="n">roc_auc</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz de confusión</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">conf_matrix</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reporte de clasificación</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">classification_rep</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC: 0.6222964540048455 
+
+Matriz de confusión
+ [[3740 3970]
+ [ 115  256]] 
+
+Reporte de clasificación
+               precision    recall  f1-score   support
+
+           0       0.97      0.49      0.65      7710
+           1       0.06      0.69      0.11       371
+
+    accuracy                           0.49      8081
+   macro avg       0.52      0.59      0.38      8081
+weighted avg       0.93      0.49      0.62      8081
+ 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
 <section id="probit">
 <h2><span class="section-number">9.3. </span>Probit<a class="headerlink" href="#probit" title="Permalink to this heading">#</a></h2>
 <p>En los modelos logia se propuso la logística, en este caso se propone la Función de Distribución Acumulada Normal. Suponga que la variable de respuesta es binaria, 1 o 0. <span class="math notranslate nohighlight">\(Y\)</span> podría representar la presencia/ausencia de una condición, éxito/fracaso, si/no. Se tiene también un vector de regresoras <span class="math notranslate nohighlight">\(X\)</span>, el modelo toma la forma:</p>
@@ -843,26 +1230,132 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
-         Current function value: 0.400588
-         Iterations 6
-                          Probit Regression Results                           
-==============================================================================
-Dep. Variable:                  GRADE   No. Observations:                   32
-Model:                         Probit   Df Residuals:                       28
-Method:                           MLE   Df Model:                            3
-Date:                Wed, 18 Sep 2024   Pseudo R-squ.:                  0.3775
-Time:                        05:48:35   Log-Likelihood:                -12.819
-converged:                       True   LL-Null:                       -20.592
-Covariance Type:            nonrobust   LLR p-value:                  0.001405
-==============================================================================
-                 coef    std err          z      P&gt;|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-Intercept     -7.4523      2.542     -2.931      0.003     -12.435      -2.469
-GPA            1.6258      0.694      2.343      0.019       0.266       2.986
-TUCE           0.0517      0.084      0.617      0.537      -0.113       0.216
-PSI            1.4263      0.595      2.397      0.017       0.260       2.593
-==============================================================================
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/compat.py:36,</span> in <span class="ni">call_and_wrap_exc</span><span class="nt">(msg, origin, f, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">36</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/eval.py:169,</span> in <span class="ni">EvalEnvironment.eval</span><span class="nt">(self, expr, source_name, inner_namespace)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span> <span class="n">code</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">source_name</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">169</span> <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">{},</span> <span class="n">VarLookupDict</span><span class="p">([</span><span class="n">inner_namespace</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>                                     <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_namespaces</span><span class="p">))</span>
+
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span>
+
+<span class="ne">NameError</span>: name &#39;GRADE&#39; is not defined
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">PatsyError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ajuste1</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">probit</span><span class="p">(</span><span class="s1">&#39;GRADE ~ GPA + TUCE + PSI&#39;</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">datos</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">ajuste1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/statsmodels/base/model.py:203,</span> in <span class="ni">Model.from_formula</span><span class="nt">(cls, formula, data, subset, drop_cols, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span> <span class="k">if</span> <span class="n">missing</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>  <span class="c1"># with patsy it&#39;s drop or raise. let&#39;s raise.</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span>     <span class="n">missing</span> <span class="o">=</span> <span class="s1">&#39;raise&#39;</span>
+<span class="ne">--&gt; </span><span class="mi">203</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">handle_formula_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">formula</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">eval_env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>                           <span class="n">missing</span><span class="o">=</span><span class="n">missing</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span> <span class="p">((</span><span class="n">endog</span><span class="p">,</span> <span class="n">exog</span><span class="p">),</span> <span class="n">missing_idx</span><span class="p">,</span> <span class="n">design_info</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span> <span class="n">max_endog</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_formula_max_endog</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/statsmodels/formula/formulatools.py:63,</span> in <span class="ni">handle_formula_data</span><span class="nt">(Y, X, formula, depth, missing)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>     <span class="k">if</span> <span class="n">data_util</span><span class="o">.</span><span class="n">_is_using_pandas</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>                            <span class="n">NA_action</span><span class="o">=</span><span class="n">na_action</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">dmatrices</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;dataframe&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                            <span class="n">NA_action</span><span class="o">=</span><span class="n">na_action</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/highlevel.py:309,</span> in <span class="ni">dmatrices</span><span class="nt">(formula_like, data, eval_env, NA_action, return_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">299</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Construct two design matrices given a formula_like and data.</span>
+<span class="g g-Whitespace">    </span><span class="mi">300</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span><span class="sd"> This function is identical to :func:`dmatrix`, except that it requires</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="sd"> See :func:`dmatrix` for details.</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span> <span class="n">eval_env</span> <span class="o">=</span> <span class="n">EvalEnvironment</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="n">eval_env</span><span class="p">,</span> <span class="n">reference</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">309</span> <span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span> <span class="o">=</span> <span class="n">_do_highlevel_design</span><span class="p">(</span><span class="n">formula_like</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">eval_env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>                                   <span class="n">NA_action</span><span class="p">,</span> <span class="n">return_type</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span> <span class="k">if</span> <span class="n">lhs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="k">raise</span> <span class="n">PatsyError</span><span class="p">(</span><span class="s2">&quot;model is missing required outcome variables&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/highlevel.py:164,</span> in <span class="ni">_do_highlevel_design</span><span class="nt">(formula_like, data, eval_env, NA_action, return_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">def</span> <span class="nf">data_iter_maker</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span>     <span class="k">return</span> <span class="nb">iter</span><span class="p">([</span><span class="n">data</span><span class="p">])</span>
+<span class="ne">--&gt; </span><span class="mi">164</span> <span class="n">design_infos</span> <span class="o">=</span> <span class="n">_try_incr_builders</span><span class="p">(</span><span class="n">formula_like</span><span class="p">,</span> <span class="n">data_iter_maker</span><span class="p">,</span> <span class="n">eval_env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span>                                   <span class="n">NA_action</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">if</span> <span class="n">design_infos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="k">return</span> <span class="n">build_design_matrices</span><span class="p">(</span><span class="n">design_infos</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span>                                  <span class="n">NA_action</span><span class="o">=</span><span class="n">NA_action</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>                                  <span class="n">return_type</span><span class="o">=</span><span class="n">return_type</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/highlevel.py:66,</span> in <span class="ni">_try_incr_builders</span><span class="nt">(formula_like, data_iter_maker, eval_env, NA_action)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">formula_like</span><span class="p">,</span> <span class="n">ModelDesc</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eval_env</span><span class="p">,</span> <span class="n">EvalEnvironment</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">66</span>     <span class="k">return</span> <span class="n">design_matrix_builders</span><span class="p">([</span><span class="n">formula_like</span><span class="o">.</span><span class="n">lhs_termlist</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>                                    <span class="n">formula_like</span><span class="o">.</span><span class="n">rhs_termlist</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>                                   <span class="n">data_iter_maker</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>                                   <span class="n">eval_env</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>                                   <span class="n">NA_action</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="k">return</span> <span class="kc">None</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/build.py:693,</span> in <span class="ni">design_matrix_builders</span><span class="nt">(termlists, data_iter_maker, eval_env, NA_action)</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span> <span class="n">factor_states</span> <span class="o">=</span> <span class="n">_factors_memorize</span><span class="p">(</span><span class="n">all_factors</span><span class="p">,</span> <span class="n">data_iter_maker</span><span class="p">,</span> <span class="n">eval_env</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span> <span class="c1"># Now all the factors have working eval methods, so we can evaluate them</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span> <span class="c1"># on some data to find out what type of data they return.</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="p">(</span><span class="n">num_column_counts</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">693</span>  <span class="n">cat_levels_contrasts</span><span class="p">)</span> <span class="o">=</span> <span class="n">_examine_factor_types</span><span class="p">(</span><span class="n">all_factors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span>                                                <span class="n">factor_states</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span>                                                <span class="n">data_iter_maker</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span>                                                <span class="n">NA_action</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span> <span class="c1"># Now we need the factor infos, which encapsulate the knowledge of</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span> <span class="c1"># how to turn any given factor into a chunk of data:</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span> <span class="n">factor_infos</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/build.py:443,</span> in <span class="ni">_examine_factor_types</span><span class="nt">(factors, factor_states, data_iter_maker, NA_action)</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_iter_maker</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>     <span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">examine_needed</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">443</span>         <span class="n">value</span> <span class="o">=</span> <span class="n">factor</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">factor_states</span><span class="p">[</span><span class="n">factor</span><span class="p">],</span> <span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>         <span class="k">if</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">cat_sniffers</span> <span class="ow">or</span> <span class="n">guess_categorical</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>             <span class="k">if</span> <span class="n">factor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cat_sniffers</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/eval.py:568,</span> in <span class="ni">EvalFactor.eval</span><span class="nt">(self, memorize_state, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memorize_state</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">568</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eval</span><span class="p">(</span><span class="n">memorize_state</span><span class="p">[</span><span class="s2">&quot;eval_code&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>                       <span class="n">memorize_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>                       <span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/eval.py:551,</span> in <span class="ni">EvalFactor._eval</span><span class="nt">(self, code, memorize_state, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">memorize_state</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span>     <span class="n">inner_namespace</span> <span class="o">=</span> <span class="n">VarLookupDict</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">memorize_state</span><span class="p">[</span><span class="s2">&quot;transforms&quot;</span><span class="p">]])</span>
+<span class="ne">--&gt; </span><span class="mi">551</span>     <span class="k">return</span> <span class="n">call_and_wrap_exc</span><span class="p">(</span><span class="s2">&quot;Error evaluating factor&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span>                              <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span>                              <span class="n">memorize_state</span><span class="p">[</span><span class="s2">&quot;eval_env&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eval</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span>                              <span class="n">code</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span>                              <span class="n">inner_namespace</span><span class="o">=</span><span class="n">inner_namespace</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/patsy/compat.py:43,</span> in <span class="ni">call_and_wrap_exc</span><span class="nt">(msg, origin, f, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">new_exc</span> <span class="o">=</span> <span class="n">PatsyError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>                          <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">e</span><span class="p">),</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>                          <span class="n">origin</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="c1"># Use &#39;exec&#39; to hide this syntax from the Python 2 parser:</span>
+<span class="ne">---&gt; </span><span class="mi">43</span>     <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;raise new_exc from e&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="c1"># In python 2, we just let the original exception escape -- better</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="c1"># than destroying the traceback. But if it&#39;s a PatsyError, we can</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="c1"># at least set the origin properly.</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">PatsyError</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span>
+
+<span class="ne">PatsyError</span>: Error evaluating factor: NameError: name &#39;GRADE&#39; is not defined
+    <span class="n">GRADE</span> <span class="o">~</span> <span class="n">GPA</span> <span class="o">+</span> <span class="n">TUCE</span> <span class="o">+</span> <span class="n">PSI</span>
+    <span class="o">^^^^^</span>
 </pre></div>
 </div>
 </div>
@@ -1006,7 +1499,18 @@ PSI            1.4263      0.595      2.397      0.017       0.260       2.593
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidad-lineal">9.1. Probabilidad lineal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">9.2. Logit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logit">9.2. Logit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1">9.2.1. Ejemplo 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2">9.2.2. Ejemplo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-lectura-de-datos">9.2.2.1. Paso 1: lectura de datos</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-separacion-de-datos-en-entrenamieto-y-prueba">9.2.2.2. Paso 2: Separación de datos en entrenamieto y prueba</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-exploracion-de-datos-y-seleccion-de-variables">9.2.2.3. Paso 3: Exploración de datos y selección de variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-seleccion-de-variables">9.2.2.4. Paso 4: Selección de variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-entrenar-un-modelo-con-variables-seleccionadas">9.2.2.5. Paso 5: Entrenar un modelo con variables seleccionadas</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probit">9.3. Probit</a></li>
 </ul>
   </nav></div>
