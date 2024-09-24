@@ -22,7 +22,7 @@ parts:
   - file: AprendizajeSupervisado
   - file: Regresion
   - file: ProbModels
-  - file: ACP
+  - file: StepRegularization
   - file: Arboles
   - file: SVM
   - file: RedesNeuronales
@@ -30,4 +30,5 @@ parts:
 - caption: Aprendizaje no Supervisado
   numbered: true
   chapters:
+  - file: ACP
   - file: NoSupervizado
