@@ -184,7 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
 </ul>
 
     </div>
@@ -590,10 +590,54 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 
 <span class="c1"># Supongamos que &#39;X&#39; es tu conjunto de características y &#39;y&#39; la variable dependiente.</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">datos</span><span class="o">.</span><span class="n">columns</span><span class="o">!=</span><span class="s1">&#39;ingresos_ventas&#39;</span><span class="p">]</span>  <span class="c1"># tus datos de características</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;ingresos_ventas&#39;</span><span class="p">]</span>  <span class="c1"># tu variable dependiente</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">!=</span><span class="s1">&#39;costos_ventas_prod&#39;</span><span class="p">]</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;ingresos_ventas&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000000</span>  <span class="c1"># tu variable dependiente</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import sweetviz as sv</span>
 
+<span class="c1">#my_report = sv.analyze(datos)</span>
+<span class="c1">#my_report.show_html()# altas correlaciones</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notamos que existen variables con alta correlación, se eliminan correlaciones superiores a <span class="math notranslate nohighlight">\(0.9\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">start_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="c1"># Calcular la matriz de correlación</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+
+<span class="c1"># Seleccionar las columnas con alta correlación (por ejemplo, &gt; 0.9)</span>
+<span class="n">upper_triangle</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">corr_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">))</span>
+
+<span class="c1"># Encontrar las columnas que tienen alta correlación</span>
+<span class="n">high_corr_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">upper_triangle</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">upper_triangle</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)]</span>
+
+<span class="c1"># Eliminar las columnas con alta correlación de X</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">high_corr_columns</span><span class="p">)</span>
+
+<span class="c1"># Mostrar las columnas eliminadas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas eliminadas por alta correlación:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">high_corr_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas eliminadas por alta correlación:
+ [&#39;patrimonio&#39;, &#39;impuesto_renta&#39;, &#39;utilidad_ejercicio&#39;, &#39;utilidad_neta&#39;, &#39;prueba_acida&#39;, &#39;end_largo_plazo&#39;, &#39;apalancamiento&#39;, &#39;apalancamiento_c_l_plazo&#39;, &#39;rot_activo_fijo&#39;, &#39;rent_ope_activo&#39;, &#39;roa&#39;, &#39;total_gastos&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">start_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -601,74 +645,95 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                 OLS Regression Results                                
 =======================================================================================
-Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   1.000
-Model:                            OLS   Adj. R-squared (uncentered):              1.000
-Method:                 Least Squares   F-statistic:                          3.988e+05
-Date:                Tue, 24 Sep 2024   Prob (F-statistic):                        0.00
-Time:                        05:59:45   Log-Likelihood:                         -46254.
-No. Observations:                2969   AIC:                                  9.260e+04
-Df Residuals:                    2925   BIC:                                  9.286e+04
-Df Model:                          44                                                  
+Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.818
+Model:                            OLS   Adj. R-squared (uncentered):              0.816
+Method:                 Least Squares   F-statistic:                              425.0
+Date:                Wed, 25 Sep 2024   Prob (F-statistic):                        0.00
+Time:                        18:10:35   Log-Likelihood:                         -15624.
+No. Observations:                2969   AIC:                                  3.131e+04
+Df Residuals:                    2938   BIC:                                  3.150e+04
+Df Model:                          31                                                  
 Covariance Type:            nonrobust                                                  
 =============================================================================================
                                 coef    std err          t      P&gt;|t|      [0.025      0.975]
 ---------------------------------------------------------------------------------------------
-activos                       0.0022      0.002      1.338      0.181      -0.001       0.005
-patrimonio                    0.0018      0.002      1.005      0.315      -0.002       0.005
-utilidad_an_imp               0.0085      0.005      1.864      0.062      -0.000       0.018
-impuesto_renta                0.1804      0.031      5.773      0.000       0.119       0.242
-n_empleados                 -80.0757     60.249     -1.329      0.184    -198.211      38.060
-utilidad_ejercicio            0.9299      0.009    108.935      0.000       0.913       0.947
-utilidad_neta                 0.0373      0.014      2.612      0.009       0.009       0.065
-liquidez_corriente        -2.379e+04    3.4e+04     -0.699      0.485   -9.05e+04    4.29e+04
-prueba_acida               2.456e+04    3.4e+04      0.722      0.470   -4.22e+04    9.13e+04
-end_activo                 3.941e+04   4.04e+04      0.976      0.329   -3.98e+04    1.19e+05
-end_patrimonial            2.493e+04   8.14e+04      0.306      0.759   -1.35e+05    1.85e+05
-end_activo_fijo              14.0003     12.575      1.113      0.266     -10.656      38.656
-end_corto_plazo           -6.517e+04   1.08e+05     -0.605      0.546   -2.77e+05    1.46e+05
-end_largo_plazo           -2.653e+05   1.45e+05     -1.824      0.068   -5.51e+05    1.99e+04
-cobertura_interes             0.2875      0.243      1.184      0.236      -0.188       0.763
-apalancamiento            -2.354e+04   8.17e+04     -0.288      0.773   -1.84e+05    1.37e+05
-apalancamiento_financiero    20.3885    147.134      0.139      0.890    -268.109     308.886
-end_patrimonial_ct         1.146e+07   9.41e+06      1.217      0.224      -7e+06    2.99e+07
-end_patrimonial_nct        1.146e+07   9.41e+06      1.218      0.223   -6.99e+06    2.99e+07
-apalancamiento_c_l_plazo  -1.146e+07   9.41e+06     -1.217      0.224   -2.99e+07    6.99e+06
-rot_cartera                   0.5832      0.595      0.980      0.327      -0.584       1.751
-rot_activo_fijo              -7.2259      6.715     -1.076      0.282     -20.393       5.941
-rot_ventas                  840.1566   4442.722      0.189      0.850   -7871.024    9551.337
-per_med_cobranza             -0.0365      0.019     -1.880      0.060      -0.075       0.002
-per_med_pago                  0.0002      0.000      0.438      0.661      -0.001       0.001
-impac_gasto_a_v           -5.696e+04   2.26e+04     -2.525      0.012   -1.01e+05   -1.27e+04
-impac_carga_finan         -1.448e+06   6.97e+05     -2.077      0.038   -2.81e+06   -8.12e+04
-rent_neta_activo           2.565e+05   1.75e+06      0.147      0.883   -3.17e+06    3.69e+06
-margen_bruto                4.04e+05   1.09e+05      3.700      0.000     1.9e+05    6.18e+05
-margen_operacional           -0.0014      0.000     -2.836      0.005      -0.002      -0.000
-rent_neta_ventas          -1.287e+06   2.43e+05     -5.298      0.000   -1.76e+06   -8.11e+05
-rent_ope_patrimonio          -0.8571    604.515     -0.001      0.999   -1186.175    1184.461
-rent_ope_activo             191.7623   6593.384      0.029      0.977   -1.27e+04    1.31e+04
-roe                         313.5004   2139.718      0.147      0.884   -3882.007    4509.008
-roa                       -4157.0503   1.74e+06     -0.002      0.998   -3.41e+06     3.4e+06
-fortaleza_patrimonial     -2.554e+04   2.32e+04     -1.102      0.271    -7.1e+04    1.99e+04
-gastos_financieros            0.1684      0.018      9.564      0.000       0.134       0.203
-gastos_admin_ventas           0.1687      0.011     15.215      0.000       0.147       0.190
-depreciaciones                0.0767      0.015      4.997      0.000       0.047       0.107
-amortizaciones               -0.0022      0.020     -0.114      0.909      -0.041       0.036
-costos_ventas_prod            0.9988      0.001   1677.114      0.000       0.998       1.000
-deuda_total                  -0.0084      0.005     -1.838      0.066      -0.017       0.001
-deuda_total_c_plazo          -0.0514      0.015     -3.418      0.001      -0.081      -0.022
-total_gastos                  0.8091      0.011     73.615      0.000       0.788       0.831
+activos                    4.267e-07   1.98e-08     21.527      0.000    3.88e-07    4.66e-07
+utilidad_an_imp             2.59e-07   8.59e-08      3.017      0.003    9.07e-08    4.27e-07
+n_empleados                   0.0252      0.002     13.497      0.000       0.022       0.029
+liquidez_corriente            0.0171      0.014      1.227      0.220      -0.010       0.044
+end_activo                   -0.1281      1.138     -0.113      0.910      -2.359       2.103
+end_patrimonial              -0.0379      0.089     -0.426      0.670      -0.212       0.136
+end_activo_fijo           -1.679e-05   5.77e-05     -0.291      0.771      -0.000    9.64e-05
+end_corto_plazo              21.5596      1.986     10.855      0.000      17.665      25.454
+cobertura_interes          4.176e-06   7.97e-06      0.524      0.600   -1.14e-05    1.98e-05
+apalancamiento_financiero    -0.0020      0.005     -0.403      0.687      -0.011       0.008
+end_patrimonial_ct           -0.0012      0.150     -0.008      0.994      -0.295       0.292
+end_patrimonial_nct           0.6346      0.577      1.100      0.271      -0.496       1.765
+rot_cartera                1.821e-05   1.95e-05      0.932      0.352   -2.01e-05    5.65e-05
+rot_ventas                    0.0416      0.039      1.078      0.281      -0.034       0.117
+per_med_cobranza          -8.883e-07   5.97e-07     -1.488      0.137   -2.06e-06    2.83e-07
+per_med_pago                 1.7e-08   1.25e-08      1.361      0.174   -7.49e-09    4.15e-08
+impac_gasto_a_v              -1.5197      0.725     -2.096      0.036      -2.941      -0.098
+impac_carga_finan          -107.0103     22.392     -4.779      0.000    -150.917     -63.104
+rent_neta_activo             14.2754      5.624      2.539      0.011       3.249      25.302
+margen_bruto                -27.5007      3.178     -8.654      0.000     -33.732     -21.270
+margen_operacional         6.395e-08    1.5e-08      4.254      0.000    3.45e-08    9.34e-08
+rent_neta_ventas            -32.6691      7.673     -4.258      0.000     -47.713     -17.625
+rent_ope_patrimonio          -0.0029      0.012     -0.236      0.814      -0.027       0.021
+roe                           0.0333      0.055      0.604      0.546      -0.075       0.141
+fortaleza_patrimonial        -0.4488      0.758     -0.592      0.554      -1.934       1.037
+gastos_financieros         1.278e-06    4.1e-07      3.116      0.002    4.74e-07    2.08e-06
+gastos_admin_ventas        1.142e-06   7.42e-08     15.384      0.000    9.96e-07    1.29e-06
+depreciaciones            -7.185e-07      5e-07     -1.437      0.151    -1.7e-06    2.62e-07
+amortizaciones            -3.584e-06   6.33e-07     -5.665      0.000   -4.82e-06   -2.34e-06
+deuda_total                2.197e-06   1.38e-07     15.935      0.000    1.93e-06    2.47e-06
+deuda_total_c_plazo        4.409e-06   4.75e-07      9.275      0.000    3.48e-06    5.34e-06
 ==============================================================================
-Omnibus:                     4441.075   Durbin-Watson:                   1.975
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):          2756805.516
-Skew:                          -8.879   Prob(JB):                         0.00
-Kurtosis:                     151.221   Cond. No.                     9.38e+10
+Omnibus:                     4187.902   Durbin-Watson:                   2.054
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          2749251.147
+Skew:                           7.826   Prob(JB):                         0.00
+Kurtosis:                     151.252   Cond. No.                     3.07e+09
 ==============================================================================
 
 Notes:
 [1] R² is computed without centering (uncentered) since the model does not contain a constant.
 [2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[3] The condition number is large, 9.38e+10. This might indicate that there are
+[3] The condition number is large, 3.07e+09. This might indicate that there are
 strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Evaluación del modelo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mae</span><span class="p">,</span> <span class="n">mse</span><span class="p">,</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">r2</span>
+
+<span class="c1"># Predicciones y evaluación para OLS</span>
+<span class="n">y_pred_ols</span> <span class="o">=</span> <span class="n">start_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">mae_ols</span><span class="p">,</span> <span class="n">mse_ols</span><span class="p">,</span> <span class="n">rmse_ols</span><span class="p">,</span> <span class="n">r2_ols</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_ols</span><span class="p">)</span>
+
+<span class="c1"># Mostrar evaluación </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">OLS Métricas de evaluación:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error (MAE): </span><span class="si">{</span><span class="n">mae_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error (RMSE): </span><span class="si">{</span><span class="n">rmse_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared: </span><span class="si">{</span><span class="n">r2_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OLS Métricas de evaluación:
+Mean Absolute Error (MAE): 16.09
+Mean Squared Error (MSE): 2179.19
+Root Mean Squared Error (RMSE): 46.68
+R-squared: 0.80
 </pre></div>
 </div>
 </div>
@@ -702,52 +767,70 @@ strong multicollinearity or other numerical problems.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                 OLS Regression Results                                
 =======================================================================================
-Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   1.000
-Model:                            OLS   Adj. R-squared (uncentered):              1.000
-Method:                 Least Squares   F-statistic:                          7.077e+05
-Date:                Tue, 24 Sep 2024   Prob (F-statistic):                        0.00
-Time:                        05:59:53   Log-Likelihood:                         -46443.
-No. Observations:                2969   AIC:                                  9.293e+04
-Df Residuals:                    2947   BIC:                                  9.306e+04
-Df Model:                          22                                                  
+Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.811
+Model:                            OLS   Adj. R-squared (uncentered):              0.810
+Method:                 Least Squares   F-statistic:                              842.7
+Date:                Wed, 25 Sep 2024   Prob (F-statistic):                        0.00
+Time:                        18:10:39   Log-Likelihood:                         -15680.
+No. Observations:                2969   AIC:                                  3.139e+04
+Df Residuals:                    2954   BIC:                                  3.148e+04
+Df Model:                          15                                                  
 Covariance Type:            nonrobust                                                  
-=============================================================================================
-                                coef    std err          t      P&gt;|t|      [0.025      0.975]
----------------------------------------------------------------------------------------------
-patrimonio                    0.0029      0.001      3.844      0.000       0.001       0.004
-impuesto_renta                0.2647      0.028      9.550      0.000       0.210       0.319
-utilidad_ejercicio            0.9515      0.005    173.593      0.000       0.941       0.962
-liquidez_corriente        -3.969e+04   3.34e+04     -1.187      0.235   -1.05e+05    2.59e+04
-prueba_acida               3.978e+04   3.34e+04      1.190      0.234   -2.58e+04    1.05e+05
-end_activo                  2.92e+04   3.59e+04      0.814      0.416   -4.12e+04    9.96e+04
-end_patrimonial             947.0902   1750.644      0.541      0.589   -2485.518    4379.699
-end_corto_plazo           -1.249e+05   5.53e+04     -2.258      0.024   -2.33e+05   -1.65e+04
-cobertura_interes             0.1899      0.251      0.757      0.449      -0.302       0.682
-apalancamiento_financiero    -3.6231    155.722     -0.023      0.981    -308.957     301.711
-end_patrimonial_nct         476.8089   1.85e+04      0.026      0.979   -3.57e+04    3.67e+04
-rot_cartera                   0.4658      0.625      0.746      0.456      -0.759       1.691
-rot_activo_fijo               0.2106      0.991      0.212      0.832      -1.733       2.154
-per_med_cobranza             -0.0552      0.019     -2.857      0.004      -0.093      -0.017
-per_med_pago                  0.0003      0.000      0.658      0.511      -0.001       0.001
-impac_gasto_a_v            -6.51e+04   2.33e+04     -2.791      0.005   -1.11e+05   -1.94e+04
-margen_operacional           -0.0018      0.000     -4.198      0.000      -0.003      -0.001
-roe                         812.0868   1069.241      0.759      0.448   -1284.449    2908.622
-fortaleza_patrimonial     -2.909e+04   2.43e+04     -1.198      0.231   -7.67e+04    1.85e+04
-costos_ventas_prod            0.9975      0.001   1984.810      0.000       0.997       0.999
-deuda_total                  -0.0100      0.004     -2.244      0.025      -0.019      -0.001
-total_gastos                  0.9822      0.002    614.088      0.000       0.979       0.985
+=========================================================================================
+                            coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+activos                4.878e-07    1.4e-08     34.946      0.000     4.6e-07    5.15e-07
+n_empleados               0.0208      0.002     12.851      0.000       0.018       0.024
+end_corto_plazo          22.2718      1.836     12.130      0.000      18.672      25.872
+end_patrimonial_ct       -0.0346      0.086     -0.401      0.689      -0.204       0.135
+rot_cartera             1.94e-05   1.98e-05      0.978      0.328   -1.95e-05    5.83e-05
+per_med_pago           1.367e-08   1.26e-08      1.080      0.280   -1.11e-08    3.85e-08
+impac_gasto_a_v          -1.5230      0.731     -2.082      0.037      -2.957      -0.089
+impac_carga_finan       -98.7982     21.518     -4.591      0.000    -140.990     -56.606
+rent_neta_activo         17.6911      5.258      3.364      0.001       7.381      28.001
+margen_bruto            -25.7358      3.143     -8.189      0.000     -31.898     -19.573
+rent_neta_ventas        -35.7664      7.223     -4.952      0.000     -49.928     -21.604
+fortaleza_patrimonial    -0.8198      0.719     -1.140      0.254      -2.230       0.591
+gastos_admin_ventas    9.447e-07   5.34e-08     17.702      0.000     8.4e-07    1.05e-06
+deuda_total            2.124e-06   1.33e-07     16.029      0.000    1.86e-06    2.38e-06
+deuda_total_c_plazo     4.96e-06   4.71e-07     10.530      0.000    4.04e-06    5.88e-06
 ==============================================================================
-Omnibus:                     5205.368   Durbin-Watson:                   1.973
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):          6226013.432
-Skew:                         -12.165   Prob(JB):                         0.00
-Kurtosis:                     226.016   Cond. No.                     2.29e+08
+Omnibus:                     4174.333   Durbin-Watson:                   2.035
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          2485003.184
+Skew:                           7.817   Prob(JB):                         0.00
+Kurtosis:                     143.866   Cond. No.                     2.81e+09
 ==============================================================================
 
 Notes:
 [1] R² is computed without centering (uncentered) since the model does not contain a constant.
 [2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[3] The condition number is large, 2.29e+08. This might indicate that there are
+[3] The condition number is large, 2.81e+09. This might indicate that there are
 strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicciones y evaluación para Adelante</span>
+<span class="n">y_pred_adelante</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_selected</span><span class="p">)</span>
+<span class="n">mae_adelante</span><span class="p">,</span> <span class="n">mse_adelante</span><span class="p">,</span> <span class="n">rmse_adelante</span><span class="p">,</span> <span class="n">r2_adelante</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_adelante</span><span class="p">)</span>
+
+<span class="c1"># Mostrar evaluación </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">(Adelante) Métricas de evaluación:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error (MAE): </span><span class="si">{</span><span class="n">mae_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error (RMSE): </span><span class="si">{</span><span class="n">rmse_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared: </span><span class="si">{</span><span class="n">r2_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Adelante) Métricas de evaluación:
+Mean Absolute Error (MAE): 16.51
+Mean Squared Error (MSE): 2263.94
+Root Mean Squared Error (RMSE): 47.58
+R-squared: 0.79
 </pre></div>
 </div>
 </div>
@@ -781,52 +864,71 @@ strong multicollinearity or other numerical problems.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                 OLS Regression Results                                
 =======================================================================================
-Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   1.000
-Model:                            OLS   Adj. R-squared (uncentered):              1.000
-Method:                 Least Squares   F-statistic:                          7.069e+05
-Date:                Tue, 24 Sep 2024   Prob (F-statistic):                        0.00
-Time:                        06:00:07   Log-Likelihood:                         -46444.
-No. Observations:                2969   AIC:                                  9.293e+04
-Df Residuals:                    2947   BIC:                                  9.306e+04
-Df Model:                          22                                                  
+Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.810
+Model:                            OLS   Adj. R-squared (uncentered):              0.809
+Method:                 Least Squares   F-statistic:                              787.0
+Date:                Wed, 25 Sep 2024   Prob (F-statistic):                        0.00
+Time:                        18:10:44   Log-Likelihood:                         -15685.
+No. Observations:                2969   AIC:                                  3.140e+04
+Df Residuals:                    2953   BIC:                                  3.150e+04
+Df Model:                          16                                                  
 Covariance Type:            nonrobust                                                  
-=============================================================================================
-                                coef    std err          t      P&gt;|t|      [0.025      0.975]
----------------------------------------------------------------------------------------------
-patrimonio                    0.0029      0.001      3.825      0.000       0.001       0.004
-impuesto_renta                0.2655      0.028      9.574      0.000       0.211       0.320
-utilidad_ejercicio            0.9523      0.005    173.243      0.000       0.942       0.963
-liquidez_corriente        -2.521e+04   3.46e+04     -0.728      0.466   -9.31e+04    4.27e+04
-prueba_acida               2.537e+04   3.46e+04      0.733      0.464   -4.25e+04    9.32e+04
-end_patrimonial            1.049e+05   6.34e+04      1.655      0.098   -1.94e+04    2.29e+05
-end_corto_plazo            4316.3368   8.71e+04      0.050      0.960   -1.66e+05    1.75e+05
-cobertura_interes             0.1918      0.251      0.763      0.446      -0.301       0.685
-apalancamiento            -1.032e+05   6.35e+04     -1.627      0.104   -2.28e+05    2.12e+04
-apalancamiento_financiero     0.5842    155.917      0.004      0.997    -305.133     306.301
-end_patrimonial_nct         442.1157   1.84e+04      0.024      0.981   -3.55e+04    3.64e+04
-rot_cartera                   0.4922      0.626      0.786      0.432      -0.736       1.720
-per_med_cobranza             -0.0577      0.019     -2.994      0.003      -0.096      -0.020
-per_med_pago                  0.0003      0.000      0.684      0.494      -0.001       0.001
-impac_gasto_a_v           -6.215e+04   2.33e+04     -2.672      0.008   -1.08e+05   -1.65e+04
-rent_neta_activo          -2.551e+05   1.85e+06     -0.138      0.891   -3.89e+06    3.38e+06
-margen_operacional           -0.0016      0.000     -3.870      0.000      -0.002      -0.001
-rent_ope_patrimonio         132.6884    233.531      0.568      0.570    -325.211     590.588
-roa                        2.103e+05   1.84e+06      0.114      0.909    -3.4e+06    3.82e+06
-fortaleza_patrimonial     -2.853e+04   2.42e+04     -1.178      0.239    -7.6e+04     1.9e+04
-costos_ventas_prod            0.9970      0.000   2223.541      0.000       0.996       0.998
-total_gastos                  0.9818      0.002    626.940      0.000       0.979       0.985
+=======================================================================================
+                          coef    std err          t      P&gt;|t|      [0.025      0.975]
+---------------------------------------------------------------------------------------
+activos              4.838e-07   1.39e-08     34.757      0.000    4.56e-07    5.11e-07
+n_empleados             0.0209      0.002     12.916      0.000       0.018       0.024
+end_patrimonial        -0.0832      0.088     -0.946      0.344      -0.256       0.089
+end_corto_plazo        23.6055      1.800     13.114      0.000      20.076      27.135
+end_patrimonial_ct      0.0500      0.142      0.353      0.724      -0.228       0.328
+end_patrimonial_nct     0.6900      0.586      1.177      0.239      -0.460       1.840
+rot_cartera          2.081e-05   1.99e-05      1.048      0.295   -1.81e-05    5.98e-05
+per_med_pago         1.239e-08   1.27e-08      0.977      0.329   -1.25e-08    3.73e-08
+impac_gasto_a_v        -1.5354      0.733     -2.093      0.036      -2.973      -0.097
+impac_carga_finan    -102.0002     21.526     -4.738      0.000    -144.208     -59.793
+margen_bruto          -25.6326      3.150     -8.138      0.000     -31.809     -19.457
+rent_neta_ventas      -29.5289      6.929     -4.261      0.000     -43.116     -15.942
+roe                     0.0675      0.042      1.608      0.108      -0.015       0.150
+gastos_admin_ventas   9.57e-07   5.33e-08     17.964      0.000    8.53e-07    1.06e-06
+deuda_total          2.121e-06   1.33e-07     15.981      0.000    1.86e-06    2.38e-06
+deuda_total_c_plazo  4.953e-06   4.72e-07     10.498      0.000    4.03e-06    5.88e-06
 ==============================================================================
-Omnibus:                     5206.591   Durbin-Watson:                   1.971
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):          6195771.326
-Skew:                         -12.174   Prob(JB):                         0.00
-Kurtosis:                     225.465   Cond. No.                     9.63e+09
+Omnibus:                     4163.035   Durbin-Watson:                   2.040
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          2455536.160
+Skew:                           7.777   Prob(JB):                         0.00
+Kurtosis:                     143.027   Cond. No.                     2.81e+09
 ==============================================================================
 
 Notes:
 [1] R² is computed without centering (uncentered) since the model does not contain a constant.
 [2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[3] The condition number is large, 9.63e+09. This might indicate that there are
+[3] The condition number is large, 2.81e+09. This might indicate that there are
 strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicciones y evaluación para Atras</span>
+<span class="n">y_pred_atras</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_selected</span><span class="p">)</span>
+<span class="n">mae_atras</span><span class="p">,</span> <span class="n">mse_atras</span><span class="p">,</span> <span class="n">rmse_atras</span><span class="p">,</span> <span class="n">r2_atras</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_atras</span><span class="p">)</span>
+
+<span class="c1"># Mostrar evaluación </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">(Atrás) Métricas de evaluación:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error (MAE): </span><span class="si">{</span><span class="n">mae_atras</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse_atras</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error (RMSE): </span><span class="si">{</span><span class="n">rmse_atras</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared: </span><span class="si">{</span><span class="n">r2_atras</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Atrás) Métricas de evaluación:
+Mean Absolute Error (MAE): 16.66
+Mean Squared Error (MSE): 2270.38
+Root Mean Squared Error (RMSE): 47.65
+R-squared: 0.79
 </pre></div>
 </div>
 </div>
@@ -935,7 +1037,8 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 
 
 <span class="c1"># Dividir los datos en entrenamiento y prueba</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1">#X = X_selected</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span>
 
 
 <span class="c1"># Escalar los datos</span>
@@ -945,7 +1048,7 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 
 <span class="c1"># Crear modelos de Ridge y Lasso</span>
 <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># Alpha controla la penalización</span>
-<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">)</span>
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
 <span class="n">regOLS</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1"># Entrenar los modelos</span>
@@ -954,16 +1057,36 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 <span class="n">regOLS</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Predicciones</span>
+<span class="n">y_pred_ridge_tr</span> <span class="o">=</span> <span class="n">ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
+<span class="n">y_pred_lasso_tr</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
+<span class="n">y_pred_ols_tr</span> <span class="o">=</span> <span class="n">regOLS</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
+
+
+<span class="c1"># Calcular el error cuadrático medio (MSE) TRAIN</span>
+<span class="n">num_factor</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">mse_ridge_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ridge_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="n">mse_lasso_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_lasso_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="n">mse_ols_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ols_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+
+<span class="c1"># Resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluación del modelo en TRAIN:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Ridge: </span><span class="si">{</span><span class="n">mse_ridge_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso: </span><span class="si">{</span><span class="n">mse_lasso_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE OLS: </span><span class="si">{</span><span class="n">mse_ols_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Predicciones</span>
 <span class="n">y_pred_ridge</span> <span class="o">=</span> <span class="n">ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 <span class="n">y_pred_ols</span> <span class="o">=</span> <span class="n">regOLS</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 
-<span class="c1"># Calcular el error cuadrático medio (MSE)</span>
-<span class="n">mse_ridge</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span>
-<span class="n">mse_lasso</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span>
-<span class="n">mse_ols</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ols</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span>
+<span class="c1"># Calcular el error cuadrático medio (MSE) TEST</span>
+<span class="n">mse_ridge</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="n">mse_lasso</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="n">mse_ols</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ols</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 
 <span class="c1"># Resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en TEST:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Ridge: </span><span class="si">{</span><span class="n">mse_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso: </span><span class="si">{</span><span class="n">mse_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE OLS: </span><span class="si">{</span><span class="n">mse_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -971,9 +1094,17 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE Ridge: 1424589.67
-MSE Lasso: 1400394.87
-MSE OLS: 1392299.62
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluación del modelo en TRAIN:
+
+MSE Ridge: 1852.46
+MSE Lasso: 2083.61
+MSE OLS: 1852.46
+
+Evaluación del modelo en TEST:
+
+MSE Ridge: 3527.83
+MSE Lasso: 3663.03
+MSE OLS: 3527.39
 </pre></div>
 </div>
 </div>
@@ -995,96 +1126,70 @@ MSE OLS: 1392299.62
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coeficientes:
                            Ridge Coefficients  Lasso Coefficients  \
-activos                          2.582039e+05        0.000000e+00   
-patrimonio                       2.274355e+05        3.544481e+05   
-utilidad_an_imp                  1.539821e+05        1.839588e+05   
-impuesto_renta                   8.266122e+05        7.247865e+05   
-n_empleados                     -1.496175e+04       -5.113620e+04   
-utilidad_ejercicio               1.627621e+07        1.657677e+07   
-utilidad_neta                    5.537558e+05        3.410551e+05   
-liquidez_corriente              -1.662377e+05        0.000000e+00   
-prueba_acida                     2.045903e+05        3.428472e+04   
-end_activo                       3.115598e+04        4.094345e+04   
-end_patrimonial                  7.625241e+05        3.462532e+04   
-end_activo_fijo                 -3.112379e+04        0.000000e+00   
-end_corto_plazo                 -1.463793e+05       -0.000000e+00   
-end_largo_plazo                 -2.115259e+05       -5.536458e+04   
-cobertura_interes                3.257216e+04        2.998723e+04   
-apalancamiento                  -7.259819e+05        0.000000e+00   
-apalancamiento_financiero        4.295715e+03        3.775793e+03   
-end_patrimonial_ct               1.074038e+04        0.000000e+00   
-end_patrimonial_nct              1.027924e+04        8.286964e+03   
-apalancamiento_c_l_plazo        -1.104353e+04        0.000000e+00   
-rot_cartera                      3.852633e+04        3.535403e+04   
-rot_activo_fijo                  3.555713e+04        3.796517e+03   
-rot_ventas                       8.715087e+04        1.770239e+04   
-per_med_cobranza                -5.926692e+04       -4.475707e+04   
-per_med_pago                     1.218606e+04        1.020888e+04   
-impac_gasto_a_v                 -8.985391e+04       -8.637006e+04   
-impac_carga_finan               -9.011229e+04       -7.519061e+04   
-rent_neta_activo                 1.478064e+05        2.467433e+04   
-margen_bruto                     1.088417e+05        1.109550e+05   
-margen_operacional              -1.099608e+05       -1.289968e+05   
-rent_neta_ventas                -2.163148e+05       -1.982777e+05   
-rent_ope_patrimonio              4.363291e+04        3.750471e+04   
-rent_ope_activo                  6.595121e+04        0.000000e+00   
-roe                             -1.234671e+04       -6.188311e+03   
-roa                             -9.794687e+04        2.172179e+04   
-fortaleza_patrimonial           -2.431407e+04       -2.485074e+04   
-gastos_financieros               5.616605e+05        5.628629e+05   
-gastos_admin_ventas              5.802309e+06        5.928150e+06   
-depreciaciones                   2.374406e+05        2.363894e+05   
-amortizaciones                   2.976258e+04        4.784724e+04   
-costos_ventas_prod               7.694830e+07        7.707636e+07   
-deuda_total                     -6.106698e+04       -6.390710e+04   
-deuda_total_c_plazo             -8.330810e+04       -8.887085e+04   
-total_gastos                     2.177987e+07        2.170856e+07   
+activos                             46.452401           51.339290   
+utilidad_an_imp                      7.140067            2.802706   
+n_empleados                         20.230335           15.067053   
+liquidez_corriente                   1.097188           -0.000000   
+end_activo                          -0.310678            0.000000   
+end_patrimonial                     -2.044002            0.000000   
+end_activo_fijo                     -0.244253           -0.000000   
+end_corto_plazo                      3.527861            0.000000   
+cobertura_interes                    0.281633           -0.000000   
+apalancamiento_financiero           -0.502044           -0.000000   
+end_patrimonial_ct                   0.527377            0.000000   
+end_patrimonial_nct                  1.076781            0.000000   
+rot_cartera                          0.157103            0.000000   
+rot_ventas                           1.052480            0.000000   
+per_med_cobranza                    -0.919068           -0.000000   
+per_med_pago                         1.745660            0.000000   
+impac_gasto_a_v                     -2.108877           -0.000000   
+impac_carga_finan                   -4.171406           -0.037732   
+rent_neta_activo                     2.607665            0.000000   
+margen_bruto                        -8.536271           -4.644804   
+margen_operacional                   5.138157            0.000000   
+rent_neta_ventas                    -4.865955           -0.924355   
+rent_ope_patrimonio                 -0.019458           -0.000000   
+roe                                  2.066205            0.000000   
+fortaleza_patrimonial               -0.921451           -0.000000   
+gastos_financieros                   3.886436            0.000000   
+gastos_admin_ventas                 31.292825           23.488379   
+depreciaciones                      -3.459897           -0.000000   
+amortizaciones                      -6.807988           -0.000000   
+deuda_total                         17.489693           14.618748   
+deuda_total_c_plazo                 11.799476           10.246291   
 
                            OLS Coefficients  
-activos                        2.902318e+03  
-patrimonio                     3.576716e+05  
-utilidad_an_imp                1.764568e+05  
-impuesto_renta                 7.274666e+05  
-n_empleados                   -3.918085e+04  
-utilidad_ejercicio             1.650916e+07  
-utilidad_neta                  4.254553e+05  
-liquidez_corriente            -4.471520e+05  
-prueba_acida                   4.828738e+05  
-end_activo                     1.970124e+04  
-end_patrimonial                4.564141e+06  
-end_activo_fijo               -1.650782e+04  
-end_corto_plazo               -1.862862e+05  
-end_largo_plazo               -2.337406e+05  
-cobertura_interes              3.170820e+04  
-apalancamiento                -4.533174e+06  
-apalancamiento_financiero      4.177730e+03  
-end_patrimonial_ct             1.651109e+08  
-end_patrimonial_nct            2.460911e+07  
-apalancamiento_c_l_plazo      -1.681961e+08  
-rot_cartera                    3.656268e+04  
-rot_activo_fijo                2.105640e+04  
-rot_ventas                     9.473231e+04  
-per_med_cobranza              -4.941610e+04  
-per_med_pago                   1.211136e+04  
-impac_gasto_a_v               -9.120222e+04  
-impac_carga_finan             -8.122452e+04  
-rent_neta_activo               2.201239e+05  
-margen_bruto                   1.038475e+05  
-margen_operacional            -1.154371e+05  
-rent_neta_ventas              -2.087112e+05  
-rent_ope_patrimonio            3.273467e+04  
-rent_ope_activo                7.871489e+04  
-roe                            5.823295e+03  
-roa                           -1.855876e+05  
-fortaleza_patrimonial         -2.366382e+04  
-gastos_financieros             5.068169e+05  
-gastos_admin_ventas            5.077702e+06  
-depreciaciones                 2.346218e+05  
-amortizaciones                 4.565041e+04  
-costos_ventas_prod             7.705625e+07  
-deuda_total                   -6.540293e+04  
-deuda_total_c_plazo           -1.022102e+05  
-total_gastos                   2.259806e+07  
+activos                           46.520173  
+utilidad_an_imp                    7.103579  
+n_empleados                       20.224461  
+liquidez_corriente                 1.098485  
+end_activo                        -0.310745  
+end_patrimonial                   -2.056202  
+end_activo_fijo                   -0.244556  
+end_corto_plazo                    3.530621  
+cobertura_interes                  0.281992  
+apalancamiento_financiero         -0.502272  
+end_patrimonial_ct                 0.530975  
+end_patrimonial_nct                1.078609  
+rot_cartera                        0.157290  
+rot_ventas                         1.052782  
+per_med_cobranza                  -0.924138  
+per_med_pago                       1.746044  
+impac_gasto_a_v                   -2.110272  
+impac_carga_finan                 -4.169610  
+rent_neta_activo                   2.610887  
+margen_bruto                      -8.539168  
+margen_operacional                 5.150837  
+rent_neta_ventas                  -4.872438  
+rent_ope_patrimonio               -0.020343  
+roe                                2.076751  
+fortaleza_patrimonial             -0.920677  
+gastos_financieros                 3.868392  
+gastos_admin_ventas               31.299005  
+depreciaciones                    -3.459313  
+amortizaciones                    -6.817272  
+deuda_total                       17.486285  
+deuda_total_c_plazo               11.794246  
 </pre></div>
 </div>
 </div>
@@ -1105,7 +1210,164 @@ total_gastos                   2.259806e+07
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/301ec823a8478cd57c41855eea504060cf6187245b2afcd061f45f2e2643fb3c.png" src="_images/301ec823a8478cd57c41855eea504060cf6187245b2afcd061f45f2e2643fb3c.png" />
+<img alt="_images/52d712b991314b6107628fb9a14b186e4d597fef20569544cdab5c55f44ed33d.png" src="_images/52d712b991314b6107628fb9a14b186e4d597fef20569544cdab5c55f44ed33d.png" />
+</div>
+</div>
+<p>Ajuste con el mejor <span class="math notranslate nohighlight">\(\lambda\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+
+<span class="c1"># Definir el rango de valores de alpha (lambda) a evaluar</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">500</span><span class="p">]}</span>
+
+<span class="c1"># Crear el modelo de Ridge y Lasso</span>
+<span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">()</span>
+
+<span class="c1"># Crear un KFold con shuffle y random_state</span>
+<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Implementar GridSearchCV para Ridge</span>
+<span class="n">ridge_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span> <span class="c1">#cv=5 sería determinista</span>
+<span class="n">ridge_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Implementar GridSearchCV para Lasso</span>
+<span class="n">lasso_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lasso</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+<span class="n">lasso_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Obtener el mejor valor de alpha y el MSE para Ridge</span>
+<span class="n">best_ridge_alpha</span> <span class="o">=</span> <span class="n">ridge_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
+<span class="n">best_ridge_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">ridge_search</span><span class="o">.</span><span class="n">best_score_</span><span class="o">/</span><span class="n">num_factor</span>  <span class="c1"># Negativo para convertirlo en MSE normal</span>
+
+<span class="c1"># Obtener el mejor valor de alpha y el MSE para Lasso</span>
+<span class="n">best_lasso_alpha</span> <span class="o">=</span> <span class="n">lasso_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
+<span class="n">best_lasso_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">lasso_search</span><span class="o">.</span><span class="n">best_score_</span><span class="o">/</span><span class="n">num_factor</span>  <span class="c1"># Negativo para convertirlo en MSE normal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Obtener los resultados de Ridge y Lasso</span>
+<span class="n">ridge_results</span> <span class="o">=</span> <span class="n">ridge_search</span><span class="o">.</span><span class="n">cv_results_</span>
+<span class="n">lasso_results</span> <span class="o">=</span> <span class="n">lasso_search</span><span class="o">.</span><span class="n">cv_results_</span>
+
+<span class="c1"># Valores de alpha</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">ridge_results</span><span class="p">[</span><span class="s1">&#39;param_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="c1"># MSE para Ridge</span>
+<span class="n">ridge_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">ridge_results</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span>
+
+<span class="c1"># MSE para Lasso</span>
+<span class="n">lasso_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">lasso_results</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span>
+
+<span class="c1"># Crear la figura</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Graficar Ridge</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">ridge_mse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MSE Ridge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_ridge_alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best alpha: </span><span class="si">{</span><span class="n">best_ridge_alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Escala logarítmica para los ejes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ridge Regression: MSE vs. Alpha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Alpha (log scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Graficar Lasso</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">lasso_mse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MSE Lasso&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_lasso_alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best alpha: </span><span class="si">{</span><span class="n">best_lasso_alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Escala logarítmica para los ejes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lasso Regression: MSE vs. Alpha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Alpha (log scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar la gráfica</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2b9951457e0ac79b69d4d395091d79e581857330075beaaebfd7f68ed8a67329.png" src="_images/2b9951457e0ac79b69d4d395091d79e581857330075beaaebfd7f68ed8a67329.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imprimir los mejores resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en CV:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor alpha para Ridge: </span><span class="si">{</span><span class="n">best_ridge_alpha</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor MSE para Ridge: </span><span class="si">{</span><span class="n">best_ridge_mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor alpha para Lasso: </span><span class="si">{</span><span class="n">best_lasso_alpha</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor MSE para Lasso: </span><span class="si">{</span><span class="n">best_lasso_mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+
+<span class="c1"># Ajustar los modelos nuevamente con los mejores alpha</span>
+<span class="n">ridge_best</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">best_ridge_alpha</span><span class="p">)</span>
+<span class="n">lasso_best</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">best_lasso_alpha</span><span class="p">)</span>
+
+<span class="n">ridge_best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">lasso_best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predicciones con los mejores modelos TRAIN</span>
+<span class="n">y_pred_ridge_best_tr</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
+<span class="n">y_pred_lasso_best_tr</span> <span class="o">=</span> <span class="n">lasso_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
+
+<span class="c1"># Calcular el MSE en el conjunto TRAIN</span>
+<span class="n">mse_ridge_best_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ridge_best_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="n">mse_lasso_best_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_lasso_best_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en TRAIN:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">MSE Ridge con mejor alpha: </span><span class="si">{</span><span class="n">mse_ridge_best_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso con mejor alpha: </span><span class="si">{</span><span class="n">mse_lasso_best_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+
+
+
+<span class="c1"># Predicciones con los mejores modelos</span>
+<span class="n">y_pred_ridge_best</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">y_pred_lasso_best</span> <span class="o">=</span> <span class="n">lasso_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+
+<span class="c1"># Calcular el MSE en el conjunto de prueba</span>
+<span class="n">mse_ridge_best</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge_best</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="n">mse_lasso_best</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso_best</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en TEST:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">MSE Ridge con mejor alpha: </span><span class="si">{</span><span class="n">mse_ridge_best</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso con mejor alpha: </span><span class="si">{</span><span class="n">mse_lasso_best</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluación del modelo en CV:
+
+Mejor alpha para Ridge: 300
+Mejor MSE para Ridge: 2282.32 
+Mejor alpha para Lasso: 0.9
+Mejor MSE para Lasso: 2374.17 
+
+Evaluación del modelo en TRAIN:
+
+
+MSE Ridge con mejor alpha: 1903.47
+MSE Lasso con mejor alpha: 1871.67 
+
+Evaluación del modelo en TEST:
+
+
+MSE Ridge con mejor alpha: 3617.36
+MSE Lasso con mejor alpha: 3534.08 
+</pre></div>
+</div>
 </div>
 </div>
 </section>
