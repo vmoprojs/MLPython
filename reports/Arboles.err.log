@@ -15,52 +15,19 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Codificar las variables categóricas
-from sklearn.compose import ColumnTransformer
-
-
-#Definir las listas de categóricas y numéricas
-numeric_features = ['months_loan_duration', 'amount','age']
-categorical_features = ['checking_balance',  'credit_history', 'purpose','savings_balance', 
-            'employment_duration', 'percent_of_income', 'years_at_residence', 'other_credit', 'housing', 
-            'existing_loans_count', 'job', 'dependents', 'phone']
-
-#Standscaler a caracteristicas numericas y Onehotencoder a las categoricas
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('num', StandardScaler(), numeric_features),
-        ('cat', OneHotEncoder(), categorical_features)
-    ])
-
-#Crear un pipeline con preprocesador y  modelo
-model = Pipeline(steps=[('preprocessor', preprocessor),
-        ('classifier', DecisionTreeClassifier(
-            random_state=12345,
-            criterion='entropy',
-        max_depth=3))])
-
+# Obtener los valores de ccp_alpha para la poda
+path = credit_model.cost_complexity_pruning_path(X_train_encoded, y_train)
+ccp_alphas, impurities = path.ccp_alphas, path.impurities
 
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[13], line 14[0m
-[1;32m      7[0m categorical_features [38;5;241m=[39m [[38;5;124m'[39m[38;5;124mchecking_balance[39m[38;5;124m'[39m,  [38;5;124m'[39m[38;5;124mcredit_history[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mpurpose[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124msavings_balance[39m[38;5;124m'[39m, 
-[1;32m      8[0m             [38;5;124m'[39m[38;5;124memployment_duration[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mpercent_of_income[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124myears_at_residence[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mother_credit[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mhousing[39m[38;5;124m'[39m, 
-[1;32m      9[0m             [38;5;124m'[39m[38;5;124mexisting_loans_count[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mjob[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mdependents[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mphone[39m[38;5;124m'[39m]
-[1;32m     11[0m [38;5;66;03m#Standscaler a caracteristicas numericas y Onehotencoder a las categoricas[39;00m
-[1;32m     12[0m preprocessor [38;5;241m=[39m ColumnTransformer(
-[1;32m     13[0m     transformers[38;5;241m=[39m[
-[0;32m---> 14[0m         ([38;5;124m'[39m[38;5;124mnum[39m[38;5;124m'[39m, [43mStandardScaler[49m(), numeric_features),
-[1;32m     15[0m         ([38;5;124m'[39m[38;5;124mcat[39m[38;5;124m'[39m, OneHotEncoder(), categorical_features)
-[1;32m     16[0m     ])
-[1;32m     18[0m [38;5;66;03m#Crear un pipeline con preprocesador y  modelo[39;00m
-[1;32m     19[0m model [38;5;241m=[39m Pipeline(steps[38;5;241m=[39m[([38;5;124m'[39m[38;5;124mpreprocessor[39m[38;5;124m'[39m, preprocessor),
-[1;32m     20[0m         ([38;5;124m'[39m[38;5;124mclassifier[39m[38;5;124m'[39m, DecisionTreeClassifier(
-[1;32m     21[0m             random_state[38;5;241m=[39m[38;5;241m12345[39m,
-[1;32m     22[0m             criterion[38;5;241m=[39m[38;5;124m'[39m[38;5;124mentropy[39m[38;5;124m'[39m,
-[1;32m     23[0m         max_depth[38;5;241m=[39m[38;5;241m3[39m))])
+Cell [0;32mIn[23], line 2[0m
+[1;32m      1[0m [38;5;66;03m# Obtener los valores de ccp_alpha para la poda[39;00m
+[0;32m----> 2[0m path [38;5;241m=[39m [43mcredit_model[49m[38;5;241m.[39mcost_complexity_pruning_path(X_train_encoded, y_train)
+[1;32m      3[0m ccp_alphas, impurities [38;5;241m=[39m path[38;5;241m.[39mccp_alphas, path[38;5;241m.[39mimpurities
 
-[0;31mNameError[0m: name 'StandardScaler' is not defined
+[0;31mNameError[0m: name 'credit_model' is not defined
 
