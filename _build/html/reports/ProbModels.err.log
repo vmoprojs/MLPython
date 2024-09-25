@@ -35,7 +35,7 @@ File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/patsy/eval.py:169[0m, i
 
 File [0;32m<string>:1[0m
 
-[0;31mNameError[0m: name 'GRADE' is not defined
+[0;31mNameError[0m: name 'PSI' is not defined
 
 The above exception was the direct cause of the following exception:
 
@@ -144,7 +144,7 @@ File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/patsy/compat.py:43[0m, 
 
 File [0;32m<string>:1[0m
 
-[0;31mPatsyError[0m: Error evaluating factor: NameError: name 'GRADE' is not defined
+[0;31mPatsyError[0m: Error evaluating factor: NameError: name 'PSI' is not defined
     GRADE ~ GPA + TUCE + PSI
-    ^^^^^
+                         ^^^
 
