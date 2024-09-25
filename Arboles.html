@@ -742,7 +742,7 @@ Name: proportion, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Codificar las variables categóricas</span>
-<span class="c1">#encoder = OneHotEncoder(drop=&#39;first&#39;, sparse_output=False,handle_unknown=&#39;ignore&#39;)</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
 
 
 <span class="c1">#Definir las listas de categóricas y numéricas</span>
@@ -770,14 +770,14 @@ Name: proportion, dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;checking_balance&#39;</span><span class="p">,</span>  <span class="s1">&#39;credit_history&#39;</span><span class="p">,</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span><span class="s1">&#39;savings_balance&#39;</span><span class="p">,</span> 
 <span class="g g-Whitespace">      </span><span class="mi">8</span>             <span class="s1">&#39;employment_duration&#39;</span><span class="p">,</span> <span class="s1">&#39;percent_of_income&#39;</span><span class="p">,</span> <span class="s1">&#39;years_at_residence&#39;</span><span class="p">,</span> <span class="s1">&#39;other_credit&#39;</span><span class="p">,</span> <span class="s1">&#39;housing&#39;</span><span class="p">,</span> 
 <span class="g g-Whitespace">      </span><span class="mi">9</span>             <span class="s1">&#39;existing_loans_count&#39;</span><span class="p">,</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="s1">&#39;dependents&#39;</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1">#Standscaler a caracteristicas numericas y Onehotencoder a las categoricas</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>         <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_features</span><span class="p">),</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>         <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_features</span><span class="p">),</span>
 <span class="g g-Whitespace">     </span><span class="mi">15</span>         <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(),</span> <span class="n">categorical_features</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="p">])</span>
 <span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1">#Crear un pipeline con preprocesador y  modelo</span>
@@ -787,7 +787,7 @@ Name: proportion, dtype: float64
 <span class="g g-Whitespace">     </span><span class="mi">22</span>             <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span>
 <span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">))])</span>
 
-<span class="ne">NameError</span>: name &#39;ColumnTransformer&#39; is not defined
+<span class="ne">NameError</span>: name &#39;StandardScaler&#39; is not defined
 </pre></div>
 </div>
 </div>
