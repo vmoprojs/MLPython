@@ -405,9 +405,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
@@ -745,6 +744,7 @@ Name: proportion, dtype: float64
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
 
 
 <span class="c1">#Definir las listas de categóricas y numéricas</span>
@@ -757,7 +757,10 @@ Name: proportion, dtype: float64
 <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
     <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
         <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_features</span><span class="p">),</span>
-        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(),</span> <span class="n">categorical_features</span><span class="p">)</span>
+        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)),</span>  <span class="c1"># Handle missing or unknown categorical values</span>
+            <span class="p">(</span><span class="s1">&#39;onehot&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">))</span>     <span class="c1"># OneHotEncode the categorical features</span>
+        <span class="p">]),</span> <span class="n">categorical_features</span><span class="p">)</span>
     <span class="p">])</span>
 
 <span class="c1">#Crear un pipeline con preprocesador y  modelo</span>
@@ -783,7 +786,11 @@ Name: proportion, dtype: float64
                  ColumnTransformer(transformers=[(&#x27;num&#x27;, StandardScaler(),
                                                   [&#x27;months_loan_duration&#x27;,
                                                    &#x27;amount&#x27;, &#x27;age&#x27;]),
-                                                 (&#x27;cat&#x27;, OneHotEncoder(),
+                                                 (&#x27;cat&#x27;,
+                                                  Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                  (&#x27;onehot&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
                                                   [&#x27;checking_balance&#x27;,
                                                    &#x27;credit_history&#x27;, &#x27;purpose&#x27;,
                                                    &#x27;savings_balance&#x27;,
@@ -800,7 +807,11 @@ Name: proportion, dtype: float64
                  ColumnTransformer(transformers=[(&#x27;num&#x27;, StandardScaler(),
                                                   [&#x27;months_loan_duration&#x27;,
                                                    &#x27;amount&#x27;, &#x27;age&#x27;]),
-                                                 (&#x27;cat&#x27;, OneHotEncoder(),
+                                                 (&#x27;cat&#x27;,
+                                                  Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                                   SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                                  (&#x27;onehot&#x27;,
+                                                                   OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
                                                   [&#x27;checking_balance&#x27;,
                                                    &#x27;credit_history&#x27;, &#x27;purpose&#x27;,
                                                    &#x27;savings_balance&#x27;,
@@ -815,13 +826,17 @@ Name: proportion, dtype: float64
                  DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, max_depth=3,
                                         random_state=12345))])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">preprocessor: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[(&#x27;num&#x27;, StandardScaler(),
                                  [&#x27;months_loan_duration&#x27;, &#x27;amount&#x27;, &#x27;age&#x27;]),
-                                (&#x27;cat&#x27;, OneHotEncoder(),
+                                (&#x27;cat&#x27;,
+                                 Pipeline(steps=[(&#x27;imputer&#x27;,
+                                                  SimpleImputer(strategy=&#x27;most_frequent&#x27;)),
+                                                 (&#x27;onehot&#x27;,
+                                                  OneHotEncoder(handle_unknown=&#x27;ignore&#x27;))]),
                                  [&#x27;checking_balance&#x27;, &#x27;credit_history&#x27;,
                                   &#x27;purpose&#x27;, &#x27;savings_balance&#x27;,
                                   &#x27;employment_duration&#x27;, &#x27;percent_of_income&#x27;,
                                   &#x27;years_at_residence&#x27;, &#x27;other_credit&#x27;,
                                   &#x27;housing&#x27;, &#x27;existing_loans_count&#x27;, &#x27;job&#x27;,
-                                  &#x27;dependents&#x27;, &#x27;phone&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">num</label><div class="sk-toggleable__content"><pre>[&#x27;months_loan_duration&#x27;, &#x27;amount&#x27;, &#x27;age&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">cat</label><div class="sk-toggleable__content"><pre>[&#x27;checking_balance&#x27;, &#x27;credit_history&#x27;, &#x27;purpose&#x27;, &#x27;savings_balance&#x27;, &#x27;employment_duration&#x27;, &#x27;percent_of_income&#x27;, &#x27;years_at_residence&#x27;, &#x27;other_credit&#x27;, &#x27;housing&#x27;, &#x27;existing_loans_count&#x27;, &#x27;job&#x27;, &#x27;dependents&#x27;, &#x27;phone&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder()</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, max_depth=3, random_state=12345)</pre></div></div></div></div></div></div></div></div></div>
+                                  &#x27;dependents&#x27;, &#x27;phone&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">num</label><div class="sk-toggleable__content"><pre>[&#x27;months_loan_duration&#x27;, &#x27;amount&#x27;, &#x27;age&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">cat</label><div class="sk-toggleable__content"><pre>[&#x27;checking_balance&#x27;, &#x27;credit_history&#x27;, &#x27;purpose&#x27;, &#x27;savings_balance&#x27;, &#x27;employment_duration&#x27;, &#x27;percent_of_income&#x27;, &#x27;years_at_residence&#x27;, &#x27;other_credit&#x27;, &#x27;housing&#x27;, &#x27;existing_loans_count&#x27;, &#x27;job&#x27;, &#x27;dependents&#x27;, &#x27;phone&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;most_frequent&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)</pre></div></div></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier(criterion=&#x27;entropy&#x27;, max_depth=3, random_state=12345)</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -989,20 +1004,9 @@ R_{\alpha}(T)=R(T) +\alpha| \tilde{T}|
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener los valores de ccp_alpha para la poda</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">credit_model</span><span class="o">.</span><span class="n">cost_complexity_pruning_path</span><span class="p">(</span><span class="n">X_train_encoded</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_train_transformed</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">decision_tree</span><span class="o">.</span><span class="n">cost_complexity_pruning_path</span><span class="p">(</span><span class="n">X_train_transformed</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">ccp_alphas</span><span class="p">,</span> <span class="n">impurities</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">ccp_alphas</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">impurities</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Obtener los valores de ccp_alpha para la poda</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">path</span> <span class="o">=</span> <span class="n">credit_model</span><span class="o">.</span><span class="n">cost_complexity_pruning_path</span><span class="p">(</span><span class="n">X_train_encoded</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ccp_alphas</span><span class="p">,</span> <span class="n">impurities</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">ccp_alphas</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">impurities</span>
-
-<span class="ne">NameError</span>: name &#39;credit_model&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1013,8 +1017,8 @@ R_{\alpha}(T)=R(T) +\alpha| \tilde{T}|
 <span class="n">clfs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">ccp_alpha</span> <span class="ow">in</span> <span class="n">ccp_alphas</span><span class="p">:</span>
     <span class="c1"># clf = DecisionTreeClassifier(random_state=12345, ccp_alpha=ccp_alpha,class_weight=&quot;balanced&quot;)</span>
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="n">ccp_alpha</span><span class="p">)</span>
-    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_encoded</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">ccp_alpha</span><span class="o">=</span><span class="n">ccp_alpha</span><span class="p">,</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_transformed</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">clfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clf</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1023,8 +1027,9 @@ R_{\alpha}(T)=R(T) +\alpha| \tilde{T}|
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seleccionar el mejor árbol basado en la precisión de validación cruzada</span>
-<span class="n">train_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_encoded</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">]</span>
-<span class="n">test_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_encoded</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">]</span>
+<span class="n">X_test_transformed</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">train_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_transformed</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">]</span>
+<span class="n">test_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_transformed</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="n">clfs</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1044,7 +1049,7 @@ R_{\alpha}(T)=R(T) +\alpha| \tilde{T}|
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/faf67118c985daae3b4ca3b4606bf5bd786683f5330f787c1c86c3e8037ba4d3.png" src="_images/faf67118c985daae3b4ca3b4606bf5bd786683f5330f787c1c86c3e8037ba4d3.png" />
+<img alt="_images/0e07c20cd799c2c172d6fd0f4816f6eb97e8fc57dcbdca4494e127af50704745.png" src="_images/0e07c20cd799c2c172d6fd0f4816f6eb97e8fc57dcbdca4494e127af50704745.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1067,13 +1072,13 @@ R_{\alpha}(T)=R(T) +\alpha| \tilde{T}|
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bd891c10b9fda8d974c7b01d6e1919bea67081cf82ae064fe452ca031f013af8.png" src="_images/bd891c10b9fda8d974c7b01d6e1919bea67081cf82ae064fe452ca031f013af8.png" />
+<img alt="_images/a00c0cfca2ea16bfdbcf182a656ef542cca9bbe6ed0cbd133e956c2acada93bb.png" src="_images/a00c0cfca2ea16bfdbcf182a656ef542cca9bbe6ed0cbd133e956c2acada93bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predecir con el conjunto de prueba usando el mejor modelo</span>
-<span class="n">credit_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_encoded</span><span class="p">)</span>
+<span class="n">credit_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_transformed</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1095,16 +1100,16 @@ R_{\alpha}(T)=R(T) +\alpha| \tilde{T}|
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[58  5]
- [32  5]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[55  8]
+ [25 12]]
               precision    recall  f1-score   support
 
-          no       0.64      0.92      0.76        63
-         yes       0.50      0.14      0.21        37
+          no       0.69      0.87      0.77        63
+         yes       0.60      0.32      0.42        37
 
-    accuracy                           0.63       100
-   macro avg       0.57      0.53      0.49       100
-weighted avg       0.59      0.63      0.56       100
+    accuracy                           0.67       100
+   macro avg       0.64      0.60      0.60       100
+weighted avg       0.66      0.67      0.64       100
 </pre></div>
 </div>
 </div>
@@ -1121,10 +1126,10 @@ weighted avg       0.59      0.63      0.56       100
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.92063492 0.07936508]
- [0.86486486 0.13513514]]
-[[0.64444444 0.5       ]
- [0.35555556 0.5       ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.87301587 0.12698413]
+ [0.67567568 0.32432432]]
+[[0.6875 0.4   ]
+ [0.3125 0.6   ]]
 </pre></div>
 </div>
 </div>
