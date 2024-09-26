@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Aprendizaje Supervisado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Regresion.html">8. Regresión lineal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ProbModels.html">9. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">10. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StepRegularization.html">10. Selección y regularización de modelos lineales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Arboles.html">11. Árboles de decisión</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM.html">12. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">13. Redes Neuronales</a></li>
@@ -181,7 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">15. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
 </ul>
 
     </div>
@@ -375,7 +376,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecinos-mas-cercanos">7.1. Vecinos más cercanos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">7.1. KNN</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisando-los-datos">7.1.1. Revisando los datos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba">7.1.2. Creamos los conjuntos de entrenamiento y prueba</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-el-objeto-clasificador">7.1.3. Creamos el objeto clasificador</a></li>
@@ -424,15 +425,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-supervisado">
 <h1><span class="section-number">7. </span>Aprendizaje Supervisado<a class="headerlink" href="#aprendizaje-supervisado" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Vecinos mas cercanos.</p></li>
-<li><p>Regularizacion: Lasso, Ridge.</p></li>
-<li><p>Arboles de decision</p></li>
-<li><p>SVM</p></li>
-<li><p>Redes Neuronales</p></li>
-</ul>
-<section id="vecinos-mas-cercanos">
-<h2><span class="section-number">7.1. </span>Vecinos más cercanos<a class="headerlink" href="#vecinos-mas-cercanos" title="Permalink to this heading">#</a></h2>
+<section id="knn">
+<h2><span class="section-number">7.1. </span>KNN<a class="headerlink" href="#knn" title="Permalink to this heading">#</a></h2>
+<p>Método de los vecinos más cercanos es un método de aprendizaje supervisado.</p>
 <p>Importamos las librerías necesarias y los datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -442,8 +437,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-
-<span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Data/fruit_data_with_colors.txt&#39;</span><span class="p">)</span>
+<span class="n">uu</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/vmoprojs/DataLectures/refs/heads/master/fruit_data_with_colors.txt&#39;</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">uu</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -714,7 +709,7 @@ document.write(`
 <h3><span class="section-number">7.1.9. </span>¿Cuán sensible es la precisión de la clasificación K-NN a la elección de la proporción de la partición?<a class="headerlink" href="#cuan-sensible-es-la-precision-de-la-clasificacion-k-nn-a-la-eleccion-de-la-proporcion-de-la-particion" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
 
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 
@@ -735,78 +730,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">13</span>         <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Training set proportion (%)&#39;</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:705,</span> in <span class="ni">ClassifierMixin.score</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">680</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">681</span><span class="sd"> Return the mean accuracy on the given test data and labels.</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="sd">     Mean accuracy of ``self.predict(X)`` w.r.t. `y`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="kn">from</span> <span class="nn">.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="ne">--&gt; </span><span class="mi">705</span> <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/neighbors/_classification.py:246,</span> in <span class="ni">KNeighborsClassifier.predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">244</span> <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_fit_method&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">==</span> <span class="s2">&quot;uniform&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">246</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_method</span> <span class="o">==</span> <span class="s2">&quot;brute&quot;</span> <span class="ow">and</span> <span class="n">ArgKminClassMode</span><span class="o">.</span><span class="n">is_usable_for</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">247</span>         <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>     <span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="n">probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">250</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs_2d_</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:471,</span> in <span class="ni">ArgKminClassMode.is_usable_for</span><span class="nt">(cls, X, Y, metric)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span> <span class="nd">@classmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">def</span> <span class="nf">is_usable_for</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return True if the dispatcher can be used for the given parameters.</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span><span class="sd">     True if the PairwiseDistancesReduction can be used, else False.</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">470</span>     <span class="k">return</span> <span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">471</span>         <span class="n">ArgKmin</span><span class="o">.</span><span class="n">is_usable_for</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">472</span>         <span class="c1"># TODO: Support CSR matrices.</span>
-<span class="g g-Whitespace">    </span><span class="mi">473</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">474</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">issparse</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">475</span>         <span class="c1"># TODO: implement Euclidean specialization with GEMM.</span>
-<span class="nn">    476         and metric not</span> in <span class="nt">(&quot;euclidean&quot;, &quot;sqeuclidean&quot;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:115,</span> in <span class="ni">BaseDistancesReductionDispatcher.is_usable_for</span><span class="nt">(cls, X, Y, metric)</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="k">def</span> <span class="nf">is_valid_sparse_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">102</span>     <span class="k">return</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>         <span class="n">isspmatrix_csr</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>         <span class="ow">and</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">X</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">X</span><span class="o">.</span><span class="n">indptr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="n">is_usable</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enable_cython_pairwise_dist&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">115</span>     <span class="ow">and</span> <span class="p">(</span><span class="n">is_numpy_c_ordered</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_valid_sparse_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="ow">and</span> <span class="p">(</span><span class="n">is_numpy_c_ordered</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_valid_sparse_matrix</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="ow">and</span> <span class="n">X</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">Y</span><span class="o">.</span><span class="n">dtype</span>
-<span class="nn">    118     and X.dtype</span> in <span class="nt">(np.float32, np.float64)</span>
-<span class="nn">    119     and metric</span> in <span class="ni">cls.valid_metrics</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="k">return</span> <span class="n">is_usable</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:99,</span> in <span class="ni">BaseDistancesReductionDispatcher.is_usable_for.&lt;locals&gt;.is_numpy_c_ordered</span><span class="nt">(X)</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="k">def</span> <span class="nf">is_numpy_c_ordered</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">99</span>     <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;flags&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">X</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">c_contiguous</span>
-
-<span class="ne">AttributeError</span>: &#39;Flags&#39; object has no attribute &#39;c_contiguous&#39;
-</pre></div>
-</div>
-<img alt="_images/ba0b8cb00d98e23b423e2f5748622188e58dd28f1105608da709c211facbb87f.png" src="_images/ba0b8cb00d98e23b423e2f5748622188e58dd28f1105608da709c211facbb87f.png" />
+<img alt="_images/06493e470e5a02d509ec8378866f2491d246d1493da70b546db2417df35f6352.png" src="_images/06493e470e5a02d509ec8378866f2491d246d1493da70b546db2417df35f6352.png" />
 </div>
 </div>
 </section>
@@ -830,7 +754,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb4d7d0b53acbf469167522dcc0be23f02c02067b9b23dd7c59bbd064e09e002.png" src="_images/cb4d7d0b53acbf469167522dcc0be23f02c02067b9b23dd7c59bbd064e09e002.png" />
+<img alt="_images/3c74aef4ee278870970063f730616bfba76c6012c4074d00a5e59f6582001346.png" src="_images/3c74aef4ee278870970063f730616bfba76c6012c4074d00a5e59f6582001346.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -877,7 +801,7 @@ R-squared score (test): 0.492
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4db02e7454beebbce07ed7d60083e59a48d11fb5a4c806e0f59bb966dba42676.png" src="_images/4db02e7454beebbce07ed7d60083e59a48d11fb5a4c806e0f59bb966dba42676.png" />
+<img alt="_images/10b0ce06f5b9aca903f499d0759a2615df2e76971a69759074583e4f69db4e89.png" src="_images/10b0ce06f5b9aca903f499d0759a2615df2e76971a69759074583e4f69db4e89.png" />
 </div>
 </div>
 <p>Si tienes problemas con la instalación de <em>graphviz</em>, visita https://pygraphviz.github.io/documentation/stable/install.html</p>
@@ -1265,7 +1189,7 @@ Features kept: 1, r-squared training: 0.31, r-squared test: 0.30
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of Decision Tree classifier on training set: 1.00
-Accuracy of Decision Tree classifier on test set: 0.97
+Accuracy of Decision Tree classifier on test set: 0.95
 </pre></div>
 </div>
 </div>
@@ -1300,7 +1224,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/368fa3569f70f38d15676fa82dd679ddf8bdacb38fc5581e7a11a71d5365f600.svg" src="_images/368fa3569f70f38d15676fa82dd679ddf8bdacb38fc5581e7a11a71d5365f600.svg" /></div>
+<img alt="_images/527e4c782cf6560e243052b8972b359affc3e9bede32bb80c4bf4225c6df0bd5.svg" src="_images/527e4c782cf6560e243052b8972b359affc3e9bede32bb80c4bf4225c6df0bd5.svg" /></div>
 </div>
 </section>
 <section id="version-pre-pruned-max-depth-3">
@@ -1312,7 +1236,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/045116028200e2bfa28850be0bd95fae649f1cd832fd3f32a6619a041fad2a7f.svg" src="_images/045116028200e2bfa28850be0bd95fae649f1cd832fd3f32a6619a041fad2a7f.svg" /></div>
+<img alt="_images/6888b741f33b0821104a05d2afdf1629a3e80f2df861938ec0843f6a81b07082.svg" src="_images/6888b741f33b0821104a05d2afdf1629a3e80f2df861938ec0843f6a81b07082.svg" /></div>
 </div>
 <section id="feature-importance">
 <h4><span class="section-number">7.3.3.1. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h4>
@@ -1329,8 +1253,8 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b781062055abcedf0b1d58c6943ebde7378240890a4ed0e50de5db6e72bc1c98.png" src="_images/b781062055abcedf0b1d58c6943ebde7378240890a4ed0e50de5db6e72bc1c98.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature importances: [0.         0.03128242 0.06251049 0.90620709]
+<img alt="_images/e5af7b02f521a61a42177503b3fc3a6d191827ddf49268d3286c7e7296b9acbf.png" src="_images/e5af7b02f521a61a42177503b3fc3a6d191827ddf49268d3286c7e7296b9acbf.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature importances: [0.00670338 0.03128242 0.54643762 0.41557658]
 </pre></div>
 </div>
 </div>
@@ -1365,7 +1289,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2994d515e927365bf0932fc01ec1fbe44fd5f69511403536a1631078dd48126d.png" src="_images/2994d515e927365bf0932fc01ec1fbe44fd5f69511403536a1631078dd48126d.png" />
+<img alt="_images/942ef308ab2ec140fba80fa9ae620607a3a6d8d2ee0464ea3e8b03fb78b14a5a.png" src="_images/942ef308ab2ec140fba80fa9ae620607a3a6d8d2ee0464ea3e8b03fb78b14a5a.png" />
 </div>
 </div>
 </section>
@@ -1392,7 +1316,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/172deebed1d1a35c4c245444254d233289bfe76ab534aae9942e08a4c4776638.svg" src="_images/172deebed1d1a35c4c245444254d233289bfe76ab534aae9942e08a4c4776638.svg" /></div>
+<img alt="_images/5c2ba63937f3a4cdf6d3ace8d7c3a57ecb2a5eec0e90c0ce955001ff0e533dfd.svg" src="_images/5c2ba63937f3a4cdf6d3ace8d7c3a57ecb2a5eec0e90c0ce955001ff0e533dfd.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1416,7 +1340,7 @@ Accuracy of DT classifier on training set: 0.96
 Accuracy of DT classifier on test set: 0.94
 </pre></div>
 </div>
-<img alt="_images/f14e3e15f2bdbe77b82b126ae80ff9e671713c6e0c64759cfd51ba431d5dc096.png" src="_images/f14e3e15f2bdbe77b82b126ae80ff9e671713c6e0c64759cfd51ba431d5dc096.png" />
+<img alt="_images/777c44065374a8998832ff2ad408df4458644ecc6df175c5407e1517ff007982.png" src="_images/777c44065374a8998832ff2ad408df4458644ecc6df175c5407e1517ff007982.png" />
 </div>
 </div>
 </section>
@@ -1485,7 +1409,7 @@ Accuracy of DT classifier on test set: 0.94
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vecinos-mas-cercanos">7.1. Vecinos más cercanos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">7.1. KNN</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revisando-los-datos">7.1.1. Revisando los datos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-los-conjuntos-de-entrenamiento-y-prueba">7.1.2. Creamos los conjuntos de entrenamiento y prueba</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creamos-el-objeto-clasificador">7.1.3. Creamos el objeto clasificador</a></li>
