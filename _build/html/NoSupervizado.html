@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'NoSupervizado';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="17. Minería de Reglas de asociación (Association Rule Mining)" href="ReglasAso.html" />
     <link rel="prev" title="15. Análisis de Componentes Principales" href="ACP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación (<em>Association Rule Mining</em>)</a></li>
 </ul>
 
     </div>
@@ -378,10 +380,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">16.1. K-means</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.1. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">16.1.1. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.2. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">16.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-jerarquico-aglomerativo">16.2. Clustering Jerárquico: Aglomerativo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-para-fusionar-grupos">16.2.1. Funciones para fusionar grupos</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">16.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">16.3.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
@@ -399,6 +405,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clustering">
 <h1><span class="section-number">16. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading">#</a></h1>
+<p>Un clúster es una agrupación de objetos que comparten similitudes, y los objetos que pertenecen a diferentes clústeres presentan diferencias. Encontrar grupos en los datos es el objetivo principal de la agrupación en clústeres.</p>
+<blockquote>
+<div><p>El objetivo es minimizar las diferencias dentro de cada grupo y maximizar las diferencias entre los clústeres.</p>
+</div></blockquote>
+<p>La agrupación en clústeres consiste en dividir un conjunto de datos finito sin etiquetar en subconuntos de datos diferenciados que emergen de estreucturas subyacentes en los datos.</p>
+<p>Sea $<span class="math notranslate nohighlight">\(\mathbf{X}= \{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_i,\ldots,\mathbf{x}_N\}\)</span><span class="math notranslate nohighlight">\( un conjunto de objetos de entrada donde \)</span>\mathbf{x}<em>i = \left(x</em>{i1},x_{i2},\ldots,x_{ij},\ldots,x_{id}\right) \in \mathbb{R}^d<span class="math notranslate nohighlight">\(, y  \)</span>x_{ij}<span class="math notranslate nohighlight">\(  es una característica (atributo, dimensión o variable). Una partición \)</span>K<span class="math notranslate nohighlight">\( de \)</span>\mathbf{X}<span class="math notranslate nohighlight">\(, \)</span>C = {C_1,\ldots,C_K}<span class="math notranslate nohighlight">\( (\)</span>K\leq N$) es una partición dura si:</p>
+<ul class="simple">
+<li><p>Cada clúster debe tener al menos un elemento: <span class="math notranslate nohighlight">\(C_i\neq \emptyset\)</span>, <span class="math notranslate nohighlight">\(i=1,\ldots,K\)</span>.</p></li>
+<li><p>La unión de todos los clústers es el conjunto de entrada <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>: <span class="math notranslate nohighlight">\(\bigcup_{i=1}^KC_i=\mathbf{X}\)</span>.</p></li>
+<li><p>Si un objeto pertenece a un cluster, no puede pertenecer a otro cluster: <span class="math notranslate nohighlight">\(C_i\cap C_j = \emptyset\)</span>, <span class="math notranslate nohighlight">\(i,j=1,\ldots,K\)</span> and <span class="math notranslate nohighlight">\(i\neq j\)</span>.</p></li>
+</ul>
+<section id="k-means">
+<h2><span class="section-number">16.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>El algoritmo k-means es quizás el método de agrupación más utilizado. Después de haber sido estudiado durante varias décadas, sirve como base para muchas técnicas de agrupación más sofisticadas.</p>
+</div></blockquote>
+<section id="ejemplo">
+<h3><span class="section-number">16.1.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
+<p>Veamos un ejemplo de k-means mediante la generación de clústers aleatorios (<code class="docutils literal notranslate"><span class="pre">make_blobs</span></code>) y <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.</p>
 <p><strong>Preámbulo y datos</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -407,26 +432,14 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sn</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1">#from sklearn.datasets import load_breast_cancer</span>
-<span class="c1"># Breast cancer dataset</span>
-<span class="c1">#cancer = load_breast_cancer()</span>
-<span class="c1">#(X_cancer, y_cancer) = load_breast_cancer(return_X_y = True)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="k-means">
-<h2><span class="section-number">16.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
-<p>Veamos un ejemplo de k-means mediante la generación de clústers aleatorios (<code class="docutils literal notranslate"><span class="pre">make_blobs</span></code>) y <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
@@ -434,22 +447,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:1412: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-</pre></div>
-</div>
-<img alt="_images/0f3066028019a220031d367d6cc5c68bc0197f2e57d664ff924fc2053359389f.png" src="_images/0f3066028019a220031d367d6cc5c68bc0197f2e57d664ff924fc2053359389f.png" />
+<img alt="_images/9a7c54e985b3a49ac1806be7e0a48bc1ce0a06446319f38756ce4cbf01c3c2fe.png" src="_images/9a7c54e985b3a49ac1806be7e0a48bc1ce0a06446319f38756ce4cbf01c3c2fe.png" />
 </div>
 </div>
 <p><strong>Algoritmo</strong></p>
 <p><strong>Entradas:</strong></p>
 <ul class="simple">
-<li><p>conjunto de patrones en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
+<li><p>Conjunto de patrones en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(k\)</span> número de grupos a formar.</p></li>
 </ul>
 <p><strong>Salidas:</strong></p>
 <ul class="simple">
-<li><p>una partición del espacio de patrones, tal que, optimiza la varianza global.</p></li>
+<li><p>Una partición del espacio de patrones, tal que, optimiza la varianza global.</p></li>
 </ul>
 <p><strong>Inicio:</strong></p>
 <p>Asignar aleatoreamente un número, del 1 a <span class="math notranslate nohighlight">\(K\)</span> a cada observación. Estos funcionan como asignaciones iniciales para las observaciones.</p>
@@ -460,8 +469,9 @@ document.write(`
 </ol>
 <p><strong>Hasta</strong> La última partición obtenida, (idéntica a la de la iteración
 anterior ) es la respuesta final del algoritmo.</p>
+</section>
 <section id="ejemplo-clasificacion-de-frutas">
-<h3><span class="section-number">16.1.1. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">16.1.2. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -469,14 +479,16 @@ anterior ) es la respuesta final del algoritmo.</p>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;Data/fruit_data_with_colors.txt&#39;</span><span class="p">)</span>
+<span class="n">uu</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/vmoprojs/DataLectures/refs/heads/master/fruit_data_with_colors.txt&#39;</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">uu</span><span class="p">)</span>
 <span class="n">X_fruits</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[[</span><span class="s1">&#39;mass&#39;</span><span class="p">,</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;color_score&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 <span class="n">y_fruits</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[[</span><span class="s1">&#39;fruit_label&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span>
 
 <span class="n">X_fruits_normalized</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span>  
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
 
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> 
@@ -485,11 +497,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:1412: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-</pre></div>
-</div>
-<img alt="_images/1eac6072404824f9b7f6a93e761a81be44d3d0e971938887a419edc4a6cc59a3.png" src="_images/1eac6072404824f9b7f6a93e761a81be44d3d0e971938887a419edc4a6cc59a3.png" />
+<img alt="_images/9cca5bcc097dcbb69694daf30adeaca927add92cdf7d0907eef6b6cb1a26a5b9.png" src="_images/9cca5bcc097dcbb69694daf30adeaca927add92cdf7d0907eef6b6cb1a26a5b9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -510,8 +518,11 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </section>
 </section>
-<section id="aglomerativo">
-<h2><span class="section-number">16.2. </span>Aglomerativo<a class="headerlink" href="#aglomerativo" title="Permalink to this heading">#</a></h2>
+<section id="clustering-jerarquico-aglomerativo">
+<h2><span class="section-number">16.2. </span>Clustering Jerárquico: Aglomerativo<a class="headerlink" href="#clustering-jerarquico-aglomerativo" title="Permalink to this heading">#</a></h2>
+<p>Una desventaja potencial del agrupamiento K-medias es que requiere que <strong>especifiquemos previamente</strong> el número de agrupamientos K.</p>
+<p>El agrupamiento jerárquico es un enfoque alternativo que <strong>no requiere</strong> que nos comprometamos con una elección particular de K.</p>
+<p>El agrupamiento jerárquico tiene una ventaja adicional sobre el agrupamiento K-medias, ya que da como resultado una atractiva representación basada en árboles de las observaciones, llamada <strong>dendrograma</strong>.</p>
 <p><strong>Algoritmo</strong></p>
 <p><strong>Entradas:</strong></p>
 <ul class="simple">
@@ -533,6 +544,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p>Registrar la fusión realizada en el dendrograma</p></li>
 </ol>
 <p><strong>Hasta</strong> Terminar cuando todos los patrones se encuentren agrupados en un solo grupo.</p>
+<p>En Python, el método <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html">AgglomerativeClustering</a> nos permite ejecutar clustering jerárquico.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
@@ -553,7 +565,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 <img alt="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" src="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" />
 </div>
 </div>
-<p><strong>Creamos el dendograma</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
@@ -579,19 +590,72 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </div>
 </div>
+<p><strong>Creamos el dendograma</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">ward</span><span class="p">,</span> <span class="n">dendrogram</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">dendrogram</span><span class="p">,</span><span class="n">linkage</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">dendrogram</span><span class="p">(</span><span class="n">ward</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;complete&#39;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ea7b0a5041dff7e987e15b506508dda981b7311b5e6ac0e9e2674b775f87528d.png" src="_images/ea7b0a5041dff7e987e15b506508dda981b7311b5e6ac0e9e2674b775f87528d.png" />
+<img alt="_images/b93f2f1218bcf6985338c3b9c8f830d12224f139950154cc15ee2e2c6977fc9b.png" src="_images/b93f2f1218bcf6985338c3b9c8f830d12224f139950154cc15ee2e2c6977fc9b.png" />
 </div>
 </div>
+<ul class="simple">
+<li><p>Cada hoja del dendrograma representa una de las <span class="math notranslate nohighlight">\(n\)</span> observaciones.</p></li>
+<li><p>A medida que subimos por el árbol, algunas hojas comienzan a <em>fusionarse</em> en ramas. Estos corresponden a observaciones que son similares entre sí.</p></li>
+<li><p>Cuanto antes (más abajo en el árbol) se produzcan fusiones, más similares serán los grupos de observaciones entre sí. Por otro lado, las observaciones que se fusionan más tarde (cerca de la parte superior del árbol) pueden ser bastante diferentes.</p></li>
+<li><p>La altura de esta fusión, medida en el eje vertical, <strong>indica cuán diferentes son las dos observaciones</strong>. Por lo tanto, las observaciones que se fusionan en la parte inferior del árbol son bastante similares entre sí, mientras que las observaciones que se fusionan cerca de la parte superior del árbol tenderán a ser bastante diferentes.</p></li>
+</ul>
+<section id="funciones-para-fusionar-grupos">
+<h3><span class="section-number">16.2.1. </span>Funciones para fusionar grupos<a class="headerlink" href="#funciones-para-fusionar-grupos" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="_images/10_fig1.png"><img alt="_images/10_fig1.png" src="_images/10_fig1.png" style="width: 500px; height: 300px;" /></a>
+<ul class="simple">
+<li><p><em>Complete</em>: Disimilitud máxima entre conglomerados. Calcule todas las diferencias por pares entre las observaciones en el grupo <span class="math notranslate nohighlight">\(A\)</span> y las observaciones en el grupo <span class="math notranslate nohighlight">\(B\)</span>, y <strong>registre la mayor de estas diferencias</strong>.</p></li>
+<li><p><em>Single</em>: Disimilitud mínima entre conglomerados. Calcule todas las diferencias por pares entre las observaciones en el grupo <span class="math notranslate nohighlight">\(A\)</span> y las observaciones en el grupo <span class="math notranslate nohighlight">\(B\)</span>, y <strong>registre la más pequeña de estas diferencias</strong>. El enlace único puede dar como resultado conglomerados extendidos y finales en los que las observaciones individuales se fusionan una a la vez.</p></li>
+<li><p><em>Average</em>: Diferencia media entre grupos. Calcule todas las diferencias por pares entre las observaciones en el grupo <span class="math notranslate nohighlight">\(A\)</span> y las observaciones en el grupo <span class="math notranslate nohighlight">\(B\)</span>, y <strong>registre el promedio de estas diferencias</strong>.</p></li>
+<li><p><em>Centroid</em>: Disimilitud entre el centroide para el grupo <span class="math notranslate nohighlight">\(A\)</span> (un vector de medias de longitud <span class="math notranslate nohighlight">\(p\)</span>) y el centroide para el grupo <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+</ul>
+<p>En <strong>Python</strong> usamos los métodos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html">dendrogram</a>: para elaborar el dendograma.</p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html">linkage</a>: Realiza agrupamiento jerárquico/aglomerativo.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linkage: Complete&#39;</span><span class="p">)</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;complete&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linkage: Single&#39;</span><span class="p">)</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;single&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linkage: Average&#39;</span><span class="p">)</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;average&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Linkage: Centroid&#39;</span><span class="p">)</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;centroid&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4d7898338b9ddae9ef9fa8f1044a685a5ed460069fd4068d17444332ac22aef6.png" src="_images/4d7898338b9ddae9ef9fa8f1044a685a5ed460069fd4068d17444332ac22aef6.png" />
+<img alt="_images/c34dd92343852cee283b05fad54da412c722d874f3207f34831e6d88bb64a459.png" src="_images/c34dd92343852cee283b05fad54da412c722d874f3207f34831e6d88bb64a459.png" />
+<img alt="_images/d3725e7afc65229397bb88c88a4eaeb7fa055d5ab9ca8217794f6ab279f396e7.png" src="_images/d3725e7afc65229397bb88c88a4eaeb7fa055d5ab9ca8217794f6ab279f396e7.png" />
+<img alt="_images/9f91372fbf04cfc14f77b64008df397db877b81af5687f06ffc751f7dac881b0.png" src="_images/9f91372fbf04cfc14f77b64008df397db877b81af5687f06ffc751f7dac881b0.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="dbscan-clustering">
 <h2><span class="section-number">16.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
@@ -609,6 +673,10 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p><em>Noise point</em>: Si, dentro de la bola, no contiene ningún <em>core point</em></p></li>
 </ul>
 <a class="reference internal image-reference" href="_images/dbscan.jpg"><img alt="_images/dbscan.jpg" src="_images/dbscan.jpg" style="width: 500px; height: 300px;" /></a>
+<p>En Python:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html"><code class="docutils literal notranslate"><span class="pre">DBSCAN</span></code></a> es el método para ejecutar el algortimo.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
@@ -900,7 +968,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
-<span class="c1"># Before applying PCA, each feature should be centered (zero mean) and with unit variance</span>
+<span class="c1"># Antes de aplicar ACP, cada variable debe ser centrada y de varianza igual a 1</span>
 <span class="n">X_normalized</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">crime</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">crime</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -928,7 +996,7 @@ anterior ) es la respuesta final del algoritmo.</p>
   super()._check_params_vs_input(X, default_n_init=10)
 </pre></div>
 </div>
-<img alt="_images/e6cf0a4732a43e3eda4f83547aca8fecf63bfd5360eec9793c0e9d1e3d2a7519.png" src="_images/e6cf0a4732a43e3eda4f83547aca8fecf63bfd5360eec9793c0e9d1e3d2a7519.png" />
+<img alt="_images/6640f8a9e599bd7633c26e2b59959fc161f2bb9ae3aaf3a638753e01f754c1cd.png" src="_images/6640f8a9e599bd7633c26e2b59959fc161f2bb9ae3aaf3a638753e01f754c1cd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -990,6 +1058,15 @@ anterior ) es la respuesta final del algoritmo.</p>
         <p class="prev-next-title"><span class="section-number">15. </span>Análisis de Componentes Principales</p>
       </div>
     </a>
+    <a class="right-next"
+       href="ReglasAso.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Minería de Reglas de asociación (<em>Association Rule Mining</em>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1006,10 +1083,14 @@ anterior ) es la respuesta final del algoritmo.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">16.1. K-means</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.1. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">16.1.1. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.2. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aglomerativo">16.2. Aglomerativo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-jerarquico-aglomerativo">16.2. Clustering Jerárquico: Aglomerativo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-para-fusionar-grupos">16.2.1. Funciones para fusionar grupos</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">16.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">16.3.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
