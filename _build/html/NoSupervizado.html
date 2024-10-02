@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'NoSupervizado';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="17. Minería de Reglas de asociación (Association Rule Mining)" href="ReglasAso.html" />
+    <link rel="next" title="17. Minería de Reglas de asociación" href="ReglasAso.html" />
     <link rel="prev" title="15. Análisis de Componentes Principales" href="ACP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,7 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación (<em>Association Rule Mining</em>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación</a></li>
 </ul>
 
     </div>
@@ -410,7 +410,12 @@ document.write(`
 <div><p>El objetivo es minimizar las diferencias dentro de cada grupo y maximizar las diferencias entre los clústeres.</p>
 </div></blockquote>
 <p>La agrupación en clústeres consiste en dividir un conjunto de datos finito sin etiquetar en subconuntos de datos diferenciados que emergen de estreucturas subyacentes en los datos.</p>
-<p>Sea $<span class="math notranslate nohighlight">\(\mathbf{X}= \{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_i,\ldots,\mathbf{x}_N\}\)</span><span class="math notranslate nohighlight">\( un conjunto de objetos de entrada donde \)</span>\mathbf{x}<em>i = \left(x</em>{i1},x_{i2},\ldots,x_{ij},\ldots,x_{id}\right) \in \mathbb{R}^d<span class="math notranslate nohighlight">\(, y  \)</span>x_{ij}<span class="math notranslate nohighlight">\(  es una característica (atributo, dimensión o variable). Una partición \)</span>K<span class="math notranslate nohighlight">\( de \)</span>\mathbf{X}<span class="math notranslate nohighlight">\(, \)</span>C = {C_1,\ldots,C_K}<span class="math notranslate nohighlight">\( (\)</span>K\leq N$) es una partición dura si:</p>
+<p>Sea</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X}= \{\mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_i,\ldots,\mathbf{x}_N\}
+\]</div>
+<p>un conjunto de objetos de entrada donde <span class="math notranslate nohighlight">\(\mathbf{x}_i = \left(x_{i1},x_{i2},\ldots,x_{ij},\ldots,x_{id}\right) \in \mathbb{R}^d\)</span>, y  <span class="math notranslate nohighlight">\(x_{ij}\)</span>  es una característica (atributo, dimensión o variable). Una partición <span class="math notranslate nohighlight">\(K\)</span> de <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, <span class="math notranslate nohighlight">\(C = \{C_1,\ldots,C_K\}\)</span> (<span class="math notranslate nohighlight">\(K\leq N\)</span>) es una partición dura si:</p>
 <ul class="simple">
 <li><p>Cada clúster debe tener al menos un elemento: <span class="math notranslate nohighlight">\(C_i\neq \emptyset\)</span>, <span class="math notranslate nohighlight">\(i=1,\ldots,K\)</span>.</p></li>
 <li><p>La unión de todos los clústers es el conjunto de entrada <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>: <span class="math notranslate nohighlight">\(\bigcup_{i=1}^KC_i=\mathbf{X}\)</span>.</p></li>
@@ -447,7 +452,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9a7c54e985b3a49ac1806be7e0a48bc1ce0a06446319f38756ce4cbf01c3c2fe.png" src="_images/9a7c54e985b3a49ac1806be7e0a48bc1ce0a06446319f38756ce4cbf01c3c2fe.png" />
+<img alt="_images/f0c5c971d5866fed8a69525a6b607945cfb16bf6fdafe9e8c6e6a51f9490b938.png" src="_images/f0c5c971d5866fed8a69525a6b607945cfb16bf6fdafe9e8c6e6a51f9490b938.png" />
 </div>
 </div>
 <p><strong>Algoritmo</strong></p>
@@ -996,7 +1001,7 @@ anterior ) es la respuesta final del algoritmo.</p>
   super()._check_params_vs_input(X, default_n_init=10)
 </pre></div>
 </div>
-<img alt="_images/6640f8a9e599bd7633c26e2b59959fc161f2bb9ae3aaf3a638753e01f754c1cd.png" src="_images/6640f8a9e599bd7633c26e2b59959fc161f2bb9ae3aaf3a638753e01f754c1cd.png" />
+<img alt="_images/e6cf0a4732a43e3eda4f83547aca8fecf63bfd5360eec9793c0e9d1e3d2a7519.png" src="_images/e6cf0a4732a43e3eda4f83547aca8fecf63bfd5360eec9793c0e9d1e3d2a7519.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1063,7 +1068,7 @@ anterior ) es la respuesta final del algoritmo.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">17. </span>Minería de Reglas de asociación (<em>Association Rule Mining</em>)</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Minería de Reglas de asociación</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
