@@ -493,6 +493,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="c1"># Productos simulados</span>
 <span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;bread&#39;</span><span class="p">,</span> <span class="s1">&#39;butter&#39;</span><span class="p">,</span> <span class="s1">&#39;apples&#39;</span><span class="p">,</span> <span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;yogurt&#39;</span><span class="p">]</span>
 
@@ -506,24 +507,97 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">n_transactions</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">groceries_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_transactions</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">products</span><span class="p">))),</span> <span class="n">columns</span><span class="o">=</span><span class="n">products</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">groceries_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>milk</th>
+      <th>bread</th>
+      <th>butter</th>
+      <th>apples</th>
+      <th>bananas</th>
+      <th>eggs</th>
+      <th>cheese</th>
+      <th>yogurt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>   <span class="c1"># Para manipulación de datos (equivalente a tidyverse)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    <span class="c1"># Para cálculos numéricos</span>
-<span class="kn">from</span> <span class="nn">mlxtend.frequent_patterns</span> <span class="kn">import</span> <span class="n">apriori</span><span class="p">,</span> <span class="n">association_rules</span>  <span class="c1"># Para minería de reglas de asociación</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlxtend.frequent_patterns</span> <span class="kn">import</span> <span class="n">apriori</span><span class="p">,</span> <span class="n">association_rules</span>  <span class="c1"># Para minería de reglas de asociación</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Para gráficos (equivalente a ggplot2)</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>  <span class="c1"># Para visualización de datos</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>  <span class="c1"># Equivalente a lubridate</span>
@@ -580,8 +654,8 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>(milk, butter, apples, yogurt, eggs, bread, ch...</td>
+      <th>2</th>
+      <td>(apples, milk, butter, eggs, bread, cheese, yo...</td>
       <td>(bananas)</td>
       <td>0.009</td>
       <td>0.510</td>
@@ -594,7 +668,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
     </tr>
     <tr>
       <th>0</th>
-      <td>(butter, apples, yogurt, eggs, cheese, bananas)</td>
+      <td>(apples, bananas, butter, eggs, cheese, yogurt)</td>
       <td>(bread)</td>
       <td>0.017</td>
       <td>0.501</td>
@@ -606,8 +680,8 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
       <td>0.398416</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>(milk, butter, apples, yogurt, bread, cheese, ...</td>
+      <th>1</th>
+      <td>(apples, bananas, milk, butter, bread, cheese,...</td>
       <td>(eggs)</td>
       <td>0.010</td>
       <td>0.494</td>
