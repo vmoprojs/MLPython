@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>17. Minería de Reglas de asociación (Association Rule Mining) &#8212; Técnicas de Machine Learning con Python</title>
+    <title>17. Minería de Reglas de asociación &#8212; Técnicas de Machine Learning con Python</title>
   
   
   
@@ -184,7 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Minería de Reglas de asociación (<em>Association Rule Mining</em>)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Minería de Reglas de asociación</a></li>
 </ul>
 
     </div>
@@ -368,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Minería de Reglas de asociación (Association Rule Mining)</h1>
+    <h1>Minería de Reglas de asociación</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,8 +393,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mineria-de-reglas-de-asociacion-association-rule-mining">
-<h1><span class="section-number">17. </span>Minería de Reglas de asociación (<em>Association Rule Mining</em>)<a class="headerlink" href="#mineria-de-reglas-de-asociacion-association-rule-mining" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mineria-de-reglas-de-asociacion">
+<h1><span class="section-number">17. </span>Minería de Reglas de asociación<a class="headerlink" href="#mineria-de-reglas-de-asociacion" title="Permalink to this heading">#</a></h1>
+<p>(<em>Association Rule Mining</em>)</p>
 <p>La minería de reglas de asociación se usa cuando desea encontrar una asociación entre diferentes objetos en un conjunto, buscar patrones frecuentes en una base de datos de transacciones, bases de datos relacionales o cualquier otro repositorio de información.</p>
 <p>Las aplicaciones de <em>ARM</em> se encuentran en Marketing, Análisis de datos de cesta (o Análisis de cesta de mercado) en venta minorista, agrupación y clasificación. Puede decirle qué artículos compran juntos con frecuencia los clientes al generar un conjunto de reglas llamadas <strong>Reglas de asociación</strong>. En palabras simples, le da salida como reglas en forma <em>si esto, entonces eso</em>. Los clientes pueden usar esas reglas para numerosas estrategias de marketing:</p>
 <ul class="simple">
@@ -655,7 +656,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
   <tbody>
     <tr>
       <th>2</th>
-      <td>(apples, milk, butter, eggs, bread, cheese, yo...</td>
+      <td>(milk, bread, yogurt, cheese, eggs, apples, bu...</td>
       <td>(bananas)</td>
       <td>0.009</td>
       <td>0.510</td>
@@ -668,7 +669,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
     </tr>
     <tr>
       <th>0</th>
-      <td>(apples, bananas, butter, eggs, cheese, yogurt)</td>
+      <td>(bananas, yogurt, cheese, eggs, apples, butter)</td>
       <td>(bread)</td>
       <td>0.017</td>
       <td>0.501</td>
@@ -681,7 +682,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
     </tr>
     <tr>
       <th>1</th>
-      <td>(apples, bananas, milk, butter, bread, cheese,...</td>
+      <td>(milk, bananas, bread, yogurt, cheese, apples,...</td>
       <td>(eggs)</td>
       <td>0.010</td>
       <td>0.494</td>
