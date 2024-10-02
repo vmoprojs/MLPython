@@ -2,7 +2,7 @@
 
 # Notas de clase
 
-**Actualización**: septiembre 2024
+**Actualización**: octubre 2024
 
 Este documento está en construcción. Tiene por objetivo recoger material necesario para impartir un curso aplicado de técnicas de Machine Learning. Esta primera versión realiza una revisión detallada de aprendizaje supervizado, no supervizado e incluye una introducción al procesamiento de lenguaje natural (NLP).
 
