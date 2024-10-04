@@ -4,7 +4,7 @@
 
 **Actualización**: octubre 2024
 
-Este documento está en construcción. Tiene por objetivo recoger material necesario para impartir un curso aplicado de técnicas de Machine Learning. Esta primera versión realiza una revisión detallada de aprendizaje supervizado, no supervizado e incluye una introducción al procesamiento de lenguaje natural (NLP).
+Este documento está en construcción. Tiene por objetivo recoger material necesario para impartir un curso aplicado de técnicas de Machine Learning. Esta primera versión realiza una revisión detallada de aprendizaje supervizado y no supervizado.
 
 En la medida de lo posible el documento trabaja con datos de Ecuador. Además, el software utilizado para su desarrollo es `Python`.
 
@@ -21,6 +21,12 @@ En la medida de lo posible el documento trabaja con datos de Ecuador. Además, e
 -   [Econometría Espacial](https://bookdown.org/victor_morales/SpatialEconometrics/)
 
 -   [Métodos de evaluación de impacto](https://bookdown.org/victor_morales/ImpactEvaluation/)
+
+## Contacto
+
+LinkedIn: https://www.linkedin.com/in/vmoralesonate/
+Correo: victor.morales@uv.cl
+
 
 ```{tableofcontents}
 ```
