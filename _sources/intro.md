@@ -24,8 +24,8 @@ En la medida de lo posible el documento trabaja con datos de Ecuador. Además, e
 
 ## Contacto
 
-LinkedIn: https://www.linkedin.com/in/vmoralesonate/
-Correo: victor.morales@uv.cl
+-	LinkedIn: (https://www.linkedin.com/in/vmoralesonate/)
+-	Correo: victor.morales@uv.cl
 
 
 ```{tableofcontents}
