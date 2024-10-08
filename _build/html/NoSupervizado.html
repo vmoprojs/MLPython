@@ -444,7 +444,7 @@ document.write(`
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
@@ -452,7 +452,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e45a09a7433c04a9e3f4b21928fb97abd4aa24d3afa97e4424f5ad99c2c864c9.png" src="_images/e45a09a7433c04a9e3f4b21928fb97abd4aa24d3afa97e4424f5ad99c2c864c9.png" />
+<img alt="_images/2c530138aa843618d5fa258d1187c7d2b67b8924ff768d40c89e2075c8573ed2.png" src="_images/2c530138aa843618d5fa258d1187c7d2b67b8924ff768d40c89e2075c8573ed2.png" />
 </div>
 </div>
 <p><strong>Algoritmo</strong></p>
@@ -493,7 +493,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 
 <span class="n">X_fruits_normalized</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span>  
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
 
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> 
@@ -502,7 +502,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9cca5bcc097dcbb69694daf30adeaca927add92cdf7d0907eef6b6cb1a26a5b9.png" src="_images/9cca5bcc097dcbb69694daf30adeaca927add92cdf7d0907eef6b6cb1a26a5b9.png" />
+<img alt="_images/1eac6072404824f9b7f6a93e761a81be44d3d0e971938887a419edc4a6cc59a3.png" src="_images/1eac6072404824f9b7f6a93e761a81be44d3d0e971938887a419edc4a6cc59a3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1001,7 +1001,7 @@ anterior ) es la respuesta final del algoritmo.</p>
   super()._check_params_vs_input(X, default_n_init=10)
 </pre></div>
 </div>
-<img alt="_images/e265a652ce9e20e6077951f868e6f9e1a9a726d39510aa3a8f48cb0e486f68ad.png" src="_images/e265a652ce9e20e6077951f868e6f9e1a9a726d39510aa3a8f48cb0e486f68ad.png" />
+<img alt="_images/7e09806a6e4f1aab818f5f4429f045fbedb920f58e995a8ce44ef82cf091738f.png" src="_images/7e09806a6e4f1aab818f5f4429f045fbedb920f58e995a8ce44ef82cf091738f.png" />
 </div>
 </div>
 <div class="cell docutils container">
