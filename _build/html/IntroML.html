@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">7. Aprendizaje Supervisado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Regresion.html">8. Regresión lineal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ProbModels.html">9. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">10. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StepRegularization.html">10. Selección y regularización de modelos lineales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Arboles.html">11. Árboles de decisión</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM.html">12. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">13. Redes Neuronales</a></li>
@@ -183,7 +183,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">15. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación</a></li>
 </ul>
 
     </div>
@@ -693,7 +695,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/404f6233cd161476c9c6a1a66ed0bceeae46e44da687b09b777da4c748d80925.png" src="_images/404f6233cd161476c9c6a1a66ed0bceeae46e44da687b09b777da4c748d80925.png" />
+<img alt="_images/b5840064d78e15d319c253830390da99f6e95196f1cdf6c8bdebace7781ae5fd.png" src="_images/b5840064d78e15d319c253830390da99f6e95196f1cdf6c8bdebace7781ae5fd.png" />
 </div>
 </div>
 </section>
@@ -748,8 +750,8 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00166488, 0.00209403, 0.00158906, 0.00154686, 0.00168276]),
- &#39;score_time&#39;: array([0.00177526, 0.00177097, 0.00165796, 0.00165105, 0.00166416]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00149107, 0.00173116, 0.00155115, 0.00156879, 0.00153089]),
+ &#39;score_time&#39;: array([0.00168085, 0.00169611, 0.00161576, 0.00161099, 0.00161099]),
  &#39;test_r2&#39;: array([-0.84695129,  0.28360126, -0.90154176,  0.6867929 , -5.11490281]),
  &#39;test_neg_mean_absolute_error&#39;: array([-7.59750607, -7.74954156, -9.29418544, -4.25742205, -3.78002062])}
 </pre></div>

@@ -183,6 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación</a></li>
 </ul>
 
     </div>
@@ -655,7 +656,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:464: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/base.py:465: UserWarning: X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
   warnings.warn(
 </pre></div>
 </div>
@@ -730,7 +731,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06493e470e5a02d509ec8378866f2491d246d1493da70b546db2417df35f6352.png" src="_images/06493e470e5a02d509ec8378866f2491d246d1493da70b546db2417df35f6352.png" />
+<img alt="_images/b082deb30cb264ae6d70510851997c5cf08fd82610c8097f7d2d2e09b01e4903.png" src="_images/b082deb30cb264ae6d70510851997c5cf08fd82610c8097f7d2d2e09b01e4903.png" />
 </div>
 </div>
 </section>
@@ -829,7 +830,9 @@ R-squared score (test): 0.492
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Crime dataset
-linear model intercept: -1728.1306725953114
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>linear model intercept: -1728.1306725986642
 linear model coeff:
 [ 1.61892346e-03 -9.43009110e+01  1.36067510e+01 -3.13380670e+01
  -8.15482723e-02 -1.69455128e+01 -2.42730375e-03  1.53013232e+00
@@ -848,7 +851,7 @@ linear model coeff:
  -3.28575414e+02 -3.14364068e+01  2.74053494e+01  5.12336432e+00
   6.91580764e+01  1.98267157e-02 -6.12133638e-01  2.65335065e+01
   1.00704633e+01 -1.58621594e+00  2.24025322e+00  7.38288450e+00
- -3.13915504e+01 -9.78026040e-05  5.01970944e-05 -3.48042555e-04
+ -3.13915504e+01 -9.78026040e-05  5.01970945e-05 -3.48042555e-04
  -2.50242794e-04 -5.26610456e-01 -5.16564774e-01 -4.10464090e-01
   1.16146366e-01  1.46167357e+00 -3.04019816e-01  2.43792841e+00
  -3.65615457e+01  1.41488917e-01  2.88800603e-01  1.77464865e+01
@@ -1146,8 +1149,9 @@ Features kept: 20, r-squared training: 0.63, r-squared test: 0.62
 
 Alpha = 3.00
 Features kept: 17, r-squared training: 0.62, r-squared test: 0.63
-
-Alpha = 5.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alpha = 5.00
 Features kept: 12, r-squared training: 0.60, r-squared test: 0.61
 
 Alpha = 10.00
@@ -1224,7 +1228,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/527e4c782cf6560e243052b8972b359affc3e9bede32bb80c4bf4225c6df0bd5.svg" src="_images/527e4c782cf6560e243052b8972b359affc3e9bede32bb80c4bf4225c6df0bd5.svg" /></div>
+<img alt="_images/3aaebb203bd1e6327574d09e9a6d55f756e095b301b09545e99bf2d57ddc6ef9.svg" src="_images/3aaebb203bd1e6327574d09e9a6d55f756e095b301b09545e99bf2d57ddc6ef9.svg" /></div>
 </div>
 </section>
 <section id="version-pre-pruned-max-depth-3">
@@ -1236,7 +1240,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6888b741f33b0821104a05d2afdf1629a3e80f2df861938ec0843f6a81b07082.svg" src="_images/6888b741f33b0821104a05d2afdf1629a3e80f2df861938ec0843f6a81b07082.svg" /></div>
+<img alt="_images/ccbf93c411d9c14cd314e907071cebbe2c39fb19ec10dfcf5564d5ddd44d27d9.svg" src="_images/ccbf93c411d9c14cd314e907071cebbe2c39fb19ec10dfcf5564d5ddd44d27d9.svg" /></div>
 </div>
 <section id="feature-importance">
 <h4><span class="section-number">7.3.3.1. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h4>
@@ -1253,8 +1257,8 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e5af7b02f521a61a42177503b3fc3a6d191827ddf49268d3286c7e7296b9acbf.png" src="_images/e5af7b02f521a61a42177503b3fc3a6d191827ddf49268d3286c7e7296b9acbf.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature importances: [0.00670338 0.03128242 0.54643762 0.41557658]
+<img alt="_images/ded1d9b2aae48511591245dc05ba9a327d80d659503c4138282776e37b341e5b.png" src="_images/ded1d9b2aae48511591245dc05ba9a327d80d659503c4138282776e37b341e5b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature importances: [0.00670338 0.01787567 0.55984437 0.41557658]
 </pre></div>
 </div>
 </div>
@@ -1289,7 +1293,7 @@ Accuracy of Decision Tree classifier on test set: 0.97
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/942ef308ab2ec140fba80fa9ae620607a3a6d8d2ee0464ea3e8b03fb78b14a5a.png" src="_images/942ef308ab2ec140fba80fa9ae620607a3a6d8d2ee0464ea3e8b03fb78b14a5a.png" />
+<img alt="_images/2949776b20b603e70e4f7e595235bcbf8177f2408512ce8e614b340af26c2c3a.png" src="_images/2949776b20b603e70e4f7e595235bcbf8177f2408512ce8e614b340af26c2c3a.png" />
 </div>
 </div>
 </section>

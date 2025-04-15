@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">7. Aprendizaje Supervisado</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Regresión lineal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ProbModels.html">9. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">10. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StepRegularization.html">10. Selección y regularización de modelos lineales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Arboles.html">11. Árboles de decisión</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM.html">12. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">13. Redes Neuronales</a></li>
@@ -183,7 +183,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">15. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación</a></li>
 </ul>
 
     </div>
@@ -602,8 +604,8 @@ document.write(`
 Dep. Variable:        consumo_muestra   R-squared:                       0.909
 Model:                            OLS   Adj. R-squared:                  0.904
 Method:                 Least Squares   F-statistic:                     179.4
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           8.44e-11
-Time:                        05:48:38   Log-Likelihood:                -76.677
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           8.44e-11
+Time:                        22:20:30   Log-Likelihood:                -76.677
 No. Observations:                  20   AIC:                             157.4
 Df Residuals:                      18   BIC:                             159.3
 Df Model:                           1                                         
@@ -799,8 +801,8 @@ S_{xy} = \sum_{i=1}^{n}x_i y_i-n\bar{x}\bar{y}
 Dep. Variable:                      Y   R-squared:                       0.962
 Model:                            OLS   Adj. R-squared:                  0.957
 Method:                 Least Squares   F-statistic:                     202.9
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           5.75e-07
-Time:                        05:48:39   Log-Likelihood:                -31.781
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           5.75e-07
+Time:                        22:20:30   Log-Likelihood:                -31.781
 No. Observations:                  10   AIC:                             67.56
 Df Residuals:                       8   BIC:                             68.17
 Df Model:                           1                                         
@@ -821,8 +823,8 @@ Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/_stats_py.py:1971: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
-  k, _ = kurtosistest(a, axis)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/_stats_py.py:1806: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
+  warnings.warn(&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;
 </pre></div>
 </div>
 </div>
@@ -1071,8 +1073,8 @@ Notes:
 Dep. Variable:                      Y   R-squared:                       0.962
 Model:                            OLS   Adj. R-squared:                  0.957
 Method:                 Least Squares   F-statistic:                     202.9
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           5.75e-07
-Time:                        05:48:39   Log-Likelihood:                -31.781
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           5.75e-07
+Time:                        22:20:30   Log-Likelihood:                -31.781
 No. Observations:                  10   AIC:                             67.56
 Df Residuals:                       8   BIC:                             68.17
 Df Model:                           1                                         
@@ -1093,8 +1095,8 @@ Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/_stats_py.py:1971: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
-  k, _ = kurtosistest(a, axis)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/_stats_py.py:1806: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
+  warnings.warn(&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;
 </pre></div>
 </div>
 </div>
@@ -1126,8 +1128,8 @@ H_1:\beta_2\neq 0
 Dep. Variable:                FOODEXP   R-squared:                       0.370
 Model:                            OLS   Adj. R-squared:                  0.358
 Method:                 Least Squares   F-statistic:                     31.10
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           8.45e-07
-Time:                        05:48:39   Log-Likelihood:                -308.16
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           8.45e-07
+Time:                        22:20:31   Log-Likelihood:                -308.16
 No. Observations:                  55   AIC:                             620.3
 Df Residuals:                      53   BIC:                             624.3
 Df Model:                           1                                         
@@ -1380,8 +1382,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                   EXCH   R-squared:                       0.987
 Model:                            OLS   Adj. R-squared:                  0.986
 Method:                 Least Squares   F-statistic:                     2066.
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           8.80e-28
-Time:                        05:48:40   Log-Likelihood:                -205.44
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           8.80e-28
+Time:                        22:20:31   Log-Likelihood:                -205.44
 No. Observations:                  30   AIC:                             414.9
 Df Residuals:                      28   BIC:                             417.7
 Df Model:                           1                                         
@@ -1414,7 +1416,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd9475f23a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fde3c74ebe0&gt;]
 </pre></div>
 </div>
 <img alt="_images/bccb888f3e6d40905ca54189bfb09cd065856f82b55125fdb62956b3bb83f7f5.png" src="_images/bccb888f3e6d40905ca54189bfb09cd065856f82b55125fdb62956b3bb83f7f5.png" />
@@ -1433,8 +1435,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:           np.log(EXCH)   R-squared:                       0.983
 Model:                            OLS   Adj. R-squared:                  0.983
 Method:                 Least Squares   F-statistic:                     1655.
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           1.87e-26
-Time:                        05:48:40   Log-Likelihood:                -7.4056
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           1.87e-26
+Time:                        22:20:31   Log-Likelihood:                -7.4056
 No. Observations:                  30   AIC:                             18.81
 Df Residuals:                      28   BIC:                             21.61
 Df Model:                           1                                         
@@ -1482,7 +1484,7 @@ Notes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd947081f70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fde3c7cf250&gt;
 </pre></div>
 </div>
 <img alt="_images/e68f4a99e3e3df2634c4d480bd056d670715502d90d2a318bcf4967250e72529.png" src="_images/e68f4a99e3e3df2634c4d480bd056d670715502d90d2a318bcf4967250e72529.png" />
@@ -1501,8 +1503,8 @@ Notes:
 Dep. Variable:                  sleep   R-squared:                       0.103
 Model:                            OLS   Adj. R-squared:                  0.102
 Method:                 Least Squares   F-statistic:                     81.09
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           1.99e-18
-Time:                        05:48:40   Log-Likelihood:                -5267.1
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           1.99e-18
+Time:                        22:20:32   Log-Likelihood:                -5267.1
 No. Observations:                 706   AIC:                         1.054e+04
 Df Residuals:                     704   BIC:                         1.055e+04
 Df Model:                           1                                         
@@ -1591,8 +1593,8 @@ dtype: float64
 Dep. Variable:              Cellphone   R-squared:                       0.626
 Model:                            OLS   Adj. R-squared:                  0.615
 Method:                 Least Squares   F-statistic:                     53.67
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           2.50e-08
-Time:                        05:48:41   Log-Likelihood:                -148.94
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           2.50e-08
+Time:                        22:20:32   Log-Likelihood:                -148.94
 No. Observations:                  34   AIC:                             301.9
 Df Residuals:                      32   BIC:                             304.9
 Df Model:                           1                                         
@@ -1759,8 +1761,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                     CM   R-squared:                       0.166
 Model:                            OLS   Adj. R-squared:                  0.153
 Method:                 Least Squares   F-statistic:                     12.36
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           0.000826
-Time:                        05:48:42   Log-Likelihood:                -361.64
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           0.000826
+Time:                        22:20:33   Log-Likelihood:                -361.64
 No. Observations:                  64   AIC:                             727.3
 Df Residuals:                      62   BIC:                             731.6
 Df Model:                           1                                         
@@ -1800,8 +1802,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                     CM   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.450
 Method:                 Least Squares   F-statistic:                     52.61
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           7.82e-10
-Time:                        05:48:42   Log-Likelihood:                -347.79
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           7.82e-10
+Time:                        22:20:33   Log-Likelihood:                -347.79
 No. Observations:                  64   AIC:                             699.6
 Df Residuals:                      62   BIC:                             703.9
 Df Model:                           1                                         
@@ -1847,8 +1849,8 @@ Notes:
 Dep. Variable:                lsalary   R-squared:                       0.013
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     2.334
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):              0.128
-Time:                        05:48:42   Log-Likelihood:                -160.84
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):              0.128
+Time:                        22:20:33   Log-Likelihood:                -160.84
 No. Observations:                 177   AIC:                             325.7
 Df Residuals:                     175   BIC:                             332.0
 Df Model:                           1                                         
@@ -1892,8 +1894,8 @@ Notes:
 Dep. Variable:                      Y   R-squared (uncentered):                   0.502
 Model:                            OLS   Adj. R-squared (uncentered):              0.500
 Method:                 Least Squares   F-statistic:                              241.2
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):                    4.41e-38
-Time:                        05:48:42   Log-Likelihood:                         -751.30
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):                    4.41e-38
+Time:                        22:20:33   Log-Likelihood:                         -751.30
 No. Observations:                 240   AIC:                                      1505.
 Df Residuals:                     239   BIC:                                      1508.
 Df Model:                           1                                                  
@@ -2087,8 +2089,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.773
 Model:                            OLS   Adj. R-squared:                  0.762
 Method:                 Least Squares   F-statistic:                     70.58
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           6.45e-26
-Time:                        05:48:43   Log-Likelihood:                 45.750
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           6.45e-26
+Time:                        22:20:34   Log-Likelihood:                 45.750
 No. Observations:                  88   AIC:                            -81.50
 Df Residuals:                      83   BIC:                            -69.11
 Df Model:                           4                                         
@@ -2127,8 +2129,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.643
 Model:                            OLS   Adj. R-squared:                  0.630
 Method:                 Least Squares   F-statistic:                     50.42
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           9.74e-19
-Time:                        05:48:43   Log-Likelihood:                 25.861
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           9.74e-19
+Time:                        22:20:34   Log-Likelihood:                 25.861
 No. Observations:                  88   AIC:                            -43.72
 Df Residuals:                      84   BIC:                            -33.81
 Df Model:                           3                                         
@@ -2166,8 +2168,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.215
 Model:                            OLS   Adj. R-squared:                  0.206
 Method:                 Least Squares   F-statistic:                     23.53
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           5.43e-06
-Time:                        05:48:43   Log-Likelihood:                -8.8147
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           5.43e-06
+Time:                        22:20:34   Log-Likelihood:                -8.8147
 No. Observations:                  88   AIC:                             21.63
 Df Residuals:                      86   BIC:                             26.58
 Df Model:                           1                                         
@@ -2199,7 +2201,7 @@ Notes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd946b1f730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fde33d3a400&gt;
 </pre></div>
 </div>
 <img alt="_images/7ede5562bae758d526894b1ea5260f992c4bddee5fe5c8a6f0fe6307150bd021.png" src="_images/7ede5562bae758d526894b1ea5260f992c4bddee5fe5c8a6f0fe6307150bd021.png" />
@@ -2361,8 +2363,8 @@ Notes:
 Dep. Variable:                 colGPA   R-squared:                       0.050
 Model:                            OLS   Adj. R-squared:                  0.043
 Method:                 Least Squares   F-statistic:                     7.314
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):            0.00770
-Time:                        05:48:47   Log-Likelihood:                -56.641
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):            0.00770
+Time:                        22:20:38   Log-Likelihood:                -56.641
 No. Observations:                 141   AIC:                             117.3
 Df Residuals:                     139   BIC:                             123.2
 Df Model:                           1                                         
@@ -2398,8 +2400,8 @@ Notes:
 Dep. Variable:                 colGPA   R-squared:                       0.219
 Model:                            OLS   Adj. R-squared:                  0.202
 Method:                 Least Squares   F-statistic:                     12.83
-Date:                Wed, 18 Sep 2024   Prob (F-statistic):           1.93e-07
-Time:                        05:48:47   Log-Likelihood:                -42.796
+Date:                Mon, 14 Apr 2025   Prob (F-statistic):           1.93e-07
+Time:                        22:20:38   Log-Likelihood:                -42.796
 No. Observations:                 141   AIC:                             93.59
 Df Residuals:                     137   BIC:                             105.4
 Df Model:                           3                                         

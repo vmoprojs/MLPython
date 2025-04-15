@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AprendizajeSupervisado.html">7. Aprendizaje Supervisado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Regresion.html">8. Regresión lineal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ProbModels.html">9. Modelos de Probabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ACP.html">10. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StepRegularization.html">10. Selección y regularización de modelos lineales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Arboles.html">11. Árboles de decisión</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedesNeuronales.html">13. Redes Neuronales</a></li>
@@ -181,7 +181,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aprendizaje no Supervisado</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">15. Aprendizaje no supervizado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ACP.html">15. Análisis de Componentes Principales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NoSupervizado.html">16. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ReglasAso.html">17. Minería de Reglas de asociación</a></li>
 </ul>
 
     </div>
@@ -474,11 +476,11 @@ document.write(`
   warnings.warn(
 /Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `&#39;auto&#39;` in 1.5. Set the value of `dual` explicitly to suppress the warning.
   warnings.warn(
-/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:1242: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
   warnings.warn(
 </pre></div>
 </div>
-<img alt="_images/8d13ffa6d14a2146fd2717c9ed1d2d2fe1efe498b7aa22a5a8ffdc6e2ee36f82.png" src="_images/8d13ffa6d14a2146fd2717c9ed1d2d2fe1efe498b7aa22a5a8ffdc6e2ee36f82.png" />
+<img alt="_images/988894cbc8f5418537bd6e878d74350f2bbe5894d3d35965b3dac226ac4de2c7.png" src="_images/988894cbc8f5418537bd6e878d74350f2bbe5894d3d35965b3dac226ac4de2c7.png" />
 </div>
 </div>
 </section>
@@ -506,13 +508,13 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datos de cáncer de mama
-Precisión de SVM lineal en el conjunto de entrenamiento: 0.84
-Precisión de SVM lineal en el conjunto de prueba: 0.82
+Precisión de SVM lineal en el conjunto de entrenamiento: 0.65
+Precisión de SVM lineal en el conjunto de prueba: 0.69
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_classes.py:32: FutureWarning: The default value of `dual` will change from `True` to `&#39;auto&#39;` in 1.5. Set the value of `dual` explicitly to suppress the warning.
   warnings.warn(
-/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:1242: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/svm/_base.py:1250: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
   warnings.warn(
 </pre></div>
 </div>
