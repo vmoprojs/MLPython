@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>16. Clustering &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'NoSupervizado';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +233,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -339,26 +362,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -401,10 +426,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clustering">
-<h1><span class="section-number">16. </span>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">16. </span>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h1>
 <p>Un clúster es una agrupación de objetos que comparten similitudes, y los objetos que pertenecen a diferentes clústeres presentan diferencias. Encontrar grupos en los datos es el objetivo principal de la agrupación en clústeres.</p>
 <blockquote>
 <div><p>El objetivo es minimizar las diferencias dentro de cada grupo y maximizar las diferencias entre los clústeres.</p>
@@ -422,12 +447,12 @@ document.write(`
 <li><p>Si un objeto pertenece a un cluster, no puede pertenecer a otro cluster: <span class="math notranslate nohighlight">\(C_i\cap C_j = \emptyset\)</span>, <span class="math notranslate nohighlight">\(i,j=1,\ldots,K\)</span> and <span class="math notranslate nohighlight">\(i\neq j\)</span>.</p></li>
 </ul>
 <section id="k-means">
-<h2><span class="section-number">16.1. </span>K-means<a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.1. </span>K-means<a class="headerlink" href="#k-means" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>El algoritmo k-means es quizás el método de agrupación más utilizado. Después de haber sido estudiado durante varias décadas, sirve como base para muchas técnicas de agrupación más sofisticadas.</p>
 </div></blockquote>
 <section id="ejemplo">
-<h3><span class="section-number">16.1.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">16.1.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
 <p>Veamos un ejemplo de k-means mediante la generación de clústers aleatorios (<code class="docutils literal notranslate"><span class="pre">make_blobs</span></code>) y <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.</p>
 <p><strong>Preámbulo y datos</strong></p>
 <div class="cell docutils container">
@@ -452,7 +477,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" src="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Consultorias</span><span class="o">&amp;</span><span class="n">Cursos</span><span class="o">/</span><span class="n">CURSOS</span><span class="o">/</span><span class="n">Cooking</span><span class="o">/</span><span class="n">MLPython</span><span class="o">/</span><span class="n">pyML</span><span class="o">/</span><span class="n">shared_utilities</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">neighbors</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_graphviz</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;graphviz&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <p><strong>Algoritmo</strong></p>
@@ -476,7 +519,7 @@ document.write(`
 anterior ) es la respuesta final del algoritmo.</p>
 </section>
 <section id="ejemplo-clasificacion-de-frutas">
-<h3><span class="section-number">16.1.2. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">16.1.2. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Link to this heading">#</a></h3>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -501,9 +544,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/1eac6072404824f9b7f6a93e761a81be44d3d0e971938887a419edc4a6cc59a3.png" src="_images/1eac6072404824f9b7f6a93e761a81be44d3d0e971938887a419edc4a6cc59a3.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -517,14 +557,11 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/b512385e1c3f377c3d9fff4c4b6b2201a135bae64fad050687f082986b3cbbd7.png" src="_images/b512385e1c3f377c3d9fff4c4b6b2201a135bae64fad050687f082986b3cbbd7.png" />
-</div>
 </div>
 </section>
 </section>
 <section id="clustering-jerarquico-aglomerativo">
-<h2><span class="section-number">16.2. </span>Clustering Jerárquico: Aglomerativo<a class="headerlink" href="#clustering-jerarquico-aglomerativo" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.2. </span>Clustering Jerárquico: Aglomerativo<a class="headerlink" href="#clustering-jerarquico-aglomerativo" title="Link to this heading">#</a></h2>
 <p>Una desventaja potencial del agrupamiento K-medias es que requiere que <strong>especifiquemos previamente</strong> el número de agrupamientos K.</p>
 <p>El agrupamiento jerárquico es un enfoque alternativo que <strong>no requiere</strong> que nos comprometamos con una elección particular de K.</p>
 <p>El agrupamiento jerárquico tiene una ventaja adicional sobre el agrupamiento K-medias, ya que da como resultado una atractiva representación basada en árboles de las observaciones, llamada <strong>dendrograma</strong>.</p>
@@ -566,9 +603,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" src="_images/a985ac4c7a7928368232808217f8bd30055fb44f67fa26f7ba17e55c2f8e29ab.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,21 +610,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
         <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/a01ad60831aaa2e7909a1fa73eda4569764b7cf9a18bd5ffc81ee1c05b5ad530.png" src="_images/a01ad60831aaa2e7909a1fa73eda4569764b7cf9a18bd5ffc81ee1c05b5ad530.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  5.69192445  -9.47641249]
- [  1.70789903   6.00435173]
- [  0.23621041  -3.11909976]
- [  2.90159483   5.42121526]
- [  5.85943906  -8.38192364]
- [  6.04774884 -10.30504657]
- [ -2.00758803  -7.24743939]
- [  1.45467725  -6.58387198]
- [  1.53636249   5.11121453]
- [  5.4307043   -9.75956122]]
 </pre></div>
 </div>
 </div>
@@ -605,9 +624,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/b93f2f1218bcf6985338c3b9c8f830d12224f139950154cc15ee2e2c6977fc9b.png" src="_images/b93f2f1218bcf6985338c3b9c8f830d12224f139950154cc15ee2e2c6977fc9b.png" />
-</div>
 </div>
 <ul class="simple">
 <li><p>Cada hoja del dendrograma representa una de las <span class="math notranslate nohighlight">\(n\)</span> observaciones.</p></li>
@@ -616,8 +632,9 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p>La altura de esta fusión, medida en el eje vertical, <strong>indica cuán diferentes son las dos observaciones</strong>. Por lo tanto, las observaciones que se fusionan en la parte inferior del árbol son bastante similares entre sí, mientras que las observaciones que se fusionan cerca de la parte superior del árbol tenderán a ser bastante diferentes.</p></li>
 </ul>
 <section id="funciones-para-fusionar-grupos">
-<h3><span class="section-number">16.2.1. </span>Funciones para fusionar grupos<a class="headerlink" href="#funciones-para-fusionar-grupos" title="Permalink to this heading">#</a></h3>
-<a class="reference internal image-reference" href="_images/10_fig1.png"><img alt="_images/10_fig1.png" src="_images/10_fig1.png" style="width: 500px; height: 300px;" /></a>
+<h3><span class="section-number">16.2.1. </span>Funciones para fusionar grupos<a class="headerlink" href="#funciones-para-fusionar-grupos" title="Link to this heading">#</a></h3>
+<a class="reference internal image-reference" href="_images/10_fig1.png"><img alt="_images/10_fig1.png" src="_images/10_fig1.png" style="width: 500px; height: 300px;" />
+</a>
 <ul class="simple">
 <li><p><em>Complete</em>: Disimilitud máxima entre conglomerados. Calcule todas las diferencias por pares entre las observaciones en el grupo <span class="math notranslate nohighlight">\(A\)</span> y las observaciones en el grupo <span class="math notranslate nohighlight">\(B\)</span>, y <strong>registre la mayor de estas diferencias</strong>.</p></li>
 <li><p><em>Single</em>: Disimilitud mínima entre conglomerados. Calcule todas las diferencias por pares entre las observaciones en el grupo <span class="math notranslate nohighlight">\(A\)</span> y las observaciones en el grupo <span class="math notranslate nohighlight">\(B\)</span>, y <strong>registre la más pequeña de estas diferencias</strong>. El enlace único puede dar como resultado conglomerados extendidos y finales en los que las observaciones individuales se fusionan una a la vez.</p></li>
@@ -653,17 +670,11 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/4d7898338b9ddae9ef9fa8f1044a685a5ed460069fd4068d17444332ac22aef6.png" src="_images/4d7898338b9ddae9ef9fa8f1044a685a5ed460069fd4068d17444332ac22aef6.png" />
-<img alt="_images/c34dd92343852cee283b05fad54da412c722d874f3207f34831e6d88bb64a459.png" src="_images/c34dd92343852cee283b05fad54da412c722d874f3207f34831e6d88bb64a459.png" />
-<img alt="_images/d3725e7afc65229397bb88c88a4eaeb7fa055d5ab9ca8217794f6ab279f396e7.png" src="_images/d3725e7afc65229397bb88c88a4eaeb7fa055d5ab9ca8217794f6ab279f396e7.png" />
-<img alt="_images/9f91372fbf04cfc14f77b64008df397db877b81af5687f06ffc751f7dac881b0.png" src="_images/9f91372fbf04cfc14f77b64008df397db877b81af5687f06ffc751f7dac881b0.png" />
-</div>
 </div>
 </section>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">16.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">16.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Link to this heading">#</a></h2>
 <p>Es un algoritmo no supervisado que tienen por objetivo descubrir grupos a partir de formas arbitrarias de cualquier conjunto de datos y al mismo tiempo puede distinguir <em>noise points</em> que no forman parte de ningún grupo.</p>
 <p><strong>Parámetros</strong></p>
 <ul class="simple">
@@ -677,7 +688,8 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p><em>Border point</em>: Si, dentro de la bola, contiene al menos un <em>core point</em></p></li>
 <li><p><em>Noise point</em>: Si, dentro de la bola, no contiene ningún <em>core point</em></p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/dbscan.jpg"><img alt="_images/dbscan.jpg" src="_images/dbscan.jpg" style="width: 500px; height: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/dbscan.jpg"><img alt="_images/dbscan.jpg" src="_images/dbscan.jpg" style="width: 500px; height: 300px;" />
+</a>
 <p>En Python:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html"><code class="docutils literal notranslate"><span class="pre">DBSCAN</span></code></a> es el método para ejecutar el algortimo.</p></li>
@@ -699,17 +711,9 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster membership values:
-[ 0  1  0  2  0  0  0  2  2 -1  1  2  0  0 -1  0  0  1 -1  1  1  2  2  2
-  1]
-</pre></div>
-</div>
-<img alt="_images/06b2654b033d579fd8b7ae461df44cc9c1132ad62a7ba1600f2cb4fc38871673.png" src="_images/06b2654b033d579fd8b7ae461df44cc9c1132ad62a7ba1600f2cb4fc38871673.png" />
-</div>
 </div>
 <section id="ejemplo-clasificacion-de-clientes">
-<h3><span class="section-number">16.3.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">16.3.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mall_Customers.csv&quot;</span>
@@ -721,73 +725,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AnnualIncome</th>
-      <th>SpendingScore</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>200.000000</td>
-      <td>200.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>60.560000</td>
-      <td>50.200000</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>26.264721</td>
-      <td>25.823522</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>15.000000</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>41.500000</td>
-      <td>34.750000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>61.500000</td>
-      <td>50.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>78.000000</td>
-      <td>73.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>137.000000</td>
-      <td>99.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -796,9 +733,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/f965bb5dcf99c9ed5c5177fffd58e3cebc84e619cbfff07872a4ad4d489ab8ef.png" src="_images/f965bb5dcf99c9ed5c5177fffd58e3cebc84e619cbfff07872a4ad4d489ab8ef.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -814,9 +748,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/c6329e683059f7300503c1d34cc2102057e00b3ad47f80d4e11821fe215242b3.png" src="_images/c6329e683059f7300503c1d34cc2102057e00b3ad47f80d4e11821fe215242b3.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -830,21 +761,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster membership values:
-[ 0  0  0  0  0  0  0  1  0  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0
-  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-  0  0  0  2  0  2  0  2  3  2  3  2  0  2  3  2  3  2  3  2  3  2  0  2
-  3  2  0  2  3  2  3  2  3  2  3  2  3  2  3  2  0  2  3  2  3  2  3  2
-  3  2  3  2  3  2  3  2  3  2  3  2  3  2  3  2  3  2  3 -1  3  2  3 -1
- -1 -1 -1 -1 -1 -1 -1 -1]
-</pre></div>
-</div>
-<img alt="_images/9fffda6f3dc94c0aa5eaec2781cead3f33d766319b7de997ee9b044cb63b7538.png" src="_images/9fffda6f3dc94c0aa5eaec2781cead3f33d766319b7de997ee9b044cb63b7538.png" />
-</div>
 </div>
 <p><strong>Un ejemplo combinado</strong></p>
 <div class="cell docutils container">
@@ -855,118 +771,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>murder</th>
-      <th>rape</th>
-      <th>robbery</th>
-      <th>assault</th>
-      <th>burglary</th>
-      <th>larceny</th>
-      <th>auto.theft</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>50.000000</td>
-      <td>50.00000</td>
-      <td>50.000000</td>
-      <td>50.000000</td>
-      <td>50.000000</td>
-      <td>50.000000</td>
-      <td>50.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>7.444000</td>
-      <td>25.73400</td>
-      <td>124.092000</td>
-      <td>211.300000</td>
-      <td>1291.904000</td>
-      <td>2671.288000</td>
-      <td>377.526000</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>3.866769</td>
-      <td>10.75963</td>
-      <td>88.348567</td>
-      <td>100.253049</td>
-      <td>432.455711</td>
-      <td>725.908707</td>
-      <td>193.394418</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>0.900000</td>
-      <td>9.00000</td>
-      <td>13.300000</td>
-      <td>43.800000</td>
-      <td>446.100000</td>
-      <td>1239.900000</td>
-      <td>144.400000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>4.225000</td>
-      <td>18.32500</td>
-      <td>64.950000</td>
-      <td>148.850000</td>
-      <td>1000.075000</td>
-      <td>2248.900000</td>
-      <td>245.775000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>7.300000</td>
-      <td>24.10000</td>
-      <td>106.050000</td>
-      <td>197.600000</td>
-      <td>1265.050000</td>
-      <td>2617.450000</td>
-      <td>333.850000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>10.100000</td>
-      <td>32.52500</td>
-      <td>155.850000</td>
-      <td>282.575000</td>
-      <td>1529.825000</td>
-      <td>3007.600000</td>
-      <td>460.125000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>15.800000</td>
-      <td>51.60000</td>
-      <td>472.600000</td>
-      <td>485.300000</td>
-      <td>2453.100000</td>
-      <td>4467.400000</td>
-      <td>1140.100000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -993,16 +797,6 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>varianza explicada [0.58785136 0.17696026]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)
-</pre></div>
-</div>
-<img alt="_images/7e09806a6e4f1aab818f5f4429f045fbedb920f58e995a8ce44ef82cf091738f.png" src="_images/7e09806a6e4f1aab818f5f4429f045fbedb920f58e995a8ce44ef82cf091738f.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1014,12 +808,6 @@ anterior ) es la respuesta final del algoritmo.</p>
         <span class="p">[</span><span class="s1">&#39;Noise&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1  0  1  2]
-</pre></div>
-</div>
-<img alt="_images/87bcf52f167e2a1df853a8b6e1e20dfb56d44b9d2a8f7ad07eda89592c92d84a.png" src="_images/87bcf52f167e2a1df853a8b6e1e20dfb56d44b9d2a8f7ad07eda89592c92d84a.png" />
 </div>
 </div>
 </section>
@@ -1051,8 +839,10 @@ anterior ) es la respuesta final del algoritmo.</p>
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="ACP.html"
@@ -1081,6 +871,7 @@ anterior ) es la respuesta final del algoritmo.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1108,7 +899,7 @@ anterior ) es la respuesta final del algoritmo.</p>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1121,9 +912,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1138,7 +930,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1147,8 +939,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>15. Análisis de Componentes Principales &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ACP';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +233,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -339,26 +362,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -393,22 +418,23 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="analisis-de-componentes-principales">
-<h1><span class="section-number">15. </span>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">15. </span>Análisis de Componentes Principales<a class="headerlink" href="#analisis-de-componentes-principales" title="Link to this heading">#</a></h1>
 <section id="planteamiento1">
-<h2><span class="section-number">15.1. </span>Planteamiento<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#planteamiento1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">15.1. </span>Planteamiento<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#planteamiento1" title="Link to this heading">#</a></h2>
 <p>Se aplica a tablas de datos donde las filas son considerados como individuos y las columnas como datos cuantitativos.</p>
 <p>Más formalmente, se dispone de los valores de <span class="math notranslate nohighlight">\(p\)</span> variables y <span class="math notranslate nohighlight">\(n\)</span> elementos dispuestos en una matriz <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> de dimensión <span class="math notranslate nohighlight">\(n\times p\)</span>.</p>
 <p>Siempre (casi) se usa la matriz centrada y/o estandarizada, los paquetes suelen hacer este trabajo por nosostros. Supongamos que  <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> ha sido centrada, su matriz de varianza covarianza viene dada por  <span class="math notranslate nohighlight">\(\frac{1}{n}\mathbf{X'X}\)</span>.</p>
 <p>¿Cómo encontrar un espacio de dimensión más reducida que represente adeucadamente los datos?</p>
 <section id="notacion">
-<h3><span class="section-number">15.1.1. </span>Notación<a class="headerlink" href="#notacion" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">15.1.1. </span>Notación<a class="headerlink" href="#notacion" title="Link to this heading">#</a></h3>
 <p>Se desea encontrar un subespacio de dimensión menor que <span class="math notranslate nohighlight">\(p\)</span> tal que al proyectar sobre él los puntos conserven su estructura con la menor distorsión posible.</p>
 <p>Consideremos primero un subespacio de dimensión uno (una recta) obtenida por un conjunto de <span class="math notranslate nohighlight">\(p=2\)</span> variables.</p>
 <p>La siguiente figura indica el diagrama de dispersión y una recta que, intuitivamente, proporciona un buen resumen de los datos, ya que las proyecciones de los puntos sobre ella indican aproximadamente la situación de los puntos en el plano.</p>
-<a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 700px; height: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 700px; height: 300px;" />
+</a>
 <p>Si consideramos un punto <span class="math notranslate nohighlight">\(\mathbf{x_i}\)</span> y una dirección <span class="math notranslate nohighlight">\(\mathbf{a_1} = (a_{11}, \ldots, a_{1p})'\)</span>, definida por un vector <span class="math notranslate nohighlight">\(\mathbf{a_1}\)</span> de norma unidad, la proyección del punto <span class="math notranslate nohighlight">\(\mathbf{x_i}\)</span> sobre esta dirección es el escalar:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -434,7 +460,7 @@ min\sum_{i = 1}^{n} r^2_i = \sum_{i = 1}^{n} |\mathbf{x_i}-z_i\mathbf{a_1}|^2
 <p><em>¿Cómo es eso posible?</em></p>
 </section>
 <section id="calculo-del-primer-componente">
-<h3><span class="section-number">15.1.2. </span>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">15.1.2. </span>Cálculo del primer componente<a class="headerlink" href="#calculo-del-primer-componente" title="Link to this heading">#</a></h3>
 <p>El primer componente principal será la combinación lineal de las variables originales que tenga varianza máxima. Los valores de este primer componente en los <span class="math notranslate nohighlight">\(n\)</span> individuos se representarán por un vector <span class="math notranslate nohighlight">\(\mathbf{z_1}\)</span>, dado por</p>
 <div class="math notranslate nohighlight">
 \[
@@ -786,10 +812,10 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7ff47d8aa5b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1684d6420&gt;
 </pre></div>
 </div>
-<img alt="_images/8b4b128c0971670b38ff9f580eb01960797521127eb924f0c7fe89602d1035cc.png" src="_images/8b4b128c0971670b38ff9f580eb01960797521127eb924f0c7fe89602d1035cc.png" />
+<img alt="_images/0bf1acbfb5ed6d7a24cc68ec8a3f530da4c83df293aa955a6a135d8ae2031f59.png" src="_images/0bf1acbfb5ed6d7a24cc68ec8a3f530da4c83df293aa955a6a135d8ae2031f59.png" />
 </div>
 </div>
 <p>Como habíamos visto, los valores propios corresponden la varianzas explicadas de cada componente y los vectores propios son sus direcciones o pesos (<em>loadings</em>). Es decir:</p>
@@ -1076,8 +1102,8 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.39534516,  0.34882879,  0.48225721,  0.50400573,  0.48520809],
-       [-0.33102922, -0.79772358,  0.37154122,  0.29871462,  0.16365646],
-       [-0.66155123,  0.37084614, -0.21520882,  0.59983776, -0.13675863],
+       [ 0.33102922,  0.79772358, -0.37154122, -0.29871462, -0.16365646],
+       [ 0.66155123, -0.37084614,  0.21520882, -0.59983776,  0.13675863],
        [-0.47595392,  0.17998543,  0.01712248, -0.46491466,  0.72431643],
        [-0.26446114,  0.2683914 ,  0.76339838, -0.28424781, -0.44096764]])
 </pre></div>
@@ -1092,26 +1118,26 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.27915411, -1.91357104, -0.86033137,  0.39423402, -0.28236204],
-       [-0.70813894,  0.85053394,  0.24246638, -0.18593762,  0.62989564],
-       [-0.33756163, -0.02001625,  1.42835911, -0.48798933, -0.14935915],
-       [ 0.73664347, -2.08155078,  0.77190377,  0.5852587 , -0.03375732],
-       [ 1.42059398, -0.146877  , -0.24671081, -0.69845826, -0.35585069],
-       [-0.46309908,  2.44165783,  0.9962506 ,  0.36943263, -0.09925008],
-       [-1.20919379,  0.34393456, -0.27892119,  0.98617099, -0.29022257],
-       [-1.34557309, -0.61744548,  0.22868359,  0.44183999,  0.41913648],
-       [ 0.65467152,  1.05470241, -0.77105231,  0.07954737,  0.68786524],
-       [ 0.17241431,  0.68316118, -0.55584349,  0.06242489, -0.07553314],
-       [-0.09739341, -1.44748367,  0.53781626, -0.31904316,  0.13881893],
-       [-2.66186718, -0.35491959,  0.2098049 , -0.47958435, -0.17168566],
-       [ 0.03603501, -0.27821886, -0.04823871, -0.48190611,  0.6338259 ],
-       [ 4.60370426,  0.09348019, -0.64151305,  0.02353642,  0.00869323],
-       [ 0.38781468, -1.2838272 ,  0.40105762,  0.40527327, -0.30214872],
-       [-4.25887565,  1.27284218, -0.47017392,  0.10131336, -0.15975951],
-       [ 1.79906227,  2.61351169, -0.07898156, -0.30595095, -0.58998944],
-       [ 1.99271412,  0.71934991,  0.06287296,  0.51893457,  0.23104118],
-       [-2.77052775, -0.98466343, -1.0515841 , -0.49062361, -0.15189898],
-       [ 1.76942278, -0.94460058,  0.12413533, -0.51847283, -0.08745929]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.27915411,  1.91357104,  0.86033137,  0.39423402, -0.28236204],
+       [-0.70813894, -0.85053394, -0.24246638, -0.18593762,  0.62989564],
+       [-0.33756163,  0.02001625, -1.42835911, -0.48798933, -0.14935915],
+       [ 0.73664347,  2.08155078, -0.77190377,  0.5852587 , -0.03375732],
+       [ 1.42059398,  0.146877  ,  0.24671081, -0.69845826, -0.35585069],
+       [-0.46309908, -2.44165783, -0.9962506 ,  0.36943263, -0.09925008],
+       [-1.20919379, -0.34393456,  0.27892119,  0.98617099, -0.29022257],
+       [-1.34557309,  0.61744548, -0.22868359,  0.44183999,  0.41913648],
+       [ 0.65467152, -1.05470241,  0.77105231,  0.07954737,  0.68786524],
+       [ 0.17241431, -0.68316118,  0.55584349,  0.06242489, -0.07553314],
+       [-0.09739341,  1.44748367, -0.53781626, -0.31904316,  0.13881893],
+       [-2.66186718,  0.35491959, -0.2098049 , -0.47958435, -0.17168566],
+       [ 0.03603501,  0.27821886,  0.04823871, -0.48190611,  0.6338259 ],
+       [ 4.60370426, -0.09348019,  0.64151305,  0.02353642,  0.00869323],
+       [ 0.38781468,  1.2838272 , -0.40105762,  0.40527327, -0.30214872],
+       [-4.25887565, -1.27284218,  0.47017392,  0.10131336, -0.15975951],
+       [ 1.79906227, -2.61351169,  0.07898156, -0.30595095, -0.58998944],
+       [ 1.99271412, -0.71934991, -0.06287296,  0.51893457,  0.23104118],
+       [-2.77052775,  0.98466343,  1.0515841 , -0.49062361, -0.15189898],
+       [ 1.76942278,  0.94460058, -0.12413533, -0.51847283, -0.08745929]])
 </pre></div>
 </div>
 </div>
@@ -1219,7 +1245,7 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e93020434a09ec029decbee32b4654cc17eae60d45240ed9c2fe04fe5f268b3b.png" src="_images/e93020434a09ec029decbee32b4654cc17eae60d45240ed9c2fe04fe5f268b3b.png" />
+<img alt="_images/2201c45ffa18673576118090ac3109cf13df2f09d4856f80ff119de8d6362dd1.png" src="_images/2201c45ffa18673576118090ac3109cf13df2f09d4856f80ff119de8d6362dd1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1251,13 +1277,15 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e88c1855756f714e95488f520937706556b5cce5e2aa60921921bc0dc24ee429.png" src="_images/e88c1855756f714e95488f520937706556b5cce5e2aa60921921bc0dc24ee429.png" />
+<img alt="_images/23c2db2f7ac2637426fd4770a95751e0e231f105170671af6a2e090bbe1f945a.png" src="_images/23c2db2f7ac2637426fd4770a95751e0e231f105170671af6a2e090bbe1f945a.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="id2" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Teoría  obtenida de Peña, D. <em>Análisis de datos multivariantes</em> (2002). Referencias de <code class="docutils literal notranslate"><span class="pre">FactoMineR</span></code> vienen de Husson, F. <em>Exploratory multivariate analysis by example using R</em> (2017)</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -1288,8 +1316,10 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="Evaluacion.html"
@@ -1318,6 +1348,7 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1337,7 +1368,7 @@ M = \mathbf{a_1^{'}Sa_1}- \lambda(\mathbf{a_1^{'}a_1}-1)
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1350,9 +1381,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1367,7 +1399,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1376,8 +1408,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
