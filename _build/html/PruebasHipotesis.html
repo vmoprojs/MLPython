@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. Pruebas de Hipótesis &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'PruebasHipotesis';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +233,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -339,26 +362,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -379,19 +404,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">5.1. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">5.1.1. El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">5.1.2. Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento-de-las-hipotesis">5.1. 1. Planteamiento de las hipótesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eleccion-del-nivel-de-significancia-alpha">5.2. 2. Elección del nivel de significancia (<span class="math notranslate nohighlight">\( \alpha \)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-estadistico-de-prueba">5.3. 3. Selección del estadístico de prueba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-del-estadistico-bajo-h-0">5.4. 4. Distribución del estadístico bajo <span class="math notranslate nohighlight">\( H_0 \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-decision">5.5. 5. Criterio de decisión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.6. 6. Conclusión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-posibles">5.7. 7. Errores posibles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">5.8. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">5.8.1. El test t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">5.8.2. Wilcoxon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">5.2. Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">5.2.1. Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">5.2.2. Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">5.9. Test t para dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">5.9.1. Comparación de varianzas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">5.9.2. Test de Wilcoxon para dos muestras</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ks-test">5.3. KS Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">5.4. Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">5.4.1. Correlación de Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ks-test">5.10. KS Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">5.11. Correlación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">5.11.1. Correlación de Pearson</a></li>
 </ul>
 </li>
 </ul>
@@ -403,15 +435,206 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pruebas-de-hipotesis">
-<h1><span class="section-number">5. </span>Pruebas de Hipótesis<a class="headerlink" href="#pruebas-de-hipotesis" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Pruebas de Hipótesis<a class="headerlink" href="#pruebas-de-hipotesis" title="Link to this heading">#</a></h1>
+<p>En toda prueba de hipótesis, implícita o explícitamente se cubren los siguientes puntos:</p>
+<section id="planteamiento-de-las-hipotesis">
+<h2><span class="section-number">5.1. </span>1. Planteamiento de las hipótesis<a class="headerlink" href="#planteamiento-de-las-hipotesis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Hipótesis nula (<span class="math notranslate nohighlight">\( H_0 \)</span>)</strong>: Afirmación que se quiere poner a prueba; generalmente representa la ausencia de efecto, diferencia o relación.</p></li>
+<li><p><strong>Hipótesis alternativa (<span class="math notranslate nohighlight">\( H_1 \)</span> o <span class="math notranslate nohighlight">\( H_a \)</span>)</strong>: Afirmación que se aceptaría si se rechaza <span class="math notranslate nohighlight">\( H_0 \)</span>; representa la existencia de un efecto, diferencia o relación.</p></li>
+</ul>
+</section>
+<section id="eleccion-del-nivel-de-significancia-alpha">
+<h2><span class="section-number">5.2. </span>2. Elección del nivel de significancia (<span class="math notranslate nohighlight">\( \alpha \)</span>)<a class="headerlink" href="#eleccion-del-nivel-de-significancia-alpha" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Es la probabilidad máxima de cometer un <strong>error tipo I</strong> (rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> cuando es verdadera).</p></li>
+<li><p>Comúnmente se usa <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span>, aunque puede variar según el contexto (por ejemplo, <span class="math notranslate nohighlight">\( \alpha = 0.01 \)</span> en estudios médicos).</p></li>
+</ul>
+</section>
+<section id="seleccion-del-estadistico-de-prueba">
+<h2><span class="section-number">5.3. </span>3. Selección del estadístico de prueba<a class="headerlink" href="#seleccion-del-estadistico-de-prueba" title="Link to this heading">#</a></h2>
+<p>Depende del tipo de variable y del contraste planteado:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( t \)</span>-student para medias (cuando la varianza poblacional es desconocida).</p></li>
+<li><p><span class="math notranslate nohighlight">\( z \)</span> para proporciones o medias (cuando la varianza es conocida).</p></li>
+<li><p><span class="math notranslate nohighlight">\( \chi^2 \)</span> para variables categóricas (pruebas de independencia o bondad de ajuste).</p></li>
+<li><p><span class="math notranslate nohighlight">\( F \)</span> para comparar varianzas o modelos (ANOVA, regresión).</p></li>
+</ul>
+</section>
+<section id="distribucion-del-estadistico-bajo-h-0">
+<h2><span class="section-number">5.4. </span>4. Distribución del estadístico bajo <span class="math notranslate nohighlight">\( H_0 \)</span><a class="headerlink" href="#distribucion-del-estadistico-bajo-h-0" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Determina cómo se comporta el estadístico si la hipótesis nula es verdadera.</p></li>
+<li><p>Se utiliza para obtener el <strong>valor crítico</strong> o el <strong>p-valor</strong>.</p></li>
+</ul>
+</section>
+<section id="criterio-de-decision">
+<h2><span class="section-number">5.5. </span>5. Criterio de decisión<a class="headerlink" href="#criterio-de-decision" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Valor crítico</strong>: Se compara el estadístico con un umbral derivado de la distribución teórica.</p></li>
+<li><p><strong>P-valor</strong>: Probabilidad de obtener un resultado tan extremo como el observado, bajo <span class="math notranslate nohighlight">\( H_0 \)</span>.</p>
+<ul>
+<li><p>Si <span class="math notranslate nohighlight">\( \text{p-valor} &lt; \alpha \)</span>, se <strong>rechaza <span class="math notranslate nohighlight">\( H_0 \)</span></strong>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\( \text{p-valor} \geq \alpha \)</span>, <strong>no se rechaza <span class="math notranslate nohighlight">\(H_0 \)</span></strong>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">5.6. </span>6. Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>La conclusión debe estar formulada en el contexto del problema.</p></li>
+<li><p>Nunca se dice que <span class="math notranslate nohighlight">\( H_0 \)</span> es “verdadera”, sino que no hay suficiente evidencia para rechazarla.</p></li>
+</ul>
+</section>
+<section id="errores-posibles">
+<h2><span class="section-number">5.7. </span>7. Errores posibles<a class="headerlink" href="#errores-posibles" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Error tipo I (<span class="math notranslate nohighlight">\( \alpha \)</span>)</strong>: Rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> siendo verdadera.</p></li>
+<li><p><strong>Error tipo II (<span class="math notranslate nohighlight">\( \beta \)</span>)</strong>: No rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> siendo falsa.</p></li>
+<li><p><strong>Poder de la prueba</strong>: <span class="math notranslate nohighlight">\( 1 - \beta \)</span>, probabilidad de detectar un efecto si realmente existe.</p></li>
+</ul>
+<p><strong>Matriz de confusión adaptada a pruebas de hipótesis</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Realidad: <span class="math notranslate nohighlight">\( H_0 \)</span> verdadera</strong></p></th>
+<th class="head"><p><strong>Realidad: <span class="math notranslate nohighlight">\( H_0 \)</span> falsa</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Decisión: No rechazar <span class="math notranslate nohighlight">\( H_0 \)</span></strong></p></td>
+<td><p>Verdadero negativo (decisión correcta)</p></td>
+<td><p>Error tipo II (falso negativo)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Decisión: Rechazar <span class="math notranslate nohighlight">\( H_0 \)</span></strong></p></td>
+<td><p>Error tipo I (falso positivo)</p></td>
+<td><p>Verdadero positivo (decisión correcta)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Interpretación de cada celda</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Término</p></th>
+<th class="head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Error tipo I</strong></p></td>
+<td><p>Rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> cuando en realidad es cierta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Error tipo II</strong></p></td>
+<td><p>No rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> cuando en realidad es falsa.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Verdadero negativo</strong></p></td>
+<td><p>Decidir no rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> y que efectivamente <span class="math notranslate nohighlight">\(H_0 \)</span> sea verdadera.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Verdadero positivo</strong></p></td>
+<td><p>Rechazar <span class="math notranslate nohighlight">\( H_0 \)</span> y que efectivamente <span class="math notranslate nohighlight">\( H_0 \)</span> sea falsa.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Probabilidades asociadas</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepto</p></th>
+<th class="head"><p>Símbolo</p></th>
+<th class="head"><p>Definición</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Nivel de significancia</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\( \alpha \)</span></p></td>
+<td><p>Probabilidad de cometer un <strong>error tipo I</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Poder de la prueba</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(1 - \beta \)</span></p></td>
+<td><p>Probabilidad de <strong>rechazar <span class="math notranslate nohighlight">\( H_0 \)</span></strong> cuando <span class="math notranslate nohighlight">\( H_0 \)</span> es falsa (acierto).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Error tipo II</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\( \beta \)</span></p></td>
+<td><p>Probabilidad de <strong>no rechazar <span class="math notranslate nohighlight">\(H_0 \)</span></strong> cuando es falsa.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Conexión con la matriz de confusión en clasificación</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Realidad / Predicción</p></th>
+<th class="head"><p>Clase negativa (0)</p></th>
+<th class="head"><p>Clase positiva (1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Verdadero negativo</p></td>
+<td><p>Predijo 0, era 0</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Falso positivo</p></td>
+<td><p>Predijo 1, era 0</p></td>
+<td><p>(Error tipo I)</p></td>
+</tr>
+<tr class="row-even"><td><p>Falso negativo</p></td>
+<td><p>Predijo 0, era 1</p></td>
+<td><p>(Error tipo II)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Verdadero positivo</p></td>
+<td><p>Predijo 1, era 1</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En pruebas de hipótesis:</p>
+<ul class="simple">
+<li><p>La “predicción” corresponde a la <strong>decisión estadística</strong> (rechazar o no rechazar <span class="math notranslate nohighlight">\( H_0 \)</span>).</p></li>
+<li><p>La “realidad” corresponde al <strong>estado verdadero</strong> de <span class="math notranslate nohighlight">\( H_0 \)</span> (si es verdadera o falsa).</p></li>
+</ul>
+<p>Los elementos a considerar en una prueba de hipótesis son:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Elemento</p></th>
+<th class="head"><p>Descripción breve</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hipótesis <span class="math notranslate nohighlight">\( H_0 \)</span>, <span class="math notranslate nohighlight">\( H_a \)</span></p></td>
+<td><p>Planteamiento formal del contraste</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nivel de significancia</p></td>
+<td><p>Umbral de decisión (<span class="math notranslate nohighlight">\( \alpha \)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Estadístico de prueba</p></td>
+<td><p>Valor numérico basado en la muestra</p></td>
+</tr>
+<tr class="row-odd"><td><p>Distribución bajo <span class="math notranslate nohighlight">\( H_0 \)</span></p></td>
+<td><p>Base para calcular el p-valor o valor crítico</p></td>
+</tr>
+<tr class="row-even"><td><p>Regla de decisión</p></td>
+<td><p>Comparación entre estadístico/p-valor y <span class="math notranslate nohighlight">\( \alpha \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Conclusión</p></td>
+<td><p>Aceptar o rechazar <span class="math notranslate nohighlight">\( H_0 \)</span>, con interpretación contextual</p></td>
+</tr>
+<tr class="row-even"><td><p>Análisis de errores</p></td>
+<td><p>Consideración de errores tipo I, tipo II y poder estadístico</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="test-sobre-una-y-dos-muestras">
-<h2><span class="section-number">5.1. </span>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.8. </span>Test sobre una y dos muestras<a class="headerlink" href="#test-sobre-una-y-dos-muestras" title="Link to this heading">#</a></h2>
 <p>Se introducen dos funciones: <code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> y <code class="docutils literal notranslate"><span class="pre">stats.wilcoxon</span></code> para el test t y el test de Wilcoxon respectivamente. Ambos pueden ser usados para una muestra o dos muestras así como para datos pareados. Note que el test de Wilcoxon para dos muestras es lo mismo que el test de Mann–Whitney.</p>
 <section id="el-test-t">
-<h3><span class="section-number">5.1.1. </span>El test t<a class="headerlink" href="#el-test-t" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.8.1. </span>El test t<a class="headerlink" href="#el-test-t" title="Link to this heading">#</a></h3>
 <p>Este test se basa en el supuesto de normalidad de los datos. Es decir que los datos <span class="math notranslate nohighlight">\(x_1\ldots,x_n\)</span> se asumen como realizaciones independientes de variables aleatorias con media <span class="math notranslate nohighlight">\(\mu\)</span> y varianza <span class="math notranslate nohighlight">\(\sigma^2\)</span>, <span class="math notranslate nohighlight">\(N(\mu, \sigma^2)\)</span>. Se tiene que la hipótesis nula es que <span class="math notranslate nohighlight">\(\mu=\mu_0\)</span>.</p>
 <p>Se puede estimar los parámetros <span class="math notranslate nohighlight">\(\mu\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> por la media <span class="math notranslate nohighlight">\(\bar{x}\)</span> y la desviación estándar  <span class="math notranslate nohighlight">\(\sigma\)</span>, aunque recuerde que solo son estimaciones del valor real.</p>
 <p>Veamos un ejemplo del consuo diario de calorías de 11 mujeres:</p>
@@ -446,7 +669,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-2.8207540608310193, pvalue=0.018137235176105812, df=10)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=-2.8207540608310193, pvalue=0.018137235176105805, df=10)
 </pre></div>
 </div>
 </div>
@@ -477,14 +700,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.018137235176105812
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.018137235176105805
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="wilcoxon">
-<h3><span class="section-number">5.1.2. </span>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.8.2. </span>Wilcoxon<a class="headerlink" href="#wilcoxon" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">pVal</span><span class="p">)</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">wilcoxon</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">daily_intake</span><span class="p">)</span><span class="o">-</span><span class="mi">7725</span><span class="p">))</span>
@@ -508,7 +731,7 @@ document.write(`
 </section>
 </section>
 <section id="test-t-para-dos-muestras">
-<h2><span class="section-number">5.2. </span>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.9. </span>Test t para dos muestras<a class="headerlink" href="#test-t-para-dos-muestras" title="Link to this heading">#</a></h2>
 <p>Se usa esta prueba con la hipótesis nula de que dos muestras provengan de distribuciones normales con la misma media.</p>
 <p>Se puede tener dos enfoques, que las muestras tengan la misma varianza (enfoque clásico) o difieran en varianza.</p>
 <div class="cell docutils container">
@@ -602,7 +825,7 @@ document.write(`
 </div>
 </div>
 <section id="comparacion-de-varianzas">
-<h3><span class="section-number">5.2.1. </span>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.9.1. </span>Comparación de varianzas<a class="headerlink" href="#comparacion-de-varianzas" title="Link to this heading">#</a></h3>
 <p>Aún cuando en <code class="docutils literal notranslate"><span class="pre">python</span></code> se puede hacer la prueba sobre dos muestras sin el supuesto de igualdad en las varianzas, podrías estar interesado en hacer una prueba exclusiva de este supuesto.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,7 +847,7 @@ document.write(`
 </div>
 </section>
 <section id="test-de-wilcoxon-para-dos-muestras">
-<h3><span class="section-number">5.2.2. </span>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.9.2. </span>Test de Wilcoxon para dos muestras<a class="headerlink" href="#test-de-wilcoxon-para-dos-muestras" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_statistic</span><span class="p">,</span> <span class="n">pVal</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">)</span>
@@ -639,7 +862,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(105.0, 0.004243226771760098)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(105.0, 0.004243226771760096)
 </pre></div>
 </div>
 </div>
@@ -647,7 +870,7 @@ document.write(`
 </section>
 </section>
 <section id="ks-test">
-<h2><span class="section-number">5.3. </span><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html">KS Test</a><a class="headerlink" href="#ks-test" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.10. </span><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html">KS Test</a><a class="headerlink" href="#ks-test" title="Link to this heading">#</a></h2>
 <p>Compara la distribución subyacente de dos muestras independientes <span class="math notranslate nohighlight">\(F(x)\)</span> y <span class="math notranslate nohighlight">\(G(x)\)</span>. Es válidas solo para distribuciones continuas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -687,10 +910,10 @@ document.write(`
 </div>
 </section>
 <section id="correlacion">
-<h2><span class="section-number">5.4. </span>Correlación<a class="headerlink" href="#correlacion" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.11. </span>Correlación<a class="headerlink" href="#correlacion" title="Link to this heading">#</a></h2>
 <p>Se aborda a continuación medidas de correlación paramétricas y no paramétricas. El coeficiente de correlación es una medida de asociación que varía entre -1 y 1.</p>
 <section id="correlacion-de-pearson">
-<h3><span class="section-number">5.4.1. </span>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.11.1. </span>Correlación de Pearson<a class="headerlink" href="#correlacion-de-pearson" title="Link to this heading">#</a></h3>
 <p>El coeficiente de correlación empírico es:</p>
 <div class="math notranslate nohighlight">
 \[ r = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum (x_i-\bar{x})^2\sum (y_i-\bar{y})^2}} \]</div>
@@ -899,7 +1122,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;shampoo&#39;, ylabel=&#39;bathingsoap&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/cacaaf31e2d67d5936900fcdb04cbdaf6d173c6b7356eb60296915db044ae6b5.png" src="_images/cacaaf31e2d67d5936900fcdb04cbdaf6d173c6b7356eb60296915db044ae6b5.png" />
+<img alt="_images/74a04f80cead7f3362a3669a589d0a5ced017d01f3d009bd862762c7bf509e24.png" src="_images/74a04f80cead7f3362a3669a589d0a5ced017d01f3d009bd862762c7bf509e24.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -971,24 +1194,26 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="Descriptiva.html"
@@ -1017,25 +1242,33 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">5.1. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">5.1.1. El test t</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">5.1.2. Wilcoxon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planteamiento-de-las-hipotesis">5.1. 1. Planteamiento de las hipótesis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eleccion-del-nivel-de-significancia-alpha">5.2. 2. Elección del nivel de significancia (<span class="math notranslate nohighlight">\( \alpha \)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-estadistico-de-prueba">5.3. 3. Selección del estadístico de prueba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-del-estadistico-bajo-h-0">5.4. 4. Distribución del estadístico bajo <span class="math notranslate nohighlight">\( H_0 \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-decision">5.5. 5. Criterio de decisión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.6. 6. Conclusión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-posibles">5.7. 7. Errores posibles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-sobre-una-y-dos-muestras">5.8. Test sobre una y dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-test-t">5.8.1. El test t</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon">5.8.2. Wilcoxon</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">5.2. Test t para dos muestras</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">5.2.1. Comparación de varianzas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">5.2.2. Test de Wilcoxon para dos muestras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-t-para-dos-muestras">5.9. Test t para dos muestras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-varianzas">5.9.1. Comparación de varianzas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-de-wilcoxon-para-dos-muestras">5.9.2. Test de Wilcoxon para dos muestras</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ks-test">5.3. KS Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">5.4. Correlación</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">5.4.1. Correlación de Pearson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ks-test">5.10. KS Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion">5.11. Correlación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion-de-pearson">5.11.1. Correlación de Pearson</a></li>
 </ul>
 </li>
 </ul>
@@ -1046,7 +1279,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1059,9 +1292,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1076,7 +1310,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1085,8 +1319,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

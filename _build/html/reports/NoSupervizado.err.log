@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+
+#%matplotlib notebook
+import numpy as np
+import pandas as pd
+import seaborn as sn
+import matplotlib.pyplot as plt
+
+from sklearn.datasets import make_blobs
+from sklearn.cluster import KMeans
+from shared_utilities import plot_labelled_scatter
+
+X, y = make_blobs(random_state = 10)
+
+kmeans = KMeans(n_init = 3,n_clusters = 3)
+kmeans.fit(X)
+
+plot_labelled_scatter(X, kmeans.labels_, ['Cluster 1', 'Cluster 2', 'Cluster 3'])
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 9[0m
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatasets[39;00m [38;5;28;01mimport[39;00m make_blobs
+[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcluster[39;00m [38;5;28;01mimport[39;00m KMeans
+[0;32m----> 9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mshared_utilities[39;00m [38;5;28;01mimport[39;00m plot_labelled_scatter
+[1;32m     11[0m X, y [38;5;241m=[39m make_blobs(random_state [38;5;241m=[39m [38;5;241m10[39m)
+[1;32m     13[0m kmeans [38;5;241m=[39m KMeans(n_init [38;5;241m=[39m [38;5;241m3[39m,n_clusters [38;5;241m=[39m [38;5;241m3[39m)
+
+File [0;32m~/Documents/Consultorias&Cursos/CURSOS/Cooking/MLPython/pyML/shared_utilities.py:11[0m
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m [38;5;28;01mimport[39;00m neighbors
+[1;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpatches[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpatches[39;00m
+[0;32m---> 11[0m [38;5;28;01mimport[39;00m [38;5;21;01mgraphviz[39;00m
+[1;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtree[39;00m [38;5;28;01mimport[39;00m export_graphviz
+[1;32m     13[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpatches[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpatches[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'graphviz'
+

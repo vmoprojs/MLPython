@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>8. Regresión lineal &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Regresion';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +233,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -339,26 +362,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -404,10 +429,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
-<h1><span class="section-number">8. </span>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Regresión lineal<a class="headerlink" href="#regresion-lineal" title="Link to this heading">#</a></h1>
 <p>Abordemos las primeras ideas de regresión lineal a través de un ejemplo práctico:</p>
 <ul class="simple">
 <li><p>Creamos dos variables, Ingreso y Consumo Esperado</p></li>
@@ -534,7 +559,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/874ca5f5ab147ea9e7cbc2ebea78d8614e631ced12944c0ab40377b021779f5c.png" src="_images/874ca5f5ab147ea9e7cbc2ebea78d8614e631ced12944c0ab40377b021779f5c.png" />
+<img alt="_images/c77c36ac7859581c8abf3c399f0320c0204ca6f04b3b41d715dee62077c19484.png" src="_images/c77c36ac7859581c8abf3c399f0320c0204ca6f04b3b41d715dee62077c19484.png" />
 </div>
 </div>
 <p>¿Qué hemos hecho?</p>
@@ -604,8 +629,8 @@ document.write(`
 Dep. Variable:        consumo_muestra   R-squared:                       0.909
 Model:                            OLS   Adj. R-squared:                  0.904
 Method:                 Least Squares   F-statistic:                     179.4
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           8.44e-11
-Time:                        22:20:30   Log-Likelihood:                -76.677
+Date:                Thu, 22 May 2025   Prob (F-statistic):           8.44e-11
+Time:                        06:11:31   Log-Likelihood:                -76.677
 No. Observations:                  20   AIC:                             157.4
 Df Residuals:                      18   BIC:                             159.3
 Df Model:                           1                                         
@@ -642,11 +667,11 @@ Notes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
 </pre></div>
 </div>
-<img alt="_images/4af18d2849e56b8ff816b6dd9824c8b44a3d5adc543292dd15d8eedad4a032bf.png" src="_images/4af18d2849e56b8ff816b6dd9824c8b44a3d5adc543292dd15d8eedad4a032bf.png" />
+<img alt="_images/f9c45da7fc2fd72156cf0a6ec40429c96b84e1be659e4e4ac6cdccd36db7fcbb.png" src="_images/f9c45da7fc2fd72156cf0a6ec40429c96b84e1be659e4e4ac6cdccd36db7fcbb.png" />
 </div>
 </div>
 <section id="regresion-paso-a-paso">
-<h2><span class="section-number">8.1. </span>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Regresión: Paso a paso<a class="headerlink" href="#regresion-paso-a-paso" title="Link to this heading">#</a></h2>
 <p>La función poblacional sería:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -801,8 +826,8 @@ S_{xy} = \sum_{i=1}^{n}x_i y_i-n\bar{x}\bar{y}
 Dep. Variable:                      Y   R-squared:                       0.962
 Model:                            OLS   Adj. R-squared:                  0.957
 Method:                 Least Squares   F-statistic:                     202.9
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           5.75e-07
-Time:                        22:20:30   Log-Likelihood:                -31.781
+Date:                Thu, 22 May 2025   Prob (F-statistic):           5.75e-07
+Time:                        06:11:31   Log-Likelihood:                -31.781
 No. Observations:                  10   AIC:                             67.56
 Df Residuals:                       8   BIC:                             68.17
 Df Model:                           1                                         
@@ -823,8 +848,8 @@ Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/_stats_py.py:1806: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
-  warnings.warn(&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py:531: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
+  res = hypotest_fun_out(*samples, **kwds)
 </pre></div>
 </div>
 </div>
@@ -1073,8 +1098,8 @@ Notes:
 Dep. Variable:                      Y   R-squared:                       0.962
 Model:                            OLS   Adj. R-squared:                  0.957
 Method:                 Least Squares   F-statistic:                     202.9
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           5.75e-07
-Time:                        22:20:30   Log-Likelihood:                -31.781
+Date:                Thu, 22 May 2025   Prob (F-statistic):           5.75e-07
+Time:                        06:11:31   Log-Likelihood:                -31.781
 No. Observations:                  10   AIC:                             67.56
 Df Residuals:                       8   BIC:                             68.17
 Df Model:                           1                                         
@@ -1095,8 +1120,8 @@ Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/scipy/stats/_stats_py.py:1806: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
-  warnings.warn(&quot;kurtosistest only valid for n&gt;=20 ... continuing &quot;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py:531: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=10
+  res = hypotest_fun_out(*samples, **kwds)
 </pre></div>
 </div>
 </div>
@@ -1128,8 +1153,8 @@ H_1:\beta_2\neq 0
 Dep. Variable:                FOODEXP   R-squared:                       0.370
 Model:                            OLS   Adj. R-squared:                  0.358
 Method:                 Least Squares   F-statistic:                     31.10
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           8.45e-07
-Time:                        22:20:31   Log-Likelihood:                -308.16
+Date:                Thu, 22 May 2025   Prob (F-statistic):           8.45e-07
+Time:                        06:11:32   Log-Likelihood:                -308.16
 No. Observations:                  55   AIC:                             620.3
 Df Residuals:                      53   BIC:                             624.3
 Df Model:                           1                                         
@@ -1194,7 +1219,7 @@ strong multicollinearity or other numerical problems.
 <li><p>Interprete la regresión anterior.</p></li>
 </ul>
 <section id="practica-paridad-del-poder-de-compra">
-<h3><span class="section-number">8.1.1. </span>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.1.1. </span>Práctica: Paridad del poder de compra<a class="headerlink" href="#practica-paridad-del-poder-de-compra" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Tabla5_9.csv&quot;</span>
@@ -1382,8 +1407,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                   EXCH   R-squared:                       0.987
 Model:                            OLS   Adj. R-squared:                  0.986
 Method:                 Least Squares   F-statistic:                     2066.
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           8.80e-28
-Time:                        22:20:31   Log-Likelihood:                -205.44
+Date:                Thu, 22 May 2025   Prob (F-statistic):           8.80e-28
+Time:                        06:11:32   Log-Likelihood:                -205.44
 No. Observations:                  30   AIC:                             414.9
 Df Residuals:                      28   BIC:                             417.7
 Df Model:                           1                                         
@@ -1416,10 +1441,10 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fde3c74ebe0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x31da91280&gt;]
 </pre></div>
 </div>
-<img alt="_images/bccb888f3e6d40905ca54189bfb09cd065856f82b55125fdb62956b3bb83f7f5.png" src="_images/bccb888f3e6d40905ca54189bfb09cd065856f82b55125fdb62956b3bb83f7f5.png" />
+<img alt="_images/eb400fb4eb25cf885e94f6878cfcccb63978b6a9f345495555dc221faccc239c.png" src="_images/eb400fb4eb25cf885e94f6878cfcccb63978b6a9f345495555dc221faccc239c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1435,8 +1460,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:           np.log(EXCH)   R-squared:                       0.983
 Model:                            OLS   Adj. R-squared:                  0.983
 Method:                 Least Squares   F-statistic:                     1655.
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           1.87e-26
-Time:                        22:20:31   Log-Likelihood:                -7.4056
+Date:                Thu, 22 May 2025   Prob (F-statistic):           1.87e-26
+Time:                        06:11:32   Log-Likelihood:                -7.4056
 No. Observations:                  30   AIC:                             18.81
 Df Residuals:                      28   BIC:                             21.61
 Df Model:                           1                                         
@@ -1462,7 +1487,7 @@ Notes:
 <p>La PPA sostiene que con una unidad de moneda debe ser posible comprar la misma canasta de bienes en todos los países.</p>
 </section>
 <section id="practica-sueno">
-<h3><span class="section-number">8.1.2. </span>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.1.2. </span>Práctica: Sueño<a class="headerlink" href="#practica-sueno" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/sleep75.csv&quot;</span>
@@ -1484,10 +1509,10 @@ Notes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fde3c7cf250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x31db12270&gt;
 </pre></div>
 </div>
-<img alt="_images/e68f4a99e3e3df2634c4d480bd056d670715502d90d2a318bcf4967250e72529.png" src="_images/e68f4a99e3e3df2634c4d480bd056d670715502d90d2a318bcf4967250e72529.png" />
+<img alt="_images/82c11b493616cd6bb912bcd34bcd33549181f6d9634c1451ae27ec6d4c0973ce.png" src="_images/82c11b493616cd6bb912bcd34bcd33549181f6d9634c1451ae27ec6d4c0973ce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1503,8 +1528,8 @@ Notes:
 Dep. Variable:                  sleep   R-squared:                       0.103
 Model:                            OLS   Adj. R-squared:                  0.102
 Method:                 Least Squares   F-statistic:                     81.09
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           1.99e-18
-Time:                        22:20:32   Log-Likelihood:                -5267.1
+Date:                Thu, 22 May 2025   Prob (F-statistic):           1.99e-18
+Time:                        06:11:32   Log-Likelihood:                -5267.1
 No. Observations:                 706   AIC:                         1.054e+04
 Df Residuals:                     704   BIC:                         1.055e+04
 Df Model:                           1                                         
@@ -1556,6 +1581,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6848/2900924520.py:1: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  dormir.fit().params[1]+(-2*dormir.fit().bse[1],2*dormir.fit().bse[1])
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.18422633, -0.11726532])
 </pre></div>
 </div>
@@ -1569,13 +1598,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/93bfab1b3ac83a6760d43c9bd7d255aab8db7bb125a339c818edbe38ab1c5586.png" src="_images/93bfab1b3ac83a6760d43c9bd7d255aab8db7bb125a339c818edbe38ab1c5586.png" />
+<img alt="_images/663a4dce6ae25ca309d64357a0cbadf621b3e9deb2d00eca38f847a04c00f4c5.png" src="_images/663a4dce6ae25ca309d64357a0cbadf621b3e9deb2d00eca38f847a04c00f4c5.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="transformaciones-lineales">
-<h2><span class="section-number">8.2. </span>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>Transformaciones lineales<a class="headerlink" href="#transformaciones-lineales" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%2031_3.csv&quot;</span>
@@ -1593,8 +1622,8 @@ dtype: float64
 Dep. Variable:              Cellphone   R-squared:                       0.626
 Model:                            OLS   Adj. R-squared:                  0.615
 Method:                 Least Squares   F-statistic:                     53.67
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           2.50e-08
-Time:                        22:20:32   Log-Likelihood:                -148.94
+Date:                Thu, 22 May 2025   Prob (F-statistic):           2.50e-08
+Time:                        06:11:33   Log-Likelihood:                -148.94
 No. Observations:                  34   AIC:                             301.9
 Df Residuals:                      32   BIC:                             304.9
 Df Model:                           1                                         
@@ -1633,11 +1662,11 @@ strong multicollinearity or other numerical problems.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Cellphone&#39;)
 </pre></div>
 </div>
-<img alt="_images/c1e62cc28688cbcb5776eb96a145726f3072167837645aa6d073de096db20893.png" src="_images/c1e62cc28688cbcb5776eb96a145726f3072167837645aa6d073de096db20893.png" />
+<img alt="_images/4960b7001e94150bb688579ea80b82937a4df977f588397fb8027101b2f36470.png" src="_images/4960b7001e94150bb688579ea80b82937a4df977f588397fb8027101b2f36470.png" />
 </div>
 </div>
 <section id="modelo-reciproco">
-<h3><span class="section-number">8.2.1. </span>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.2.1. </span>Modelo reciproco<a class="headerlink" href="#modelo-reciproco" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/tabla_6_4.csv&quot;</span>
@@ -1745,7 +1774,7 @@ strong multicollinearity or other numerical problems.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;CM&#39;)
 </pre></div>
 </div>
-<img alt="_images/af063863a6318393547ce9b134162d40a134e99748eae006257b6d663d606f30.png" src="_images/af063863a6318393547ce9b134162d40a134e99748eae006257b6d663d606f30.png" />
+<img alt="_images/ae4fc1a22e164a0b16623c48cda4c5e8d20caa6c4410cd6e151318d836e9c9fc.png" src="_images/ae4fc1a22e164a0b16623c48cda4c5e8d20caa6c4410cd6e151318d836e9c9fc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1761,8 +1790,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                     CM   R-squared:                       0.166
 Model:                            OLS   Adj. R-squared:                  0.153
 Method:                 Least Squares   F-statistic:                     12.36
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           0.000826
-Time:                        22:20:33   Log-Likelihood:                -361.64
+Date:                Thu, 22 May 2025   Prob (F-statistic):           0.000826
+Time:                        06:11:33   Log-Likelihood:                -361.64
 No. Observations:                  64   AIC:                             727.3
 Df Residuals:                      62   BIC:                             731.6
 Df Model:                           1                                         
@@ -1802,8 +1831,8 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                     CM   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.450
 Method:                 Least Squares   F-statistic:                     52.61
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           7.82e-10
-Time:                        22:20:33   Log-Likelihood:                -347.79
+Date:                Thu, 22 May 2025   Prob (F-statistic):           7.82e-10
+Time:                        06:11:33   Log-Likelihood:                -347.79
 No. Observations:                  64   AIC:                             699.6
 Df Residuals:                      62   BIC:                             703.9
 Df Model:                           1                                         
@@ -1828,7 +1857,7 @@ Notes:
 </div>
 </section>
 <section id="modelo-log-lineal">
-<h3><span class="section-number">8.2.2. </span>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.2.2. </span>Modelo log-lineal<a class="headerlink" href="#modelo-log-lineal" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/ceosal2.csv&quot;</span>
@@ -1849,8 +1878,8 @@ Notes:
 Dep. Variable:                lsalary   R-squared:                       0.013
 Model:                            OLS   Adj. R-squared:                  0.008
 Method:                 Least Squares   F-statistic:                     2.334
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):              0.128
-Time:                        22:20:33   Log-Likelihood:                -160.84
+Date:                Thu, 22 May 2025   Prob (F-statistic):              0.128
+Time:                        06:11:33   Log-Likelihood:                -160.84
 No. Observations:                 177   AIC:                             325.7
 Df Residuals:                     175   BIC:                             332.0
 Df Model:                           1                                         
@@ -1875,7 +1904,7 @@ Notes:
 </div>
 </section>
 <section id="regresion-a-traves-del-origen">
-<h3><span class="section-number">8.2.3. </span>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.2.3. </span>Regresión a través del origen<a class="headerlink" href="#regresion-a-traves-del-origen" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/GA/Table%206_1.csv&quot;</span>
@@ -1894,8 +1923,8 @@ Notes:
 Dep. Variable:                      Y   R-squared (uncentered):                   0.502
 Model:                            OLS   Adj. R-squared (uncentered):              0.500
 Method:                 Least Squares   F-statistic:                              241.2
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):                    4.41e-38
-Time:                        22:20:33   Log-Likelihood:                         -751.30
+Date:                Thu, 22 May 2025   Prob (F-statistic):                    4.41e-38
+Time:                        06:11:33   Log-Likelihood:                         -751.30
 No. Observations:                 240   AIC:                                      1505.
 Df Residuals:                     239   BIC:                                      1508.
 Df Model:                           1                                                  
@@ -1921,7 +1950,7 @@ Notes:
 </section>
 </section>
 <section id="regresion-lineal-multiple">
-<h2><span class="section-number">8.3. </span>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>Regresión Lineal Múltiple<a class="headerlink" href="#regresion-lineal-multiple" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span>  <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/hprice1.csv&quot;</span>
@@ -2089,8 +2118,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.773
 Model:                            OLS   Adj. R-squared:                  0.762
 Method:                 Least Squares   F-statistic:                     70.58
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           6.45e-26
-Time:                        22:20:34   Log-Likelihood:                 45.750
+Date:                Thu, 22 May 2025   Prob (F-statistic):           6.45e-26
+Time:                        06:11:34   Log-Likelihood:                 45.750
 No. Observations:                  88   AIC:                            -81.50
 Df Residuals:                      83   BIC:                            -69.11
 Df Model:                           4                                         
@@ -2129,8 +2158,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.643
 Model:                            OLS   Adj. R-squared:                  0.630
 Method:                 Least Squares   F-statistic:                     50.42
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           9.74e-19
-Time:                        22:20:34   Log-Likelihood:                 25.861
+Date:                Thu, 22 May 2025   Prob (F-statistic):           9.74e-19
+Time:                        06:11:34   Log-Likelihood:                 25.861
 No. Observations:                  88   AIC:                            -43.72
 Df Residuals:                      84   BIC:                            -33.81
 Df Model:                           3                                         
@@ -2168,8 +2197,8 @@ Notes:
 Dep. Variable:                 lprice   R-squared:                       0.215
 Model:                            OLS   Adj. R-squared:                  0.206
 Method:                 Least Squares   F-statistic:                     23.53
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           5.43e-06
-Time:                        22:20:34   Log-Likelihood:                -8.8147
+Date:                Thu, 22 May 2025   Prob (F-statistic):           5.43e-06
+Time:                        06:11:34   Log-Likelihood:                -8.8147
 No. Observations:                  88   AIC:                             21.63
 Df Residuals:                      86   BIC:                             26.58
 Df Model:                           1                                         
@@ -2201,14 +2230,14 @@ Notes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fde33d3a400&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x31dd73080&gt;
 </pre></div>
 </div>
-<img alt="_images/7ede5562bae758d526894b1ea5260f992c4bddee5fe5c8a6f0fe6307150bd021.png" src="_images/7ede5562bae758d526894b1ea5260f992c4bddee5fe5c8a6f0fe6307150bd021.png" />
+<img alt="_images/a30d366df86e19b911e3be2734670ac85a8f80107755489cdb0d202888ba05d2.png" src="_images/a30d366df86e19b911e3be2734670ac85a8f80107755489cdb0d202888ba05d2.png" />
 </div>
 </div>
 <section id="prediccion">
-<h3><span class="section-number">8.3.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.3.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos_nuevos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;llotsize&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2100</span><span class="p">),</span><span class="s1">&#39;lsqrft&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">8000</span><span class="p">),</span><span class="s1">&#39;bdrms&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -2345,7 +2374,7 @@ Notes:
 </div>
 </section>
 <section id="rlm-educacion-con-insumos">
-<h3><span class="section-number">8.3.2. </span>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.3.2. </span>RLM: Educación con insumos<a class="headerlink" href="#rlm-educacion-con-insumos" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/WO/gpa1.csv&quot;</span>
@@ -2363,8 +2392,8 @@ Notes:
 Dep. Variable:                 colGPA   R-squared:                       0.050
 Model:                            OLS   Adj. R-squared:                  0.043
 Method:                 Least Squares   F-statistic:                     7.314
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):            0.00770
-Time:                        22:20:38   Log-Likelihood:                -56.641
+Date:                Thu, 22 May 2025   Prob (F-statistic):            0.00770
+Time:                        06:11:35   Log-Likelihood:                -56.641
 No. Observations:                 141   AIC:                             117.3
 Df Residuals:                     139   BIC:                             123.2
 Df Model:                           1                                         
@@ -2400,8 +2429,8 @@ Notes:
 Dep. Variable:                 colGPA   R-squared:                       0.219
 Model:                            OLS   Adj. R-squared:                  0.202
 Method:                 Least Squares   F-statistic:                     12.83
-Date:                Mon, 14 Apr 2025   Prob (F-statistic):           1.93e-07
-Time:                        22:20:38   Log-Likelihood:                -42.796
+Date:                Thu, 22 May 2025   Prob (F-statistic):           1.93e-07
+Time:                        06:11:35   Log-Likelihood:                -42.796
 No. Observations:                 141   AIC:                             93.59
 Df Residuals:                     137   BIC:                             105.4
 Df Model:                           3                                         
@@ -2455,8 +2484,10 @@ Notes:
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="AprendizajeSupervisado.html"
@@ -2484,6 +2515,7 @@ Notes:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2515,7 +2547,7 @@ Notes:
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -2528,9 +2560,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2545,7 +2578,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -2554,8 +2587,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

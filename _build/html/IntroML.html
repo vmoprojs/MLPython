@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6. Machine Learning &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'IntroML';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +233,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -339,26 +362,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -414,14 +439,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="machine-learning">
-<h1><span class="section-number">6. </span>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>Machine Learning<a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h1>
 <section id="el-bosque-inteligencia-artificial">
-<h2><span class="section-number">6.1. </span>El bosque: Inteligencia Artificial<a class="headerlink" href="#el-bosque-inteligencia-artificial" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>El bosque: Inteligencia Artificial<a class="headerlink" href="#el-bosque-inteligencia-artificial" title="Link to this heading">#</a></h2>
 <p>Visto en un campo más amplio, el Machine Leaning o Aprendizaje Automático es un subconjunto de la Inteligencia Aritificial.</p>
-<a class="reference internal image-reference" href="_images/Diapositiva1.jpeg"><img alt="_images/Diapositiva1.jpeg" src="_images/Diapositiva1.jpeg" style="width: 700px; height: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/Diapositiva1.jpeg"><img alt="_images/Diapositiva1.jpeg" src="_images/Diapositiva1.jpeg" style="width: 700px; height: 400px;" />
+</a>
 <p>La imagen que antecede nos muestra varios componentes de la Inteligencia Artificial (IA) donde tenemos:</p>
 <ul class="simple">
 <li><p><strong>Supervised Learning</strong>: Aprendizaje supervisado, se presenta en un círculo más grande puesto que es el que ha tenido más penetración en distintas aplicaciones, tanto desde la perspectiva de aplicaciones en la industria así como avances dado por la comunidad de desarrolladores y la academia. Hoy es posible hacer aprendizaje supervisado de alto nivel en un computador personal.</p></li>
@@ -432,11 +458,12 @@ document.write(`
 <p>Es importante mencionar que la Inteligencia Artificial Generativa está teniendo un gran impacto en distintas aplicaciones, pero el desarrollo de este tipo de IA es limitado a empresas con grandes capitales. Esto se debe a que se estima que desarrollar requiere de una inversión de alrededor de USD 500 millones.</p>
 </section>
 <section id="id1">
-<h2><span class="section-number">6.2. </span>Machine Learning<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>Machine Learning<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Es un conjunto amplio de herramientas para entender y descrubrir estructras en los datos. Estas herramientas se clasifican en <strong>supervisadas</strong> y <strong>no supervisadas</strong>.</p>
-<a class="reference internal image-reference" href="_images/Diapositiva2.jpeg"><img alt="_images/Diapositiva2.jpeg" src="_images/Diapositiva2.jpeg" style="width: 700px; height: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/Diapositiva2.jpeg"><img alt="_images/Diapositiva2.jpeg" src="_images/Diapositiva2.jpeg" style="width: 700px; height: 400px;" />
+</a>
 <section id="terminologia">
-<h3><span class="section-number">6.2.1. </span>Terminología<a class="headerlink" href="#terminologia" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.2.1. </span>Terminología<a class="headerlink" href="#terminologia" title="Link to this heading">#</a></h3>
 <p>El <strong>aprendizaje supervisado</strong> implica la construcción de un modelo estadístico para <strong>predecir</strong> o estimar un resultado en función de una o más variables de entrada. Podemos considerar el aprendizaje supervisado como el uso de una función que asigna variables de entrada a un resultado.</p>
 <ul class="simple">
 <li><p>Las <strong>variables de entrada</strong> tienen muchos nombres, como: x, explicativa (<em>explanatory</em>), predictora (<em>predictor</em>), regresora (<em>regressor</em>), independiente y característica (<em>feature</em>).</p></li>
@@ -450,7 +477,7 @@ document.write(`
 </section>
 </section>
 <section id="aprendizaje-supervisado">
-<h2><span class="section-number">6.3. </span>Aprendizaje Supervisado<a class="headerlink" href="#aprendizaje-supervisado" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>Aprendizaje Supervisado<a class="headerlink" href="#aprendizaje-supervisado" title="Link to this heading">#</a></h2>
 <p>Supongamos que observas una respuesta cuantitativa <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(p\)</span> predictores, <span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_p\)</span>. Deseamos estimar una relación entre <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(X=(X_1,X_2,\cdots,X_p)\)</span> que puede escribirse como:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -496,15 +523,15 @@ Y = f(X)+\epsilon
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5b18ab8c67fa89492bcec7795a9f7c51e25530d066031e09b1c4ca7e8616bbab.png" src="_images/5b18ab8c67fa89492bcec7795a9f7c51e25530d066031e09b1c4ca7e8616bbab.png" />
+<img alt="_images/ac4808d09c0e62466cd6df9c7f45c5fed248e60adc9ea6a736b40a7f4be2600a.png" src="_images/ac4808d09c0e62466cd6df9c7f45c5fed248e60adc9ea6a736b40a7f4be2600a.png" />
 </div>
 </div>
 <p>En esencia, el aprendizaje supervisado es un conjunto de métodos que nos ayudan a estimar <span class="math notranslate nohighlight">\(f\)</span>. Al estimar <span class="math notranslate nohighlight">\(f\)</span> aparecen conceptos teóricos con los que debemos familiarizarnos y también debemos tener herramientas que nos evaluar la estimación que hemos obtenido: <span class="math notranslate nohighlight">\(\hat{f}\)</span>.</p>
 <section id="estimar-f">
-<h3><span class="section-number">6.3.1. </span>Estimar <span class="math notranslate nohighlight">\(f\)</span><a class="headerlink" href="#estimar-f" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>Estimar <span class="math notranslate nohighlight">\(f\)</span><a class="headerlink" href="#estimar-f" title="Link to this heading">#</a></h3>
 <p>Hay dos razones para estimar <span class="math notranslate nohighlight">\(f\)</span>: predicción e inferencia.</p>
 <section id="prediccion">
-<h4><span class="section-number">6.3.1.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">6.3.1.1. </span>Predicción<a class="headerlink" href="#prediccion" title="Link to this heading">#</a></h4>
 <p>En problemas reales tenemos disponible datos de entrada <span class="math notranslate nohighlight">\(X\)</span> y sus etiquetas <span class="math notranslate nohighlight">\(Y\)</span> y deseamos estimar la relación entre <span class="math notranslate nohighlight">\(X\)</span> y <span class="math notranslate nohighlight">\(Y\)</span>, para ello:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -513,7 +540,7 @@ Y = f(X)+\epsilon
 <p>donde <span class="math notranslate nohighlight">\(\hat{f}\)</span> representa nuestra estimación de <span class="math notranslate nohighlight">\(f\)</span> y <span class="math notranslate nohighlight">\(\hat{Y}\)</span> representa la predicción de <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <p>No necesariamente debemos saber la forma funcional exacta de <span class="math notranslate nohighlight">\(\hat{f}\)</span> siempre y cuando tengamos predicciones precisas de <span class="math notranslate nohighlight">\(Y\)</span>. Cuando esto sucede, se lo conoce como un problema de <em>caja negra</em>.</p>
 <section id="error-total">
-<h5><span class="section-number">6.3.1.1.1. </span>Error Total<a class="headerlink" href="#error-total" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">6.3.1.1.1. </span>Error Total<a class="headerlink" href="#error-total" title="Link to this heading">#</a></h5>
 <p>En aprendizaje supervisado, el error total puede descomponerse en el <strong>error de predicción esperado (EPE)</strong>, que es la diferencia cuadrática esperada entre el resultado predicho <span class="math notranslate nohighlight">\(\hat{Y}\)</span> y el resultado verdadero <span class="math notranslate nohighlight">\(Y\)</span>, es decir, el error cuadrático medio (MSE):</p>
 <div class="math notranslate nohighlight">
 \[
@@ -527,7 +554,7 @@ EPE(X) = \mathbb{E}[(Y - \hat{Y}(X))^2]
 </ul>
 <p>Ahora, queremos descomponer esto en componentes de <strong>error reducible</strong> y <strong>error irreducible</strong>.</p>
 <section id="error-reducible-e-irreducible">
-<h6><span class="section-number">6.3.1.1.1.1. </span>Error Reducible e Irreducible<a class="headerlink" href="#error-reducible-e-irreducible" title="Permalink to this heading">#</a></h6>
+<h6><span class="section-number">6.3.1.1.1.1. </span>Error Reducible e Irreducible<a class="headerlink" href="#error-reducible-e-irreducible" title="Link to this heading">#</a></h6>
 <p>Dado que la etiqueta <span class="math notranslate nohighlight">\(Y\)</span> se puede descomponer en una parte determinista <span class="math notranslate nohighlight">\(f(X)\)</span> y un ruido <span class="math notranslate nohighlight">\(\epsilon\)</span>, es decir:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -562,7 +589,7 @@ EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}}
 </section>
 </section>
 <section id="inferencia">
-<h4><span class="section-number">6.3.1.2. </span>Inferencia<a class="headerlink" href="#inferencia" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">6.3.1.2. </span>Inferencia<a class="headerlink" href="#inferencia" title="Link to this heading">#</a></h4>
 <p>Cuando estamos interesados en entender la asociación entre <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_p\)</span>, la estimación de <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(\hat{f}\)</span> no puede ser tratado como una caja negra. Nuestro objetivo no es necesariamente hacer predicciones de <span class="math notranslate nohighlight">\(Y\)</span>, sino que necesitamos tener una forma exacta de <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p>Podemos estar interesados en responder a preguntas como:</p>
 <ul class="simple">
@@ -575,7 +602,7 @@ EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}}
 </section>
 </section>
 <section id="descomposicion-de-sesgo-varianza-del-error-reducible">
-<h3><span class="section-number">6.3.2. </span>Descomposición de Sesgo-Varianza (del Error Reducible)<a class="headerlink" href="#descomposicion-de-sesgo-varianza-del-error-reducible" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.2. </span>Descomposición de Sesgo-Varianza (del Error Reducible)<a class="headerlink" href="#descomposicion-de-sesgo-varianza-del-error-reducible" title="Link to this heading">#</a></h3>
 <p>El error reducible se puede descomponer aún más en <strong>sesgo</strong> y <strong>varianza</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -593,7 +620,7 @@ EPE(x) = \underbrace{\text{Sesgo}^2 + \text{Varianza}}_{\text{Error Reducible}} 
 \]</div>
 </section>
 <section id="en-sintesis">
-<h3><span class="section-number">6.3.3. </span>En síntesis<a class="headerlink" href="#en-sintesis" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.3. </span>En síntesis<a class="headerlink" href="#en-sintesis" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Error Reducible</strong>: Esta es la parte del error que se puede reducir mejorando el modelo (por ejemplo, usando un modelo más complejo, mejor ajuste o más datos). Consiste en <strong>Sesgo</strong> y <strong>Varianza</strong>.</p>
 <div class="math notranslate nohighlight">
@@ -616,7 +643,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 </section>
 </section>
 <section id="metodos-de-remuestreo">
-<h2><span class="section-number">6.4. </span>Métodos de remuestreo<a class="headerlink" href="#metodos-de-remuestreo" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.4. </span>Métodos de remuestreo<a class="headerlink" href="#metodos-de-remuestreo" title="Link to this heading">#</a></h2>
 <p>Los <strong>métodos de remuestreo</strong> son una herramienta indispensable en la estadística moderna. Implican extraer repetidamente muestras de un conjunto de <strong>entrenamiento</strong> y reajustar un modelo de interés en cada muestra para obtener información adicional sobre el modelo ajustado.</p>
 <p>Dos métodos más usados en el remuestreo son <em>bootstrap</em> y <em>cross-validation</em>.</p>
 <p><strong>Bootstrap</strong></p>
@@ -624,7 +651,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <p><strong>Cross-validation</strong></p>
 <p>El proceso de evaluar el desempeño de un modelo se conoce como <strong>evaluación del modelo</strong>, mientras que el proceso de seleccionar el nivel adecuado de flexibilidad para un modelo se conoce como <strong>selección del modelo</strong>.</p>
 <section id="bootstrap">
-<h3><span class="section-number">6.4.1. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.1. </span>Bootstrap<a class="headerlink" href="#bootstrap" title="Link to this heading">#</a></h3>
 <p>Supongamos que deseamos obtener el siguiente estimador</p>
 <div class="math notranslate nohighlight">
 \[
@@ -677,7 +704,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/3de6534ca707da05f3b170da868ae043b94d1ce4f4ad27a84bb2d401f198166b.png" src="_images/3de6534ca707da05f3b170da868ae043b94d1ce4f4ad27a84bb2d401f198166b.png" />
+<img alt="_images/363739b873b068cbba9889635b367552fb3dd7dd28aee95f11dfbdc0d5ced5f1.png" src="_images/363739b873b068cbba9889635b367552fb3dd7dd28aee95f11dfbdc0d5ced5f1.png" />
 </div>
 </div>
 <p>Usando <code class="docutils literal notranslate"><span class="pre">bootstrap</span></code>:</p>
@@ -695,13 +722,13 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/b5840064d78e15d319c253830390da99f6e95196f1cdf6c8bdebace7781ae5fd.png" src="_images/b5840064d78e15d319c253830390da99f6e95196f1cdf6c8bdebace7781ae5fd.png" />
+<img alt="_images/1ee2d8037b1df7175e973af632cbd8a8031d53878702e7ca96306bc956709ff1.png" src="_images/1ee2d8037b1df7175e973af632cbd8a8031d53878702e7ca96306bc956709ff1.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="cross-validation">
-<h2><span class="section-number">6.5. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.5. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -750,8 +777,8 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00149107, 0.00173116, 0.00155115, 0.00156879, 0.00153089]),
- &#39;score_time&#39;: array([0.00168085, 0.00169611, 0.00161576, 0.00161099, 0.00161099]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.0006237 , 0.00056911, 0.00056601, 0.00050712, 0.00049686]),
+ &#39;score_time&#39;: array([0.00064421, 0.00060081, 0.00059915, 0.00053096, 0.00053501]),
  &#39;test_r2&#39;: array([-0.84695129,  0.28360126, -0.90154176,  0.6867929 , -5.11490281]),
  &#39;test_neg_mean_absolute_error&#39;: array([-7.59750607, -7.74954156, -9.29418544, -4.25742205, -3.78002062])}
 </pre></div>
@@ -786,8 +813,10 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="PruebasHipotesis.html"
@@ -815,6 +844,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -856,7 +886,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -869,9 +899,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -886,7 +917,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -895,8 +926,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

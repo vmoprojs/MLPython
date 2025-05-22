@@ -1,24 +1,26 @@
 Traceback (most recent call last):
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/opt/anaconda3/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
-    return just_run(coro(*args, **kwargs))
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
-    return loop.run_until_complete(coro)
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
     return future.result()
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+           ^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/victormorales/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+  File "/opt/anaconda3/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 from sklearn.neural_network import MLPClassifier
 from shared_utilities import plot_class_regions_for_classifier_subplot
+from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(X_D2, y_D2, random_state=0)
 
@@ -35,15 +37,21 @@ for units, axis in zip([1, 10, 100], subaxes):
     plt.tight_layout()
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[3], line 4[0m
-[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mneural_network[39;00m [38;5;28;01mimport[39;00m MLPClassifier
-[1;32m      2[0m [38;5;28;01mfrom[39;00m [38;5;21;01mshared_utilities[39;00m [38;5;28;01mimport[39;00m plot_class_regions_for_classifier_subplot
-[0;32m----> 4[0m X_train, X_test, y_train, y_test [38;5;241m=[39m [43mtrain_test_split[49m(X_D2, y_D2, random_state[38;5;241m=[39m[38;5;241m0[39m)
-[1;32m      6[0m fig, subaxes [38;5;241m=[39m plt[38;5;241m.[39msubplots([38;5;241m3[39m, [38;5;241m1[39m, figsize[38;5;241m=[39m([38;5;241m6[39m,[38;5;241m18[39m))
-[1;32m      8[0m [38;5;28;01mfor[39;00m units, axis [38;5;129;01min[39;00m [38;5;28mzip[39m([[38;5;241m1[39m, [38;5;241m10[39m, [38;5;241m100[39m], subaxes):
 
-[0;31mNameError[0m: name 'train_test_split' is not defined
-NameError: name 'train_test_split' is not defined
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[3], line 2[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mneural_network[39;00m [38;5;28;01mimport[39;00m MLPClassifier
+[0;32m----> 2[0m [38;5;28;01mfrom[39;00m [38;5;21;01mshared_utilities[39;00m [38;5;28;01mimport[39;00m plot_class_regions_for_classifier_subplot
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel_selection[39;00m [38;5;28;01mimport[39;00m train_test_split
+[1;32m      5[0m X_train, X_test, y_train, y_test [38;5;241m=[39m train_test_split(X_D2, y_D2, random_state[38;5;241m=[39m[38;5;241m0[39m)
+
+File [0;32m~/Documents/Consultorias&Cursos/CURSOS/Cooking/MLPython/pyML/shared_utilities.py:11[0m
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m [38;5;28;01mimport[39;00m neighbors
+[1;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpatches[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpatches[39;00m
+[0;32m---> 11[0m [38;5;28;01mimport[39;00m [38;5;21;01mgraphviz[39;00m
+[1;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtree[39;00m [38;5;28;01mimport[39;00m export_graphviz
+[1;32m     13[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpatches[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpatches[39;00m
+
+[0;31mModuleNotFoundError[0m: No module named 'graphviz'
 

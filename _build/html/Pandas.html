@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2. Pandas &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Pandas';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -141,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -199,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -208,14 +231,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -337,26 +360,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -411,14 +436,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
-<h1><span class="section-number">2. </span>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">2. </span>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h1>
 <p><strong>Series</strong>: es una matriz etiquetada <strong>unidimensional</strong> capaz de contener cualquier tipo de datos (enteros, cadenas, números de punto flotante, objetos de Python, etc.). Las etiquetas de los <strong>ejes</strong> (axis) se denominan colectivamente índice (index). El método básico para crear una serie es llamar a <code class="docutils literal notranslate"><span class="pre">pd.Series([1,3,5,np.nan,6,8])</span></code>.</p>
 <p><strong>DataFrame</strong>: Es una estructura de datos etiquetada <strong>bidimensional</strong> con columnas de tipos potencialmente diferentes. Se puede considerar como una hoja de cálculo o una tabla SQL, o un diccionario de objetos Series. Proviene del objeto <code class="docutils literal notranslate"><span class="pre">data.frame()</span></code> de <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
 <section id="las-series">
-<h2><span class="section-number">2.1. </span>Las Series<a class="headerlink" href="#las-series" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>Las Series<a class="headerlink" href="#las-series" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -583,7 +608,7 @@ dtype: object
 </div>
 </section>
 <section id="haciendo-consultas-en-series">
-<h2><span class="section-number">2.2. </span>Haciendo consultas en Series<a class="headerlink" href="#haciendo-consultas-en-series" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Haciendo consultas en Series<a class="headerlink" href="#haciendo-consultas-en-series" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sports</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Futbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Ecuador&#39;</span><span class="p">,</span>
@@ -636,6 +661,10 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/3172538273.py:1: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  s[3]
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Corea del Sur&#39;
 </pre></div>
 </div>
@@ -723,10 +752,10 @@ dtype: object
 </div>
 </section>
 <section id="pandas-estructuras-de-datos-para-estadistica">
-<h2><span class="section-number">2.3. </span>Pandas: estructuras de datos para estadística<a class="headerlink" href="#pandas-estructuras-de-datos-para-estadistica" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>Pandas: estructuras de datos para estadística<a class="headerlink" href="#pandas-estructuras-de-datos-para-estadistica" title="Link to this heading">#</a></h2>
 <p>Provee estructuras de datos adecuados para análisis estadístico, y añade funciones que  facilitan el ingreso de datos, su organización y su manipulación.</p>
 <section id="manipulacion-de-datos">
-<h3><span class="section-number">2.3.1. </span>Manipulación de datos<a class="headerlink" href="#manipulacion-de-datos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1. </span>Manipulación de datos<a class="headerlink" href="#manipulacion-de-datos" title="Link to this heading">#</a></h3>
 <p><strong>Procedimientos comunes</strong></p>
 <p>Un <em>DataFrame</em> es una estructura de datos de dos dimensiones con etiquetas cuyas columnas pueden ser de diferentes tipos.</p>
 <p>Empecemos creando un DataFrame con tres columnas <em>Time</em>, <em>x</em> y <em>y</em></p>
@@ -1062,7 +1091,7 @@ Name: Time, Length: 100, dtype: float64
 <p>Extraer filas también funciona, por ejemplo <code class="docutils literal notranslate"><span class="pre">df[0:5]</span></code> para las primeras 5 filas. Lo que suele ser confuso es que para extraer una única fila se usa por ejmeplo <code class="docutils literal notranslate"><span class="pre">df[5:6]</span></code>. Si usas solo <code class="docutils literal notranslate"><span class="pre">df[5]</span></code> se devuelve un error.</p>
 </section>
 <section id="cargando-nuestro-primer-conjunto-de-datos">
-<h3><span class="section-number">2.3.2. </span>Cargando nuestro primer conjunto de datos<a class="headerlink" href="#cargando-nuestro-primer-conjunto-de-datos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2. </span>Cargando nuestro primer conjunto de datos<a class="headerlink" href="#cargando-nuestro-primer-conjunto-de-datos" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>El conjunto de datos <em>Gapminder</em> viene originalmente de www.gapminder.org. La versión que exploraremos fue preparada por Jenifer Bryan de la Universidad de Columbia. Su repositorio puede encontrarse en https://github.com/jennybc/gapminder</p>
 </div></blockquote>
@@ -1206,7 +1235,7 @@ None
 </div>
 </section>
 <section id="columnas-filas-y-celdas">
-<h3><span class="section-number">2.3.3. </span>Columnas, filas y celdas<a class="headerlink" href="#columnas-filas-y-celdas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.3. </span>Columnas, filas y celdas<a class="headerlink" href="#columnas-filas-y-celdas" title="Link to this heading">#</a></h3>
 <p>Para inspeccionar los datos del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> podemos apalancarnos en métodos. Por ejemplo, <code class="docutils literal notranslate"><span class="pre">head</span></code> nos permite ver las primeras 5 filas de los datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1227,7 +1256,7 @@ None
 </div>
 </section>
 <section id="seleccionar-e-indexar-columnas-por-nombre">
-<h3><span class="section-number">2.3.4. </span>Seleccionar e indexar columnas por nombre<a class="headerlink" href="#seleccionar-e-indexar-columnas-por-nombre" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.4. </span>Seleccionar e indexar columnas por nombre<a class="headerlink" href="#seleccionar-e-indexar-columnas-por-nombre" title="Link to this heading">#</a></h3>
 <p>Para acceder a columnas específicas de nuestros datos, podemos usar corchetes <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1366,7 +1395,7 @@ Name: country, dtype: object
 </ul>
 </section>
 <section id="usando-notacion-para-acceder-a-valores-de-columna">
-<h3><span class="section-number">2.3.5. </span>Usando notación “.” para acceder a valores de columna<a class="headerlink" href="#usando-notacion-para-acceder-a-valores-de-columna" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.5. </span>Usando notación “.” para acceder a valores de columna<a class="headerlink" href="#usando-notacion-para-acceder-a-valores-de-columna" title="Link to this heading">#</a></h3>
 <p>Para acceder a valores del <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> también puedes usar la notación “.”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1398,8 +1427,8 @@ Name: country, Length: 1704, dtype: object
 </ul>
 </section>
 <section id="subconjunto-de-filas">
-<h3><span class="section-number">2.3.6. </span>Subconjunto de filas<a class="headerlink" href="#subconjunto-de-filas" title="Permalink to this heading">#</a></h3>
-<table class="table">
+<h3><span class="section-number">2.3.6. </span>Subconjunto de filas<a class="headerlink" href="#subconjunto-de-filas" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Atributo</p></th>
 <th class="head text-center"><p>Descripción</p></th>
@@ -1414,6 +1443,7 @@ Name: country, Length: 1704, dtype: object
 </tr>
 </tbody>
 </table>
+</div>
 <p>Accedamos a los datos con la etiqueta del índice en nuestros datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1458,7 +1488,7 @@ Name: 0, dtype: object
 </div>
 </section>
 <section id="usando-iloc">
-<h3><span class="section-number">2.3.7. </span>Usando <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#usando-iloc" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.7. </span>Usando <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#usando-iloc" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code> hace lo mismo que <code class="docutils literal notranslate"><span class="pre">.loc</span></code> pero usando números que representan las posiciones de la fila. Solo recuerda a las etiquetas de fila pueden o no ser números.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1514,7 +1544,7 @@ Name: 1703, dtype: object
 </div>
 </section>
 <section id="agrupaciones">
-<h3><span class="section-number">2.3.8. </span>Agrupaciones<a class="headerlink" href="#agrupaciones" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.8. </span>Agrupaciones<a class="headerlink" href="#agrupaciones" title="Link to this heading">#</a></h3>
 <p><em>pandas</em> ofrece funciones poderosas para manejar datos perdidos que suelen ser reemplazados por <em>nan</em> (<em>not a number</em>). También permite realizar manipilaciones más sofisticadas como <em>pivotaje</em>. Por ejemplo, se puede usar DataFrames para hacer grupos y su análisis estadístico de cada grupo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1643,6 +1673,10 @@ Name: 1703, dtype: object
 10      m  4.3
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/2561619852.py:4: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  grouped.apply(print)
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1765,8 +1799,8 @@ m    Axes(0.125,0.11;0.775x0.77)
 dtype: object
 </pre></div>
 </div>
-<img alt="_images/96a26fde0f17a4f67b7487aedbc4067f895908672a5e6a2ef6cff77c1238b546.png" src="_images/96a26fde0f17a4f67b7487aedbc4067f895908672a5e6a2ef6cff77c1238b546.png" />
-<img alt="_images/7b05b2b9b461b639981e4958bee671e6e7560596a35756e3eae1a0bed7701489.png" src="_images/7b05b2b9b461b639981e4958bee671e6e7560596a35756e3eae1a0bed7701489.png" />
+<img alt="_images/516ac8f657387e6c959e31eb186fc0c433d8287418d51c4481f8075140216488.png" src="_images/516ac8f657387e6c959e31eb186fc0c433d8287418d51c4481f8075140216488.png" />
+<img alt="_images/091c5d4db1773f9d02f3e3f573ec672d30f7b53cb97b50dfa18325b3d068ccb5.png" src="_images/091c5d4db1773f9d02f3e3f573ec672d30f7b53cb97b50dfa18325b3d068ccb5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2005,18 +2039,18 @@ year continent
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>continent  country    
-Africa     Algeria        12
-           Angola         12
-           Libya          12
-           Ghana          12
-           Guinea         12
-                          ..
-Europe     Germany        12
-           Greece         12
-           Hungary        12
-Oceania    Australia      12
-           New Zealand    12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>continent  country       
+Africa     Algeria           12
+           Angola            12
+           Benin             12
+           Botswana          12
+           Burkina Faso      12
+                             ..
+Europe     Switzerland       12
+           Turkey            12
+           United Kingdom    12
+Oceania    Australia         12
+           New Zealand       12
 Name: count, Length: 142, dtype: int64
 </pre></div>
 </div>
@@ -2042,10 +2076,10 @@ Name: country, dtype: int64
 </div>
 </section>
 <section id="wide-long">
-<h3><span class="section-number">2.3.9. </span>Wide &amp; Long<a class="headerlink" href="#wide-long" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.9. </span>Wide &amp; Long<a class="headerlink" href="#wide-long" title="Link to this heading">#</a></h3>
 <p>Los datos <em>gapminder</em> que hemos analizado, están en un formato que se conoce como <code class="docutils literal notranslate"><span class="pre">long</span></code> o largo. Este tipo de formatos nos permite <em>pivotear</em>para obtener métricas de resumen de datos y agrupaciones (parecido a datos listos para usarse en una tabla dinámica de Excel). El resultado de las agrupaciones son datos en formato <code class="docutils literal notranslate"><span class="pre">wide</span></code>.</p>
 <section id="pivot-table">
-<h4><span class="section-number">2.3.9.1. </span>.pivot_table<a class="headerlink" href="#pivot-table" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.3.9.1. </span>.pivot_table<a class="headerlink" href="#pivot-table" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Documentación pandas: https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html</p>
 </div></blockquote>
@@ -2083,7 +2117,7 @@ Name: country, dtype: int64
 </div>
 </section>
 <section id="melt">
-<h4><span class="section-number">2.3.9.2. </span>.melt<a class="headerlink" href="#melt" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.3.9.2. </span>.melt<a class="headerlink" href="#melt" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Documentación pandas: https://pandas.pydata.org/docs/reference/api/pandas.melt.html</p>
 </div></blockquote>
@@ -2249,7 +2283,7 @@ Name: country, dtype: int64
 </section>
 </section>
 <section id="merge">
-<h3><span class="section-number">2.3.10. </span>Merge<a class="headerlink" href="#merge" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.10. </span>Merge<a class="headerlink" href="#merge" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Documentación pandas: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html</p>
 </div></blockquote>
@@ -2608,7 +2642,8 @@ Salomé   Ingenieria
 </div>
 </div>
 <p><strong>Tipos de <em>join</em></strong></p>
-<a class="reference internal image-reference" href="_images/im2.png"><img alt="_images/im2.png" src="_images/im2.png" style="width: 700px; height: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/im2.png"><img alt="_images/im2.png" src="_images/im2.png" style="width: 700px; height: 300px;" />
+</a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">staff_df</span><span class="p">,</span> <span class="n">student_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -2882,7 +2917,7 @@ Salomé   Ingenieria
 </div>
 </section>
 <section id="datos-categoricos">
-<h3><span class="section-number">2.3.11. </span>Datos categóricos<a class="headerlink" href="#datos-categoricos" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.11. </span>Datos categóricos<a class="headerlink" href="#datos-categoricos" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="s1">&#39;A+&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A-&#39;</span><span class="p">,</span> <span class="s1">&#39;B+&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B-&#39;</span><span class="p">,</span> <span class="s1">&#39;C+&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C-&#39;</span><span class="p">,</span> <span class="s1">&#39;D+&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">],</span>
@@ -3262,7 +3297,7 @@ Categories (10, interval[float64, right]): [(-20990.756, 2506894.639] &lt; (2506
 </div>
 </section>
 <section id="tablas-dinamicas">
-<h3><span class="section-number">2.3.12. </span>Tablas dinámicas<a class="headerlink" href="#tablas-dinamicas" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.12. </span>Tablas dinámicas<a class="headerlink" href="#tablas-dinamicas" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/cars.csv&quot;</span>
@@ -3427,6 +3462,10 @@ Categories (10, interval[float64, right]): [(-20990.756, 2506894.639] &lt; (2506
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/1915387499.py:1: FutureWarning: The provided callable &lt;function mean at 0x118b2eb60&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=np.mean)
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3533,6 +3572,20 @@ Categories (10, interval[float64, right]): [(-20990.756, 2506894.639] &lt; (2506
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/488835074.py:1: FutureWarning: The provided callable &lt;function mean at 0x118b2eb60&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=[np.mean,np.min], margins=True)
+/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/488835074.py:1: FutureWarning: The provided callable &lt;function mean at 0x118b2eb60&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=[np.mean,np.min], margins=True)
+/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/488835074.py:1: FutureWarning: The provided callable &lt;function mean at 0x118b2eb60&gt; is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;mean&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=[np.mean,np.min], margins=True)
+/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/488835074.py:1: FutureWarning: The provided callable &lt;function min at 0x118b2e2a0&gt; is currently using DataFrameGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;min&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=[np.mean,np.min], margins=True)
+/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/488835074.py:1: FutureWarning: The provided callable &lt;function min at 0x118b2e2a0&gt; is currently using DataFrameGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;min&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=[np.mean,np.min], margins=True)
+/var/folders/3s/mwy450px7bz09c4zp_hpgl480000gn/T/ipykernel_6818/488835074.py:1: FutureWarning: The provided callable &lt;function min at 0x118b2e2a0&gt; is currently using DataFrameGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &quot;min&quot; instead.
+  df.pivot_table(values=&#39;(kW)&#39;, index=&#39;YEAR&#39;, columns=&#39;Make&#39;, aggfunc=[np.mean,np.min], margins=True)
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3556,7 +3609,7 @@ Categories (10, interval[float64, right]): [(-20990.756, 2506894.639] &lt; (2506
     <tr>
       <th></th>
       <th colspan="9" halign="left">mean</th>
-      <th colspan="9" halign="left">amin</th>
+      <th colspan="9" halign="left">min</th>
     </tr>
     <tr>
       <th>Make</th>
@@ -3734,7 +3787,7 @@ Categories (10, interval[float64, right]): [(-20990.756, 2506894.639] &lt; (2506
 </div>
 </section>
 <section id="apply">
-<h3><span class="section-number">2.3.13. </span>Apply<a class="headerlink" href="#apply" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.13. </span>Apply<a class="headerlink" href="#apply" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Documentación pandas: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html</p>
 </div></blockquote>
@@ -3939,7 +3992,7 @@ Name: a, dtype: float64
 </div>
 </div>
 <section id="concat">
-<h4><span class="section-number">2.3.13.1. </span>.concat<a class="headerlink" href="#concat" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.3.13.1. </span>.concat<a class="headerlink" href="#concat" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Documentación pandas: https://pandas.pydata.org/docs/reference/api/pandas.concat.html</p>
 </div></blockquote>
@@ -4263,8 +4316,10 @@ Name: a, dtype: float64
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="IntroduccionPython.html"
@@ -4292,6 +4347,7 @@ Name: a, dtype: float64
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -4332,7 +4388,7 @@ Name: a, dtype: float64
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -4345,9 +4401,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -4362,7 +4419,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -4371,8 +4428,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. Estadística Descriptiva &#8212; Técnicas de Machine Learning con Python</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Descriptiva';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Técnicas de Machine Learning con Python - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Técnicas de Machine Learning con Python - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +233,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -339,26 +362,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -382,37 +407,44 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">4.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencial-central">4.1.1. Medidas de tendencial central</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.1.1. Promedio</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana">4.1.1.2. Mediana</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.1.3. La moda</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion">4.1.2. Medidas de Dispersión</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.2.1. Rango</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.2.2. Desviación estándar</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2.3. Varianza</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantiles">4.1.2.4. Cuantiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#media-como-solucion-a-un-problema-de-optimizacion">4.1.2. Media como solución a un problema de optimización</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana">4.1.2.1. Mediana</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana-como-solucion-a-un-problema-de-optimizacion">4.1.3. Mediana como solución a un problema de optimización</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-matematica-y-geometrica">4.2. Comparación matemática y geométrica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.2.1. La moda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion">4.2.2. Medidas de Dispersión</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.2.2.1. Rango</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.2.2.2. Desviación estándar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.2.2.3. Varianza</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantiles">4.2.2.4. Cuantiles</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-v-a">4.2.1. Variables aleatorias (v.a.)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-v-a">4.2.2. Ejemplos de v.a.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-masa-de-probabilidad-p-x">4.2.3. Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">4.2.3.1. Ejemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.3. Distribuciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-v-a">4.3.1. Variables aleatorias (v.a.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-v-a">4.3.2. Ejemplos de v.a.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-masa-de-probabilidad-p-x">4.3.3. Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">4.3.3.1. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-densidad">4.2.4. Función de densidad</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.4.1. Ejemplo</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2.4.2. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-densidad">4.3.4. Función de densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.3.4.1. Ejemplo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.3.4.2. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-distribucion-acumulada">4.2.5. Función de distribución acumulada</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2.5.1. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-distribucion-acumulada">4.3.5. Función de distribución acumulada</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.3.5.1. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-cuantil">4.2.6. Función Cuantil</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-python">4.2.7. En Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-cuantil">4.3.6. Función Cuantil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-python">4.3.7. En Python</a></li>
 </ul>
 </li>
 </ul>
@@ -424,10 +456,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="estadistica-descriptiva">
-<h1><span class="section-number">4. </span>Estadística Descriptiva<a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Estadística Descriptiva<a class="headerlink" href="#estadistica-descriptiva" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Librería básica: scipy.stats (importado como <code class="docutils literal notranslate"><span class="pre">stats</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SciPy</span></code> es una biblioteca de computación científica que utiliza <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> como base.</p></li>
@@ -437,9 +469,9 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">SciPy</span></code> fue creado por el creador de <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, <a class="reference external" href="https://es.wikipedia.org/wiki/Travis_Oliphant">Travis Olliphant</a>.</p></li>
 </ul>
 <section id="medidas-de-resumen">
-<h2><span class="section-number">4.1. </span>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Medidas de resumen<a class="headerlink" href="#medidas-de-resumen" title="Link to this heading">#</a></h2>
 <section id="medidas-de-tendencial-central">
-<h3><span class="section-number">4.1.1. </span>Medidas de tendencial central<a class="headerlink" href="#medidas-de-tendencial-central" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Medidas de tendencial central<a class="headerlink" href="#medidas-de-tendencial-central" title="Link to this heading">#</a></h3>
 <p>Creamos 100 números aleatorios con distribución normal:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -452,7 +484,7 @@ document.write(`
 </div>
 </div>
 <section id="promedio">
-<h4><span class="section-number">4.1.1.1. </span>Promedio<a class="headerlink" href="#promedio" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.1.1.1. </span>Promedio<a class="headerlink" href="#promedio" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Promedio o media: notado como <span class="math notranslate nohighlight">\(\bar{x}\)</span>, de un conjunto de <span class="math notranslate nohighlight">\(n\)</span> datos <span class="math notranslate nohighlight">\(x_1,x_2,\ldots,x_n\)</span> es igual a la suma de valores dividido para <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </div></blockquote>
@@ -475,13 +507,41 @@ document.write(`
 \[
 \bar{x} =\frac{\sum_{i=1}^kn_ix_i}{n}
 \]</div>
-<p>Ventajas y desventajas del promedio:</p>
+</section>
+</section>
+<section id="media-como-solucion-a-un-problema-de-optimizacion">
+<h3><span class="section-number">4.1.2. </span>Media como solución a un problema de optimización<a class="headerlink" href="#media-como-solucion-a-un-problema-de-optimizacion" title="Link to this heading">#</a></h3>
+<p><strong>Fórmula:</strong></p>
+<p>Para un conjunto de datos <span class="math notranslate nohighlight">\( x_1, x_2, ..., x_n \)</span>, la media es:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\]</div>
+<p><strong>Interpretación geométrica:</strong></p>
+<p>La media aritmética es el valor <span class="math notranslate nohighlight">\( a \in \mathbb{R} \)</span> que <strong>minimiza la suma de los cuadrados de las distancias</strong> entre sí y cada punto del conjunto de datos:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \arg \min_{a \in \mathbb{R}} \sum_{i=1}^{n} (x_i - a)^2
+\]</div>
+<p><strong>Geometría:</strong></p>
 <ul class="simple">
-<li><p>Se expresan en las mismas unidades quela variable</p></li>
-<li><p>En su cálculo intervienen todos los valores de la distribución</p></li>
-<li><p>Es el centro de gravedad de toda la distribución</p></li>
-<li><p>Es único</p></li>
-<li><p>Su principal inconveniente es que se ve afectado por valores atípicos</p></li>
+<li><p>Es el centro de gravedad de los puntos.</p></li>
+<li><p>En una línea numérica, si cada dato es un peso igual, la media es el punto donde se equilibra la barra.</p></li>
+<li><p>Muy sensible a valores extremos (outliers), ya que eleva las diferencias al cuadrado.</p></li>
+</ul>
+<p><strong>Ventajas:</strong></p>
+<ul class="simple">
+<li><p>Fácil de calcular y ampliamente comprendido, lo que lo convierte en una herramienta común en el análisis estadístico.</p></li>
+<li><p>Utiliza toda la información disponible en el conjunto de datos, ya que considera todos los valores para su cálculo.</p></li>
+<li><p>Es útil para comparaciones entre diferentes grupos o poblaciones, especialmente cuando los datos están normalmente distribuidos.</p></li>
+<li><p>Es la base para muchos métodos estadísticos y pruebas inferenciales (como la t de Student o ANOVA).</p></li>
+</ul>
+<p><strong>Desventajas:</strong></p>
+<ul class="simple">
+<li><p>Es muy sensible a valores atípicos o extremos, lo que puede distorsionar su representatividad del conjunto de datos.</p></li>
+<li><p>No siempre refleja adecuadamente la tendencia central en distribuciones sesgadas o asimétricas.</p></li>
+<li><p>No es apropiada para variables cualitativas o categóricas, ya que requiere datos numéricos.</p></li>
+<li><p>Puede no tener un significado práctico si los datos no son homogéneos o si existen grandes disparidades entre los valores.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,22 +618,73 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.15334269473584197
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.15334269473584183
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 <section id="mediana">
-<h4><span class="section-number">4.1.1.2. </span>Mediana<a class="headerlink" href="#mediana" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.1.2.1. </span>Mediana<a class="headerlink" href="#mediana" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>La mediana de un conjunto de datos <span class="math notranslate nohighlight">\(x_1+x_2+\ldots+x_n\)</span> es el valor que se encuentra en el punto medio, cuando se ordenan los valores de menor a mayor.</p>
 </div></blockquote>
 <p>Se nota como <span class="math notranslate nohighlight">\(Q_2\)</span> o <em>Med</em> y tiene la propiedad de que a cada lado se encuentra el 50% de los datos.</p>
+</section>
+</section>
+<section id="mediana-como-solucion-a-un-problema-de-optimizacion">
+<h3><span class="section-number">4.1.3. </span>Mediana como solución a un problema de optimización<a class="headerlink" href="#mediana-como-solucion-a-un-problema-de-optimizacion" title="Link to this heading">#</a></h3>
+<p><strong>Fórmula:</strong></p>
+<ul class="simple">
+<li><p>Para un número impar de datos ordenados: es el valor central.</p></li>
+<li><p>Para un número par de datos ordenados: es el promedio de los dos centrales.</p></li>
+</ul>
+<p><strong>Interpretación geométrica:</strong></p>
+<p>La mediana es el valor <span class="math notranslate nohighlight">\( a \in \mathbb{R} \)</span> que <strong>minimiza la suma de las distancias absolutas</strong> entre sí y cada punto del conjunto:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{med} = \arg \min_{a \in \mathbb{R}} \sum_{i=1}^{n} |x_i - a|
+\]</div>
+<p><strong>Geometría:</strong></p>
+<ul class="simple">
+<li><p>Es el punto medio en términos de cantidad de datos (no de valores).</p></li>
+<li><p>Minimiza la distancia total recorrida si tuvieras que visitar todos los puntos desde un solo lugar.</p></li>
+<li><p>Mucho más robusta ante valores atípicos, porque no penaliza diferencias grandes como lo hace el cuadrado.</p></li>
+</ul>
+</section>
+</section>
+<section id="comparacion-matematica-y-geometrica">
+<h2><span class="section-number">4.2. </span>Comparación matemática y geométrica<a class="headerlink" href="#comparacion-matematica-y-geometrica" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepto</p></th>
+<th class="head"><p>Media (<span class="math notranslate nohighlight">\( \bar{x} \)</span>)</p></th>
+<th class="head"><p>Mediana</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Minimiza</p></td>
+<td><p><span class="math notranslate nohighlight">\( \sum (x_i - a)^2 \)</span></p></td>
+<td><p>$ \sum</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solución</p></td>
+<td><p>Única, cerrada</p></td>
+<td><p>Generalmente no cerrada</p></td>
+</tr>
+<tr class="row-even"><td><p>Geometría</p></td>
+<td><p>Centro de masa</p></td>
+<td><p>Punto de mínima distancia</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sensibilidad a outliers</p></td>
+<td><p>Alta</p></td>
+<td><p>Baja</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Ventajas:</p>
 <ul class="simple">
 <li><p>No se ve afectada por valores extremos o atípicos</p></li>
-<li><p>Fácil de interpretar como el “valor medio” de un conjunto de datos. Divide los datos en dos mitades.</p></li>
+<li><p>Fácil de interpretar, divide los datos en dos mitades.</p></li>
 <li><p>En distribuciones asimétricas, la mediana proporciona una mejor representación del centro que la media, ya que no se ve arrastrada hacia la cola de la distribución.</p></li>
 </ul>
 <p>Desventajas:</p>
@@ -588,14 +699,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.15334269473584197
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.15334269473584183
 </pre></div>
 </div>
 </div>
 </div>
-</section>
 <section id="la-moda">
-<h4><span class="section-number">4.1.1.3. </span>La moda<a class="headerlink" href="#la-moda" title="Permalink to this heading">#</a></h4>
+<h3><span class="section-number">4.2.1. </span>La moda<a class="headerlink" href="#la-moda" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Es el valor que más se repite en un conjunto de datos.</p>
 </div></blockquote>
@@ -652,11 +762,10 @@ document.write(`
 </div>
 </div>
 </section>
-</section>
 <section id="medidas-de-dispersion">
-<h3><span class="section-number">4.1.2. </span>Medidas de Dispersión<a class="headerlink" href="#medidas-de-dispersion" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.2. </span>Medidas de Dispersión<a class="headerlink" href="#medidas-de-dispersion" title="Link to this heading">#</a></h3>
 <section id="rango">
-<h4><span class="section-number">4.1.2.1. </span>Rango<a class="headerlink" href="#rango" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.2.1. </span>Rango<a class="headerlink" href="#rango" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Diferencia entre el valor más alto y el valor más bajo</p>
 </div></blockquote>
@@ -692,7 +801,7 @@ document.write(`
 </div>
 </section>
 <section id="desviacion-estandar">
-<h4><span class="section-number">4.1.2.2. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.2.2. </span>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Link to this heading">#</a></h4>
 <p>Fue introducida por Karl Person en 1894 y se define:</p>
 <blockquote>
 <div><p>La desviación estándar (o desviación típica), notada por <span class="math notranslate nohighlight">\(s\)</span>, de un conjunto de <span class="math notranslate nohighlight">\(n\)</span> mediciones <span class="math notranslate nohighlight">\(x_1+x_2+\ldots+x_n\)</span> es la raíz cuadrada de las desviaciones de las mediciones, respecto al promedio <span class="math notranslate nohighlight">\(\bar{x}\)</span>, dividida entre <span class="math notranslate nohighlight">\(n-1\)</span>; es decir</p>
@@ -721,7 +830,7 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </div>
 </section>
 <section id="varianza">
-<h4><span class="section-number">4.1.2.3. </span>Varianza<a class="headerlink" href="#varianza" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.2.3. </span>Varianza<a class="headerlink" href="#varianza" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -736,7 +845,7 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </div>
 </section>
 <section id="cuantiles">
-<h4><span class="section-number">4.1.2.4. </span>Cuantiles<a class="headerlink" href="#cuantiles" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.2.4. </span>Cuantiles<a class="headerlink" href="#cuantiles" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Un cuantil divide la distribución de los datos en una proporción específica, el cuantil es el dato que corresponde a dicha división.</p>
 </div></blockquote>
@@ -793,9 +902,9 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </section>
 </section>
 <section id="distribuciones">
-<h2><span class="section-number">4.2. </span>Distribuciones<a class="headerlink" href="#distribuciones" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Distribuciones<a class="headerlink" href="#distribuciones" title="Link to this heading">#</a></h2>
 <section id="variables-aleatorias-v-a">
-<h3><span class="section-number">4.2.1. </span>Variables aleatorias (v.a.)<a class="headerlink" href="#variables-aleatorias-v-a" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>Variables aleatorias (v.a.)<a class="headerlink" href="#variables-aleatorias-v-a" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Una <strong>variable aleatoria</strong> es un resultado numérico de un experimento.</p></li>
 <li><p>Las variables aleatorias que estudiamos tienen dos variantes: <strong>discretas</strong> or <strong>continuas</strong>.</p></li>
@@ -811,9 +920,8 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 </li>
 </ul>
 </section>
-<hr class="docutils" />
 <section id="ejemplos-de-v-a">
-<h3><span class="section-number">4.2.2. </span>Ejemplos de v.a.<a class="headerlink" href="#ejemplos-de-v-a" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>Ejemplos de v.a.<a class="headerlink" href="#ejemplos-de-v-a" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Los resultados <span class="math notranslate nohighlight">\((0-1)\)</span> del lanzamiento de una moneda</p></li>
 <li><p>Los resultados del lanzamiento de un dado</p></li>
@@ -821,34 +929,32 @@ s  = \sqrt{\frac{1}{n-1}\sum_{i = 1}^{n}(x_i-\bar{x})^2}
 <li><p>El estado de hipertensión de una persona seleccionada al alzar de una población</p></li>
 </ul>
 </section>
-<hr class="docutils" />
 <section id="funcion-de-masa-de-probabilidad-p-x">
-<h3><span class="section-number">4.2.3. </span>Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span><a class="headerlink" href="#funcion-de-masa-de-probabilidad-p-x" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span><a class="headerlink" href="#funcion-de-masa-de-probabilidad-p-x" title="Link to this heading">#</a></h3>
 <p>Una función de masa de probabilidad evaluada en un valor corresponde a la probabilidad que una v.a. toma ese valor. Para se una función válida, se debe satisfacer:</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(p(x) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(x\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\sum_{x} p(x) = 1\)</span></p></li>
 </ol>
 <p>La suma se toma sobre todos los valores de <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<hr class="docutils" />
 <section id="ejemplo">
-<h4><span class="section-number">4.2.3.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.3.3.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h4>
 <p>Sea <span class="math notranslate nohighlight">\(X\)</span> el resultado del lanzamiento de una moneda donde <span class="math notranslate nohighlight">\(X=0\)</span> representa
-sello y <span class="math notranslate nohighlight">\(X = 1\)</span> representa cara.
-$<span class="math notranslate nohighlight">\(
+sello y <span class="math notranslate nohighlight">\(X = 1\)</span> representa cara.</p>
+<div class="math notranslate nohighlight">
+\[
 p(x) = (1/2)^{x} (1/2)^{1-x} ~~\mbox{ for }~~x = 0,1
-\)</span><span class="math notranslate nohighlight">\(
-Suponga que no sabemos si la moneda es justa. Sea
-\)</span>\theta<span class="math notranslate nohighlight">\(  la probabilidad de que salga cara se expresa como una proporción
-(entre 0 y 1).
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Suponga que no sabemos si la moneda es justa. Sea <span class="math notranslate nohighlight">\(\theta\)</span>  la probabilidad de que salga cara se expresa como una proporción
+(entre 0 y 1).</p>
+<div class="math notranslate nohighlight">
+\[
 p(x) = \theta^{x} (1 - \theta)^{1-x} ~~\mbox{ for }~~x = 0,1
-\)</span>$</p>
+\]</div>
 </section>
 </section>
-<hr class="docutils" />
 <section id="funcion-de-densidad">
-<h3><span class="section-number">4.2.4. </span>Función de densidad<a class="headerlink" href="#funcion-de-densidad" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.4. </span>Función de densidad<a class="headerlink" href="#funcion-de-densidad" title="Link to this heading">#</a></h3>
 <p>Una función de densidad (pdf), es una función asociada con una v.a. continua</p>
 <p><em>Las areas debajo las pdfs corresponden a las probabilidades de esa v.a.</em></p>
 <p>La función <span class="math notranslate nohighlight">\(f\)</span> debe satisfacer</p>
@@ -856,9 +962,8 @@ p(x) = \theta^{x} (1 - \theta)^{1-x} ~~\mbox{ for }~~x = 0,1
 <li><p><span class="math notranslate nohighlight">\(f(x) \geq 0\)</span> para todo <span class="math notranslate nohighlight">\(x\)</span></p></li>
 <li><p>El área debajo de <span class="math notranslate nohighlight">\(f(x)\)</span> es uno.</p></li>
 </ol>
-<hr class="docutils" />
 <section id="id1">
-<h4><span class="section-number">4.2.4.1. </span>Ejemplo<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.3.4.1. </span>Ejemplo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>Supongamos que la proporción de llamadas de ayuda que se atienden en un día aleatorio en una línea de ayuda está dada por</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -868,7 +973,6 @@ f(x) = \left\{\begin{array}{ll}
 \end{array} \right. 
 \end{split}\]</div>
 <p>¿Es esta una densidad válida?</p>
-<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -881,15 +985,15 @@ f(x) = \left\{\begin{array}{ll}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f81f4508f70&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x127a88a40&gt;]
 </pre></div>
 </div>
-<img alt="_images/f3707aed04e4d7081f0e5ff1e11b5e2966e97252104986bdf1646a49cd7e5178.png" src="_images/f3707aed04e4d7081f0e5ff1e11b5e2966e97252104986bdf1646a49cd7e5178.png" />
+<img alt="_images/bb80e0d89c1e4b57e9251c44d3f5c9e9949399ae56b53b78b46771ee073b971b.png" src="_images/bb80e0d89c1e4b57e9251c44d3f5c9e9949399ae56b53b78b46771ee073b971b.png" />
 </div>
 </div>
 </section>
 <section id="id2">
-<h4><span class="section-number">4.2.4.2. </span>Ejemplo<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.3.4.2. </span>Ejemplo<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>¿Cuál es la probabilidad de que se atienda el 75% o menos de las llamadas?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,10 +1017,10 @@ f(x) = \left\{\begin{array}{ll}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.patches.Polygon at 0x7f81f47eb040&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.patches.Polygon at 0x127ac45c0&gt;]
 </pre></div>
 </div>
-<img alt="_images/aa0ea099892854dd3968dfad2e5041562325333756a4d87efe92c106616755be.png" src="_images/aa0ea099892854dd3968dfad2e5041562325333756a4d87efe92c106616755be.png" />
+<img alt="_images/d7e63147eb74c7ffd3205f88964fbba6de46cce265af9eab3781d0bedd78ae23.png" src="_images/d7e63147eb74c7ffd3205f88964fbba6de46cce265af9eab3781d0bedd78ae23.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -939,7 +1043,7 @@ f(x) = \left\{\begin{array}{ll}
 </section>
 </section>
 <section id="funcion-de-distribucion-acumulada">
-<h3><span class="section-number">4.2.5. </span>Función de distribución acumulada<a class="headerlink" href="#funcion-de-distribucion-acumulada" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.5. </span>Función de distribución acumulada<a class="headerlink" href="#funcion-de-distribucion-acumulada" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>La  <strong>función de distribución acumulada</strong> (CDF) de una v.a. <span class="math notranslate nohighlight">\(X\)</span> se define como la función
 $<span class="math notranslate nohighlight">\(
@@ -956,13 +1060,12 @@ S(x) = P(X &gt; x)
 <li><p>Note que <span class="math notranslate nohighlight">\(S(x) = 1 - F(x)\)</span></p></li>
 <li><p>Para v.a. continuas, la función de densidad es la derivada de la acumulada</p></li>
 </ul>
-<hr class="docutils" />
 <section id="id3">
-<h4><span class="section-number">4.2.5.1. </span>Ejemplo<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.3.5.1. </span>Ejemplo<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>¿Cuál es la función de supervivencia y CDF de la densidad considerada antes?</p>
 <p>Para <span class="math notranslate nohighlight">\(1 \geq x \geq 0\)</span>
 $<span class="math notranslate nohighlight">\(
-F(x) = P(X \leq x) = \frac{1}{2} Base \times Height = \frac{1}{2} (x) \times (2 x) = x^2
+F(x) = P(X \leq x) = \frac{1}{2} Base \times Altura = \frac{1}{2} (x) \times (2 x) = x^2
 \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[
@@ -983,7 +1086,7 @@ S(x) = 1 - x^2
 </section>
 </section>
 <section id="funcion-cuantil">
-<h3><span class="section-number">4.2.6. </span>Función Cuantil<a class="headerlink" href="#funcion-cuantil" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.6. </span>Función Cuantil<a class="headerlink" href="#funcion-cuantil" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>La  <strong>función cuantil</strong> (QF) de una v.a. <span class="math notranslate nohighlight">\(X\)</span> se define como la función
 $<span class="math notranslate nohighlight">\(
@@ -993,7 +1096,7 @@ Q(x) = F^{-1}(x)
 <p>Es decir, la función cuantil es la inversa de la función de distribución acumulada.</p>
 </section>
 <section id="en-python">
-<h3><span class="section-number">4.2.7. </span>En Python<a class="headerlink" href="#en-python" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.7. </span>En Python<a class="headerlink" href="#en-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miFD</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -1008,7 +1111,7 @@ Q(x) = F^{-1}(x)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x7f81f483c820&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen at 0x127b73740&gt;
 </pre></div>
 </div>
 </div>
@@ -1033,7 +1136,7 @@ Q(x) = F^{-1}(x)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5d66ff1d487276617c82b03eac77c1b20e8643786dda73b2d6eaacb66afa7e2.png" src="_images/b5d66ff1d487276617c82b03eac77c1b20e8643786dda73b2d6eaacb66afa7e2.png" />
+<img alt="_images/a3750714897c7016e1842cf6e932588d1bbc7d09546e50263f7fe1e7bb73e976.png" src="_images/a3750714897c7016e1842cf6e932588d1bbc7d09546e50263f7fe1e7bb73e976.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1044,7 +1147,7 @@ Q(x) = F^{-1}(x)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/127f96b19ede7ee96cd6d957415a9e990812ed36bf379ea3c80e75b08a1d340d.png" src="_images/127f96b19ede7ee96cd6d957415a9e990812ed36bf379ea3c80e75b08a1d340d.png" />
+<img alt="_images/cf0c8abebf8ea02db333056ded2f5c1e8f68cdb1bb1031b5eb3ce2c65a2b0330.png" src="_images/cf0c8abebf8ea02db333056ded2f5c1e8f68cdb1bb1031b5eb3ce2c65a2b0330.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1056,7 +1159,7 @@ Q(x) = F^{-1}(x)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f84ee0cbaa0b30fa6f4b082a1262c991d8dd2f41f735bbe5596b7ea6f1886bd4.png" src="_images/f84ee0cbaa0b30fa6f4b082a1262c991d8dd2f41f735bbe5596b7ea6f1886bd4.png" />
+<img alt="_images/71e6afa20557d01006571fb33d6a6c2517169a959ebcbfbf23cf1875ffafed19.png" src="_images/71e6afa20557d01006571fb33d6a6c2517169a959ebcbfbf23cf1875ffafed19.png" />
 </div>
 </div>
 <p>Distribución acumulada empírica</p>
@@ -1083,7 +1186,7 @@ Q(x) = F^{-1}(x)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="_images/5972140adbcacb32f26fc0314d89b169f60ca70ebb65b7943fcfe90779d11eef.png" src="_images/5972140adbcacb32f26fc0314d89b169f60ca70ebb65b7943fcfe90779d11eef.png" />
+<img alt="_images/c3e16c92b3c96a6e4a2e7cddcc41d7b1f9d694f0d3e63fb5dc9d860f0974643c.png" src="_images/c3e16c92b3c96a6e4a2e7cddcc41d7b1f9d694f0d3e63fb5dc9d860f0974643c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1106,7 +1209,7 @@ Q(x) = F^{-1}(x)
 </div>
 </div>
 </div>
-<p>QQ plot</p>
+<p><strong>QQ plot</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.probplot.html#scipy.stats.probplot</span>
@@ -1125,7 +1228,7 @@ Q(x) = F^{-1}(x)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f365d7ac5969435d3888452cf02b4c19a97948c9c916019adfe8df5ccdbd5d60.png" src="_images/f365d7ac5969435d3888452cf02b4c19a97948c9c916019adfe8df5ccdbd5d60.png" />
+<img alt="_images/00aa12debeec26e978d33625261935fb5e8286119ea616efa19f88653c506ac8.png" src="_images/00aa12debeec26e978d33625261935fb5e8286119ea616efa19f88653c506ac8.png" />
 </div>
 </div>
 </section>
@@ -1141,24 +1244,26 @@ Q(x) = F^{-1}(x)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="Visualizacion.html"
@@ -1187,6 +1292,7 @@ Q(x) = F^{-1}(x)
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1196,37 +1302,44 @@ Q(x) = F^{-1}(x)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-resumen">4.1. Medidas de resumen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencial-central">4.1.1. Medidas de tendencial central</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#promedio">4.1.1.1. Promedio</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana">4.1.1.2. Mediana</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.1.1.3. La moda</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion">4.1.2. Medidas de Dispersión</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.1.2.1. Rango</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.1.2.2. Desviación estándar</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.1.2.3. Varianza</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantiles">4.1.2.4. Cuantiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#media-como-solucion-a-un-problema-de-optimizacion">4.1.2. Media como solución a un problema de optimización</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana">4.1.2.1. Mediana</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mediana-como-solucion-a-un-problema-de-optimizacion">4.1.3. Mediana como solución a un problema de optimización</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-matematica-y-geometrica">4.2. Comparación matemática y geométrica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-moda">4.2.1. La moda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion">4.2.2. Medidas de Dispersión</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rango">4.2.2.1. Rango</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">4.2.2.2. Desviación estándar</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#varianza">4.2.2.3. Varianza</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cuantiles">4.2.2.4. Cuantiles</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.2. Distribuciones</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-v-a">4.2.1. Variables aleatorias (v.a.)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-v-a">4.2.2. Ejemplos de v.a.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-masa-de-probabilidad-p-x">4.2.3. Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">4.2.3.1. Ejemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones">4.3. Distribuciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-aleatorias-v-a">4.3.1. Variables aleatorias (v.a.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-v-a">4.3.2. Ejemplos de v.a.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-masa-de-probabilidad-p-x">4.3.3. Función de masa de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">4.3.3.1. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-densidad">4.2.4. Función de densidad</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.4.1. Ejemplo</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2.4.2. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-densidad">4.3.4. Función de densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.3.4.1. Ejemplo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.3.4.2. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-distribucion-acumulada">4.2.5. Función de distribución acumulada</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2.5.1. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-de-distribucion-acumulada">4.3.5. Función de distribución acumulada</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.3.5.1. Ejemplo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-cuantil">4.2.6. Función Cuantil</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-python">4.2.7. En Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-cuantil">4.3.6. Función Cuantil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-python">4.3.7. En Python</a></li>
 </ul>
 </li>
 </ul>
@@ -1237,7 +1350,7 @@ Q(x) = F^{-1}(x)
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1250,9 +1363,10 @@ By Víctor Morales Oñate
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1267,7 +1381,7 @@ By Víctor Morales Oñate
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1276,8 +1390,8 @@ By Víctor Morales Oñate
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
