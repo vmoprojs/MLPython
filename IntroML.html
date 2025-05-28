@@ -412,24 +412,24 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizaje-supervisado">6.3. Aprendizaje Supervisado</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimar-f">6.3.1. Estimar <span class="math notranslate nohighlight">\(f\)</span></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">6.3.1.1. Predicción</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-total">6.3.1.1.1. Error Total</a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#error-reducible-e-irreducible">6.3.1.1.1.1. Error Reducible e Irreducible</a></li>
-</ul>
-</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-total">6.3.1.1.1. Error Total</a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia">6.3.1.2. Inferencia</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-sesgo-varianza-del-error-reducible">6.3.2. Descomposición de Sesgo-Varianza (del Error Reducible)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-sintesis">6.3.3. En síntesis</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-remuestreo">6.4. Métodos de remuestreo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">6.4.1. Bootstrap</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">6.5. Cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">6.5. Cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-del-modelo-entrenables">6.5.1. 1. Parámetros del modelo (entrenables)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hiperparametros-no-entrenables">6.5.2. 2. Hiperparámetros (no entrenables)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -553,8 +553,7 @@ EPE(X) = \mathbb{E}[(Y - \hat{Y}(X))^2]
 <li><p><span class="math notranslate nohighlight">\(\mathbb{E}[\cdot]\)</span> denota la esperanza.</p></li>
 </ul>
 <p>Ahora, queremos descomponer esto en componentes de <strong>error reducible</strong> y <strong>error irreducible</strong>.</p>
-<section id="error-reducible-e-irreducible">
-<h6><span class="section-number">6.3.1.1.1.1. </span>Error Reducible e Irreducible<a class="headerlink" href="#error-reducible-e-irreducible" title="Link to this heading">#</a></h6>
+<p><strong>Error Reducible e Irreducible</strong></p>
 <p>Dado que la etiqueta <span class="math notranslate nohighlight">\(Y\)</span> se puede descomponer en una parte determinista <span class="math notranslate nohighlight">\(f(X)\)</span> y un ruido <span class="math notranslate nohighlight">\(\epsilon\)</span>, es decir:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -570,6 +569,39 @@ Y = f(X) + \epsilon
 \[
 EPE(X) = \mathbb{E}[(f(X) + \epsilon - \hat{f}(X))^2]
 \]</div>
+<p><em>Paso 1: Reordenar la expresión</em></p>
+<p>Agrupamos los términos para formar una suma:</p>
+<p><span class="math notranslate nohighlight">\(
+(f(X) + \epsilon - \hat{f}(X)) = (f(X) - \hat{f}(X)) + \epsilon
+\)</span></p>
+<p>Sustituimos en la expresión original:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{EPE}(X) = \mathbb{E}\left[\left((f(X) - \hat{f}(X)) + \epsilon\right)^2\right]
+\]</div>
+<p><em>Paso 2: Expandir el cuadrado</em></p>
+<p>Aplicamos la identidad algebraica <span class="math notranslate nohighlight">\((a + b)^2 = a^2 + 2ab + b^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+= \mathbb{E}[(f(X) - \hat{f}(X))^2 + 2(f(X) - \hat{f}(X))\epsilon + \epsilon^2]
+\]</div>
+<p><em>Paso 3: Linealidad de la esperanza</em></p>
+<p>Separando en tres esperanzas:</p>
+<div class="math notranslate nohighlight">
+\[
+= \mathbb{E}[(f(X) - \hat{f}(X))^2] + 2\mathbb{E}[(f(X) - \hat{f}(X))\epsilon] + \mathbb{E}[\epsilon^2]
+\]</div>
+<p><em>Paso 4: Propiedad del error</em></p>
+<p>Asumimos que:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}[\epsilon] = 0\)</span> (error centrado)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon\)</span> es independiente de <span class="math notranslate nohighlight">\(\hat{f}(X)\)</span>. Bajo esta independencia, la esperanza del producto es el producto de las esperanzas: <span class="math notranslate nohighlight">\(\mathbb{E}[(f(X) - \hat{f}(X)) \cdot \epsilon] = \mathbb{E}[f(X) - \hat{f}(X)] \cdot \mathbb{E}[\epsilon]\)</span></p></li>
+</ul>
+<p>Entonces el término cruzado se anula:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[(f(X) - \hat{f}(X))\epsilon] = 0
+\]</div>
 <p>Expandiendo esta expresión:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -577,7 +609,7 @@ EPE(X) = \mathbb{E}[(f(X) - \hat{f}(X))^2] + \mathbb{E}[\epsilon^2]
 \]</div>
 <p>Esto se puede interpretar como:</p>
 <ol class="arabic simple">
-<li><p><strong>Error Reducible</strong>: El error debido a la incapacidad del modelo para aprender perfectamente la verdadera función (f(x)). Esto está representado por <span class="math notranslate nohighlight">\(\mathbb{E}[(f(X) - \hat{f}(X))^2]\)</span>.</p></li>
+<li><p><strong>Error Reducible</strong>: El error debido a la incapacidad del modelo para aprender perfectamente la verdadera función <span class="math notranslate nohighlight">\(f(x)\)</span>. Esto está representado por <span class="math notranslate nohighlight">\(\mathbb{E}[(f(X) - \hat{f}(X))^2]\)</span>.</p></li>
 <li><p><strong>Error Irreducible</strong>: El error debido al ruido inherente en los datos, es decir, <span class="math notranslate nohighlight">\(\mathbb{E}[\epsilon^2] = \sigma^2\)</span>, que no se puede reducir, sin importar cuán bien el modelo aprenda la función verdadera.</p></li>
 </ol>
 <p>Así, el error total es:</p>
@@ -585,7 +617,6 @@ EPE(X) = \mathbb{E}[(f(X) - \hat{f}(X))^2] + \mathbb{E}[\epsilon^2]
 \[
 EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}} + \underbrace{\sigma^2}_{\text{Error Irreducible}}
 \]</div>
-</section>
 </section>
 </section>
 <section id="inferencia">
@@ -618,9 +649,7 @@ EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}}
 \[
 EPE(x) = \underbrace{\text{Sesgo}^2 + \text{Varianza}}_{\text{Error Reducible}} + \underbrace{\sigma^2}_{\text{Error Irreducible}}
 \]</div>
-</section>
-<section id="en-sintesis">
-<h3><span class="section-number">6.3.3. </span>En síntesis<a class="headerlink" href="#en-sintesis" title="Link to this heading">#</a></h3>
+<p><strong>Para recordar:</strong></p>
 <ul>
 <li><p><strong>Error Reducible</strong>: Esta es la parte del error que se puede reducir mejorando el modelo (por ejemplo, usando un modelo más complejo, mejor ajuste o más datos). Consiste en <strong>Sesgo</strong> y <strong>Varianza</strong>.</p>
 <div class="math notranslate nohighlight">
@@ -660,16 +689,35 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <p>Nota que, si el problema fuese estimar el <a class="reference external" href="https://es.wikipedia.org/wiki/Intervalo_de_confianza">intervalo de confianza de la media</a>, tenemos un procedimiento paramétrico para hacerlo (pero también podemos usar bootstrap). Sin embargo, el estimador <span class="math notranslate nohighlight">\(\tau\)</span> no tiene un fórmula específica para estimar los intervalos de confianza, estos son los ejemplos donde bootstrap es más útil.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Importamos la librería NumPy, útil para cálculos numéricos y manejo de arreglos</span>
+<span class="kn">import</span> <span class="nn">random</span>       <span class="c1"># Importamos la librería random del sistema estándar de Python para operaciones aleatorias</span>
 
+<span class="c1"># Creamos un arreglo de NumPy que contiene las edades de una población de 11 individuos</span>
 <span class="n">edad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">48</span><span class="p">])</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">edad</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># tamaño de la población</span>
+
+<span class="c1"># Obtenemos la forma (shape) del arreglo &#39;edad&#39;. Esto devuelve una tupla con el número de elementos (en este caso, (11,))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">edad</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># n[0] será igual a 11, el tamaño de la población</span>
+
+<span class="c1"># Fijamos una semilla para el generador aleatorio de Python. Esto asegura que el muestreo sea reproducible</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span>
-<span class="n">indice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># posiciones de la población (id)</span>
-<span class="n">nsam</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Tamaño de la muestra (generalmente es igual a n)</span>
-<span class="n">sam</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">nsam</span><span class="p">)</span> <span class="c1"># Tomamos una muestra con reemplazo</span>
-<span class="n">tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span>
+
+<span class="c1"># Creamos un arreglo con los índices (posiciones) de los elementos en &#39;edad&#39;, es decir, de 0 a 10</span>
+<span class="n">indice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Este arreglo representa los &quot;ID&quot; o posiciones de los individuos en la población</span>
+
+<span class="c1"># Definimos el tamaño de la muestra que queremos tomar. En este caso se seleccionarán 20 elementos</span>
+<span class="n">nsam</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Es mayor al tamaño de la población, pero como se toma con reemplazo, no hay problema</span>
+
+<span class="c1"># Usamos la función random.choices para seleccionar una muestra aleatoria de 20 índices con reemplazo</span>
+<span class="n">sam</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">nsam</span><span class="p">)</span>  <span class="c1"># Esto permite que un mismo índice pueda ser seleccionado varias veces</span>
+
+<span class="c1"># Calculamos una estadística &#39;tau&#39; sobre la muestra obtenida:</span>
+<span class="c1"># - edad[sam] extrae las edades correspondientes a los índices seleccionados</span>
+<span class="c1"># - np.median(...) calcula la mediana de esa muestra</span>
+<span class="c1"># - np.ptp(...) calcula el rango (máx - mín) de la muestra</span>
+<span class="c1"># Finalmente se obtiene el cociente entre mediana y rango como una medida relativa de tendencia central</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span>
+
+<span class="c1"># Evaluamos &#39;tau&#39;. En un entorno interactivo, esta línea imprime el resultado de la operación anterior</span>
 <span class="n">tau</span>
 </pre></div>
 </div>
@@ -680,22 +728,36 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 </div>
 </div>
 </div>
-<p>A mano</p>
+<p>Ahora realizamos la estimación <strong>bootstrap</strong> mano</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tau_f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">res</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definimos una función llamada tau_f que calcula una medida estadística para un arreglo de datos</span>
+<span class="k">def</span> <span class="nf">tau_f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># Calcula el cociente entre la mediana del arreglo y su rango (diferencia entre el valor máximo y mínimo)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># np.ptp(x) es &quot;peak to peak&quot;: np.max(x) - np.min(x)</span>
+    <span class="k">return</span> <span class="n">res</span>  <span class="c1"># Devuelve el valor calculado</span>
 
-<span class="n">nboot</span> <span class="o">=</span> <span class="mi">9999</span>
+<span class="c1"># Definimos el número de repeticiones para el procedimiento de bootstrap</span>
+<span class="n">nboot</span> <span class="o">=</span> <span class="mi">9999</span>  <span class="c1"># Realizaremos 9999 remuestreos para aproximar la distribución empírica de tau</span>
+
+<span class="c1"># Creamos una lista vacía para almacenar los valores de tau generados en cada iteración</span>
 <span class="n">tau_sol</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nboot</span><span class="p">):</span>
+
+<span class="c1"># Ejecutamos un ciclo de remuestreo con reemplazo</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nboot</span><span class="p">):</span>
+    <span class="c1"># Seleccionamos aleatoriamente &#39;nsam&#39; índices con reemplazo desde los índices de la población</span>
     <span class="n">sam</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">indice</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">nsam</span><span class="p">)</span>
-    <span class="n">tau</span> <span class="o">=</span> <span class="n">tau_f</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span>
-    <span class="n">tau_sol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
     
+    <span class="c1"># Calculamos el valor de tau para la muestra seleccionada usando la función definida</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">tau_f</span><span class="p">(</span><span class="n">edad</span><span class="p">[</span><span class="n">sam</span><span class="p">])</span>
+    
+    <span class="c1"># Agregamos el resultado a la lista de valores tau</span>
+    <span class="n">tau_sol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
+
+<span class="c1"># Importamos la biblioteca seaborn para visualización estadística</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
+<span class="c1"># Graficamos un histograma de la distribución de valores tau obtenidos a partir del bootstrap</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">tau_sol</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -707,7 +769,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <img alt="_images/363739b873b068cbba9889635b367552fb3dd7dd28aee95f11dfbdc0d5ced5f1.png" src="_images/363739b873b068cbba9889635b367552fb3dd7dd28aee95f11dfbdc0d5ced5f1.png" />
 </div>
 </div>
-<p>Usando <code class="docutils literal notranslate"><span class="pre">bootstrap</span></code>:</p>
+<p>Ahora usamos el método <code class="docutils literal notranslate"><span class="pre">bootstrap</span></code> de la librería <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">bootstrap</span>
@@ -722,69 +784,257 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/1ee2d8037b1df7175e973af632cbd8a8031d53878702e7ca96306bc956709ff1.png" src="_images/1ee2d8037b1df7175e973af632cbd8a8031d53878702e7ca96306bc956709ff1.png" />
+<img alt="_images/b64832c020b59d273c05e5a99ccf83c98d4b21b58c406981d1d7527f51989588.png" src="_images/b64832c020b59d273c05e5a99ccf83c98d4b21b58c406981d1d7527f51989588.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="cross-validation">
 <h2><span class="section-number">6.5. </span>Cross-validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h2>
+<p><strong>¿Qué ocurre en la validación cruzada?</strong></p>
+<p>En la validación cruzada (cross-validation, CV), el objetivo es estimar <strong>el desempeño esperado del modelo</strong> en datos no vistos. La lógica general es:</p>
+<ol class="arabic simple">
+<li><p>Divides tus datos en <code class="docutils literal notranslate"><span class="pre">k</span></code> folds.</p></li>
+<li><p>Para cada fold:</p>
+<ul class="simple">
+<li><p>Entrenas el modelo <strong>desde cero</strong> en <code class="docutils literal notranslate"><span class="pre">k-1</span></code> folds (conjunto de entrenamiento).</p></li>
+<li><p>Evalúas el modelo en el fold restante (conjunto de validación).</p></li>
+</ul>
+</li>
+<li><p>Repites este proceso <code class="docutils literal notranslate"><span class="pre">k</span></code> veces y promedias las métricas.</p></li>
+</ol>
+<p><strong>Entonces… ¿cómo se fijan los parámetros?</strong></p>
+<p>Hay dos tipos de parámetros que debes distinguir:</p>
+<section id="parametros-del-modelo-entrenables">
+<h3><span class="section-number">6.5.1. </span>1. Parámetros del modelo (entrenables)<a class="headerlink" href="#parametros-del-modelo-entrenables" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Se ajustan automáticamente durante el entrenamiento en cada fold.</p></li>
+<li><p>Ejemplos: coeficientes en regresión, pesos de red neuronal.</p></li>
+</ul>
+</section>
+<section id="hiperparametros-no-entrenables">
+<h3><span class="section-number">6.5.2. </span>2. Hiperparámetros (no entrenables)<a class="headerlink" href="#hiperparametros-no-entrenables" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Se definen <strong>antes</strong> del entrenamiento y afectan cómo el modelo se entrena.</p></li>
+<li><p>Ejemplos: número de árboles en un Random Forest, <code class="docutils literal notranslate"><span class="pre">C</span></code> o <code class="docutils literal notranslate"><span class="pre">gamma</span></code> en un SVM.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Importante:</strong> Los hiperparámetros no deben fijarse usando todos los datos antes de hacer CV.</p>
+</div></blockquote>
+<p><strong>¿Cómo se seleccionan los hiperparámetros?</strong></p>
+<p>Mediante <strong>validación cruzada anidada (nested CV)</strong> o una <strong>búsqueda de hiperparámetros dentro del CV</strong>:</p>
+<p><strong>Búsqueda de hiperparámetros dentro de la CV</strong></p>
+<ul class="simple">
+<li><p>Dentro de cada entrenamiento (en <code class="docutils literal notranslate"><span class="pre">k-1</span></code> folds), haces búsqueda (por ejemplo, grid search o random search).</p></li>
+<li><p>Seleccionas los mejores hiperparámetros <strong>dentro del fold</strong>.</p></li>
+<li><p>Evalúas ese modelo en el fold restante.</p></li>
+</ul>
+<p><strong>¿Cuándo fijar el modelo final?</strong></p>
+<p>Después de hacer CV:</p>
+<ol class="arabic simple">
+<li><p>Eliges los hiperparámetros que dieron <strong>mejor desempeño promedio</strong>.</p></li>
+<li><p>Entrenas el <strong>modelo final</strong> con esos hiperparámetros sobre <strong>todos los datos disponibles</strong>.</p></li>
+<li><p>Este es el modelo que puedes usar para predicción o producción.</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Etapa</p></th>
+<th class="head"><p>Acción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Antes de CV</p></td>
+<td><p>No fijar hiperparámetros aún</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dentro de CV</p></td>
+<td><p>Buscar hiperparámetros óptimos usando solo datos de entrenamiento</p></td>
+</tr>
+<tr class="row-even"><td><p>Después de CV</p></td>
+<td><p>Entrenar modelo final con mejores hiperparámetros usando todos los datos</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importamos los módulos necesarios</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>  <span class="c1"># Dataset de ejemplo</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">StratifiedKFold</span>  <span class="c1"># Validación cruzada y búsqueda de hiperparámetros</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>  <span class="c1"># Modelo de árbol de decisión</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>  <span class="c1"># Para encadenar preprocesamiento + modelo</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>  <span class="c1"># Escalado de variables (opcional para árboles)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Operaciones numéricas</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="c1"># 1. Cargamos los datos</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># X: características, y: etiquetas</span>
 
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="c1"># 2. Definimos un pipeline de procesamiento: escalado (aunque no es necesario para árboles) + modelo</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>  <span class="c1"># Escalado opcional, útil si luego cambiamos el modelo</span>
+    <span class="p">(</span><span class="s1">&#39;clf&#39;</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>  <span class="c1"># Modelo de árbol con semilla fija</span>
+<span class="p">])</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># 3. Definimos la grilla de hiperparámetros a buscar para el árbol de decisión</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;clf__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>  <span class="c1"># Profundidad máxima del árbol</span>
+    <span class="s1">&#39;clf__min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>  <span class="c1"># Mínimo de muestras para dividir un nodo</span>
+    <span class="s1">&#39;clf__criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]</span>  <span class="c1"># Función de impureza: Gini o entropía</span>
+<span class="p">}</span>
 
-<span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mundo.csv&quot;</span>
+<span class="c1"># 4. Definimos la estrategia de validación cruzada externa (5 folds estratificados)</span>
+<span class="n">cv_outer</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">uu</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="p">)</span>
-<span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[[</span><span class="s2">&quot;PNB_PC&quot;</span><span class="p">,</span><span class="s2">&quot;calorias&quot;</span><span class="p">,</span><span class="s2">&quot;exp_vida&quot;</span><span class="p">]]</span>
-<span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[[</span><span class="s2">&quot;PNB_PC&quot;</span><span class="p">,</span><span class="s2">&quot;calorias&quot;</span><span class="p">]],</span><span class="n">datos</span><span class="o">.</span><span class="n">exp_vida</span>
+<span class="c1"># 5. Creamos el objeto de búsqueda de hiperparámetros con validación cruzada interna (3 folds)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">pipe</span><span class="p">,</span>       <span class="c1"># Pipeline a evaluar</span>
+                   <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>  <span class="c1"># Grilla de hiperparámetros</span>
+                   <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                   <span class="c1"># Validación cruzada interna</span>
+                   <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>     <span class="c1"># Métrica de evaluación</span>
+                   <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>              <span class="c1"># Usar todos los núcleos disponibles</span>
 
-<span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># 6. Evaluamos el modelo con validación cruzada externa</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv_outer</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>  <span class="c1"># Se entrena y evalúa en cada fold externo</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puntajes por fold:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>  <span class="c1"># Precisión en cada fold</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precisión promedio:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>  <span class="c1"># Precisión promedio como estimación del desempeño general</span>
 
+<span class="c1"># 7. Entrenamos el modelo final con todos los datos usando los mejores hiperparámetros encontrados</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejores hiperparámetros encontrados:&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 
-
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
-
-<span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span> <span class="c1">#sol</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">scores</span>
-
-
-
-
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
-<span class="c1"># https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter</span>
-<span class="n">scoring</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">]</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">)</span>
-<span class="n">scores</span>
+<span class="c1"># 8. Obtenemos el modelo final completamente entrenado</span>
+<span class="n">modelo_final</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>  <span class="c1"># Este es el modelo listo para usar en producción</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.0006237 , 0.00056911, 0.00056601, 0.00050712, 0.00049686]),
- &#39;score_time&#39;: array([0.00064421, 0.00060081, 0.00059915, 0.00053096, 0.00053501]),
- &#39;test_r2&#39;: array([-0.84695129,  0.28360126, -0.90154176,  0.6867929 , -5.11490281]),
- &#39;test_neg_mean_absolute_error&#39;: array([-7.59750607, -7.74954156, -9.29418544, -4.25742205, -3.78002062])}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Puntajes por fold: [0.96666667 0.96666667 0.93333333 0.96666667 0.9       ]
+Precisión promedio: 0.9466666666666667
+Mejores hiperparámetros encontrados: {&#39;clf__criterion&#39;: &#39;gini&#39;, &#39;clf__max_depth&#39;: 3, &#39;clf__min_samples_split&#39;: 2}
 </pre></div>
 </div>
 </div>
 </div>
+<p>Ahora miramos los resultados del proceso de manera gráfica:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">folds</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">))]</span>  <span class="c1"># Etiquetas: Fold 1, Fold 2, ...</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">folds</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">scores</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Precisión por fold (CV externa)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Fold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Precisión&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Escala de precisión entre 0 y 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a506e972d0e8a2be466a117b565212ec8d44e1a8603c160c04db07717e5e57de.png" src="_images/a506e972d0e8a2be466a117b565212ec8d44e1a8603c160c04db07717e5e57de.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Convierte los resultados a DataFrame y agrega una columna legible de parámetros</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">results</span><span class="p">[</span><span class="s1">&#39;params_str&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Identificar columnas de los folds internos</span>
+<span class="n">fold_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;split&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">col</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_test_score&#39;</span><span class="p">)]</span>
+
+<span class="c1"># Reestructurar el DataFrame para tener una fila por fold y configuración</span>
+<span class="n">results_long</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;params_str&#39;</span><span class="p">],</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="n">fold_columns</span><span class="p">,</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Fold&#39;</span><span class="p">,</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Score&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Limpiar nombre del fold: de &#39;split0_test_score&#39; → &#39;Fold 1&#39;</span>
+<span class="n">results_long</span><span class="p">[</span><span class="s1">&#39;Fold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_long</span><span class="p">[</span><span class="s1">&#39;Fold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;split(\d+)_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">results_long</span><span class="p">[</span><span class="s1">&#39;Fold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Fold &#39;</span> <span class="o">+</span> <span class="n">results_long</span><span class="p">[</span><span class="s1">&#39;Fold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Ordenar configuraciones por media de Score (para mejor visualización)</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">results_long</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;params_str&#39;</span><span class="p">)[</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+
+<span class="c1"># Mostrar tabla con los datos a graficar</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultados detallados por fold:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results_long</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results_long</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resultados detallados por fold:
+
+                                           params_str    Fold  Score
+0   {&#39;clf__criterion&#39;: &#39;gini&#39;, &#39;clf__max_depth&#39;: 2...  Fold 1   0.96
+1   {&#39;clf__criterion&#39;: &#39;gini&#39;, &#39;clf__max_depth&#39;: 2...  Fold 1   0.96
+2   {&#39;clf__criterion&#39;: &#39;gini&#39;, &#39;clf__max_depth&#39;: 2...  Fold 1   0.96
+3   {&#39;clf__criterion&#39;: &#39;gini&#39;, &#39;clf__max_depth&#39;: 3...  Fold 1   0.98
+4   {&#39;clf__criterion&#39;: &#39;gini&#39;, &#39;clf__max_depth&#39;: 3...  Fold 1   0.98
+..                                                ...     ...    ...
+67  {&#39;clf__criterion&#39;: &#39;entropy&#39;, &#39;clf__max_depth&#39;...  Fold 3   0.96
+68  {&#39;clf__criterion&#39;: &#39;entropy&#39;, &#39;clf__max_depth&#39;...  Fold 3   0.96
+69  {&#39;clf__criterion&#39;: &#39;entropy&#39;, &#39;clf__max_depth&#39;...  Fold 3   0.96
+70  {&#39;clf__criterion&#39;: &#39;entropy&#39;, &#39;clf__max_depth&#39;...  Fold 3   0.96
+71  {&#39;clf__criterion&#39;: &#39;entropy&#39;, &#39;clf__max_depth&#39;...  Fold 3   0.96
+
+[72 rows x 3 columns]
+(72, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nota que <code class="docutils literal notranslate"><span class="pre">results_long</span></code> tiene 72 filas, ¿por qué?</p>
+<p>La estructura del DataFrame <code class="docutils literal notranslate"><span class="pre">results_long</span></code> resulta de la combinación entre:</p>
+<ul class="simple">
+<li><p>El número de <strong>combinaciones de hiperparámetros evaluadas</strong></p></li>
+<li><p>El número de <strong>folds internos</strong> utilizados por <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code></p></li>
+</ul>
+<p><strong>Supuestos del ejemplo</strong></p>
+<p>Se definió la grilla de hiperparámetros de la siguiente forma:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;clf__criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">],</span>            <span class="c1"># 2 opciones</span>
+    <span class="s1">&#39;clf__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>                   <span class="c1"># 4 opciones</span>
+    <span class="s1">&#39;clf__min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>               <span class="c1"># 3 opciones</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Esto da lugar a un total de combinaciones de hiperparámetros:</p>
+<p><span class="math notranslate nohighlight">\(2 * 4 * 3 = 24\)</span> combinaciones</p>
+<p>Y si GridSearchCV se ejecuta con cv=3, significa que para cada combinación de hiperparámetros, se realiza una validación cruzada interna de 3 folds.</p>
+<p>El número total de filas de results_long es:</p>
+<p><span class="math notranslate nohighlight">\(24\)</span> combinaciones * <span class="math notranslate nohighlight">\(3\)</span> folds <span class="math notranslate nohighlight">\(= 72\)</span> filas</p>
+<p>Esto es exactamente lo que se espera cuando usamos GridSearchCV con <code class="docutils literal notranslate"><span class="pre">cv=3</span></code> y una malla con 24 combinaciones distintas de hiperparámetros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficar resultados por fold para todas las configuraciones</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;params_str&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Fold&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results_long</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Configuración de hiperparámetros&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Precisión por fold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Resultados detallados por fold para todas las configuraciones (GridSearchCV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Fold&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fb0a92d38215976e224f94ab627dc4a7570b9f8029f843d462c98db49e62d9a0.png" src="_images/fb0a92d38215976e224f94ab627dc4a7570b9f8029f843d462c98db49e62d9a0.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -797,16 +1047,16 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -860,24 +1110,24 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizaje-supervisado">6.3. Aprendizaje Supervisado</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimar-f">6.3.1. Estimar <span class="math notranslate nohighlight">\(f\)</span></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion">6.3.1.1. Predicción</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-total">6.3.1.1.1. Error Total</a><ul class="nav section-nav flex-column">
-<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#error-reducible-e-irreducible">6.3.1.1.1.1. Error Reducible e Irreducible</a></li>
-</ul>
-</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-total">6.3.1.1.1. Error Total</a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia">6.3.1.2. Inferencia</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-sesgo-varianza-del-error-reducible">6.3.2. Descomposición de Sesgo-Varianza (del Error Reducible)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-sintesis">6.3.3. En síntesis</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-remuestreo">6.4. Métodos de remuestreo</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">6.4.1. Bootstrap</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">6.5. Cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">6.5. Cross-validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-del-modelo-entrenables">6.5.1. 1. Parámetros del modelo (entrenables)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hiperparametros-no-entrenables">6.5.2. 2. Hiperparámetros (no entrenables)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
