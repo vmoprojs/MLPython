@@ -522,7 +522,63 @@ VIF_j = \frac{1}{1 - R_j^2}
 </tr>
 <tr class="row-even"><td class="text-left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>3. Selecciona el mejor modelo de los <span class="math notranslate nohighlight">\(\mathcal{M_0},\ldots,\mathcal{M_k}\)</span> usando el error de predicción en un conjunto de validación, <span class="math notranslate nohighlight">\(C_p\)</span>, AIC, BIC o <span class="math notranslate nohighlight">\(R^2\)</span> ajustado. O usa el método de validación cruzada.</p></td>
+<tr class="row-odd"><td class="text-left"><p>3. Selecciona el mejor modelo de los <span class="math notranslate nohighlight">\(\mathcal{M_0},\ldots,\mathcal{M_p}\)</span> usando el error de predicción en un conjunto de validación, <span class="math notranslate nohighlight">\(C_p\)</span>, AIC, BIC o <span class="math notranslate nohighlight">\(R^2\)</span> ajustado. O usa el método de validación cruzada.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>Supón que tienes estas variables para predecir <code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">final</span></code> (nota que <span class="math notranslate nohighlight">\(p=5\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">horas_estudio</span></code>, <code class="docutils literal notranslate"><span class="pre">uso_internet</span></code>, <code class="docutils literal notranslate"><span class="pre">nivel_socio</span></code>, <code class="docutils literal notranslate"><span class="pre">edad</span></code>, <code class="docutils literal notranslate"><span class="pre">género</span></code></p>
+<p>Nota que en este caso tendrías la siguiente cantidad de modelos a probar:</p>
+<div class="math notranslate nohighlight">
+\[C(5,1)+C(5,2)+C(5,3)+C(5,4)+C(5,5)=5+10+10+5+1=32\]</div>
+<p>En cada <span class="math notranslate nohighlight">\(k\)</span>, tendrás una elección final de todas las posibles:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelo</p></th>
+<th class="head"><p>k</p></th>
+<th class="head"><p>C(5, k)</p></th>
+<th class="head"><p>Ejemplo de variables</p></th>
+<th class="head"><p>Resultado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(M_0\)</span></p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>Ninguna (modelo nulo)</p></td>
+<td><p>Promedio general</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(M_1\)</span></p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+<td><p>horas_estudio</p></td>
+<td><p>Mejor entre 5 modelos con 1 variable</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(M_2\)</span></p></td>
+<td><p>2</p></td>
+<td><p>10</p></td>
+<td><p>horas_estudio + uso_internet</p></td>
+<td><p>Mejor entre 10 modelos con 2 variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(M_3\)</span></p></td>
+<td><p>3</p></td>
+<td><p>10</p></td>
+<td><p>horas_estudio + uso_internet + edad</p></td>
+<td><p>Mejor entre 10 modelos con 3 variables</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(M_4\)</span></p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+<td><p>horas_estudio + uso_internet + edad + género</p></td>
+<td><p>Mejor entre 5 modelos con 4 variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(M_5\)</span></p></td>
+<td><p>5</p></td>
+<td><p>1</p></td>
+<td><p>Todas (modelo completo)</p></td>
+<td><p>Único modelo con todas las variables</p></td>
 </tr>
 </tbody>
 </table>
@@ -581,6 +637,16 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 </tbody>
 </table>
 </div>
+<p><strong>Ejemplo</strong></p>
+<p>Supón que tienes estas variables para predecir <code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">final</span></code> (nota que <span class="math notranslate nohighlight">\(p=5\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">horas_estudio</span></code>, <code class="docutils literal notranslate"><span class="pre">uso_internet</span></code>, <code class="docutils literal notranslate"><span class="pre">nivel_socio</span></code>, <code class="docutils literal notranslate"><span class="pre">edad</span></code>, <code class="docutils literal notranslate"><span class="pre">género</span></code></p>
+<ol class="arabic simple">
+<li><p>Empiezas sin ninguna <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(M_0\)</span></p></li>
+<li><p>Pruebas una por una <span class="math notranslate nohighlight">\(\rightarrow\)</span> eliges la mejor <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(M_1\)</span> (<code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">~</span> <span class="pre">horas_estudio</span></code>)</p></li>
+<li><p>Agregas otra de las restantes <span class="math notranslate nohighlight">\(\rightarrow\)</span> eliges la mejor <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(M_2\)</span> (<code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">~</span> <span class="pre">horas_estudio</span> <span class="pre">+</span> <span class="pre">uso_internet</span></code>)</p></li>
+<li><p>Sigues así hasta probar todas</p></li>
+<li><p>Eliges el mejor modelo entre todos (<span class="math notranslate nohighlight">\(M_0\)</span> a <span class="math notranslate nohighlight">\(M_5\)</span>), usando validación cruzada o AIC/BIC</p></li>
+</ol>
 </section>
 <section id="seleccion-stepwise-hacia-atras">
 <h3><span class="section-number">10.1.3. </span>Selección <em>stepwise</em> hacia atrás<a class="headerlink" href="#seleccion-stepwise-hacia-atras" title="Link to this heading">#</a></h3>
@@ -605,6 +671,16 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 </tbody>
 </table>
 </div>
+<p><strong>Ejemplo</strong></p>
+<p>Supón que tienes estas variables para predecir <code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">final</span></code> (nota que <span class="math notranslate nohighlight">\(p=5\)</span>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">horas_estudio</span></code>, <code class="docutils literal notranslate"><span class="pre">uso_internet</span></code>, <code class="docutils literal notranslate"><span class="pre">nivel_socio</span></code>, <code class="docutils literal notranslate"><span class="pre">edad</span></code>, <code class="docutils literal notranslate"><span class="pre">género</span></code></p>
+<ol class="arabic simple">
+<li><p>Empiezas con todas <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(M_5\)</span></p></li>
+<li><p>Pruebas quitando una por una <span class="math notranslate nohighlight">\(\rightarrow\)</span> eliges la mejor <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(M_4\)</span> (<code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">~</span> <span class="pre">horas_estudio</span> <span class="pre">+</span> <span class="pre">uso_internet</span> <span class="pre">+</span> <span class="pre">nivel_socio</span> <span class="pre">+</span> <span class="pre">edad</span></code>). Aquí, por ejemplo, quitar <code class="docutils literal notranslate"><span class="pre">género</span></code> resultó ser la mejor opción.</p></li>
+<li><p>Manteniendo <span class="math notranslate nohighlight">\(M_4\)</span>, quitas otra de las restantes <span class="math notranslate nohighlight">\(\rightarrow\)</span> eliges la mejor <span class="math notranslate nohighlight">\(\rightarrow\)</span> <span class="math notranslate nohighlight">\(M_3\)</span> (<code class="docutils literal notranslate"><span class="pre">nota</span> <span class="pre">~</span>&#160;&#160; <span class="pre">uso_internet</span> <span class="pre">+</span> <span class="pre">nivel_socio</span> <span class="pre">+</span> <span class="pre">edad</span></code>). Aquí, por ejemplo, quitar <code class="docutils literal notranslate"><span class="pre">horas_estudio</span></code> resultó ser la mejor opción.</p></li>
+<li><p>Sigues así hasta probar quitnato todas</p></li>
+<li><p>Eliges el mejor modelo entre todos (<span class="math notranslate nohighlight">\(M_0\)</span> a <span class="math notranslate nohighlight">\(M_5\)</span>), usando validación cruzada o AIC/BIC</p></li>
+</ol>
 <section id="ejemplo">
 <h4><span class="section-number">10.1.3.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h4>
 <p>La superintendencia de compañias del Ecuador tiene información de estados financieros de las empresas que regula. Vamos a predecir los ingresos por ventas de las empresas grandes del 2023. En la pestaña <em>Recursos</em> del siguiente enlace: https://appscvsmovil.supercias.gob.ec/ranking/reporte.html</p>
@@ -638,21 +714,27 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 <p>Notamos que existen variables con alta correlación, se eliminan correlaciones superiores a <span class="math notranslate nohighlight">\(0.9\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importa la librería NumPy, necesaria para operaciones numéricas con matrices y arrays</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># Calcular la matriz de correlación</span>
+<span class="c1"># Calcula la matriz de correlación de Pearson entre las variables de X (entre -1 y 1),</span>
+<span class="c1"># y toma el valor absoluto para enfocarse solo en la fuerza de la relación (no en su dirección)</span>
 <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
 
-<span class="c1"># Seleccionar las columnas con alta correlación (por ejemplo, &gt; 0.9)</span>
+<span class="c1"># Crea una matriz triangular superior (sin la diagonal) para evitar duplicados y la diagonal en la correlación</span>
+<span class="c1"># np.triu(...) genera una matriz de unos en la parte superior, luego se convierte en booleano para usarla como máscara</span>
 <span class="n">upper_triangle</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">corr_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">))</span>
 
-<span class="c1"># Encontrar las columnas que tienen alta correlación</span>
-<span class="n">high_corr_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">upper_triangle</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">upper_triangle</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)]</span>
+<span class="c1"># Recorre las columnas y selecciona aquellas que tienen al menos una correlación alta (&gt; 0.8) con otra variable</span>
+<span class="n">high_corr_columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">upper_triangle</span><span class="o">.</span><span class="n">columns</span> 
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">upper_triangle</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="p">]</span>
 
-<span class="c1"># Eliminar las columnas con alta correlación de X</span>
+<span class="c1"># Elimina del conjunto de datos X las columnas con alta correlación detectadas en el paso anterior</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">high_corr_columns</span><span class="p">)</span>
 
-<span class="c1"># Mostrar las columnas eliminadas</span>
+<span class="c1"># Imprime en consola la lista de nombres de las columnas que fueron eliminadas por estar altamente correlacionadas</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas eliminadas por alta correlación:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">high_corr_columns</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -677,8 +759,8 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.818
 Model:                            OLS   Adj. R-squared (uncentered):              0.816
 Method:                 Least Squares   F-statistic:                              425.0
-Date:                Thu, 22 May 2025   Prob (F-statistic):                        0.00
-Time:                        06:11:43   Log-Likelihood:                         -15624.
+Date:                Thu, 29 May 2025   Prob (F-statistic):                        0.00
+Time:                        06:19:00   Log-Likelihood:                         -15624.
 No. Observations:                2969   AIC:                                  3.131e+04
 Df Residuals:                    2938   BIC:                                  3.150e+04
 Df Model:                          31                                                  
@@ -736,23 +818,42 @@ strong multicollinearity or other numerical problems.
 <p>Evaluación del modelo</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de funciones métricas desde scikit-learn para evaluar modelos de regresión</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="c1"># Definición de una función personalizada para evaluar un modelo de regresión</span>
 <span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="c1"># Cálculo del error absoluto medio: promedio de las diferencias absolutas entre observados y predichos</span>
     <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="c1"># Cálculo del error cuadrático medio: promedio de los cuadrados de las diferencias</span>
     <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="c1"># Cálculo de la raíz del error cuadrático medio: facilita la interpretación porque está en las mismas unidades que la variable objetivo</span>
     <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+    
+    <span class="c1"># Cálculo del coeficiente de determinación R²: indica la proporción de varianza explicada por el modelo</span>
     <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="c1"># Retorna las cuatro métricas de evaluación como una tupla</span>
     <span class="k">return</span> <span class="n">mae</span><span class="p">,</span> <span class="n">mse</span><span class="p">,</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">r2</span>
 
-<span class="c1"># Predicciones y evaluación para OLS</span>
+<span class="c1"># Predicción de los valores utilizando un modelo OLS previamente entrenado llamado &#39;start_model&#39;</span>
 <span class="n">y_pred_ols</span> <span class="o">=</span> <span class="n">start_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Evaluación del modelo OLS comparando las predicciones con los valores reales (y)</span>
+<span class="c1"># Almacena cada métrica en una variable correspondiente</span>
 <span class="n">mae_ols</span><span class="p">,</span> <span class="n">mse_ols</span><span class="p">,</span> <span class="n">rmse_ols</span><span class="p">,</span> <span class="n">r2_ols</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_ols</span><span class="p">)</span>
 
-<span class="c1"># Mostrar evaluación </span>
+<span class="c1"># Impresión de los resultados de evaluación del modelo OLS</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">OLS Métricas de evaluación:&quot;</span><span class="p">)</span>
+<span class="c1"># Error absoluto medio con dos decimales</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error (MAE): </span><span class="si">{</span><span class="n">mae_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Error cuadrático medio con dos decimales</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Raíz del error cuadrático medio con dos decimales</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error (RMSE): </span><span class="si">{</span><span class="n">rmse_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Coeficiente R² con dos decimales</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared: </span><span class="si">{</span><span class="n">r2_ols</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -770,25 +871,33 @@ R-squared: 0.80
 <p>Modelo hacia adelante:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación del selector secuencial de características desde sklearn y el modelo de regresión lineal</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="c1"># Crear el metodo para modelo de regresión lineal</span>
+
+<span class="c1"># Crear el modelo base: una regresión lineal ordinaria (no regularizada)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-<span class="c1"># Crear un selector de características secuencial</span>
+<span class="c1"># Crear el selector de características secuencial:</span>
+<span class="c1"># - Usa el modelo lineal como evaluador</span>
+<span class="c1"># - &#39;forward&#39; indica que se agregan características una a una (selección hacia adelante)</span>
+<span class="c1"># - n_features_to_select=&#39;auto&#39; permite que el selector determine automáticamente cuántas características son óptimas</span>
 <span class="n">sfs</span> <span class="o">=</span> <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">)</span>
 
-<span class="c1"># Ajustar el modelo</span>
+<span class="c1"># Ajusta el selector a los datos: evalúa distintas combinaciones de variables para encontrar el mejor subconjunto</span>
 <span class="n">sfs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Ver las características seleccionadas</span>
+<span class="c1"># Extrae un array booleano que indica qué variables fueron seleccionadas (True = seleccionada)</span>
 <span class="n">selected_features</span> <span class="o">=</span> <span class="n">sfs</span><span class="o">.</span><span class="n">get_support</span><span class="p">()</span>
 
-<span class="c1"># Ajustar el modelo final con las características seleccionadas</span>
+<span class="c1"># Filtra X para quedarse solo con las columnas seleccionadas</span>
 <span class="n">X_selected</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">selected_features</span><span class="p">]</span>
+
+<span class="c1"># Ajusta un modelo OLS (de statsmodels) con las variables seleccionadas</span>
+<span class="c1"># Nota: &#39;sm&#39; debe estar previamente importado como: import statsmodels.api as sm</span>
 <span class="n">final_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X_selected</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-<span class="c1"># Mostrar el resumen del modelo final</span>
+<span class="c1"># Muestra el resumen completo del modelo OLS: incluye coeficientes, R², p-valores, etc.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">final_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -799,8 +908,8 @@ R-squared: 0.80
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.811
 Model:                            OLS   Adj. R-squared (uncentered):              0.810
 Method:                 Least Squares   F-statistic:                              842.7
-Date:                Thu, 22 May 2025   Prob (F-statistic):                        0.00
-Time:                        06:11:44   Log-Likelihood:                         -15680.
+Date:                Thu, 29 May 2025   Prob (F-statistic):                        0.00
+Time:                        06:19:02   Log-Likelihood:                         -15680.
 No. Observations:                2969   AIC:                                  3.139e+04
 Df Residuals:                    2954   BIC:                                  3.148e+04
 Df Model:                          15                                                  
@@ -841,15 +950,23 @@ strong multicollinearity or other numerical problems.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicciones y evaluación para Adelante</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realiza predicciones sobre el conjunto de entrenamiento utilizando el modelo final ajustado con las variables seleccionadas</span>
+<span class="c1"># &#39;X_selected&#39; contiene solo las variables elegidas por el proceso de selección secuencial hacia adelante</span>
 <span class="n">y_pred_adelante</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_selected</span><span class="p">)</span>
+
+<span class="c1"># Evalúa el desempeño del modelo usando la función &#39;evaluate_model&#39; previamente definida</span>
+<span class="c1"># Calcula: MAE (error absoluto medio), MSE (error cuadrático medio), RMSE (raíz del error cuadrático medio) y R² (coeficiente de determinación)</span>
 <span class="n">mae_adelante</span><span class="p">,</span> <span class="n">mse_adelante</span><span class="p">,</span> <span class="n">rmse_adelante</span><span class="p">,</span> <span class="n">r2_adelante</span> <span class="o">=</span> <span class="n">evaluate_model</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_adelante</span><span class="p">)</span>
 
-<span class="c1"># Mostrar evaluación </span>
+<span class="c1"># Imprime en consola las métricas de evaluación del modelo construido tras la selección hacia adelante</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">(Adelante) Métricas de evaluación:&quot;</span><span class="p">)</span>
+<span class="c1"># Error absoluto medio</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error (MAE): </span><span class="si">{</span><span class="n">mae_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Error cuadrático medio</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Raíz del error cuadrático medio</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root Mean Squared Error (RMSE): </span><span class="si">{</span><span class="n">rmse_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Coeficiente R²</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared: </span><span class="si">{</span><span class="n">r2_adelante</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -867,25 +984,34 @@ R-squared: 0.79
 <p>Modelo hacia atrás</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación del selector secuencial de características desde scikit-learn y del modelo de regresión lineal</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SequentialFeatureSelector</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="c1"># Crear el metodo para modelo de regresión lineal</span>
+
+<span class="c1"># Crear el modelo base: en este caso, una regresión lineal ordinaria</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-<span class="c1"># Crear un selector de características secuencial</span>
+<span class="c1"># Crear el selector de características secuencial con selección hacia atrás</span>
+<span class="c1"># - El modelo &#39;model&#39; se usa para evaluar qué variables eliminar</span>
+<span class="c1"># - &#39;direction=&quot;backward&quot;&#39; indica que el selector comienza con todas las variables y elimina una por una</span>
+<span class="c1"># - &#39;n_features_to_select=&quot;auto&quot;&#39; permite que el selector determine automáticamente cuántas conservar (basado en validación cruzada)</span>
 <span class="n">sfs</span> <span class="o">=</span> <span class="n">SequentialFeatureSelector</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;backward&#39;</span><span class="p">)</span>
 
-<span class="c1"># Ajustar el modelo</span>
+<span class="c1"># Ajusta el selector de características a los datos</span>
+<span class="c1"># Internamente realiza múltiples ajustes del modelo eliminando variables una a una</span>
 <span class="n">sfs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Ver las características seleccionadas</span>
+<span class="c1"># Obtiene un array booleano que indica cuáles variables fueron finalmente seleccionadas (True = seleccionada)</span>
 <span class="n">selected_features</span> <span class="o">=</span> <span class="n">sfs</span><span class="o">.</span><span class="n">get_support</span><span class="p">()</span>
 
-<span class="c1"># Ajustar el modelo final con las características seleccionadas</span>
+<span class="c1"># Filtra el DataFrame X para mantener solo las variables seleccionadas</span>
 <span class="n">X_selected</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">selected_features</span><span class="p">]</span>
+
+<span class="c1"># Ajusta un modelo de regresión OLS usando statsmodels con las variables seleccionadas</span>
+<span class="c1"># Esto permite obtener un resumen estadístico completo del modelo (coeficientes, p-valores, etc.)</span>
 <span class="n">final_model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X_selected</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-<span class="c1"># Mostrar el resumen del modelo final</span>
+<span class="c1"># Imprime el resumen estadístico del modelo final seleccionado</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">final_model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -896,8 +1022,8 @@ R-squared: 0.79
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.810
 Model:                            OLS   Adj. R-squared (uncentered):              0.809
 Method:                 Least Squares   F-statistic:                              787.0
-Date:                Thu, 22 May 2025   Prob (F-statistic):                        0.00
-Time:                        06:11:47   Log-Likelihood:                         -15685.
+Date:                Thu, 29 May 2025   Prob (F-statistic):                        0.00
+Time:                        06:19:04   Log-Likelihood:                         -15685.
 No. Observations:                2969   AIC:                                  3.140e+04
 Df Residuals:                    2953   BIC:                                  3.150e+04
 Df Model:                          16                                                  
@@ -1059,63 +1185,89 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 <h4><span class="section-number">10.2.2.1. </span>Ejemplo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de bibliotecas necesarias</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># DIVISIÓN DE LOS DATOS EN ENTRENAMIENTO Y PRUEBA</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-<span class="c1"># Dividir los datos en entrenamiento y prueba</span>
-<span class="c1">#X = X_selected</span>
+<span class="c1"># Divide el conjunto de datos en entrenamiento (80%) y prueba (20%)</span>
+<span class="c1"># El parámetro random_state garantiza reproducibilidad</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span>
 
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># ESCALAMIENTO DE VARIABLES</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-<span class="c1"># Escalar los datos</span>
+<span class="c1"># Crea un objeto StandardScaler para estandarizar las variables (media 0, varianza 1)</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Ajusta y transforma los datos de entrenamiento</span>
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="c1"># Transforma los datos de prueba con la misma escala (sin volver a ajustar)</span>
 <span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># Crear modelos de Ridge y Lasso</span>
-<span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># Alpha controla la penalización</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># CREACIÓN Y ENTRENAMIENTO DE MODELOS</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Define el modelo Ridge con penalización L2 (alpha = 1.0)</span>
+<span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Define el modelo Lasso con penalización L1 (alpha = 5.0)</span>
 <span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+
+<span class="c1"># Define la regresión lineal sin penalización (modelo base OLS)</span>
 <span class="n">regOLS</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-<span class="c1"># Entrenar los modelos</span>
+<span class="c1"># Ajusta los modelos con los datos de entrenamiento escalados</span>
 <span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">regOLS</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Predicciones</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># PREDICCIONES Y EVALUACIÓN EN TRAINING SET</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Realiza predicciones sobre el conjunto de entrenamiento</span>
 <span class="n">y_pred_ridge_tr</span> <span class="o">=</span> <span class="n">ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
 <span class="n">y_pred_lasso_tr</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
 <span class="n">y_pred_ols_tr</span> <span class="o">=</span> <span class="n">regOLS</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
 
-
-<span class="c1"># Calcular el error cuadrático medio (MSE) TRAIN</span>
+<span class="c1"># Calcula el error cuadrático medio (MSE) sobre el set de entrenamiento</span>
+<span class="c1"># num_factor se puede usar si se quiere normalizar el error (aquí vale 1)</span>
 <span class="n">num_factor</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">mse_ridge_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ridge_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 <span class="n">mse_lasso_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_lasso_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 <span class="n">mse_ols_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ols_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 
-<span class="c1"># Resultados</span>
+<span class="c1"># Imprime los resultados de entrenamiento</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluación del modelo en TRAIN:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Ridge: </span><span class="si">{</span><span class="n">mse_ridge_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso: </span><span class="si">{</span><span class="n">mse_lasso_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE OLS: </span><span class="si">{</span><span class="n">mse_ols_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># PREDICCIONES Y EVALUACIÓN EN TEST SET</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-<span class="c1"># Predicciones</span>
+<span class="c1"># Realiza predicciones sobre el conjunto de prueba</span>
 <span class="n">y_pred_ridge</span> <span class="o">=</span> <span class="n">ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 <span class="n">y_pred_ols</span> <span class="o">=</span> <span class="n">regOLS</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 
-<span class="c1"># Calcular el error cuadrático medio (MSE) TEST</span>
+<span class="c1"># Calcula el MSE sobre el set de prueba</span>
 <span class="n">mse_ridge</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 <span class="n">mse_lasso</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 <span class="n">mse_ols</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ols</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
 
-<span class="c1"># Resultados</span>
+<span class="c1"># Imprime los resultados del test</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en TEST:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Ridge: </span><span class="si">{</span><span class="n">mse_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso: </span><span class="si">{</span><span class="n">mse_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1246,83 +1398,136 @@ deuda_total_c_plazo               11.794246
 <p>Ajuste con el mejor <span class="math notranslate nohighlight">\(\lambda\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de herramientas para validación cruzada y búsqueda de hiperparámetros</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
 
-<span class="c1"># Definir el rango de valores de alpha (lambda) a evaluar</span>
-<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">500</span><span class="p">]}</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># DEFINICIÓN DEL RANGO DE ALPHA (λ) A PROBAR</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-<span class="c1"># Crear el modelo de Ridge y Lasso</span>
+<span class="c1"># Define una grilla de valores posibles para el hiperparámetro alpha (lambda)</span>
+<span class="c1"># Alpha controla la intensidad de la penalización (regularización)</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">]}</span>
+
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># CREACIÓN DE LOS MODELOS BASE</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Crea instancias de los modelos Ridge y Lasso (aún sin alpha especificado)</span>
 <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
 <span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">()</span>
 
-<span class="c1"># Crear un KFold con shuffle y random_state</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># CONFIGURACIÓN DE LA VALIDACIÓN CRUZADA</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Crea un objeto KFold con 5 particiones (folds), barajando los datos y fijando semilla para reproducibilidad</span>
 <span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># Implementar GridSearchCV para Ridge</span>
-<span class="n">ridge_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span> <span class="c1">#cv=5 sería determinista</span>
-<span class="n">ridge_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># BÚSQUEDA DE HIPERPARÁMETROS CON GRIDSEARCHCV</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-<span class="c1"># Implementar GridSearchCV para Lasso</span>
-<span class="n">lasso_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lasso</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+<span class="c1"># Aplica GridSearchCV al modelo Ridge:</span>
+<span class="c1"># - Se evalúa cada valor de alpha usando validación cruzada con el criterio de error cuadrático medio negativo</span>
+<span class="c1">#   (porque sklearn maximiza por defecto, y el MSE debe minimizarse)</span>
+<span class="n">ridge_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">ridge</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span>
+<span class="p">)</span>
+<span class="n">ridge_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># Entrena sobre los datos de entrenamiento escalados</span>
+
+<span class="c1"># Aplica el mismo procedimiento para el modelo Lasso</span>
+<span class="n">lasso_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">lasso</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span>
+<span class="p">)</span>
 <span class="n">lasso_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Obtener el mejor valor de alpha y el MSE para Ridge</span>
-<span class="n">best_ridge_alpha</span> <span class="o">=</span> <span class="n">ridge_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
-<span class="n">best_ridge_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">ridge_search</span><span class="o">.</span><span class="n">best_score_</span><span class="o">/</span><span class="n">num_factor</span>  <span class="c1"># Negativo para convertirlo en MSE normal</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># RESULTADOS ÓPTIMOS DE RIDGE</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-<span class="c1"># Obtener el mejor valor de alpha y el MSE para Lasso</span>
+<span class="c1"># Extrae el mejor valor de alpha para Ridge que minimiza el MSE</span>
+<span class="n">best_ridge_alpha</span> <span class="o">=</span> <span class="n">ridge_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
+
+<span class="c1"># Obtiene el mejor score (negativo), y lo multiplica por -1 para obtener el MSE real</span>
+<span class="n">best_ridge_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">ridge_search</span><span class="o">.</span><span class="n">best_score_</span> <span class="o">/</span> <span class="n">num_factor</span>
+
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># RESULTADOS ÓPTIMOS DE LASSO</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Extrae el mejor valor de alpha para Lasso</span>
 <span class="n">best_lasso_alpha</span> <span class="o">=</span> <span class="n">lasso_search</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span>
-<span class="n">best_lasso_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">lasso_search</span><span class="o">.</span><span class="n">best_score_</span><span class="o">/</span><span class="n">num_factor</span>  <span class="c1"># Negativo para convertirlo en MSE normal</span>
+
+<span class="c1"># MSE asociado al mejor alpha encontrado para Lasso (también se vuelve positivo)</span>
+<span class="n">best_lasso_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">lasso_search</span><span class="o">.</span><span class="n">best_score_</span> <span class="o">/</span> <span class="n">num_factor</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de bibliotecas para visualización y operaciones numéricas</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># Obtener los resultados de Ridge y Lasso</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># EXTRACCIÓN DE RESULTADOS DEL GRIDSEARCH</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Accede a los resultados de validación cruzada del GridSearch para Ridge</span>
 <span class="n">ridge_results</span> <span class="o">=</span> <span class="n">ridge_search</span><span class="o">.</span><span class="n">cv_results_</span>
+
+<span class="c1"># Accede a los resultados de validación cruzada del GridSearch para Lasso</span>
 <span class="n">lasso_results</span> <span class="o">=</span> <span class="n">lasso_search</span><span class="o">.</span><span class="n">cv_results_</span>
 
-<span class="c1"># Valores de alpha</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="n">ridge_results</span><span class="p">[</span><span class="s1">&#39;param_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="c1"># Extrae los valores de alpha evaluados</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">ridge_results</span><span class="p">[</span><span class="s1">&#39;param_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># Asegura que esté en formato iterable limpio</span>
 
-<span class="c1"># MSE para Ridge</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># CÁLCULO DE MSE (recordando que estaban como negativos)</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Convierte los scores negativos de Ridge a MSE positivos</span>
 <span class="n">ridge_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">ridge_results</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span>
 
-<span class="c1"># MSE para Lasso</span>
+<span class="c1"># Convierte los scores negativos de Lasso a MSE positivos</span>
 <span class="n">lasso_mse</span> <span class="o">=</span> <span class="o">-</span><span class="n">lasso_results</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span>
 
-<span class="c1"># Crear la figura</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># VISUALIZACIÓN DE LOS RESULTADOS</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Crea una figura de tamaño amplio</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
-<span class="c1"># Graficar Ridge</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">ridge_mse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MSE Ridge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_ridge_alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best alpha: </span><span class="si">{</span><span class="n">best_ridge_alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Escala logarítmica para los ejes</span>
+<span class="c1"># ----------- SUBPLOT PARA RIDGE -----------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Primer gráfico (1 fila, 2 columnas, posición 1)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">ridge_mse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MSE Ridge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>  <span class="c1"># Curva MSE vs alpha</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_ridge_alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best alpha: </span><span class="si">{</span><span class="n">best_ridge_alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Línea en el mejor alpha</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Usa escala logarítmica en el eje x</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ridge Regression: MSE vs. Alpha&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Alpha (log scale)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Graficar Lasso</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">lasso_mse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MSE Lasso&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_lasso_alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best alpha: </span><span class="si">{</span><span class="n">best_lasso_alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Escala logarítmica para los ejes</span>
+<span class="c1"># ----------- SUBPLOT PARA LASSO -----------</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Segundo gráfico (1 fila, 2 columnas, posición 2)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">lasso_mse</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MSE Lasso&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>  <span class="c1"># Curva MSE vs alpha</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_lasso_alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best alpha: </span><span class="si">{</span><span class="n">best_lasso_alpha</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Línea en el mejor alpha</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>  <span class="c1"># Escala logarítmica para visualizar bien los valores pequeños</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lasso Regression: MSE vs. Alpha&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Alpha (log scale)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Mostrar la gráfica</span>
+<span class="c1"># Ajusta automáticamente el diseño para que no se sobrepongan los elementos</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Muestra el gráfico final con ambos subplots</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1333,44 +1538,59 @@ deuda_total_c_plazo               11.794246
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imprimir los mejores resultados</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># IMPRESIÓN DE LOS MEJORES RESULTADOS DE VALIDACIÓN CRUZADA</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Imprime los mejores valores encontrados en la validación cruzada para ambos modelos</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en CV:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor alpha para Ridge: </span><span class="si">{</span><span class="n">best_ridge_alpha</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor MSE para Ridge: </span><span class="si">{</span><span class="n">best_ridge_mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor alpha para Lasso: </span><span class="si">{</span><span class="n">best_lasso_alpha</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor MSE para Lasso: </span><span class="si">{</span><span class="n">best_lasso_mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
 
-<span class="c1"># Ajustar los modelos nuevamente con los mejores alpha</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># AJUSTAR LOS MODELOS CON LOS MEJORES ALPHA</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Crea nuevas instancias de Ridge y Lasso con los mejores valores de alpha</span>
 <span class="n">ridge_best</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">best_ridge_alpha</span><span class="p">)</span>
 <span class="n">lasso_best</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">best_lasso_alpha</span><span class="p">)</span>
 
+<span class="c1"># Ajusta ambos modelos con los datos de entrenamiento escalados</span>
 <span class="n">ridge_best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">lasso_best</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Predicciones con los mejores modelos TRAIN</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># PREDICCIONES Y MSE EN TRAINING SET</span>
+<span class="c1"># -------------------------------------------------------------</span>
+
+<span class="c1"># Realiza predicciones sobre el conjunto de entrenamiento usando los modelos ajustados con el mejor alpha</span>
 <span class="n">y_pred_ridge_best_tr</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
 <span class="n">y_pred_lasso_best_tr</span> <span class="o">=</span> <span class="n">lasso_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
 
-<span class="c1"># Calcular el MSE en el conjunto TRAIN</span>
-<span class="n">mse_ridge_best_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ridge_best_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
-<span class="n">mse_lasso_best_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_lasso_best_tr</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="c1"># Calcula el MSE en el conjunto de entrenamiento</span>
+<span class="n">mse_ridge_best_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_ridge_best_tr</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_factor</span>
+<span class="n">mse_lasso_best_tr</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_lasso_best_tr</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_factor</span>
 
-<span class="c1"># Mostrar los resultados</span>
+<span class="c1"># Imprime los MSE obtenidos en entrenamiento</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en TRAIN:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">MSE Ridge con mejor alpha: </span><span class="si">{</span><span class="n">mse_ridge_best_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso con mejor alpha: </span><span class="si">{</span><span class="n">mse_lasso_best_tr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
 
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># PREDICCIONES Y MSE EN TEST SET</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
-
-<span class="c1"># Predicciones con los mejores modelos</span>
+<span class="c1"># Realiza predicciones sobre el conjunto de prueba usando los modelos ajustados con el mejor alpha</span>
 <span class="n">y_pred_ridge_best</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 <span class="n">y_pred_lasso_best</span> <span class="o">=</span> <span class="n">lasso_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 
-<span class="c1"># Calcular el MSE en el conjunto de prueba</span>
-<span class="n">mse_ridge_best</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge_best</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
-<span class="n">mse_lasso_best</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso_best</span><span class="p">)</span><span class="o">/</span><span class="n">num_factor</span>
+<span class="c1"># Calcula el MSE en el conjunto de prueba</span>
+<span class="n">mse_ridge_best</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge_best</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_factor</span>
+<span class="n">mse_lasso_best</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso_best</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_factor</span>
 
-<span class="c1"># Mostrar los resultados</span>
+<span class="c1"># Imprime los MSE obtenidos en prueba (test)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Evaluación del modelo en TEST:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">MSE Ridge con mejor alpha: </span><span class="si">{</span><span class="n">mse_ridge_best</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE Lasso con mejor alpha: </span><span class="si">{</span><span class="n">mse_lasso_best</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
@@ -1414,16 +1634,16 @@ MSE Lasso con mejor alpha: 3534.08
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
