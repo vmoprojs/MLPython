@@ -430,6 +430,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hiperparametros-no-entrenables">6.5.2. 2. Hiperparámetros (no entrenables)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios">6.6. Ejercicios</a></li>
 </ul>
             </nav>
         </div>
@@ -641,8 +642,8 @@ EPE(X) = \underbrace{\mathbb{E}[(f(X) - \hat{f}(X))^2]}_{\text{Error Reducible}}
 \]</div>
 <p>Donde:</p>
 <ul class="simple">
-<li><p><strong>Sesgo</strong>: <span class="math notranslate nohighlight">\((\mathbb{E}[\hat{f}(X)] - f(X))^2\)</span> es el error debido a las suposiciones del modelo que le impiden capturar perfectamente la función verdadera.</p></li>
-<li><p><strong>Varianza</strong>: <span class="math notranslate nohighlight">\(\mathbb{E}[(\hat{f}(X) - \mathbb{E}[\hat{f}(X)])^2]\)</span> es el error debido a la sensibilidad del modelo a diferentes conjuntos de datos de entrenamiento (es decir, cuánto varían las predicciones del modelo).</p></li>
+<li><p><strong>Sesgo</strong>: <span class="math notranslate nohighlight">\((\mathbb{E}[\hat{f}(X)] - f(X))^2\)</span> es el error debido a las suposiciones del modelo que le impiden capturar perfectamente la función verdadera. Es decir, <strong>mide cuánto se aleja en promedio tu modelo de la realidad</strong>.</p></li>
+<li><p><strong>Varianza</strong>: <span class="math notranslate nohighlight">\(\mathbb{E}[(\hat{f}(X) - \mathbb{E}[\hat{f}(X)])^2]\)</span> es el error debido a la sensibilidad del modelo a diferentes conjuntos de datos de entrenamiento (es decir, cuánto varían las predicciones del modelo). Es decir, <strong>mide cuánto varía tu modelo ante pequeños cambios en los datos de entrenamiento</strong>.</p></li>
 </ul>
 <p>Así, el error total se puede escribir como:</p>
 <div class="math notranslate nohighlight">
@@ -784,7 +785,7 @@ EPE(x) = \text{Sesgo}^2 + \text{Varianza} + \sigma^2
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/b64832c020b59d273c05e5a99ccf83c98d4b21b58c406981d1d7527f51989588.png" src="_images/b64832c020b59d273c05e5a99ccf83c98d4b21b58c406981d1d7527f51989588.png" />
+<img alt="_images/4ccc52650c2ddfcef2276b0604ee7ca58220721658f908dece6966b23146bab5.png" src="_images/4ccc52650c2ddfcef2276b0604ee7ca58220721658f908dece6966b23146bab5.png" />
 </div>
 </div>
 </section>
@@ -1036,6 +1037,41 @@ Mejores hiperparámetros encontrados: {&#39;clf__criterion&#39;: &#39;gini&#39;,
 </div>
 </section>
 </section>
+<section id="ejercicios">
+<h2><span class="section-number">6.6. </span>Ejercicios<a class="headerlink" href="#ejercicios" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Supón que tienes un conjunto de datos reales <span class="math notranslate nohighlight">\((X, y)\)</span> y un modelo de aprendizaje supervisado.</p></li>
+</ol>
+<p><strong>Paso 1: Realiza validación cruzada</strong></p>
+<p>Haz <code class="docutils literal notranslate"><span class="pre">K-Fold</span> <span class="pre">Cross</span> <span class="pre">Validation</span></code> (por ejemplo, con 5 o 10 folds) para obtener predicciones en los <strong>datos de test de cada fold</strong>.</p>
+<p><strong>Paso 2: Calcula predicciones promedio</strong></p>
+<p>Para cada observación <span class="math notranslate nohighlight">\( x_i \)</span>, obtén varias predicciones del modelo (una por cada fold en que fue parte del conjunto de test). Calcula:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \hat{f}(x_i) \)</span>: promedio de las predicciones del modelo para <span class="math notranslate nohighlight">\( x_i \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( y_i \)</span>: valor real observado</p></li>
+</ul>
+<p><strong>Paso 3: Calcula estimaciones de sesgo y varianza</strong></p>
+<p>Para cada observación <span class="math notranslate nohighlight">\( x_i \)</span>:</p>
+<ul class="simple">
+<li><p><strong>Sesgo</strong>: <span class="math notranslate nohighlight">\( \text{Sesgo}(x_i) = \hat{f}(x_i) - y_i \)</span></p></li>
+<li><p><strong>Sesgo²</strong>: <span class="math notranslate nohighlight">\( (\hat{f}(x_i) - y_i)^2 \)</span></p></li>
+<li><p><strong>Varianza</strong>: varianza de las predicciones del modelo sobre <span class="math notranslate nohighlight">\( x_i \)</span></p></li>
+</ul>
+<p>Promedia sobre todos los <span class="math notranslate nohighlight">\( x_i \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Sesgo}^2_{\text{prom}} = \frac{1}{n} \sum_{i=1}^n \left( \hat{f}(x_i) - y_i \right)^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Varianza}_{\text{prom}} = \frac{1}{n} \sum_{i=1}^n \text{Var}_{k}\left( \hat{f}_k(x_i) \right)
+\]</div>
+<p><strong>Nota</strong></p>
+<ul class="simple">
+<li><p>Estos cálculos <strong>requieren guardar todas las predicciones por fold para cada muestra</strong>.</p></li>
+<li><p>La estimación del <strong>error irreducible</strong> no es posible directamente a partir de los datos observados. Puedes asumir que forma parte del error total y restarla del EPE estimado si conoces el sesgo y la varianza.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1128,6 +1164,7 @@ Mejores hiperparámetros encontrados: {&#39;clf__criterion&#39;: &#39;gini&#39;,
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hiperparametros-no-entrenables">6.5.2. 2. Hiperparámetros (no entrenables)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios">6.6. Ejercicios</a></li>
 </ul>
   </nav></div>
 
