@@ -414,9 +414,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularizacion">10.2. Regularización</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">10.2.1. Regresión <em>Ridge</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">10.2.2. Regresión <em>Lasso</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2.2.1. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">10.2.1. Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2.1.1. Ejemplo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-contexto-mas-general">10.2.2. Un contexto más general</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">10.2.3. Regresión <em>Ridge</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">10.2.4. Regresión <em>Lasso</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2.4.1. Ejemplo</a></li>
 </ul>
 </li>
 </ul>
@@ -759,8 +764,8 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.818
 Model:                            OLS   Adj. R-squared (uncentered):              0.816
 Method:                 Least Squares   F-statistic:                              425.0
-Date:                Thu, 29 May 2025   Prob (F-statistic):                        0.00
-Time:                        06:19:00   Log-Likelihood:                         -15624.
+Date:                Mon, 02 Jun 2025   Prob (F-statistic):                        0.00
+Time:                        06:04:03   Log-Likelihood:                         -15624.
 No. Observations:                2969   AIC:                                  3.131e+04
 Df Residuals:                    2938   BIC:                                  3.150e+04
 Df Model:                          31                                                  
@@ -908,8 +913,8 @@ R-squared: 0.80
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.811
 Model:                            OLS   Adj. R-squared (uncentered):              0.810
 Method:                 Least Squares   F-statistic:                              842.7
-Date:                Thu, 29 May 2025   Prob (F-statistic):                        0.00
-Time:                        06:19:02   Log-Likelihood:                         -15680.
+Date:                Mon, 02 Jun 2025   Prob (F-statistic):                        0.00
+Time:                        06:04:04   Log-Likelihood:                         -15680.
 No. Observations:                2969   AIC:                                  3.139e+04
 Df Residuals:                    2954   BIC:                                  3.148e+04
 Df Model:                          15                                                  
@@ -1022,8 +1027,8 @@ R-squared: 0.79
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.810
 Model:                            OLS   Adj. R-squared (uncentered):              0.809
 Method:                 Least Squares   F-statistic:                              787.0
-Date:                Thu, 29 May 2025   Prob (F-statistic):                        0.00
-Time:                        06:19:04   Log-Likelihood:                         -15685.
+Date:                Mon, 02 Jun 2025   Prob (F-statistic):                        0.00
+Time:                        06:04:06   Log-Likelihood:                         -15685.
 No. Observations:                2969   AIC:                                  3.140e+04
 Df Residuals:                    2953   BIC:                                  3.150e+04
 Df Model:                          16                                                  
@@ -1093,6 +1098,151 @@ R-squared: 0.79
 </section>
 <section id="regularizacion">
 <h2><span class="section-number">10.2. </span>Regularización<a class="headerlink" href="#regularizacion" title="Link to this heading">#</a></h2>
+<section id="introduccion">
+<h3><span class="section-number">10.2.1. </span>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h3>
+<p>Las <strong>curvas de nivel</strong> (o superficies en dimensiones mayores) de la función de pérdida del modelo, usualmente el <strong>error cuadrático residual (RSS)</strong> en regresión lineal:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS}(\boldsymbol{\beta}) = \sum_{i=1}^{n} (y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2
+\]</div>
+<p>Un <strong>contorno</strong> es el conjunto de puntos <span class="math notranslate nohighlight">\( \boldsymbol{\beta} \)</span> donde la función de pérdida tiene el mismo valor:</p>
+<div class="math notranslate nohighlight">
+\[
+\{\boldsymbol{\beta} : \text{RSS}(\boldsymbol{\beta}) = c\}
+\]</div>
+<p><strong>La función de pérdida como elipses</strong></p>
+<p>La función <span class="math notranslate nohighlight">\( \text{RSS}(\boldsymbol{\beta}) \)</span> es una <strong>función cuadrática convexa</strong> respecto a <span class="math notranslate nohighlight">\( \boldsymbol{\beta} \)</span>, y se puede reescribir matricialmente como:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS}(\boldsymbol{\beta}) = (\mathbf{y} - \mathbf{X} \boldsymbol{\beta})^\top (\mathbf{y} - \mathbf{X} \boldsymbol{\beta})
+\]</div>
+<p>Esto da lugar a:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS}(\boldsymbol{\beta}) = \boldsymbol{\beta}^\top \mathbf{X}^\top \mathbf{X} \boldsymbol{\beta} - 2\mathbf{y}^\top \mathbf{X} \boldsymbol{\beta} + \mathbf{y}^\top \mathbf{y}
+\]</div>
+<p>Esta es una <strong>forma cuadrática en <span class="math notranslate nohighlight">\( \boldsymbol{\beta} \)</span></strong>, lo cual en geometría implica que sus curvas de nivel son <strong>elipses</strong> (o hiperesferas si los predictores están ortogonalizados y escalados).</p>
+<p><strong>Intuición geométrica</strong></p>
+<ul class="simple">
+<li><p>Cada <strong>elipse</strong> representa un nivel constante de error de predicción.</p></li>
+<li><p>El <strong>centro de las elipses</strong> es el estimador de mínimos cuadrados <span class="math notranslate nohighlight">\( \boldsymbol{\beta}_{\text{OLS}} \)</span>.</p></li>
+<li><p>La <strong>forma y orientación</strong> de las elipses depende de la matriz <span class="math notranslate nohighlight">\( \mathbf{X}^\top \mathbf{X} \)</span>, es decir, de la correlación entre predictores.</p></li>
+<li><p>En 2D (por ejemplo, <span class="math notranslate nohighlight">\( \beta_1 \)</span>, <span class="math notranslate nohighlight">\( \beta_2 \)</span>), si hay correlación, las elipses están <em>inclinadas</em>.</p></li>
+</ul>
+<p><strong>¿Por qué esto es útil para Ridge y Lasso?</strong></p>
+<p>Al aplicar penalización:</p>
+<ul class="simple">
+<li><p>Se <strong>superpone una región de restricciones</strong> sobre los coeficientes:</p>
+<ul>
+<li><p>Un <strong>círculo</strong> en Ridge (penalización L2).</p></li>
+<li><p>Un <strong>rombo</strong> en Lasso (penalización L1).</p></li>
+</ul>
+</li>
+<li><p>El valor óptimo de <span class="math notranslate nohighlight">\( \boldsymbol{\beta} \)</span> es el punto <strong>donde el primer contorno toca esa región de penalización</strong> (intersección tangente).</p></li>
+</ul>
+<section id="id1">
+<h4><span class="section-number">10.2.1.1. </span>Ejemplo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Supongamos que tenemos el siguiente modelo:</p>
+<p><span class="math notranslate nohighlight">\(
+y = \beta_1 x_1 + \beta_2 x_2
+\)</span></p>
+<p>Y que nuestra matriz de diseño <span class="math notranslate nohighlight">\( \mathbf{X} \)</span> y el vector de respuesta <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> son:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{X} =
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1 \\
+1 &amp; 1 \\
+\end{bmatrix}
+\quad
+\text{y}
+\quad
+\mathbf{y} =
+\begin{bmatrix}
+1 \\
+1 \\
+2 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>La función de pérdida (RSS) es:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RSS}(\beta_1, \beta_2) = \sum_{i=1}^3 (y_i - x_{i1}\beta_1 - x_{i2}\beta_2)^2
+\]</div>
+<p>Podemos escribirla explícitamente:</p>
+<div class="math notranslate nohighlight">
+\[
+= (1 - \beta_1)^2 + (1 - \beta_2)^2 + (2 - \beta_1 - \beta_2)^2
+\]</div>
+<p>Expandiendo los términos:</p>
+<div class="math notranslate nohighlight">
+\[
+= (\beta_1 - 1)^2 + (\beta_2 - 1)^2 + (\beta_1 + \beta_2 - 2)^2
+\]</div>
+<p>Agrupando términos, obtenemos una <strong>forma cuadrática</strong> en <span class="math notranslate nohighlight">\( \beta_1 \)</span> y <span class="math notranslate nohighlight">\( \beta_2 \)</span>. En geometría, esta clase de expresiones define una <strong>cónica</strong>, y si la forma es convexa (como aquí, donde todos los coeficientes cuadráticos son positivos), la cónica resultante es una <strong>elipse</strong>.</p>
+<p>Nota que</p>
+<div class="math notranslate nohighlight">
+\[(\beta_1 - 1)^2 + (\beta_2 - 1)^2 + (\beta_1 + \beta_2 - 2)^2 = 2\beta_1^2 + 2\beta_2^2 + 2\beta_1\beta_2 - 6\beta_1 - 6\beta_2 + 6\]</div>
+<p>que corresponde a la forma general de una <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_representation_of_conic_sections">cónica</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+Q(x, y) = Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Matriz X y vector y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Estimación OLS: (X&#39;X)^(-1) X&#39;y</span>
+<span class="n">XtX</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span>
+<span class="n">Xty</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
+<span class="n">beta_ols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">XtX</span><span class="p">)</span> <span class="o">@</span> <span class="n">Xty</span>
+<span class="n">beta1_hat</span><span class="p">,</span> <span class="n">beta2_hat</span> <span class="o">=</span> <span class="n">beta_ols</span>
+
+<span class="c1"># Crear grilla para beta1 y beta2</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">beta2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">B1</span><span class="p">,</span> <span class="n">B2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">)</span>
+
+<span class="c1"># Calcular el RSS para cada combinación</span>
+<span class="n">RSS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">B2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">B1</span> <span class="o">-</span> <span class="n">B2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Graficar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">contours</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">RSS</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">contours</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Punto OLS</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta1_hat</span><span class="p">,</span> <span class="n">beta2_hat</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLS mínimo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">beta1_hat</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">beta2_hat</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;OLS (</span><span class="si">{</span><span class="n">beta1_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">beta2_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Curvas de nivel del RSS con estimación OLS&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ea06d79373dc9b74262dd004ad4c1e541d6b0988e00fe3ff4d6f6ad7934cc59b.png" src="_images/ea06d79373dc9b74262dd004ad4c1e541d6b0988e00fe3ff4d6f6ad7934cc59b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="un-contexto-mas-general">
+<h3><span class="section-number">10.2.2. </span>Un contexto más general<a class="headerlink" href="#un-contexto-mas-general" title="Link to this heading">#</a></h3>
 <p>La regularización es un método que nos permite restringir el proceso de estimación, se usa para evitar un posible sobre ajuste del modelo (<em>overfitting</em>).</p>
 <p>Una forma de hacer regularización es donde los coeficientes de variables en el modelo no sean muy grandes (regresión <em>ridge</em>). Otra forma es contraer los coeficientes, llegando a tener coeficientes iguales a cero (regresión <em>lasso</em>).</p>
 <p>Como regla general, el segundo enfoque suele ser mejor que el primero.</p>
@@ -1160,8 +1310,63 @@ p_2(\boldsymbol{\alpha})=\sum_{j = 1}^{M} \alpha_j^2.
 p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 \]</div>
 <p>sea menor que un valor dado. La evidencia empírica sugiere que la penalización <span class="math notranslate nohighlight">\(L_1\)</span> (<em>lasso</em>) funciona mejor cuando hay un número pequeño o mediano de coeficientes verdaderos de tamaño moderado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Crear una cuadrícula de valores para beta1 y beta2</span>
+<span class="n">beta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">beta2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">B1</span><span class="p">,</span> <span class="n">B2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">)</span>
+
+<span class="c1"># Simular una función de pérdida cuadrática (RSS) con mínimos en (2, 1)</span>
+<span class="n">RSS</span> <span class="o">=</span> <span class="p">(</span><span class="n">B1</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">B2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Crear la figura</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># -------- Ridge (L2) --------</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">RSS</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Ridge: Penalización L2 (Círculo)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_1$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_2$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># -------- Lasso (L1) --------</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">RSS</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
+<span class="c1"># Dibujar el rombo para la norma L1 (|β1| + |β2| ≤ 2)</span>
+<span class="n">l1_boundary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">l1_boundary</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">l1_boundary</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Lasso: Penalización L1 (Rombo)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_1$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\beta_2$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/65b31859b64619064206682533a41595eb7947b95f01999e2b0e9cac9a396dc5.png" src="_images/65b31859b64619064206682533a41595eb7947b95f01999e2b0e9cac9a396dc5.png" />
+</div>
+</div>
+</section>
 <section id="regresion-ridge">
-<h3><span class="section-number">10.2.1. </span>Regresión <em>Ridge</em><a class="headerlink" href="#regresion-ridge" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.3. </span>Regresión <em>Ridge</em><a class="headerlink" href="#regresion-ridge" title="Link to this heading">#</a></h3>
 <p>En mínimos cuadrados ordinarios, las estimaciones de <span class="math notranslate nohighlight">\(\beta_0,\beta_1,\ldots,\beta_p\)</span> se obtienen minimizando</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1175,14 +1380,14 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 <p>donde <span class="math notranslate nohighlight">\(\lambda\)</span> es un parámetro ajustable que se determina de manera separada. La influencia de la regularización se controla con <span class="math notranslate nohighlight">\(\lambda\)</span>. Valores altos de  <span class="math notranslate nohighlight">\(\lambda\)</span> significa más regularización y modelos más simples. Sin embargo, la regresión <code class="docutils literal notranslate"><span class="pre">ridge</span></code> siempre generará un modelo que incluya todos los predictores. Incrementar el valor de <span class="math notranslate nohighlight">\(\lambda\)</span> tenderá a reducir las magnitudes de los coeficientes, pero no resultará en la exclusión de ninguna de las variables. Notemos que la penalidad no se aplica a <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
 </section>
 <section id="regresion-lasso">
-<h3><span class="section-number">10.2.2. </span>Regresión <em>Lasso</em><a class="headerlink" href="#regresion-lasso" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">10.2.4. </span>Regresión <em>Lasso</em><a class="headerlink" href="#regresion-lasso" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 \sum_{i = 1}^n\left(y_i-\beta_0-\sum_{j=1}^p \beta_jx_{ij}\right)^2+\lambda\sum_{j = 1}^{p} |\beta_j| = \text{RSS}+\lambda\sum_{j = 1}^{p} |\beta_j|,
 \]</div>
 <p>La penalización <span class="math notranslate nohighlight">\(L_1\)</span> tiene el efecto de forzar algunas de las estimaciones de coeficientes a ser <strong>exactamente iguales a cero</strong> cuando el parámetro <span class="math notranslate nohighlight">\(\lambda\)</span> de ajuste es suficientemente grande. Por lo tanto, <em>lasso</em> realiza <strong>selección de variables</strong>. Como resultado, los modelos generados a partir de <em>lasso</em> son generalmente mucho más <strong>fáciles de interpretar</strong> que los producidos por regresión <em>ridge</em>. Decimos que <em>lasso</em> produce modelos dispersos (<em>sparse</em>), es decir, modelos que involucran solo un subconjunto de variables predictoras.</p>
-<section id="id1">
-<h4><span class="section-number">10.2.2.1. </span>Ejemplo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<section id="id2">
+<h4><span class="section-number">10.2.4.1. </span>Ejemplo<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de bibliotecas necesarias</span>
@@ -1278,15 +1483,15 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluación del modelo en TRAIN:
 
-MSE Ridge: 1852.46
-MSE Lasso: 2083.61
-MSE OLS: 1852.46
+MSE Ridge: 0.03
+MSE Lasso: 0.25
+MSE OLS: 0.00
 
 Evaluación del modelo en TEST:
 
-MSE Ridge: 3527.83
-MSE Lasso: 3663.03
-MSE OLS: 3527.39
+MSE Ridge: 0.69
+MSE Lasso: 0.25
+MSE OLS: 1.00
 </pre></div>
 </div>
 </div>
@@ -1306,72 +1511,15 @@ MSE OLS: 3527.39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coeficientes:
-                           Ridge Coefficients  Lasso Coefficients  \
-activos                             46.452401           51.339290   
-utilidad_an_imp                      7.140067            2.802706   
-n_empleados                         20.230335           15.067053   
-liquidez_corriente                   1.097188           -0.000000   
-end_activo                          -0.310678            0.000000   
-end_patrimonial                     -2.044002            0.000000   
-end_activo_fijo                     -0.244253           -0.000000   
-end_corto_plazo                      3.527861            0.000000   
-cobertura_interes                    0.281633           -0.000000   
-apalancamiento_financiero           -0.502044           -0.000000   
-end_patrimonial_ct                   0.527377            0.000000   
-end_patrimonial_nct                  1.076781            0.000000   
-rot_cartera                          0.157103            0.000000   
-rot_ventas                           1.052480            0.000000   
-per_med_cobranza                    -0.919068           -0.000000   
-per_med_pago                         1.745660            0.000000   
-impac_gasto_a_v                     -2.108877           -0.000000   
-impac_carga_finan                   -4.171406           -0.037732   
-rent_neta_activo                     2.607665            0.000000   
-margen_bruto                        -8.536271           -4.644804   
-margen_operacional                   5.138157            0.000000   
-rent_neta_ventas                    -4.865955           -0.924355   
-rent_ope_patrimonio                 -0.019458           -0.000000   
-roe                                  2.066205            0.000000   
-fortaleza_patrimonial               -0.921451           -0.000000   
-gastos_financieros                   3.886436            0.000000   
-gastos_admin_ventas                 31.292825           23.488379   
-depreciaciones                      -3.459897           -0.000000   
-amortizaciones                      -6.807988           -0.000000   
-deuda_total                         17.489693           14.618748   
-deuda_total_c_plazo                 11.799476           10.246291   
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Mostrar coeficientes con nombres</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ridge_coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ridge Coefficients&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">lasso_coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Lasso Coefficients&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ols_coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">regOLS</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;OLS Coefficients&#39;</span><span class="p">])</span>
 
-                           OLS Coefficients  
-activos                           46.520173  
-utilidad_an_imp                    7.103579  
-n_empleados                       20.224461  
-liquidez_corriente                 1.098485  
-end_activo                        -0.310745  
-end_patrimonial                   -2.056202  
-end_activo_fijo                   -0.244556  
-end_corto_plazo                    3.530621  
-cobertura_interes                  0.281992  
-apalancamiento_financiero         -0.502272  
-end_patrimonial_ct                 0.530975  
-end_patrimonial_nct                1.078609  
-rot_cartera                        0.157290  
-rot_ventas                         1.052782  
-per_med_cobranza                  -0.924138  
-per_med_pago                       1.746044  
-impac_gasto_a_v                   -2.110272  
-impac_carga_finan                 -4.169610  
-rent_neta_activo                   2.610887  
-margen_bruto                      -8.539168  
-margen_operacional                 5.150837  
-rent_neta_ventas                  -4.872438  
-rent_ope_patrimonio               -0.020343  
-roe                                2.076751  
-fortaleza_patrimonial             -0.920677  
-gastos_financieros                 3.868392  
-gastos_admin_ventas               31.299005  
-depreciaciones                    -3.459313  
-amortizaciones                    -6.817272  
-deuda_total                       17.486285  
-deuda_total_c_plazo               11.794246  
+<span class="ne">AttributeError</span>: &#39;numpy.ndarray&#39; object has no attribute &#39;columns&#39;
 </pre></div>
 </div>
 </div>
@@ -1699,9 +1847,14 @@ MSE Lasso con mejor alpha: 3534.08
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularizacion">10.2. Regularización</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">10.2.1. Regresión <em>Ridge</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">10.2.2. Regresión <em>Lasso</em></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2.2.1. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">10.2.1. Introducción</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.2.1.1. Ejemplo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-contexto-mas-general">10.2.2. Un contexto más general</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">10.2.3. Regresión <em>Ridge</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lasso">10.2.4. Regresión <em>Lasso</em></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2.4.1. Ejemplo</a></li>
 </ul>
 </li>
 </ul>
