@@ -764,8 +764,8 @@ R^2_{adj} = 1-\frac{RSS/(n-d-1)}{TSS/(n-1)}
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.818
 Model:                            OLS   Adj. R-squared (uncentered):              0.816
 Method:                 Least Squares   F-statistic:                              425.0
-Date:                Mon, 02 Jun 2025   Prob (F-statistic):                        0.00
-Time:                        06:04:03   Log-Likelihood:                         -15624.
+Date:                Wed, 04 Jun 2025   Prob (F-statistic):                        0.00
+Time:                        06:05:34   Log-Likelihood:                         -15624.
 No. Observations:                2969   AIC:                                  3.131e+04
 Df Residuals:                    2938   BIC:                                  3.150e+04
 Df Model:                          31                                                  
@@ -913,8 +913,8 @@ R-squared: 0.80
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.811
 Model:                            OLS   Adj. R-squared (uncentered):              0.810
 Method:                 Least Squares   F-statistic:                              842.7
-Date:                Mon, 02 Jun 2025   Prob (F-statistic):                        0.00
-Time:                        06:04:04   Log-Likelihood:                         -15680.
+Date:                Wed, 04 Jun 2025   Prob (F-statistic):                        0.00
+Time:                        06:05:35   Log-Likelihood:                         -15680.
 No. Observations:                2969   AIC:                                  3.139e+04
 Df Residuals:                    2954   BIC:                                  3.148e+04
 Df Model:                          15                                                  
@@ -1027,8 +1027,8 @@ R-squared: 0.79
 Dep. Variable:        ingresos_ventas   R-squared (uncentered):                   0.810
 Model:                            OLS   Adj. R-squared (uncentered):              0.809
 Method:                 Least Squares   F-statistic:                              787.0
-Date:                Mon, 02 Jun 2025   Prob (F-statistic):                        0.00
-Time:                        06:04:06   Log-Likelihood:                         -15685.
+Date:                Wed, 04 Jun 2025   Prob (F-statistic):                        0.00
+Time:                        06:05:38   Log-Likelihood:                         -15685.
 No. Observations:                2969   AIC:                                  3.140e+04
 Df Residuals:                    2953   BIC:                                  3.150e+04
 Df Model:                          16                                                  
@@ -1195,14 +1195,14 @@ Q(x, y) = Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Matriz X y vector y</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="c1"># Estimación OLS: (X&#39;X)^(-1) X&#39;y</span>
-<span class="n">XtX</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span>
-<span class="n">Xty</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">y</span>
+<span class="n">XtX</span> <span class="o">=</span> <span class="n">XX</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">XX</span>
+<span class="n">Xty</span> <span class="o">=</span> <span class="n">XX</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">yy</span>
 <span class="n">beta_ols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">XtX</span><span class="p">)</span> <span class="o">@</span> <span class="n">Xty</span>
 <span class="n">beta1_hat</span><span class="p">,</span> <span class="n">beta2_hat</span> <span class="o">=</span> <span class="n">beta_ols</span>
 
@@ -1388,6 +1388,7 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 <p>La penalización <span class="math notranslate nohighlight">\(L_1\)</span> tiene el efecto de forzar algunas de las estimaciones de coeficientes a ser <strong>exactamente iguales a cero</strong> cuando el parámetro <span class="math notranslate nohighlight">\(\lambda\)</span> de ajuste es suficientemente grande. Por lo tanto, <em>lasso</em> realiza <strong>selección de variables</strong>. Como resultado, los modelos generados a partir de <em>lasso</em> son generalmente mucho más <strong>fáciles de interpretar</strong> que los producidos por regresión <em>ridge</em>. Decimos que <em>lasso</em> produce modelos dispersos (<em>sparse</em>), es decir, modelos que involucran solo un subconjunto de variables predictoras.</p>
 <section id="id2">
 <h4><span class="section-number">10.2.4.1. </span>Ejemplo<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Volvamos al ejemplo de la superintendencia de compañias del Ecuador</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de bibliotecas necesarias</span>
@@ -1483,15 +1484,15 @@ p_1(\boldsymbol{\alpha})=\sum_{j = 1}^{M} |\alpha_j|.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluación del modelo en TRAIN:
 
-MSE Ridge: 0.03
-MSE Lasso: 0.25
-MSE OLS: 0.00
+MSE Ridge: 1852.46
+MSE Lasso: 2083.61
+MSE OLS: 1852.46
 
 Evaluación del modelo en TEST:
 
-MSE Ridge: 0.69
-MSE Lasso: 0.25
-MSE OLS: 1.00
+MSE Ridge: 3527.83
+MSE Lasso: 3663.03
+MSE OLS: 3527.39
 </pre></div>
 </div>
 </div>
@@ -1511,15 +1512,72 @@ MSE OLS: 1.00
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Mostrar coeficientes con nombres</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ridge_coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ridge Coefficients&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">lasso_coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Lasso Coefficients&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ols_coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">regOLS</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;OLS Coefficients&#39;</span><span class="p">])</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coeficientes:
+                           Ridge Coefficients  Lasso Coefficients  \
+activos                             46.452401           51.339290   
+utilidad_an_imp                      7.140067            2.802706   
+n_empleados                         20.230335           15.067053   
+liquidez_corriente                   1.097188           -0.000000   
+end_activo                          -0.310678            0.000000   
+end_patrimonial                     -2.044002            0.000000   
+end_activo_fijo                     -0.244253           -0.000000   
+end_corto_plazo                      3.527861            0.000000   
+cobertura_interes                    0.281633           -0.000000   
+apalancamiento_financiero           -0.502044           -0.000000   
+end_patrimonial_ct                   0.527377            0.000000   
+end_patrimonial_nct                  1.076781            0.000000   
+rot_cartera                          0.157103            0.000000   
+rot_ventas                           1.052480            0.000000   
+per_med_cobranza                    -0.919068           -0.000000   
+per_med_pago                         1.745660            0.000000   
+impac_gasto_a_v                     -2.108877           -0.000000   
+impac_carga_finan                   -4.171406           -0.037732   
+rent_neta_activo                     2.607665            0.000000   
+margen_bruto                        -8.536271           -4.644804   
+margen_operacional                   5.138157            0.000000   
+rent_neta_ventas                    -4.865955           -0.924355   
+rent_ope_patrimonio                 -0.019458           -0.000000   
+roe                                  2.066205            0.000000   
+fortaleza_patrimonial               -0.921451           -0.000000   
+gastos_financieros                   3.886436            0.000000   
+gastos_admin_ventas                 31.292825           23.488379   
+depreciaciones                      -3.459897           -0.000000   
+amortizaciones                      -6.807988           -0.000000   
+deuda_total                         17.489693           14.618748   
+deuda_total_c_plazo                 11.799476           10.246291   
 
-<span class="ne">AttributeError</span>: &#39;numpy.ndarray&#39; object has no attribute &#39;columns&#39;
+                           OLS Coefficients  
+activos                           46.520173  
+utilidad_an_imp                    7.103579  
+n_empleados                       20.224461  
+liquidez_corriente                 1.098485  
+end_activo                        -0.310745  
+end_patrimonial                   -2.056202  
+end_activo_fijo                   -0.244556  
+end_corto_plazo                    3.530621  
+cobertura_interes                  0.281992  
+apalancamiento_financiero         -0.502272  
+end_patrimonial_ct                 0.530975  
+end_patrimonial_nct                1.078609  
+rot_cartera                        0.157290  
+rot_ventas                         1.052782  
+per_med_cobranza                  -0.924138  
+per_med_pago                       1.746044  
+impac_gasto_a_v                   -2.110272  
+impac_carga_finan                 -4.169610  
+rent_neta_activo                   2.610887  
+margen_bruto                      -8.539168  
+margen_operacional                 5.150837  
+rent_neta_ventas                  -4.872438  
+rent_ope_patrimonio               -0.020343  
+roe                                2.076751  
+fortaleza_patrimonial             -0.920677  
+gastos_financieros                 3.868392  
+gastos_admin_ventas               31.299005  
+depreciaciones                    -3.459313  
+amortizaciones                    -6.817272  
+deuda_total                       17.486285  
+deuda_total_c_plazo               11.794246  
 </pre></div>
 </div>
 </div>
