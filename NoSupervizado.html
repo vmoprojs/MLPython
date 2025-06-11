@@ -405,16 +405,18 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">16.1. K-means</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">16.1.1. Ejemplo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.2. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias">16.1.1. Librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">16.1.2. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.3. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-jerarquico-aglomerativo">16.2. Clustering Jerárquico: Aglomerativo</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-para-fusionar-grupos">16.2.1. Funciones para fusionar grupos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-medoides">16.2. K-medoides</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-jerarquico-aglomerativo">16.3. Clustering Jerárquico: Aglomerativo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-para-fusionar-grupos">16.3.1. Funciones para fusionar grupos</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">16.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">16.3.1. Ejemplo: clasificación de clientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">16.4. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">16.4.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
 </li>
 </ul>
@@ -451,53 +453,74 @@ document.write(`
 <blockquote>
 <div><p>El algoritmo k-means es quizás el método de agrupación más utilizado. Después de haber sido estudiado durante varias décadas, sirve como base para muchas técnicas de agrupación más sofisticadas.</p>
 </div></blockquote>
+<section id="librerias">
+<h3><span class="section-number">16.1.1. </span>Librerías<a class="headerlink" href="#librerias" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scikit-learn-extra</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graphviz</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seaborn</span></code></p></li>
+</ul>
+</section>
 <section id="ejemplo">
-<h3><span class="section-number">16.1.1. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.1.2. </span>Ejemplo<a class="headerlink" href="#ejemplo" title="Link to this heading">#</a></h3>
 <p>Veamos un ejemplo de k-means mediante la generación de clústers aleatorios (<code class="docutils literal notranslate"><span class="pre">make_blobs</span></code>) y <code class="docutils literal notranslate"><span class="pre">k=3</span></code>.</p>
 <p><strong>Preámbulo y datos</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib notebook</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sn</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %matplotlib notebook</span>
+<span class="c1"># Esta línea permite gráficos interactivos en Jupyter Notebook. Comentada actualmente.</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                  <span class="c1"># Librería para cálculos numéricos y manejo de arreglos.</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                <span class="c1"># Librería para manipulación de datos tipo tabla (DataFrame).</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sn</span>               <span class="c1"># Librería para visualizaciones estadísticas (no usada aquí).</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># Librería para generar gráficos y visualizaciones.</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>  <span class="c1"># Función para generar datos de prueba con clústeres.</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>        <span class="c1"># Algoritmo de clustering K-Means.</span>
 <span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
+<span class="c1"># Función personalizada que genera una gráfica de dispersión con etiquetas por clúster.</span>
 
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Genera un conjunto de datos aleatorio con distribución tipo clúster.</span>
+<span class="c1"># X: coordenadas de los puntos, y: etiquetas verdaderas (no se usan aquí).</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># Crea un modelo KMeans que buscará 3 clústeres.</span>
+<span class="c1"># n_init=3: se hacen 3 inicializaciones distintas para evitar mínimos locales.</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Ajusta el modelo KMeans a los datos generados.</span>
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
+<span class="c1"># Grafica los puntos en un scatter plot, usando las etiquetas que asignó KMeans.</span>
+<span class="c1"># Cada grupo se rotula como &#39;Cluster 1&#39;, &#39;Cluster 2&#39; o &#39;Cluster 3&#39;.</span>
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Documents</span><span class="o">/</span><span class="n">Consultorias</span><span class="o">&amp;</span><span class="n">Cursos</span><span class="o">/</span><span class="n">CURSOS</span><span class="o">/</span><span class="n">Cooking</span><span class="o">/</span><span class="n">MLPython</span><span class="o">/</span><span class="n">pyML</span><span class="o">/</span><span class="n">shared_utilities</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">neighbors</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">graphviz</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_graphviz</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;graphviz&#39;
+<img alt="_images/82c1cd43234fdacec0cc48e020d325082c097aa125d848ab5db58ecf80e3d3de.png" src="_images/82c1cd43234fdacec0cc48e020d325082c097aa125d848ab5db58ecf80e3d3de.png" />
+</div>
+</div>
+<p><strong>Parámetros de KMeans:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">KMeans</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>         <span class="c1"># Número de clusters (k)</span>
+    <span class="n">init</span><span class="o">=</span><span class="s1">&#39;k-means++&#39;</span><span class="p">,</span>     <span class="c1"># Método de inicialización (mejor que &#39;random&#39;)</span>
+    <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>            <span class="c1"># Número de veces que se reinicia con nuevas centroides</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>         <span class="c1"># Número máximo de iteraciones por corrida</span>
+    <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>             <span class="c1"># Tolerancia para declarar convergencia</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>    <span class="c1"># Semilla para reproducibilidad</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;lloyd&#39;</span>     <span class="c1"># Algoritmo: ‘auto’, ‘full’, ‘elkan’, ‘lloyd’</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+<p><strong>Atributos importantes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kmeans.labels_</span></code>: Etiquetas de cluster para cada punto.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kmeans.cluster_centers_</span></code>: Coordenadas de los centroides finales.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kmeans.inertia_</span></code>: Suma de los errores cuadráticos (criterio de minimización).</p></li>
+</ul>
 <p><strong>Algoritmo</strong></p>
 <p><strong>Entradas:</strong></p>
 <ul class="simple">
@@ -519,49 +542,160 @@ document.write(`
 anterior ) es la respuesta final del algoritmo.</p>
 </section>
 <section id="ejemplo-clasificacion-de-frutas">
-<h3><span class="section-number">16.1.2. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.1.3. </span>Ejemplo: clasificación de frutas<a class="headerlink" href="#ejemplo-clasificacion-de-frutas" title="Link to this heading">#</a></h3>
 <p>Ejemplo que muestra k-medias para encontrar 4 conglomerados en el conjunto de datos de frutas. Tenga en cuenta que, en general, es importante escalar las características individuales antes de aplicar la agrupación en clústeres de k-medias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>  <span class="c1"># (No se usa en este bloque, se podría eliminar si se desea limpiar el código)</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>       <span class="c1"># Importa el algoritmo KMeans para clustering no supervisado.</span>
+<span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>  <span class="c1"># Función externa que grafica los datos según sus etiquetas.</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>       <span class="c1"># Escalador para normalizar características numéricas.</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                  <span class="c1"># Librería para manipulación de datos tabulares.</span>
 
+<span class="c1"># URL del archivo de datos: contiene información de frutas con características físicas y color.</span>
 <span class="n">uu</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/vmoprojs/DataLectures/refs/heads/master/fruit_data_with_colors.txt&#39;</span>
+
+<span class="c1"># Carga los datos en un DataFrame. El archivo es de texto con separador de tabulaciones (\t).</span>
 <span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">uu</span><span class="p">)</span>
+
+<span class="c1"># Selecciona las variables numéricas relevantes para el modelo de clustering y las convierte en matriz NumPy.</span>
 <span class="n">X_fruits</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[[</span><span class="s1">&#39;mass&#39;</span><span class="p">,</span><span class="s1">&#39;width&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;color_score&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="c1"># Obtiene las etiquetas verdaderas (por tipo de fruta) y las ajusta para comenzar desde 0. No se usan en el clustering.</span>
 <span class="n">y_fruits</span> <span class="o">=</span> <span class="n">fruits</span><span class="p">[[</span><span class="s1">&#39;fruit_label&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span>
 
-<span class="n">X_fruits_normalized</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span>  
+<span class="c1"># Normaliza los datos a un rango [0, 1] para que todas las variables tengan igual peso en el clustering.</span>
+<span class="n">X_fruits_normalized</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span>
 
-<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Crea el modelo KMeans para 4 clústeres, con 4 inicializaciones distintas y semilla fija para reproducibilidad.</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_init</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Ajusta el modelo a los datos normalizados. El algoritmo agrupa las observaciones en 4 clústeres.</span>
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
 
-<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> 
+<span class="c1"># Grafica los resultados, coloreando cada punto según el clúster asignado y con etiquetas personalizadas.</span>
+<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">,</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span>
                       <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 4&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85ffa5f8b491f116c536ef8221b20aca1747f9df4caa6cbf663511ff3d98a72c.png" src="_images/85ffa5f8b491f116c536ef8221b20aca1747f9df4caa6cbf663511ff3d98a72c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="k-medoides">
+<h2><span class="section-number">16.2. </span>K-medoides<a class="headerlink" href="#k-medoides" title="Link to this heading">#</a></h2>
+<p><strong>Parámetros de KMedoids:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">KMedoids</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>             <span class="c1"># Número de clusters</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>       <span class="c1"># Distancia: &#39;euclidean&#39;, &#39;manhattan&#39;, etc.</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;pam&#39;</span><span class="p">,</span>             <span class="c1"># Algoritmo: &#39;pam&#39; (Partitioning Around Medoids) o &#39;alternate&#39;</span>
+    <span class="n">init</span><span class="o">=</span><span class="s1">&#39;heuristic&#39;</span><span class="p">,</span>         <span class="c1"># Inicialización: &#39;heuristic&#39;, &#39;random&#39;, &#39;k-medoids++&#39;</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>             <span class="c1"># Máx. número de iteraciones</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span>         <span class="c1"># Semilla para reproducibilidad</span>
+<span class="p">)</span>
+
+</pre></div>
+</div>
+<p><strong>Atributos importantes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">kmedoids.labels_</span></code>: Etiquetas de cluster para cada punto.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kmedoids.cluster_centers_</span></code>: Coordenadas de los medoides (puntos del dataset).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kmedoids.inertia_</span></code>: Costo total (suma de distancias al medoide más cercano).</p></li>
+</ul>
+<p><strong>Algoritmo</strong></p>
+<p><strong>Entradas:</strong></p>
+<ul class="simple">
+<li><p>Conjunto de patrones en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> número de grupos a formar.</p></li>
+</ul>
+<p><strong>Salidas:</strong></p>
+<ul class="simple">
+<li><p>Una partición del espacio de patrones, tal que, optimiza la varianza global.</p></li>
+</ul>
+<p><strong>Inicio:</strong></p>
+<p>Asignar aleatoreamente un número, del 1 a <span class="math notranslate nohighlight">\(K\)</span> a cada observación. Estos funcionan como asignaciones iniciales para las observaciones.</p>
+<p><strong>Repetición</strong></p>
+<ol class="arabic simple">
+<li><p>Para cada uno de los K conglomerados, calcular el medoide del conglomerado. El k-ésimo medoide del grupo es el vector de las <span class="math notranslate nohighlight">\(p\)</span> medianas de características para las observaciones en el k-ésimo grupo.</p></li>
+<li><p>Asignar cada observación al conglomerado cuyo medoide es el más cercano (donde más cercano se define utilizando la distancia euclidiana).</p></li>
+</ol>
+<p><strong>Hasta</strong> La última partición obtenida, (idéntica a la de la iteración
+anterior ) es la respuesta final del algoritmo.</p>
+<p><strong>Definición matemática de medoide en <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></strong></p>
+<p>Sea <span class="math notranslate nohighlight">\( X = \{x_1, x_2, \dots, x_N\} \subset \mathbb{R}^n \)</span> un conjunto de puntos, y sea <span class="math notranslate nohighlight">\( C \subseteq X \)</span> un subconjunto correspondiente a un <strong>clúster</strong>.</p>
+<p>El <strong>medoide</strong> <span class="math notranslate nohighlight">\( x_m \in C \)</span> es el punto del clúster que <strong>minimiza la suma de distancias</strong> a todos los demás puntos del clúster:</p>
+<div class="math notranslate nohighlight">
+\[
+x_m = \arg\min_{x_i \in C} \sum_{x_j \in C} d(x_i, x_j)
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\( d(\cdot, \cdot) \)</span> es una métrica de distancia, usualmente la <strong>distancia euclidiana</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+d(x_i, x_j) = \|x_i - x_j\|_2 = \sqrt{\sum_{k=1}^n (x_{ik} - x_{jk})^2}
+\]</div>
+<p><strong>Importante</strong></p>
+<ul class="simple">
+<li><p>El medoide <strong>pertenece al conjunto de datos</strong> <span class="math notranslate nohighlight">\( C \)</span>.</p></li>
+<li><p>Minimiza el <strong>costo total de distancia interna del clúster</strong>.</p></li>
+<li><p>Puede utilizar otras métricas como:</p>
+<ul>
+<li><p>Manhattan: <span class="math notranslate nohighlight">\( \|x_i - x_j\|_1 \)</span></p></li>
+<li><p>Coseno, Mahalanobis, etc.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://scikit-learn-extra.readthedocs.io/en/latest/index.html</span>
+<span class="c1"># Documentación oficial del paquete scikit-learn-extra, que amplía scikit-learn con algoritmos adicionales.</span>
+
+<span class="kn">from</span> <span class="nn">sklearn_extra.cluster</span> <span class="kn">import</span> <span class="n">KMedoids</span>
+<span class="c1"># Importa el algoritmo K-Medoids, una alternativa a KMeans que elige observaciones reales como centroides (medoides).</span>
+
+<span class="c1"># Crea el modelo de clustering con K-Medoids para 4 grupos y semilla fija para reproducibilidad.</span>
+<span class="n">kmedoides</span> <span class="o">=</span> <span class="n">KMedoids</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Ajusta el modelo a los datos previamente normalizados. Cada punto es asignado al medoide más cercano.</span>
+<span class="n">kmedoides</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
+
+<span class="c1"># Grafica los resultados del clustering, coloreando los puntos según su grupo asignado por K-Medoids.</span>
+<span class="c1"># Usa etiquetas personalizadas para los 4 clústeres.</span>
+<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">,</span> <span class="n">kmedoides</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span>
+                      <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 4&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/130e53b5fd63a04030ee0b39fdd8566462f6aedbe66fde575efafcab27abff85.png" src="_images/130e53b5fd63a04030ee0b39fdd8566462f6aedbe66fde575efafcab27abff85.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://scikit-learn-extra.readthedocs.io/en/latest/index.html</span>
-<span class="kn">from</span> <span class="nn">sklearn_extra.cluster</span> <span class="kn">import</span> <span class="n">KMedoids</span>
-<span class="n">kmedoides</span> <span class="o">=</span> <span class="n">KMedoids</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">kmedoides</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Crear tabla cruzada</span>
+<span class="n">tabla_cruzada</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">kmedoides</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span>
+                             <span class="n">rownames</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;KMeans&quot;</span><span class="p">],</span> <span class="n">colnames</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;KMedoids&quot;</span><span class="p">])</span>
 
-<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">,</span> <span class="n">kmedoides</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> 
-                      <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 4&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabla_cruzada</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KMedoids   0  1  2   3
+KMeans                
+0         23  9  0   0
+1          2  0  0  17
+2          0  3  0   0
+3          0  0  5   0
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
 <section id="clustering-jerarquico-aglomerativo">
-<h2><span class="section-number">16.2. </span>Clustering Jerárquico: Aglomerativo<a class="headerlink" href="#clustering-jerarquico-aglomerativo" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">16.3. </span>Clustering Jerárquico: Aglomerativo<a class="headerlink" href="#clustering-jerarquico-aglomerativo" title="Link to this heading">#</a></h2>
 <p>Una desventaja potencial del agrupamiento K-medias es que requiere que <strong>especifiquemos previamente</strong> el número de agrupamientos K.</p>
 <p>El agrupamiento jerárquico es un enfoque alternativo que <strong>no requiere</strong> que nos comprometamos con una elección particular de K.</p>
 <p>El agrupamiento jerárquico tiene una ventaja adicional sobre el agrupamiento K-medias, ya que da como resultado una atractiva representación basada en árboles de las observaciones, llamada <strong>dendrograma</strong>.</p>
@@ -586,22 +720,76 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p>Registrar la fusión realizada en el dendrograma</p></li>
 </ol>
 <p><strong>Hasta</strong> Terminar cuando todos los patrones se encuentren agrupados en un solo grupo.</p>
+<p><strong>Parámetros de AgglomerativeClustering:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AgglomerativeClustering</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>              <span class="c1"># Número de clusters deseado</span>
+    <span class="n">affinity</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>      <span class="c1"># Métrica de distancia: &#39;euclidean&#39;, &#39;manhattan&#39;, etc. (deprecated, usar metric)</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>        <span class="c1"># Nueva forma recomendada (desde v0.22)</span>
+    <span class="n">linkage</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span>            <span class="c1"># &#39;ward&#39;, &#39;complete&#39;, &#39;average&#39;, &#39;single&#39;</span>
+    <span class="n">compute_full_tree</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>  <span class="c1"># True para construir el árbol completo</span>
+    <span class="n">distance_threshold</span><span class="o">=</span><span class="kc">None</span>    <span class="c1"># Alternativa a n_clusters: especifica un umbral de fusión</span>
+<span class="p">)</span>
+
+
+</pre></div>
+</div>
+<p><strong>Atributos importantes</strong></p>
+<p>Después de ajustar el modelo con <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> o <code class="docutils literal notranslate"><span class="pre">.fit_predict()</span></code>, puedes acceder a los siguientes atributos:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Atributo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">labels_</span></code></p></td>
+<td><p>Array de etiquetas de clúster asignadas a cada punto</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n_clusters_</span></code></p></td>
+<td><p>Número final de clústeres asignados (puede ser menor si se usa <code class="docutils literal notranslate"><span class="pre">distance_threshold</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">n_leaves_</span></code></p></td>
+<td><p>Número de hojas en el árbol jerárquico (igual al número de muestras)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n_connected_components_</span></code></p></td>
+<td><p>Número de componentes conectados (relevante si se usa conectividad explícita)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">children_</span></code></p></td>
+<td><p>Array con la jerarquía del árbol: cada fila representa una fusión entre dos nodos o clústeres</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">distances_</span></code> (si se usa <code class="docutils literal notranslate"><span class="pre">compute_distances=True</span></code>)</p></td>
+<td><p>Distancias entre los clústeres fusionados (necesarias para dendrogramas)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
 <p>En Python, el método <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html">AgglomerativeClustering</a> nos permite ejecutar clustering jerárquico.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">AgglomerativeClustering</span>
-<span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>  <span class="c1"># Genera datos sintéticos con distribución en forma de clústeres.</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">AgglomerativeClustering</span>  <span class="c1"># Importa el algoritmo de clustering jerárquico aglomerativo.</span>
+<span class="kn">from</span> <span class="nn">shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>  <span class="c1"># Función para graficar los datos coloreados por clúster.</span>
 
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Genera un conjunto de datos de ejemplo con clústeres definidos.</span>
+<span class="c1"># X contiene las coordenadas de los puntos, y son las etiquetas reales (no se usan en el clustering).</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="bp">cls</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># Crea un modelo de agrupamiento jerárquico aglomerativo con 3 clústeres deseados.</span>
+<span class="bp">cls</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Ajusta el modelo a los datos y devuelve las asignaciones de clúster para cada punto.</span>
 <span class="n">cls_assignment</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
+<span class="c1"># Grafica los datos, coloreando cada punto según el clúster asignado por el modelo.</span>
+<span class="c1"># Se añaden etiquetas personalizadas para facilitar la interpretación visual.</span>
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">cls_assignment</span><span class="p">,</span> 
-        <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
+                      <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fcf77cb026fcd533cb1a5308673652cbb5015b4117581942ca98e1a70d068ebe.png" src="_images/fcf77cb026fcd533cb1a5308673652cbb5015b4117581942ca98e1a70d068ebe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -610,6 +798,21 @@ anterior ) es la respuesta final del algoritmo.</p>
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
         <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/73786ba007d2d5bbc7020e176069ed4f574915e4ca87190761872db8142e6c5b.png" src="_images/73786ba007d2d5bbc7020e176069ed4f574915e4ca87190761872db8142e6c5b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  5.69192445  -9.47641249]
+ [  1.70789903   6.00435173]
+ [  0.23621041  -3.11909976]
+ [  2.90159483   5.42121526]
+ [  5.85943906  -8.38192364]
+ [  6.04774884 -10.30504657]
+ [ -2.00758803  -7.24743939]
+ [  1.45467725  -6.58387198]
+ [  1.53636249   5.11121453]
+ [  5.4307043   -9.75956122]]
 </pre></div>
 </div>
 </div>
@@ -624,6 +827,9 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/90e3780a2427664fc6c6d9bab80a0d48eb11638bb418fc685723dc1b1f034294.png" src="_images/90e3780a2427664fc6c6d9bab80a0d48eb11638bb418fc685723dc1b1f034294.png" />
+</div>
 </div>
 <ul class="simple">
 <li><p>Cada hoja del dendrograma representa una de las <span class="math notranslate nohighlight">\(n\)</span> observaciones.</p></li>
@@ -632,7 +838,7 @@ anterior ) es la respuesta final del algoritmo.</p>
 <li><p>La altura de esta fusión, medida en el eje vertical, <strong>indica cuán diferentes son las dos observaciones</strong>. Por lo tanto, las observaciones que se fusionan en la parte inferior del árbol son bastante similares entre sí, mientras que las observaciones que se fusionan cerca de la parte superior del árbol tenderán a ser bastante diferentes.</p></li>
 </ul>
 <section id="funciones-para-fusionar-grupos">
-<h3><span class="section-number">16.2.1. </span>Funciones para fusionar grupos<a class="headerlink" href="#funciones-para-fusionar-grupos" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.3.1. </span>Funciones para fusionar grupos<a class="headerlink" href="#funciones-para-fusionar-grupos" title="Link to this heading">#</a></h3>
 <a class="reference internal image-reference" href="_images/10_fig1.png"><img alt="_images/10_fig1.png" src="_images/10_fig1.png" style="width: 500px; height: 300px;" />
 </a>
 <ul class="simple">
@@ -670,11 +876,17 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/d3d5e4841cb6deb847b1e9f69c540965ac7593480dba4dc919cb7bfd45e9458d.png" src="_images/d3d5e4841cb6deb847b1e9f69c540965ac7593480dba4dc919cb7bfd45e9458d.png" />
+<img alt="_images/c5801938127bb3548bf39f97cf2cde15ab7f2ceacffa5a04b51ac4bc15e9da26.png" src="_images/c5801938127bb3548bf39f97cf2cde15ab7f2ceacffa5a04b51ac4bc15e9da26.png" />
+<img alt="_images/f3c18684740bdafe9ec02ceefd38e63c62ab79a650bad952e0eed3e7dc926efc.png" src="_images/f3c18684740bdafe9ec02ceefd38e63c62ab79a650bad952e0eed3e7dc926efc.png" />
+<img alt="_images/3534d0b13936fcc3ac6b718c0429c489b65410352c0b09998fbb1a6f13c85668.png" src="_images/3534d0b13936fcc3ac6b718c0429c489b65410352c0b09998fbb1a6f13c85668.png" />
+</div>
 </div>
 </section>
 </section>
 <section id="dbscan-clustering">
-<h2><span class="section-number">16.3. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">16.4. </span>DBSCAN clustering<a class="headerlink" href="#dbscan-clustering" title="Link to this heading">#</a></h2>
 <p>Es un algoritmo no supervisado que tienen por objetivo descubrir grupos a partir de formas arbitrarias de cualquier conjunto de datos y al mismo tiempo puede distinguir <em>noise points</em> que no forman parte de ningún grupo.</p>
 <p><strong>Parámetros</strong></p>
 <ul class="simple">
@@ -696,24 +908,44 @@ anterior ) es la respuesta final del algoritmo.</p>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>  <span class="c1"># Importa el algoritmo DBSCAN para clustering basado en densidad.</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>  <span class="c1"># Función para generar datos sintéticos agrupados.</span>
 
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">25</span><span class="p">)</span>
+<span class="c1"># Genera un conjunto de 25 puntos con estructura de clúster para pruebas.</span>
+<span class="c1"># X: coordenadas de los puntos, y: etiquetas reales (no se usan aquí).</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
-<span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">min_samples</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Crea el modelo DBSCAN con parámetros:</span>
+<span class="c1"># eps = 2: radio de vecindad considerado para formar un clúster.</span>
+<span class="c1"># min_samples = 2: número mínimo de puntos para formar un clúster denso.</span>
+<span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
+<span class="c1"># Ajusta el modelo y obtiene las etiquetas de clúster (o -1 si el punto es ruido).</span>
 <span class="bp">cls</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Imprime los valores de pertenencia a clúster de cada punto.</span>
+<span class="c1"># -1 representa ruido (puntos que no pertenecen a ningún clúster).</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster membership values:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
 
+<span class="c1"># Grafica los resultados del clustering.</span>
+<span class="c1"># Se le suma 1 a las etiquetas para que el ruido (-1) pase a 0 y así pueda graficarse como &quot;Noise&quot;.</span>
+<span class="c1"># Etiquetas: &#39;Noise&#39; para los puntos aislados, y &#39;Cluster 0&#39;, &#39;Cluster 1&#39;, etc., para los demás.</span>
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">cls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> 
-        <span class="p">[</span><span class="s1">&#39;Noise&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">])</span>
+                      <span class="p">[</span><span class="s1">&#39;Noise&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster membership values:
+[ 0  1  0  2  0  0  0  2  2 -1  1  2  0  0 -1  0  0  1 -1  1  1  2  2  2
+  1]
+</pre></div>
+</div>
+<img alt="_images/cda927b9f7b17fdc3ebc9f765b0bf718aceb5a6370247995681506cc3406772e.png" src="_images/cda927b9f7b17fdc3ebc9f765b0bf718aceb5a6370247995681506cc3406772e.png" />
+</div>
 </div>
 <section id="ejemplo-clasificacion-de-clientes">
-<h3><span class="section-number">16.3.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.4.1. </span>Ejemplo: clasificación de clientes<a class="headerlink" href="#ejemplo-clasificacion-de-clientes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uu</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/vmoprojs/DataLectures/master/Mall_Customers.csv&quot;</span>
@@ -725,6 +957,73 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AnnualIncome</th>
+      <th>SpendingScore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>200.000000</td>
+      <td>200.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>60.560000</td>
+      <td>50.200000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>26.264721</td>
+      <td>25.823522</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>15.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>41.500000</td>
+      <td>34.750000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>61.500000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>78.000000</td>
+      <td>73.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>137.000000</td>
+      <td>99.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -733,6 +1032,9 @@ anterior ) es la respuesta final del algoritmo.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3d742cada8098c711448f87f24efe52f9e9dad2d0d3b7ba73b94cbf7365efd3b.png" src="_images/3d742cada8098c711448f87f24efe52f9e9dad2d0d3b7ba73b94cbf7365efd3b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -748,6 +1050,9 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/70383ab10ac834abd291c078e238fcdee648503f8f4a99cc809aff04ba607fbc.png" src="_images/70383ab10ac834abd291c078e238fcdee648503f8f4a99cc809aff04ba607fbc.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,6 +1066,21 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cluster membership values:
+[ 0  0  0  0  0  0  0  1  0  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  2  0  2  0  2  3  2  3  2  0  2  3  2  3  2  3  2  3  2  0  2
+  3  2  0  2  3  2  3  2  3  2  3  2  3  2  3  2  0  2  3  2  3  2  3  2
+  3  2  3  2  3  2  3  2  3  2  3  2  3  2  3  2  3  2  3 -1  3  2  3 -1
+ -1 -1 -1 -1 -1 -1 -1 -1]
+</pre></div>
+</div>
+<img alt="_images/278cb4065fcb69b9b613b21f252b6ec8759b6139b3cc96e9ba2105424cb7af29.png" src="_images/278cb4065fcb69b9b613b21f252b6ec8759b6139b3cc96e9ba2105424cb7af29.png" />
+</div>
 </div>
 <p><strong>Un ejemplo combinado</strong></p>
 <div class="cell docutils container">
@@ -771,6 +1091,118 @@ anterior ) es la respuesta final del algoritmo.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>murder</th>
+      <th>rape</th>
+      <th>robbery</th>
+      <th>assault</th>
+      <th>burglary</th>
+      <th>larceny</th>
+      <th>auto.theft</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>50.000000</td>
+      <td>50.00000</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>7.444000</td>
+      <td>25.73400</td>
+      <td>124.092000</td>
+      <td>211.300000</td>
+      <td>1291.904000</td>
+      <td>2671.288000</td>
+      <td>377.526000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>3.866769</td>
+      <td>10.75963</td>
+      <td>88.348567</td>
+      <td>100.253049</td>
+      <td>432.455711</td>
+      <td>725.908707</td>
+      <td>193.394418</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.900000</td>
+      <td>9.00000</td>
+      <td>13.300000</td>
+      <td>43.800000</td>
+      <td>446.100000</td>
+      <td>1239.900000</td>
+      <td>144.400000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>4.225000</td>
+      <td>18.32500</td>
+      <td>64.950000</td>
+      <td>148.850000</td>
+      <td>1000.075000</td>
+      <td>2248.900000</td>
+      <td>245.775000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>7.300000</td>
+      <td>24.10000</td>
+      <td>106.050000</td>
+      <td>197.600000</td>
+      <td>1265.050000</td>
+      <td>2617.450000</td>
+      <td>333.850000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>10.100000</td>
+      <td>32.52500</td>
+      <td>155.850000</td>
+      <td>282.575000</td>
+      <td>1529.825000</td>
+      <td>3007.600000</td>
+      <td>460.125000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>15.800000</td>
+      <td>51.60000</td>
+      <td>472.600000</td>
+      <td>485.300000</td>
+      <td>2453.100000</td>
+      <td>4467.400000</td>
+      <td>1140.100000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,29 +1217,65 @@ anterior ) es la respuesta final del algoritmo.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_normalized</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>  <span class="c1"># Importa el algoritmo de reducción de dimensionalidad PCA.</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>     <span class="c1"># Importa el algoritmo KMeans para clustering.</span>
 
-<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_normalized</span><span class="p">)</span> <span class="c1"># nuevos componentes</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;varianza explicada&#39;</span><span class="p">,</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span> <span class="c1"># vaianza explicada</span>
+<span class="c1"># Aplica PCA (Análisis de Componentes Principales) para reducir los datos normalizados a 2 dimensiones.</span>
+<span class="c1"># Esto permite visualizar mejor los datos y eliminar redundancias entre variables.</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_normalized</span><span class="p">)</span>
 
-<span class="n">grupos</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># Transforma los datos originales normalizados al nuevo espacio de 2 componentes principales.</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_normalized</span><span class="p">)</span>  <span class="c1"># Matriz con las dos nuevas variables principales.</span>
+
+<span class="c1"># Imprime cuánta varianza explican los dos primeros componentes.</span>
+<span class="c1"># Esto indica qué porcentaje de la información original se mantiene en la reducción.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Varianza explicada:&#39;</span><span class="p">,</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+
+<span class="c1"># Crea el modelo KMeans para 3 clústeres y lo ajusta sobre los datos ya transformados con PCA.</span>
+<span class="n">grupos</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">grupos</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_pca</span><span class="p">)</span>
 
+<span class="c1"># Grafica los datos en el espacio reducido (PCA), coloreados según los clústeres asignados por KMeans.</span>
 <span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">grupos</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 3&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Varianza explicada: [0.58785136 0.17696026]
+</pre></div>
+</div>
+<img alt="_images/f1e591eaade986ff5b4a7d33e6608f01ad2ce65727af2872ec45ded7abaefdfe.png" src="_images/f1e591eaade986ff5b4a7d33e6608f01ad2ce65727af2872ec45ded7abaefdfe.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">min_samples</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>  <span class="c1"># Importa el algoritmo DBSCAN (clustering basado en densidad).</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                  <span class="c1"># Importa NumPy para manipulación de arrays.</span>
 
+<span class="c1"># Crea el modelo DBSCAN con parámetros ajustados:</span>
+<span class="c1"># eps = 0.8: radio de vecindad para considerar puntos como vecinos.</span>
+<span class="c1"># min_samples = 3: mínimo número de vecinos (incluyéndose) para que un punto sea considerado núcleo de un clúster.</span>
+<span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Ajusta el modelo sobre los datos reducidos a 2D con PCA.</span>
+<span class="c1"># Devuelve etiquetas de clúster para cada punto, donde -1 indica puntos ruidosos (no agrupados).</span>
 <span class="bp">cls</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_pca</span><span class="p">)</span>
+
+<span class="c1"># Imprime las etiquetas únicas asignadas por DBSCAN (por ejemplo: [-1, 0, 1] si hay ruido y dos clústeres).</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
-<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="bp">cls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> 
-        <span class="p">[</span><span class="s1">&#39;Noise&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">])</span>
+
+<span class="c1"># Grafica los puntos en el espacio reducido (PCA), sumando 1 a las etiquetas para que el ruido (-1) pase a 0.</span>
+<span class="c1"># Esto permite graficar correctamente el ruido con la etiqueta &#39;Noise&#39;, y los demás como &#39;Cluster 0&#39;, &#39;Cluster 1&#39;, etc.</span>
+<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="bp">cls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                      <span class="p">[</span><span class="s1">&#39;Noise&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster 2&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1  0  1  2]
+</pre></div>
+</div>
+<img alt="_images/2b1f3bfb39a154643a22a2021f35085ebc32916e20b4507c712798e6ea47d1f2.png" src="_images/2b1f3bfb39a154643a22a2021f35085ebc32916e20b4507c712798e6ea47d1f2.png" />
 </div>
 </div>
 </section>
@@ -823,16 +1291,16 @@ anterior ) es la respuesta final del algoritmo.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -879,16 +1347,18 @@ anterior ) es la respuesta final del algoritmo.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">16.1. K-means</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">16.1.1. Ejemplo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.2. Ejemplo: clasificación de frutas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias">16.1.1. Librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">16.1.2. Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-frutas">16.1.3. Ejemplo: clasificación de frutas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-jerarquico-aglomerativo">16.2. Clustering Jerárquico: Aglomerativo</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-para-fusionar-grupos">16.2.1. Funciones para fusionar grupos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-medoides">16.2. K-medoides</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-jerarquico-aglomerativo">16.3. Clustering Jerárquico: Aglomerativo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-para-fusionar-grupos">16.3.1. Funciones para fusionar grupos</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">16.3. DBSCAN clustering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">16.3.1. Ejemplo: clasificación de clientes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan-clustering">16.4. DBSCAN clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-clasificacion-de-clientes">16.4.1. Ejemplo: clasificación de clientes</a></li>
 </ul>
 </li>
 </ul>
