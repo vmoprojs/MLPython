@@ -517,6 +517,57 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
 </ol>
 <a class="reference internal image-reference" href="_images/im3_ar.png"><img alt="_images/im3_ar.png" src="_images/im3_ar.png" style="width: 500px; height: 300px;" />
 </a>
+<p>Apriori es un algoritmo de minería de datos usado para extraer <strong>conjuntos de ítems frecuentes</strong> y generar <strong>reglas de asociación</strong>. Se basa en la idea de que:</p>
+<blockquote>
+<div><p><strong>“Si un conjunto es frecuente, todos sus subconjuntos también lo son.”</strong></p>
+</div></blockquote>
+<p><strong>Pasos del algoritmo Apriori</strong></p>
+<p><strong>Generación del conjunto de ítems frecuentes</strong></p>
+<blockquote>
+<div><p><em>“Encontrar todos los conjuntos de ítems cuyo soporte sea ≥ al <code class="docutils literal notranslate"><span class="pre">min_sup</span></code>”</em></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Se parte del conjunto vacío (<code class="docutils literal notranslate"><span class="pre">null</span></code>) y se generan ítems individuales: <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code> (nivel 1).</p></li>
+<li><p>Luego, se combinan en pares: <code class="docutils literal notranslate"><span class="pre">ab</span></code>, <code class="docutils literal notranslate"><span class="pre">ac</span></code>, <code class="docutils literal notranslate"><span class="pre">ad</span></code>, <code class="docutils literal notranslate"><span class="pre">bc</span></code>, <code class="docutils literal notranslate"><span class="pre">bd</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code> (nivel 2).</p></li>
+<li><p>Luego en tríos: <code class="docutils literal notranslate"><span class="pre">abc</span></code>, <code class="docutils literal notranslate"><span class="pre">abd</span></code>, <code class="docutils literal notranslate"><span class="pre">acd</span></code>, <code class="docutils literal notranslate"><span class="pre">bcd</span></code> (nivel 3).</p></li>
+<li><p>Finalmente, un conjunto con 4 ítems: <code class="docutils literal notranslate"><span class="pre">abcd</span></code> (nivel 4).</p></li>
+</ul>
+<p>Los nodos <strong>coloreados</strong> indican si el conjunto <strong>cumple con el mínimo soporte (<code class="docutils literal notranslate"><span class="pre">min_sup</span></code>)</strong>:</p>
+<ul class="simple">
+<li><p>🟡 Amarillo: conjunto inicial (<code class="docutils literal notranslate"><span class="pre">null</span></code>) o conjuntos demasiado grandes.</p></li>
+<li><p>🔵 Azul: ítems individuales.</p></li>
+<li><p>🟢 Verde: conjuntos que cumplen con <code class="docutils literal notranslate"><span class="pre">min_sup</span></code>.</p></li>
+<li><p>🟤 Rosado: conjuntos que no cumplen con <code class="docutils literal notranslate"><span class="pre">min_sup</span></code> y son <strong>podados</strong>.</p></li>
+</ul>
+<p>Este proceso se llama <strong>“nivel por nivel” o “bottom-up”</strong>, y en cada paso se eliminan los conjuntos no frecuentes (esto ahorra tiempo y memoria).</p>
+<hr class="docutils" />
+<p><strong>Generación de reglas de asociación</strong></p>
+<blockquote>
+<div><p><em>“Listar todas las reglas de asociación de los conjuntos de ítems frecuentes. Calcular el soporte y la confianza de todas las reglas. Podar las reglas que no cumplan con <code class="docutils literal notranslate"><span class="pre">min_sup</span></code> ni <code class="docutils literal notranslate"><span class="pre">min_confianza</span></code>”</em></p>
+</div></blockquote>
+<p>Una vez que se identifican los conjuntos frecuentes (como <code class="docutils literal notranslate"><span class="pre">ab</span></code>, <code class="docutils literal notranslate"><span class="pre">abc</span></code>, <code class="docutils literal notranslate"><span class="pre">bd</span></code>, etc.), se generan reglas como:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{a}</span> <span class="pre">→</span> <span class="pre">{b}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{a,</span> <span class="pre">b}</span> <span class="pre">→</span> <span class="pre">{c}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{b}</span> <span class="pre">→</span> <span class="pre">{d}</span></code></p></li>
+</ul>
+<p>Cada regla se evalúa usando:</p>
+<ul class="simple">
+<li><p><strong>Soporte</strong>: frecuencia con la que aparece el conjunto completo (antecedente + consecuente).</p></li>
+<li><p><strong>Confianza</strong>: probabilidad de que ocurra el consecuente dado el antecedente.</p></li>
+</ul>
+<p>Se eliminan (se podan) las reglas que <strong>no cumplen</strong> con los umbrales <code class="docutils literal notranslate"><span class="pre">min_sup</span></code> y <code class="docutils literal notranslate"><span class="pre">min_confianza</span></code>.</p>
+<p><strong>¿Qué representa cada nivel del grafo?</strong></p>
+<ul class="simple">
+<li><p><strong>Nivel 0:</strong> Conjunto vacío (<code class="docutils literal notranslate"><span class="pre">null</span></code>)</p></li>
+<li><p><strong>Nivel 1:</strong> Ítems individuales <code class="docutils literal notranslate"><span class="pre">{a}</span></code>, <code class="docutils literal notranslate"><span class="pre">{b}</span></code>, <code class="docutils literal notranslate"><span class="pre">{c}</span></code>, <code class="docutils literal notranslate"><span class="pre">{d}</span></code></p></li>
+<li><p><strong>Nivel 2:</strong> Combinaciones de 2 ítems <code class="docutils literal notranslate"><span class="pre">{ab}</span></code>, <code class="docutils literal notranslate"><span class="pre">{ac}</span></code>, <code class="docutils literal notranslate"><span class="pre">{bd}</span></code>, etc.</p></li>
+<li><p><strong>Nivel 3:</strong> Combinaciones de 3 ítems <code class="docutils literal notranslate"><span class="pre">{abc}</span></code>, <code class="docutils literal notranslate"><span class="pre">{abd}</span></code>, etc.</p></li>
+<li><p><strong>Nivel 4:</strong> Conjunto completo <code class="docutils literal notranslate"><span class="pre">{abcd}</span></code></p></li>
+</ul>
+<p>Las <strong>flechas</strong> indican las relaciones de inclusión: cada conjunto en un nivel superior se construye a partir de los ítems en los niveles inferiores.</p>
+<p><strong>¿Por qué se llama Apriori?</strong></p>
+<p>Porque se basa en el principio <em>a priori</em> de que <strong>“los superset de un conjunto infrecuente también serán infrecuentes”</strong>. Es decir, si <code class="docutils literal notranslate"><span class="pre">{ab}</span></code> no es frecuente, entonces <code class="docutils literal notranslate"><span class="pre">{abc}</span></code>, <code class="docutils literal notranslate"><span class="pre">{abd}</span></code>, <code class="docutils literal notranslate"><span class="pre">{abcd}</span></code> tampoco lo serán. Esto permite <strong>podar el espacio de búsqueda</strong> eficientemente.</p>
 <section id="ejemplo-en-python">
 <h3><span class="section-number">17.1.1. </span>Ejemplo en Python<a class="headerlink" href="#ejemplo-en-python" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -842,7 +893,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
   <tbody>
     <tr>
       <th>1</th>
-      <td>(yogurt, butter, eggs, milk, bread, apples, ch...</td>
+      <td>(eggs, cheese, bread, yogurt, apples, butter, ...</td>
       <td>(bananas)</td>
       <td>0.009</td>
       <td>0.510</td>
@@ -859,7 +910,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
     </tr>
     <tr>
       <th>0</th>
-      <td>(yogurt, butter, eggs, bananas, apples, cheese)</td>
+      <td>(eggs, cheese, yogurt, apples, butter, bananas)</td>
       <td>(bread)</td>
       <td>0.017</td>
       <td>0.501</td>
@@ -876,7 +927,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
     </tr>
     <tr>
       <th>2</th>
-      <td>(yogurt, butter, milk, bread, bananas, apples,...</td>
+      <td>(cheese, bread, yogurt, apples, butter, banana...</td>
       <td>(eggs)</td>
       <td>0.010</td>
       <td>0.494</td>
