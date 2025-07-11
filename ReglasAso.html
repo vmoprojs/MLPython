@@ -633,18 +633,160 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">mlxtend.frequent_patterns</span> <span class="kn">import</span> <span class="n">apriori</span><span class="p">,</span> <span class="n">association_rules</span>  <span class="c1"># Para minería de reglas de asociación</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Para gráficos (equivalente a ggplot2)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>  <span class="c1"># Para visualización de datos</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;mlxtend&#39;
+</div>
+<p><strong>Parámetros de <code class="docutils literal notranslate"><span class="pre">apriori</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlxtend</span><span class="o">.</span><span class="n">frequent_patterns</span><span class="o">.</span><span class="n">apriori</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">min_support</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">use_colnames</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">max_len</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">filter_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">filter_value</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df</span></code></p></td>
+<td><p>DataFrame</p></td>
+<td><p>Matriz one-hot encoded: filas = transacciones, columnas = ítems (0 o 1).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">min_support</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Soporte mínimo requerido (entre 0 y 1).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_colnames</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Si <code class="docutils literal notranslate"><span class="pre">True</span></code>, devuelve los nombres de las columnas en los itemsets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_len</span></code></p></td>
+<td><p>int o None</p></td>
+<td><p>Longitud máxima de los itemsets considerados.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">verbose</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Nivel de verbosidad (0 por defecto).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">low_memory</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Si <code class="docutils literal notranslate"><span class="pre">True</span></code>, reduce el uso de memoria (más lento).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filter_col</span></code></p></td>
+<td><p>str</p></td>
+<td><p>Nombre de columna booleana para filtrar transacciones.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filter_value</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Valor que debe tener <code class="docutils literal notranslate"><span class="pre">filter_col</span></code> para mantener la fila.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<hr class="docutils" />
+<p><strong>Salida esperada</strong></p>
+<p>El resultado es un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> con los siguientes campos:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">support</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Proporción de transacciones que contienen el itemset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">itemsets</span></code></p></td>
+<td><p>frozenset</p></td>
+<td><p>Conjunto de ítems frecuentes encontrados.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Puedes agregar una columna con la longitud del itemset si lo deseas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">frequent_itemsets</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">frequent_itemsets</span><span class="p">[</span><span class="s1">&#39;itemsets&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Parámetros de <code class="docutils literal notranslate"><span class="pre">association_rules</span></code></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlxtend</span><span class="o">.</span><span class="n">frequent_patterns</span><span class="o">.</span><span class="n">association_rules</span><span class="p">(</span>
+    <span class="n">frequent_itemsets</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;confidence&#39;</span><span class="p">,</span>
+    <span class="n">min_threshold</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Tipo</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">frequent_itemsets</span></code></p></td>
+<td><p>DataFrame</p></td>
+<td><p>Resultado del método <code class="docutils literal notranslate"><span class="pre">apriori</span></code>, debe contener columnas <code class="docutils literal notranslate"><span class="pre">itemsets</span></code> y <code class="docutils literal notranslate"><span class="pre">support</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metric</span></code></p></td>
+<td><p>str</p></td>
+<td><p>Métrica para evaluar la calidad de la regla. Opciones: <code class="docutils literal notranslate"><span class="pre">'support'</span></code>, <code class="docutils literal notranslate"><span class="pre">'confidence'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lift'</span></code>, <code class="docutils literal notranslate"><span class="pre">'leverage'</span></code>, <code class="docutils literal notranslate"><span class="pre">'conviction'</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_threshold</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Umbral mínimo requerido para la métrica especificada.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Salida esperada</strong></p>
+<p>Un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> con las siguientes columnas:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Columna</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">antecedents</span></code></p></td>
+<td><p>Itemset del lado izquierdo de la regla.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">consequents</span></code></p></td>
+<td><p>Itemset del lado derecho de la regla.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">antecedent</span> <span class="pre">support</span></code></p></td>
+<td><p>Soporte del antecedente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">consequent</span> <span class="pre">support</span></code></p></td>
+<td><p>Soporte del consecuente.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">support</span></code></p></td>
+<td><p>Soporte conjunto (antecedente + consecuente).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">confidence</span></code></p></td>
+<td><p>Proporción de veces que la regla es verdadera.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lift</span></code></p></td>
+<td><p>Medida del aumento en probabilidad respecto a independencia.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">leverage</span></code></p></td>
+<td><p>Diferencia entre soporte observado y esperado si fueran independientes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conviction</span></code></p></td>
+<td><p>Medida de certeza de implicación.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,50 +830,66 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
       <th>support</th>
       <th>confidence</th>
       <th>lift</th>
+      <th>representativity</th>
       <th>leverage</th>
       <th>conviction</th>
       <th>zhangs_metric</th>
+      <th>jaccard</th>
+      <th>certainty</th>
+      <th>kulczynski</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>1</th>
-      <td>(milk, butter, apples, yogurt, eggs, bread, ch...</td>
+      <td>(yogurt, butter, eggs, milk, bread, apples, ch...</td>
       <td>(bananas)</td>
       <td>0.009</td>
       <td>0.510</td>
       <td>0.008</td>
       <td>0.888889</td>
       <td>1.742919</td>
+      <td>1.0</td>
       <td>0.003410</td>
       <td>4.410000</td>
       <td>0.430121</td>
+      <td>0.015656</td>
+      <td>0.773243</td>
+      <td>0.452288</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>(butter, apples, yogurt, eggs, cheese, bananas)</td>
+      <td>(yogurt, butter, eggs, bananas, apples, cheese)</td>
       <td>(bread)</td>
       <td>0.017</td>
       <td>0.501</td>
       <td>0.014</td>
       <td>0.823529</td>
       <td>1.643771</td>
+      <td>1.0</td>
       <td>0.005483</td>
       <td>2.827667</td>
       <td>0.398416</td>
+      <td>0.027778</td>
+      <td>0.646352</td>
+      <td>0.425737</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>(milk, butter, apples, yogurt, bread, cheese, ...</td>
+      <td>(yogurt, butter, milk, bread, bananas, apples,...</td>
       <td>(eggs)</td>
       <td>0.010</td>
       <td>0.494</td>
       <td>0.008</td>
       <td>0.800000</td>
       <td>1.619433</td>
+      <td>1.0</td>
       <td>0.003060</td>
       <td>2.530000</td>
       <td>0.386364</td>
+      <td>0.016129</td>
+      <td>0.604743</td>
+      <td>0.408097</td>
     </tr>
   </tbody>
 </table>
@@ -752,7 +910,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/635a6f2e9a162a622b87706d65095eef5ab388a5db6fd4dd92c04e9f30e4e604.png" src="_images/635a6f2e9a162a622b87706d65095eef5ab388a5db6fd4dd92c04e9f30e4e604.png" />
+<img alt="_images/80d089a91af522914842b1951cce1f6f6ad81802c89b46277cc854a75ef8fe03.png" src="_images/80d089a91af522914842b1951cce1f6f6ad81802c89b46277cc854a75ef8fe03.png" />
 </div>
 </div>
 </section>
@@ -768,16 +926,16 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
