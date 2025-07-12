@@ -484,7 +484,7 @@ Confianza(Pan \Rightarrow Leche) = \frac{3}{4} = 0.75
 <p><strong>Ejercicio</strong> Encuentra la confianza de <span class="math notranslate nohighlight">\(Leche \Rightarrow Pañal\)</span></p>
 <p>Nota: El analista debe establecer el soporte y confianza mínimos que desea.</p>
 <ol class="arabic simple">
-<li><p><em>Itemsets</em> frecuentes: Los conjuntos de clientes cuyo soporte es mayor o igual al soporte mínimo (<em>min_sup</em>).</p></li>
+<li><p><em>Itemsets</em> frecuentes: Los conjuntos de items cuyo soporte es mayor o igual al soporte mínimo (<em>min_sup</em>).</p></li>
 <li><p>Reglas fuertes: Si la regla <span class="math notranslate nohighlight">\(A \Rightarrow B [Soporte, Confianza]\)</span> cumple con <span class="math notranslate nohighlight">\(min_{sup}\)</span> y <span class="math notranslate nohighlight">\(min_{confianza}\)</span> entonces es una <em>regla fuerte</em>.</p></li>
 <li><p><em>Lift</em>: es la <em>correlación</em> entre <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> en la regla <span class="math notranslate nohighlight">\(A \Rightarrow B\)</span></p></li>
 </ol>
@@ -892,8 +892,8 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>(eggs, cheese, bread, yogurt, apples, butter, ...</td>
+      <th>2</th>
+      <td>(apples, yogurt, milk, cheese, eggs, butter, b...</td>
       <td>(bananas)</td>
       <td>0.009</td>
       <td>0.510</td>
@@ -910,7 +910,7 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
     </tr>
     <tr>
       <th>0</th>
-      <td>(eggs, cheese, yogurt, apples, butter, bananas)</td>
+      <td>(apples, bananas, yogurt, cheese, eggs, butter)</td>
       <td>(bread)</td>
       <td>0.017</td>
       <td>0.501</td>
@@ -926,8 +926,8 @@ Coverage(Pan \Rightarrow Leche) =Soporte(Pan) = 0.8
       <td>0.425737</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>(cheese, bread, yogurt, apples, butter, banana...</td>
+      <th>1</th>
+      <td>(apples, bananas, yogurt, milk, cheese, butter...</td>
       <td>(eggs)</td>
       <td>0.010</td>
       <td>0.494</td>
