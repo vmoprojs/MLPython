@@ -51,6 +51,8 @@ project:
     - title: Visualización
       children:
         - file: Visualizacion.ipynb
+        
+    - file: references.md
 
   settings:
     output_matplotlib_strings: remove
