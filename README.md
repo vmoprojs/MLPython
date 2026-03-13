@@ -2,7 +2,7 @@
 
 # Notas de clase
 
-**Actualización**: junio 2025
+**Actualización**: marzo 2026
 
 Este documento está en construcción. Tiene por objetivo recoger material necesario para impartir un curso aplicado de técnicas de Machine Learning. Esta primera versión realiza una revisión detallada de aprendizaje supervizado y no supervizado.
 
