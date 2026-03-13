@@ -2,8 +2,6 @@ version: 1
 
 project:
   title: Machine Learning con Python
-  authors:
-    - name: Víctor Morales Oñate
   description: Curso de Machine Learning con Python
   github: https://github.com/vmoprojs/MLPython
   bibliography:
@@ -59,6 +57,10 @@ project:
     output_stderr: remove-warn
     parser:
       dollarmath: true
+
+sphinx:
+  config:
+    bibtex_reference_style: author_year
 
 site:
   template: book-theme

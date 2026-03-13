@@ -1,5 +1,7 @@
 # Machine Learning con Python
 
+[Víctor Morales Oñate](https://www.linkedin.com/in/vmoralesonate/)  
+
 # Notas de clase
 
 **Actualización**: marzo 2026
