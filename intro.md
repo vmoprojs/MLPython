@@ -12,7 +12,7 @@ En la medida de lo posible el documento trabaja con datos de Ecuador. Además, e
 
 ## Material del autor en Python
 
-- [Machine Learning con Python](https://vmoprojs.github.io/MLPython/intro.html)
+- [Machine Learning con Python](https://vmoprojs.github.io/MLPython/)
 
 - [Econometría Espacial con Python](https://vmoprojs.github.io/SpatialEconPython/intro.html)
 
