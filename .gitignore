@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MyST / Jupyter Book
+_build/
+MLPython/_build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+SWEETVIZ_REPORT.html
+adspy_temp.dot
+anaconda_projects/
+
+# Backups
+pyML_backup_v1/
+*.bak
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# Generated artifacts
+decision_tree
+iris_tree
+iris_tree.png

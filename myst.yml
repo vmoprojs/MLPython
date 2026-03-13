@@ -2,10 +2,12 @@ version: 1
 
 project:
   title: Machine Learning con Python
-  author: Víctor Morales Oñate
+  authors:
+    - name: Víctor Morales Oñate
   description: Curso de Machine Learning con Python
   github: https://github.com/vmoprojs/MLPython
-
+  bibliography:
+    - references.bib
   toc:
     - file: intro.md
 
@@ -50,11 +52,28 @@ project:
       children:
         - file: Visualizacion.ipynb
 
+  settings:
+    output_matplotlib_strings: remove
+    output_stderr: remove-warn
+    parser:
+      dollarmath: true
+
 site:
   template: book-theme
-
-execute:
-  execute_notebooks: cache
-
-bibliography:
-  - references.bib
+  options:
+    logo: logo.jpg
+    favicon: logo.jpg
+    folders: true
+    actions:
+      - title: Repository
+        url: https://github.com/vmoprojs/MLPython
+        icon: github
+      - title: Issues
+        url: https://github.com/vmoprojs/MLPython/issues
+        icon: github
+      - title: Open in Colab
+        url: https://colab.research.google.com/github/vmoprojs/MLPython/blob/main/MLPython/intro.md
+        icon: play
+      - title: Launch Binder
+        url: https://mybinder.org/v2/gh/vmoprojs/MLPython/main?labpath=MLPython
+        icon: rocket
