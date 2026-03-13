@@ -1,0 +1,60 @@
+version: 1
+
+project:
+  title: Machine Learning con Python
+  author: Víctor Morales Oñate
+  description: Curso de Machine Learning con Python
+  github: https://github.com/vmoprojs/MLPython
+
+  toc:
+    - file: intro.md
+
+    - title: Fundamentos
+      children:
+        - file: IntroduccionPython.ipynb
+        - file: Pandas.ipynb
+        - file: Descriptiva.ipynb
+        - file: PruebasHipotesis.ipynb
+
+    - title: Machine Learning
+      children:
+        - file: IntroML.ipynb
+        - file: AprendizajeSupervisado.ipynb
+        - file: Regresion.ipynb
+        - file: StepRegularization.ipynb
+
+    - title: Modelos
+      children:
+        - file: Arboles.ipynb
+        - file: SVM.ipynb
+        - file: RedesNeuronales.ipynb
+
+    - title: Evaluación
+      children:
+        - file: Evaluacion.ipynb
+
+    - title: Modelos Probabilísticos
+      children:
+        - file: ProbModels.ipynb
+
+    - title: Aprendizaje No Supervisado
+      children:
+        - file: ACP.ipynb
+        - file: NoSupervizado.ipynb
+
+    - title: Reglas de Asociación
+      children:
+        - file: ReglasAso.ipynb
+
+    - title: Visualización
+      children:
+        - file: Visualizacion.ipynb
+
+site:
+  template: book-theme
+
+execute:
+  execute_notebooks: cache
+
+bibliography:
+  - references.bib
