@@ -14,7 +14,7 @@ En la medida de lo posible el documento trabaja con datos de Ecuador. Además, e
 
 - [Machine Learning con Python](https://vmoprojs.github.io/MLPython/)
 
-- [Econometría Espacial con Python](https://vmoprojs.github.io/SpatialEconPython/intro.html)
+- [Econometría Espacial con Python](https://vmoprojs.github.io/SpatialEconPython)
 
 - [Introducción a la Econometría](https://vmoprojs.github.io/IntroEconometrics/)
 
