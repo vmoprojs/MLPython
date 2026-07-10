@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="http://localhost:3007/sitemap_style.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:3000/sitemap_style.xsl" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:3007</loc>
+    <loc>http://localhost:3000</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/introduccionpython</loc>
+    <loc>http://localhost:3000/introduccionpython</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/pandas</loc>
+    <loc>http://localhost:3000/pandas</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/descriptiva</loc>
+    <loc>http://localhost:3000/descriptiva</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/pruebashipotesis</loc>
+    <loc>http://localhost:3000/pruebashipotesis</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/introml</loc>
+    <loc>http://localhost:3000/introml</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/aprendizajesupervisado</loc>
+    <loc>http://localhost:3000/aprendizajesupervisado</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/regresion</loc>
+    <loc>http://localhost:3000/regresion</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/stepregularization</loc>
+    <loc>http://localhost:3000/stepregularization</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/arboles</loc>
+    <loc>http://localhost:3000/arboles</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/svm</loc>
+    <loc>http://localhost:3000/svm</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/redesneuronales</loc>
+    <loc>http://localhost:3000/redesneuronales</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/evaluacion</loc>
+    <loc>http://localhost:3000/evaluacion</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/probmodels</loc>
+    <loc>http://localhost:3000/probmodels</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/acp</loc>
+    <loc>http://localhost:3000/acp</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/nosupervizado</loc>
+    <loc>http://localhost:3000/nosupervizado</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/reglasaso</loc>
+    <loc>http://localhost:3000/reglasaso</loc>
   </url>
   <url>
-    <loc>http://localhost:3007/visualizacion</loc>
+    <loc>http://localhost:3000/visualizacion</loc>
   </url>
 </urlset>
