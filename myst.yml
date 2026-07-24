@@ -9,47 +9,44 @@ project:
   toc:
     - file: intro.md
 
-    - title: Fundamentos
+    - title: Parte I. Fundamentos computacionales
       children:
         - file: IntroduccionPython.ipynb
         - file: Pandas.ipynb
+        - file: Visualizacion.ipynb
+
+    - title: Parte II. Fundamentos matemáticos y estadísticos
+      children:
         - file: Descriptiva.ipynb
         - file: PruebasHipotesis.ipynb
 
-    - title: Machine Learning
+    - title: Parte III. Fundamentos y evaluación de Machine Learning
       children:
         - file: IntroML.ipynb
+        - file: Evaluacion.ipynb
+
+    - title: Parte IV. Aprendizaje supervisado
+      children:
         - file: AprendizajeSupervisado.ipynb
         - file: Regresion.ipynb
         - file: StepRegularization.ipynb
-        - file: AprendizajeProfundo.ipynb
-
-    - title: Modelos
-      children:
+        - file: ProbModels.ipynb
         - file: Arboles.ipynb
         - file: SVM.ipynb
-        - file: RedesNeuronales.ipynb
 
-    - title: Evaluación
-      children:
-        - file: Evaluacion.ipynb
-
-    - title: Modelos Probabilísticos
-      children:
-        - file: ProbModels.ipynb
-
-    - title: Aprendizaje No Supervisado
+    - title: Parte V. Aprendizaje no supervisado
       children:
         - file: ACP.ipynb
         - file: NoSupervizado.ipynb
 
-    - title: Reglas de Asociación
+    - title: Parte VI. Redes neuronales y aprendizaje profundo
+      children:
+        - file: RedesNeuronales.ipynb
+        - file: AprendizajeProfundo.ipynb
+
+    - title: Parte VII. Descubrimiento de patrones
       children:
         - file: ReglasAso.ipynb
-
-    - title: Visualización
-      children:
-        - file: Visualizacion.ipynb
         
 
   settings:
