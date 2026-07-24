@@ -22,6 +22,7 @@ project:
         - file: AprendizajeSupervisado.ipynb
         - file: Regresion.ipynb
         - file: StepRegularization.ipynb
+        - file: AprendizajeProfundo.ipynb
 
     - title: Modelos
       children:
